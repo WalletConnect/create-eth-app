@@ -1,0 +1,34 @@
+{
+  "name": "create-eth-app",
+  "description": "Create Ethereum-powered React apps with one command",
+  "version": "1.0.0",
+  "author": {
+    "name": "Paul Razvan Berg",
+    "url": "https://paulrberg.com"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@commitlint/config-lerna-scopes": "^8.3.4",
+    "commitizen": "^4.0.3",
+    "husky": "^4.0.7",
+    "lerna": "3.20.2",
+    "prettier": "^1.19.1",
+    "shx": "^0.3.2"
+  },
+  "files": [
+    "/dist"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "private": true,
+  "scripts": {
+    "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,sol,ts}'",
+    "prettier:ci": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

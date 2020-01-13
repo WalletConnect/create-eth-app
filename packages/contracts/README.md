@@ -1,0 +1,3 @@
+## @cea/contracts
+
+Lorem ipsum.

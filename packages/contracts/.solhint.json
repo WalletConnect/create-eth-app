@@ -1,0 +1,16 @@
+{
+  "extends": "solhint:default",
+  "plugins": [],
+  "rules": {
+    "indent": ["error", 4],
+    "bracket-align": "off",
+    "compiler-fixed": "off",
+    "function-max-lines": "off",
+    "no-complex-fallback": "off",
+    "no-empty-blocks": "off",
+    "no-inline-assembly": "off",
+    "no-simple-event-func-name": "off",
+    "separate-by-one-line-in-contract": "off",
+    "two-lines-top-level-separator": "off"
+  }
+}

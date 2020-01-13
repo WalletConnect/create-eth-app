@@ -1,0 +1,13 @@
+# folders
+build/
+dist/
+node_modules/
+
+# files
+.DS_Store
+.env*
+.pnp*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log

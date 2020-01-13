@@ -1,0 +1,42 @@
+{
+  "name": "create-eth-app",
+  "description": "Create Ethereum-powered React apps with one command",
+  "version": "1.0.0",
+  "author": {
+    "name": "Paul Razvan Berg",
+    "url": "https://paulrberg.com"
+  },
+  "bin": {
+    "create-eth-app": "./dist/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/sablierhq/create-eth-app/issues"
+  },
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "make-dir": "^3.0.0",
+    "prettier-plugin-solidity": "^1.0.0-alpha.36",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4",
+    "update-check": "^1.5.3"
+  },
+  "homepage": "https://github.com/sablierhq/create-eth-app/tree/develop/packages/create-eth-app#readme",
+  "keywords": [
+    "ethereum",
+    "react",
+    "workspaces",
+    "yarn"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sablierhq/create-eth-app",
+    "directory": "packages/create-eth-app"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "shx rm -rf ./dist",
+    "lint": "tslint --config tslint.json --project ."
+  }
+}
