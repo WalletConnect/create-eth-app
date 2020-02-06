@@ -13,14 +13,30 @@
     "url": "https://github.com/sablierhq/create-eth-app/issues"
   },
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.1",
+    "@types/got": "^9.6.9",
+    "@types/node": "^13.7.0",
+    "@types/prompts": "^2.0.3",
+    "@types/rimraf": "^2.0.3",
+    "@types/tar": "^4.0.3",
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
+    "cpy": "^8.0.0",
+    "cross-spawn": "^7.0.1",
+    "got": "^10.4.0",
     "make-dir": "^3.0.0",
     "prettier-plugin-solidity": "^1.0.0-alpha.36",
+    "promisepipe": "^3.0.0",
+    "prompts": "^2.3.0",
+    "tar": "^6.0.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
-    "update-check": "^1.5.3"
+    "update-check": "^1.5.3",
+    "validate-npm-package-name": "^3.0.0"
   },
+  "files": [
+    "dist"
+  ],
   "homepage": "https://github.com/sablierhq/create-eth-app/tree/develop/packages/create-eth-app#readme",
   "keywords": [
     "ethereum",
@@ -35,8 +51,8 @@
     "directory": "packages/create-eth-app"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project .",
     "clean": "shx rm -rf ./dist",
-    "lint": "tslint --config tslint.json --project ."
+    "lint": "tslint --config ../../tslint.json --project ."
   }
 }

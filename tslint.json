@@ -1,12 +1,16 @@
 {
   "defaultSeverity": "warning",
-  "extends": ["tslint:recommended"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
   "jsRules": {},
   "linterOptions": {
     "exclude": ["lib", ".commitlintrc.js"]
   },
   "rules": {
-    "no-console": false
+    "no-console": false,
+    "object-literal-sort-keys": true
   },
   "rulesDirectory": []
 }

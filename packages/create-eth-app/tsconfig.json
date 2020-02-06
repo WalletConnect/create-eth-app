@@ -1,22 +1,13 @@
 {
+  "exclude": ["node_modules"],
+  "extends": "../../tsconfig.json",
+  "files": ["package.json"],
+  "include": ["src/**/*"],
   "compilerOptions": {
     /* Basic Options */
-    "lib": ["ES2015"],
-    "module": "commonjs",
     "outDir": "dist",
-    "sourceMap": true,
-    "target": "es2015",
-
-    /* Strict Type-Checking Options  */
-    "noImplicitAny": true,
-    "strict": true,
-
+    "rootDir": "src",
     /* Module Resolution Options */
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-
-    /* Advanced Options */
-    "forceConsistentCasingInFileNames": true
+    "baseUrl": "."
   }
 }

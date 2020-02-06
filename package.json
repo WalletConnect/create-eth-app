@@ -14,7 +14,10 @@
     "husky": "^4.0.7",
     "lerna": "3.20.2",
     "prettier": "^1.19.1",
-    "shx": "^0.3.2"
+    "shx": "^0.3.2",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
   },
   "files": [
     "/dist"
@@ -23,8 +26,9 @@
   "main": "./dist/index.js",
   "private": true,
   "scripts": {
+    "lint": "tslint --config tslint.json --project .",
     "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,sol,ts}'",
-    "prettier:ci": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'"
+    "prettier:list-different": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'"
   },
   "workspaces": {
     "packages": [

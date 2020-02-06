@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "composite": true,
+    "lib": ["ES2015"],
+    "module": "commonjs",
+    "sourceMap": true,
+    "target": "es2015",
+
+    /* Strict Type-Checking Options  */
+    "noImplicitAny": true,
+    "strict": true,
+
+    /* Module Resolution Options */
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules"],
+  "references": [{ "path": "packages/create-eth-app" }]
+}
