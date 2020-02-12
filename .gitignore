@@ -8,6 +8,7 @@ node_modules/
 .env*
 .pnp*
 npm-debug.log*
+tsconfig.tsbuildinfo
 yarn-debug.log*
 yarn-error.log*
 *.log

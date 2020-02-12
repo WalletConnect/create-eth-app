@@ -2,12 +2,12 @@
 import chalk from "chalk";
 import Commander from "commander";
 import path from "path";
-import prompts, { PromptObject, PromptType } from "prompts";
+import prompts from "prompts";
 import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { shouldUseYarn } from "./helpers/shouldUseYarn";
+import { shouldUseYarn } from "./helpers/yarn";
 import { validateNpmName } from "./helpers/validatePkg";
 
 let projectPath: string = "";
@@ -20,7 +20,6 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
     projectPath = name;
   })
   .option("--use-npm")
-  .option("-e, --example <example-path>", "an example to bootstrap the app with")
   .allowUnknownOption()
   .parse(process.argv);
 
@@ -36,7 +35,7 @@ async function run() {
       name: "path",
       type: "text",
       validate: (name: string) => {
-        const validation = validateNpmName(path.basename(path.resolve(name)));
+        const validation: { valid: boolean; problems?: string[] } = validateNpmName(path.basename(path.resolve(name)));
         if (validation.valid) {
           return true;
         }
@@ -64,19 +63,18 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
-  const { valid, problems } = validateNpmName(projectName);
+  const { problems, valid } = validateNpmName(projectName);
   if (!valid) {
     console.error(
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
     );
 
-    problems!.forEach(p => console.error(`    ${chalk.red.bold("*")} ${p}`));
+    problems!.forEach((problem: string) => console.error(`    ${chalk.red.bold("*")} ${problem}`));
     process.exit(1);
   }
 
   await createEthApp({
     appPath: resolvedProjectPath,
-    example: (typeof program.example === "string" && program.example.trim()) || undefined,
     useNpm: !!program.useNpm,
   });
 }
@@ -93,7 +91,7 @@ async function notifyUpdate() {
       console.log(chalk.yellow.bold("A new version of `create-eth-app` is available!"));
       console.log(
         "You can update by running: " +
-          chalk.cyan(isYarn ? "yarn global add create-eth-app" : "npm i -g create-eth-app"),
+          chalk.cyan(isYarn ? "yarn global add create-eth-app" : "npm install --global create-eth-app"),
       );
       console.log();
     }

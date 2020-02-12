@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "composite": true,
     "lib": ["ES2015"],
     "module": "commonjs",
+    "outDir": "dist",
     "sourceMap": true,
     "target": "es2015",
 
@@ -19,6 +19,5 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules"],
-  "references": [{ "path": "packages/create-eth-app" }]
+  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules"]
 }

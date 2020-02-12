@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export function isFolderEmpty(root: string, name: string) {
-  const validFiles = [
+  const validFiles: string[] = [
     ".DS_Store",
     ".git",
     ".gitattributes",
@@ -24,7 +24,7 @@ export function isFolderEmpty(root: string, name: string) {
     "yarn-error.log",
   ];
 
-  const conflicts = fs
+  const conflicts: string[] = fs
     .readdirSync(root)
     .filter(file => !validFiles.includes(file))
     /* Support IntelliJ IDEA-based editors */
@@ -35,7 +35,7 @@ export function isFolderEmpty(root: string, name: string) {
     console.log();
     for (const file of conflicts) {
       try {
-        const stats = fs.lstatSync(path.join(root, file));
+        const stats: fs.Stats = fs.lstatSync(path.join(root, file));
         if (stats.isDirectory()) {
           console.log(`  ${chalk.blue(file)}/`);
         } else {

@@ -23,7 +23,7 @@ function isInMercurialRepository() {
 }
 
 export function tryGitInit(root: string) {
-  let didInit = false;
+  let didInit: boolean = false;
   try {
     execSync("git --version", { stdio: "ignore" });
     if (isInGitRepository() || isInMercurialRepository()) {
@@ -38,7 +38,7 @@ export function tryGitInit(root: string) {
       stdio: "ignore",
     });
     return true;
-  } catch (e) {
+  } catch (error) {
     if (didInit) {
       try {
         rimraf.sync(path.join(root, ".git"));

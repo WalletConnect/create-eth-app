@@ -6,33 +6,68 @@
     "name": "Paul Razvan Berg",
     "url": "https://paulrberg.com"
   },
+  "bin": {
+    "create-eth-app": "./dist/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/sablierhq/create-eth-app/issues"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/config-lerna-scopes": "^8.3.4",
+    "@types/cross-spawn": "^6.0.1",
+    "@types/got": "^9.6.9",
+    "@types/node": "^13.7.0",
+    "@types/prompts": "^2.0.3",
+    "@types/rimraf": "^2.0.3",
+    "@types/tar": "^4.0.3",
+    "@zeit/ncc": "^0.21.0",
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
     "commitizen": "^4.0.3",
+    "cpy": "^8.0.0",
+    "cross-spawn": "^7.0.1",
+    "got": "^10.4.0",
     "husky": "^4.0.7",
     "lerna": "3.20.2",
+    "make-dir": "^3.0.0",
     "prettier": "^1.19.1",
+    "prettier-plugin-solidity": "^1.0.0-alpha.36",
+    "promisepipe": "^3.0.0",
+    "prompts": "^2.3.0",
     "shx": "^0.3.2",
+    "tar": "^6.0.1",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "update-check": "^1.5.3",
+    "validate-npm-package-name": "^3.0.0"
   },
   "files": [
     "/dist"
   ],
+  "homepage": "https://github.com/sablierhq/create-eth-app/tree/develop/packages/create-eth-app#readme",
+  "keywords": [
+    "ethereum",
+    "react",
+    "workspaces",
+    "yarn"
+  ],
   "license": "MIT",
   "main": "./dist/index.js",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sablierhq/create-eth-app",
+    "directory": "packages/create-eth-app"
+  },
   "scripts": {
+    "build": "ncc build ./src/index.ts --out dist/",
+    "clean": "shx rm -rf ./dist",
     "lint": "tslint --config tslint.json --project .",
     "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,sol,ts}'",
-    "prettier:list-different": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
+    "prettier:list-different": "prettier --config .prettierrc --list-different '**/*.{js,json,md,sol,ts}'",
+    "watch": "ncc build ./src/index.ts --out dist/ --watch"
   }
 }
