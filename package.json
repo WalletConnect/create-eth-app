@@ -10,7 +10,7 @@
     "create-eth-app": "./dist/index.js"
   },
   "bugs": {
-    "url": "https://github.com/sablierhq/create-eth-app/issues"
+    "url": "https://github.com/paulrberg/create-eth-app/issues"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
@@ -47,7 +47,7 @@
   "files": [
     "/dist"
   ],
-  "homepage": "https://github.com/sablierhq/create-eth-app/tree/develop/packages/create-eth-app#readme",
+  "homepage": "https://github.com/paulrberg/create-eth-app",
   "keywords": [
     "ethereum",
     "react",
@@ -59,8 +59,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/sablierhq/create-eth-app",
-    "directory": "packages/create-eth-app"
+    "url": "https://github.com/paulrberg/create-eth-app"
   },
   "scripts": {
     "build": "ncc build ./src/index.ts --out dist/",
