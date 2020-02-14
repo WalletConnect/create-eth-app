@@ -7,7 +7,6 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { shouldUseYarn } from "./helpers/yarn";
 import { validateNpmName } from "./helpers/validatePkg";
 
 let projectPath: string = "";
@@ -19,7 +18,6 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .action(name => {
     projectPath = name;
   })
-  .option("--use-npm")
   .allowUnknownOption()
   .parse(process.argv);
 
@@ -83,16 +81,11 @@ const update = updateCheck(packageJson).catch(() => null);
 
 async function notifyUpdate() {
   try {
-    const res = await update;
+    const res: { latest: boolean } = await update;
     if (res?.latest) {
-      const isYarn = shouldUseYarn();
-
       console.log();
       console.log(chalk.yellow.bold("A new version of `create-eth-app` is available!"));
-      console.log(
-        "You can update by running: " +
-          chalk.cyan(isYarn ? "yarn global add create-eth-app" : "npm install --global create-eth-app"),
-      );
+      console.log("You can update by running: yarn global add create-eth-app");
       console.log();
     }
   } catch {

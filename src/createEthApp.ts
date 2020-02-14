@@ -39,6 +39,7 @@ export async function createEthApp({ appPath, useNpm }: { appPath: string; useNp
   console.log(`Initializing monorepo with ${chalk.cyan("yarn workspaces")}. This might take a couple of minutes.`);
   console.log();
   await install(root, null, { isOnline });
+  console.log();
 
   if (tryGitInit(root)) {
     console.log("Initialized a git repository.");
@@ -61,12 +62,15 @@ export async function createEthApp({ appPath, useNpm }: { appPath: string; useNp
   console.log(chalk.cyan("  yarn react-app:build"));
   console.log("    Builds the app for production.");
   console.log();
-  console.log(chalk.cyan("  yarn subgraph:build"));
-  console.log("    Builds the subgraph in production mode.");
+  console.log(chalk.cyan("  yarn subgraph:codegen"));
+  console.log("    Generates AssemblyScript types for smart contract ABIs and the subgraph schema.");
+  console.log();
+  console.log(chalk.cyan("  yarn subgraph:deploy"));
+  console.log("    Deploys the subgraph to the official Graph Node.");
   console.log();
   console.log("We suggest that you begin by typing:");
   console.log();
   console.log(chalk.cyan("  cd"), cdPath);
-  console.log(`  ${chalk.cyan("yarn start")}`);
+  console.log(`  ${chalk.cyan("yarn react-app:start")}`);
   console.log();
 }

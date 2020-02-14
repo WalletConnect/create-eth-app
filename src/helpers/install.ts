@@ -3,9 +3,8 @@ import spawn from "cross-spawn";
 
 export function install(root: string, dependencies: string[] | null, { isOnline }: { isOnline: boolean }) {
   return new Promise((resolve, reject) => {
-    let command: string;
+    const command: string = "yarnpkg";
     let args: string[];
-    command = "yarnpkg";
 
     args = dependencies ? ["add", "--exact"] : ["install"];
     if (!isOnline) {
