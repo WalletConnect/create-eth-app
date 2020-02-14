@@ -21,7 +21,7 @@ Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
 When you’re ready to deploy to production, create a minified bundle with `yarn run react-app:build`.
 
 <p align="center">
-<img src="https://cdn.jsdelivr.net/gh/paulrberg/create-eth-app@3a110d60ce4b124ee11e1cc3651bdcd3d46282eb/screencast.svg" width="600 alt="yarn react-app:start">
+<img src="./screencast.gif" width="600" alt="yarn react-app:start">
 </p>
 
 ## Creating an App
