@@ -171,13 +171,13 @@ You can update by running: yarn global add create-eth-app
 
 ## Philosophy
 
-- **One Command:** You are one command a way from creating a new Ethereum-powered React app. No intermediary installs,
+- **Minimalistic by design:** You are one command a way from creating a new Ethereum-powered React app. No intermediary installs,
   scripts or shims.
 
 - **End-to-End**: Create Eth App provides you everything that you need to build and maintain an Ethereum-powered React app
   at scale, by bringing Yarn Workspaces, Create React App and The Graph under one roof
 
-- **Designed for Experience Architecture**: As Kames CG argues in [Ethereum Growth's Problem](https://medium.com/horizin/ethereums-growth-problem-5cab86734917), the Ethereum ecosystem is in
+- **Aimed at Experience Architects**: As Kames CG argues in [Ethereum Growth's Problem](https://medium.com/horizin/ethereums-growth-problem-5cab86734917), the Ethereum ecosystem is in
   a much greater need for top-notch product creators, not smart contract developers. Create Eth App does
   not enable a smart contract development environment, expecting you to import your own ABIs or build on top of
   an established protocol like [Maker](https://makerdao.com), [Compound](https://compound.finance/) or [Sablier](https://sablier.finance)
@@ -195,7 +195,7 @@ Your environment will have everything you need to build a modern Ethereum-powere
   and Flow syntax support
 - Template subgraph that indexes the events emitted by an
   [ERC-20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md) contract
-- Minimalist structure for storing the smart contract [ABIs](https://ethereum.stackexchange.com/questions/234/what-is-an-abi-and-why-is-it-needed-to-interact-with-contracts) and addresses
+- Minimalist structure for managing the smart contract [ABIs](https://ethereum.stackexchange.com/questions/234/what-is-an-abi-and-why-is-it-needed-to-interact-with-contracts) and addresses
 - Hassle-free updates for the above tools with a single dependency
 
 ## Popular Alternatives
