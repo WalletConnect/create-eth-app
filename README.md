@@ -236,4 +236,4 @@ We are grateful to the authors of existing related projects from which we drew i
 ## License
 
 Create Eth App is open source software [licensed as
-MIT](https://github.com/PaulRBerg/create-eth-app/blob/develop/LICENSE.md).
+MIT](https://github.com/PaulRBerg/create-eth-app/blob/develop/LICENSE).
