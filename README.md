@@ -233,7 +233,7 @@ We are grateful to the authors of existing related projects from which we drew i
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [create-next-app](https://github.com/zeit/next.js/tree/master/packages/create-next-app)
 
-We also thank OpenZeppelin for prodiving us with a secure library of open-source smart contracts:
+We also thank OpenZeppelin for providing us with a secure library of open-source smart contracts:
 
 - [cea-contracts](https://github.com/paulrberg/cea-contracts)
 
