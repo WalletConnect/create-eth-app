@@ -171,8 +171,7 @@ You can update by running: yarn global add create-eth-app
 
 ## Philosophy
 
-- **Minimalistic by design:** You are one command a way from creating a new Ethereum-powered React app. No intermediary installs,
-  scripts or shims.
+- **Minimalistic by design:** You are one command away from creating a new Ethereum-powered React app. No intermediary installs, scripts or shims.
 
 - **End-to-End**: Create Eth App provides you everything that you need to build and maintain an Ethereum-powered React app
   at scale, by bringing Yarn Workspaces, Create React App and The Graph under one roof
