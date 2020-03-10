@@ -18,6 +18,13 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .action(name => {
     projectPath = name;
   })
+  .option(
+    "-t, --template <name>|<github-url>",
+    `
+  A custom template to bootstrap the app with. You can use a template
+  from the official Create Eth App repo.
+`,
+  )
   .allowUnknownOption()
   .parse(process.argv);
 
@@ -73,7 +80,7 @@ async function run() {
 
   await createEthApp({
     appPath: resolvedProjectPath,
-    useNpm: !!program.useNpm,
+    template: (typeof program.template === "string" && program.template.trim()) || undefined,
   });
 }
 

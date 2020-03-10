@@ -6,9 +6,7 @@ export function shouldUseYarn(): void {
   try {
     execSync("yarnpkg --version", { stdio: "ignore" });
   } catch (e) {
-    console.error(
-      "Yarn is necessary for Create Eth App. Install it by following the official documentation:",
-    );
+    console.error("Yarn is necessary for Create Eth App. Install it by following the official documentation:");
     console.log();
     console.log(chalk.cyan("  https://classic.yarnpkg.com/en/docs/install"));
     process.exit(1);

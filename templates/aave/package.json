@@ -1,0 +1,23 @@
+{
+  "name": "@aave-app/monorepo",
+  "version": "1.0.0",
+  "keywords": [
+    "aave",
+    "ethereum",
+    "react",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "react-app:build": "yarn workspace @aave-app/react-app build",
+    "react-app:eject": "yarn workspace @aave-app/react-app eject",
+    "react-app:start": "yarn workspace @aave-app/react-app start",
+    "react-app:test": "yarn workspace @aave-app/react-app test"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

@@ -2,9 +2,9 @@ declare module "validate-npm-package-name" {
   function validate(
     projectName: string,
   ): {
+    errors?: string[] | null;
     validForNewPackages: boolean;
     validForOldPackages: boolean;
-    errors?: string[] | null;
     warnings?: string[] | null;
   };
 

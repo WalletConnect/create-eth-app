@@ -9,6 +9,8 @@ node_modules/
 .pnp*
 npm-debug.log*
 tsconfig.tsbuildinfo
+yarn.lock
 yarn-debug.log*
 yarn-error.log*
 *.log
+!/yarn.lock
