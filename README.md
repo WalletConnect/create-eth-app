@@ -40,7 +40,8 @@ yarn create eth-app my-eth-app
 _[`yarn create <starter-kit-package>`](https://yarnpkg.com/lang/en/docs/cli/create/) is available in Yarn 0.25+_
 
 It will create a directory called `my-eth-app` inside the current folder.<br>
-Inside that directory, it will generate the initial project structure:
+
+Inside that directory, it will generate the initial project structure, assuming you haven't provided a custom [template](https://github.com/paulrberg/create-eth-app#templates):
 
 ```
 my-eth-app
@@ -96,6 +97,18 @@ cd my-eth-app
 ```
 
 Inside the newly created project, you can run some built-in commands:
+
+### Templates
+
+Create Eth App comes with a host of decentralized finance templates with pre-filled contract ABIs, addresses and subgraphs. Peek into the [templates](/templates) folder to see what options are available and pass the name of the folder as the value for the `--template` argument.
+
+As an example:
+
+```sh
+yarn create eth-app my-eth-app --with-template compound
+```
+
+## Packages
 
 ### React App
 
