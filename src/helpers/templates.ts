@@ -9,7 +9,7 @@ export type RepoInfo = {
   filePath: string;
 };
 
-export function downloadAndExtractTemplate(name: string, root: string): Promise<void> {
+export function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
   return promisePipe(
     got.stream("https://codeload.github.com/paulrberg/create-eth-app/tar.gz/develop"),
     tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-develop/templates/${name}`]),
