@@ -63,7 +63,6 @@ my-eth-app
     │   ├── README.md
     │   ├── package.json
     │   ├── node_modules
-    │   ├── package.json
     │   ├── public
     │   │   ├── favicon.ico
     │   │   ├── index.html
