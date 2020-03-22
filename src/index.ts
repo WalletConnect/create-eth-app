@@ -10,6 +10,8 @@ import { createEthApp } from "./createEthApp";
 import { validateNpmName } from "./helpers/validatePkg";
 
 let projectPath: string = "";
+let framework: string = "";
+let template: string = "";
 
 const program: Commander.Command = new Commander.Command(packageJson.name)
   .version(packageJson.version)
@@ -19,11 +21,12 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
     projectPath = name;
   })
   .option(
-    "-t, --template <name>|<github-url>",
-    `
-  A custom template to bootstrap the app with. You can use a template
-  from the official Create Eth App repo.
-`,
+    "-F, --framework <react|vue>",
+    "front end framework for your app",
+  )
+  .option(
+    "-T, --template <name>|<github-url>",
+    "custom template to bootstrap the app with",
   )
   .allowUnknownOption()
   .parse(process.argv);
@@ -78,9 +81,45 @@ async function run() {
     process.exit(1);
   }
 
+  if (!program.framework) {
+    const res: prompts.Answers<string> = await prompts({
+      choices: [
+        { title: 'React', value: 'react' },
+        { title: 'Vue', value: 'vue' }
+      ],
+      message: "Choose a front end framework:",
+      name: "framework",
+      type: "select",
+    });
+
+    if (typeof res.framework === "string") {
+      framework = res.framework.trim();
+    }
+  }
+
+  if (!program.template) {
+    const res: prompts.Answers<string> = await prompts({
+      choices: [
+        { title: 'New', value: '' },
+        { title: 'Aave', value: 'aave' },
+        { title: 'Compound', value: 'compound' },
+        { title: 'Sablier', value: 'sablier' },
+        { title: 'Uniswap', value: 'uniswap-v1' }
+      ],
+      message: "Choose a template:",
+      name: "template",
+      type: "select",
+    });
+
+    if (typeof res.template === "string") {
+      template = res.template.trim();
+    }
+  }
+
   await createEthApp({
     appPath: resolvedProjectPath,
-    template: (typeof program.template === "string" && program.template.trim()) || undefined,
+    framework: framework || program.framework,
+    template: template || program.template,
   });
 }
 
