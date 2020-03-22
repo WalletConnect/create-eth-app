@@ -1,0 +1,25 @@
+{
+  "name": "@project/monorepo",
+  "version": "0.1.0",
+  "keywords": [
+    "ethereum",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "subgraph:auth": "yarn workspace @project/subgraph auth",
+    "subgraph:codegen": "yarn workspace @project/subgraph codegen",
+    "subgraph:build": "yarn workspace @project/subgraph build",
+    "subgraph:deploy": "yarn workspace @project/subgraph deploy"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@graphprotocol/graph-ts",
+      "**/@graphprotocol/graph-ts/**"
+    ]
+  }
+}

@@ -18,7 +18,7 @@ export function installFramework(root: string, framework: string, appName: strin
   switch(framework) {
     case "react":
       copyFileSync(`${__dirname}/assets/react.README.md`, `${root}/README.md`);
-      execSync(`npx create-react-app react-app`, { cwd: `${root}/packages`, stdio: "inherit" });
+      execSync(`npx --ignore-existing create-react-app react-app`, { cwd: `${root}/packages`, stdio: "inherit" });
       scripts = {
         "react-app:build": `yarn workspace @${appName}/react-app build`,
         "react-app:eject": `yarn workspace @${appName}/react-app eject`,
@@ -28,7 +28,7 @@ export function installFramework(root: string, framework: string, appName: strin
       break;
     case "vue":
       copyFileSync(`${__dirname}/assets/vue.README.md`, `${root}/README.md`);
-      execSync(`npx vue create vue-app`, { cwd: `${root}/packages`, stdio: "inherit" });
+      execSync(`npx --ignore-existing vue create vue-app`, { cwd: `${root}/packages`, stdio: "inherit" });
       scripts = {
         "vue-app:build": `yarn workspace @${appName}/vue-app build`,
         "vue-app:lint": `yarn workspace @${appName}/vue-app lint`,
@@ -52,6 +52,6 @@ export function installFramework(root: string, framework: string, appName: strin
 export function downloadAndExtractFrameworkComponents(root: string, framework: string, template: string): Promise<boolean> {
   return promisePipe(
     got.stream("https://codeload.github.com/proofoftom/create-eth-app/tar.gz/feature/multi-framework"),
-    extract({ cwd: `${root}/packages/${framework}-app/src/components`, strip: 4 }, [`create-eth-app-feature-multi-framework/templates/${template}/components/${framework}`]),
+    extract({ cwd: `${root}/packages/${framework}-app/src/components`, strip: 5 }, [`create-eth-app-feature-multi-framework/templates/${template}/components/${framework}`]),
   );
 }
