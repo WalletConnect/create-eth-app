@@ -10,12 +10,12 @@ export type RepoInfo = {
   filePath: string;
 };
 
-export async function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
-  mkdirSync(`${root}/packages/contracts`, { recursive: true });
+export function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
+  mkdirSync(`${root}/contracts`, { recursive: true });
 
-  return await promisePipe(
+  return promisePipe(
     got.stream("https://codeload.github.com/proofoftom/create-eth-app/tar.gz/feature/multi-framework"),
-    tar.extract({ cwd: `${root}/packages/contracts`, strip: 5 }, [`create-eth-app-feature-multi-framework/templates/${name}/packages/contracts`]),
+    tar.extract({ cwd: `${root}/contracts`, strip: 5 }, [`create-eth-app-feature-multi-framework/templates/${name}/packages/contracts`]),
   );
 }
 
@@ -36,8 +36,8 @@ export function downloadAndExtractDefaultTemplate(root: string, framework: strin
   }
 }
 
-export async function hasTemplate(name: string): Promise<boolean> {
-  return await isUrlOk(
+export function hasTemplate(name: string): Promise<boolean> {
+  return isUrlOk(
     `https://api.github.com/repos/proofoftom/create-eth-app/contents/templates/${encodeURIComponent(name)}/package.json`,
   );
 }

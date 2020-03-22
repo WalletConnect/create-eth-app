@@ -12,6 +12,7 @@ import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
 import { tryGitInit } from "./helpers/git";
 
 export async function createEthApp({ appPath, framework, template }: { appPath: string; framework: string, template: string }) {
+  template = template === "uniswap" ? "uniswap-v1": template;
   
   if (!hasFramework(framework)) {
     console.error(
@@ -86,10 +87,10 @@ export async function createEthApp({ appPath, framework, template }: { appPath: 
   console.log(`${chalk.green("Success!")} Created ${appName} at ${appPath}`);
   console.log("Inside that directory, you can run several commands:");
   console.log();
-  console.log(chalk.cyan("  yarn react-app:start"));
+  console.log(chalk.cyan(`  yarn ${framework}-app:start`));
   console.log("    Starts the development server.");
   console.log();
-  console.log(chalk.cyan("  yarn react-app:build"));
+  console.log(chalk.cyan(`  yarn ${framework}-app:build`));
   console.log("    Builds the app for production.");
   console.log();
   const subgraphPath = path.join(root, "packages", "subgraph");
@@ -104,6 +105,6 @@ export async function createEthApp({ appPath, framework, template }: { appPath: 
   console.log("We suggest that you begin by typing:");
   console.log();
   console.log(chalk.cyan("  cd"), cdPath);
-  console.log(`  ${chalk.cyan("yarn react-app:start")}`);
+  console.log(`  ${chalk.cyan(`yarn ${framework}-app:start`)}`);
   console.log();
 }

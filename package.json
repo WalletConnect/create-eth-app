@@ -24,6 +24,7 @@
     "@types/tar": "4.0.3",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
+    "@vue/cli": "^4.2.3",
     "@zeit/ncc": "^0.21.1",
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
