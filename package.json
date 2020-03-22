@@ -64,7 +64,7 @@
     "url": "https://github.com/paulrberg/create-eth-app"
   },
   "scripts": {
-    "build": "ncc build ./src/index.ts --out dist/",
+    "build": "ncc build ./src/index.ts --out dist/ && rsync -a ./src/assets dist/",
     "clean": "shx rm -rf ./dist",
     "lint": "tslint --config tslint.json --project .",
     "prettier": "prettier --config .prettierrc --write '**/*.{js,json,md,sol,ts}'",
