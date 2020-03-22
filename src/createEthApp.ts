@@ -20,7 +20,7 @@ export async function createEthApp({ appPath, framework, template }: { appPath: 
     process.exit(1);
   }
 
-  if (template && !(await hasTemplate(template))) {
+  if (template && template !== "default" && !(await hasTemplate(template))) {
     console.error(
       `Could not locate a template named ${chalk.red(`"${template}"`)}. Please check your spelling and try again.`,
     );
@@ -46,9 +46,9 @@ export async function createEthApp({ appPath, framework, template }: { appPath: 
   await makeDir(root);
   process.chdir(root);
 
-  installFramework(root, framework, appName);
+  if (template && template !== "default") {
+    installFramework(root, framework, appName);
 
-  if (template) {
     console.log(`Downloading files for template ${chalk.cyan(template)}. This might take a moment.`);
     console.log();
     await downloadAndExtractTemplate(root, template);

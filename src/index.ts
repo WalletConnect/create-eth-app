@@ -100,7 +100,7 @@ async function run() {
   if (!program.template) {
     const res: prompts.Answers<string> = await prompts({
       choices: [
-        { title: 'New', value: '' },
+        { title: 'Default', value: 'default' },
         { title: 'Aave', value: 'aave' },
         { title: 'Compound', value: 'compound' },
         { title: 'Sablier', value: 'sablier' },

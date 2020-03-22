@@ -49,8 +49,8 @@ export function installFramework(root: string, framework: string, appName: strin
   writeFileSync(appPackageJsonPath, JSON.stringify(appPackageJson, null, 2));
 }
 
-export async function downloadAndExtractFrameworkComponents(root: string, framework: string, template: string): Promise<void> {
-  return await promisePipe(
+export function downloadAndExtractFrameworkComponents(root: string, framework: string, template: string): Promise<boolean> {
+  return promisePipe(
     got.stream("https://codeload.github.com/proofoftom/create-eth-app/tar.gz/feature/multi-framework"),
     extract({ cwd: `${root}/packages/${framework}-app/src/components`, strip: 4 }, [`create-eth-app-feature-multi-framework/templates/${template}/components/${framework}`]),
   );

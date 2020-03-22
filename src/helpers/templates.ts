@@ -16,20 +16,20 @@ export async function downloadAndExtractTemplate(root: string, name: string): Pr
   );
 }
 
-export async function downloadAndExtractDefaultTemplate(root: string, framework: string): Promise<void> {
+export function downloadAndExtractDefaultTemplate(root: string, framework: string): Promise<boolean> {
   switch(framework) {
     case "react":
-      return await promisePipe(
+      return promisePipe(
         got.stream("https://codeload.github.com/paulrberg/cea-template/tar.gz/develop"),
         tar.extract({ cwd: root, strip: 1 }),
       );
     case "vue":
-      return await promisePipe(
-        got.stream("https://codeload.github.com/raid-guild/buidler-waffle-typechain-oz-vue/tar.gz/develop"),
+      return promisePipe(
+        got.stream("https://codeload.github.com/raid-guild/buidler-waffle-typechain-oz-vue/tar.gz/master"),
         tar.extract({ cwd: root, strip: 1 }),
       );
     default:
-      return await new Promise(() => {throw new Error(`There's no default template for ${framework}!`)});
+      return new Promise(() => {throw new Error(`There's no default template for ${framework}!`)});
   }
 }
 
@@ -39,7 +39,7 @@ export async function hasTemplate(name: string): Promise<boolean> {
   );
 }
 
-export async function isUrlOk(url: string) {
+export async function isUrlOk(url: string): Promise<boolean> {
   const res = await got(url).catch(e => e);
   return res.statusCode === 200;
 }
