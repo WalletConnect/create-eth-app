@@ -41,7 +41,7 @@ _[`yarn create <starter-kit-package>`](https://yarnpkg.com/lang/en/docs/cli/crea
 
 It will create a directory called `my-eth-app` inside the current folder.<br>
 
-Inside that directory, it will generate the initial project structure, assuming you haven't provided a custom [template](https://github.com/paulrberg/create-eth-app#templates):
+Inside that directory, it will generate the initial project structure, assuming you did not provide a custom [template](https://github.com/paulrberg/create-eth-app#templates):
 
 ```
 my-eth-app
