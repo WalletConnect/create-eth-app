@@ -38,6 +38,7 @@ export async function createEthApp({ appPath, template }: { appPath: string; tem
   const isOnline = await getOnline();
   const originalDirectory = process.cwd();
 
+  console.log();
   console.log(`Creating a new Ethereum-powered React app in ${chalk.green(root)}.`);
   console.log();
 
