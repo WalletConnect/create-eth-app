@@ -14,8 +14,9 @@ export function shouldUseYarn(): void {
 }
 
 export function shouldUseYarnWorkspaces(): void {
-  const result: string = execSync("yarnpkg config get workspaces-experimental", { encoding: "utf8" });
-  if (result.replace(os.EOL, "") !== "true") {
+  const yarnVersion: string = execSync("yarnpkg --version", { encoding: "utf8" });
+  const workspacesFlag: string = execSync("yarnpkg config get workspaces-experimental", { encoding: "utf8" });
+  if (yarnVersion.startsWith("0") && !workspacesFlag.startsWith("true")) {
     console.error(
       "The Yarn Workspaces feature is necessary for Create Eth App. Please enable it by running this command:",
     );
