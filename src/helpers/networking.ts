@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import dns from "dns";
+import got from "got";
 import url from "url";
 
 function getProxy(): string | undefined {
@@ -39,4 +40,9 @@ export function getOnline(): Promise<boolean> {
       });
     });
   });
+}
+
+export async function isUrlOk(url: string) {
+  const res = await got(url).catch(e => e);
+  return res.statusCode === 200;
 }

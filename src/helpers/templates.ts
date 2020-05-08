@@ -1,6 +1,9 @@
 import got from "got";
+import packageJson from "../../package.json";
 import promisePipe from "promisepipe";
 import tar from "tar";
+
+import { isUrlOk } from "./networking";
 
 export type RepoInfo = {
   username: string;
@@ -11,7 +14,7 @@ export type RepoInfo = {
 
 export function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
   return promisePipe(
-    got.stream("https://codeload.github.com/paulrberg/create-eth-app/tar.gz/develop"),
+    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/develop`),
     tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-develop/templates/${name}`]),
   );
 }
@@ -25,11 +28,8 @@ export async function downloadAndExtractDefaultTemplate(root: string): Promise<v
 
 export function hasTemplate(name: string): Promise<boolean> {
   return isUrlOk(
-    `https://api.github.com/repos/paulrberg/create-eth-app/contents/templates/${encodeURIComponent(name)}/package.json`,
+    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${encodeURIComponent(
+      name,
+    )}/package.json`,
   );
-}
-
-export async function isUrlOk(url: string) {
-  const res = await got(url).catch(e => e);
-  return res.statusCode === 200;
 }
