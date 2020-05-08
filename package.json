@@ -33,7 +33,6 @@
     "lerna": "3.20.2",
     "make-dir": "^3.0.0",
     "prettier": "^1.19.1",
-    "prettier-plugin-solidity": "^1.0.0-alpha.36",
     "promisepipe": "^3.0.0",
     "prompts": "^2.3.0",
     "shx": "^0.3.2",
