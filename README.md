@@ -41,7 +41,7 @@ _[`yarn create <starter-kit-package>`](https://yarnpkg.com/lang/en/docs/cli/crea
 
 It will create a directory called `my-eth-app` inside the current folder.<br>
 
-Inside that directory, it will generate the initial project structure, assuming you did not provide a custom [template](https://github.com/paulrberg/create-eth-app#templates):
+Inside that directory, if you didn't use a custom [framework](https://github.com/paulrberg/create-eth-app#frameworks) or [template](https://github.com/paulrberg/create-eth-app#templates), it will generate the initial project structure:
 
 ```
 my-eth-app
@@ -97,14 +97,24 @@ cd my-eth-app
 
 Inside the newly created project, you can run some built-in commands:
 
-### Templates
+### Frameworks
 
-Create Eth App comes with a host of decentralized finance templates with pre-filled contract ABIs, addresses and subgraphs. Peek into the [templates](/templates) folder to see what options are available and pass the name of the folder as the value for the `--template` argument.
+Create Eth App supports multiple frontend frameworks. See the folders under [templates](/templates) for a complete list of the available options. <br>
 
-As an example:
+You can pass the name of the framework as the value for the `--framework` command-line argument. Create Eth App defaults to React if no framework is provided manually.
 
 ```sh
-yarn create eth-app my-eth-app --with-template compound
+yarn create eth-app my-eth-app --framework vue
+```
+
+### Templates
+
+Create Eth App comes with a host of decentralized finance templates pre-filled with contract ABIs, addresses and subgraphs. Go to the [templates](/templates) folder, select any framework from the list and see what templates are available. <br>
+
+You can pass the name of the template as the value for the `--template` command-line argument.
+
+```sh
+yarn create eth-app my-eth-app --template compound
 ```
 
 ## Packages
@@ -251,4 +261,4 @@ We also thank OpenZeppelin for providing us with a secure library of open-source
 ## License
 
 Create Eth App is open source software [licensed as
-MIT](https://github.com/PaulRBerg/create-eth-app/blob/develop/LICENSE).
+MIT](https://github.com/paulrberg/create-eth-app/blob/develop/LICENSE).
