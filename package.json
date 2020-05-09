@@ -26,6 +26,7 @@
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
     "commitizen": "^4.0.3",
+    "cosmiconfig": "^6.0.0",
     "cpy": "^8.0.0",
     "cross-spawn": "^7.0.1",
     "got": "^10.4.0",
@@ -56,6 +57,7 @@
   "license": "MIT",
   "main": "./dist/index.js",
   "repository": {
+    "name": "paulrberg/create-eth-app",
     "type": "git",
     "url": "https://github.com/paulrberg/create-eth-app"
   },

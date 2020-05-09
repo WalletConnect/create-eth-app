@@ -20,5 +20,5 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules"]
+  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules", "templates"]
 }

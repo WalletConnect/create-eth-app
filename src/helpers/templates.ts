@@ -1,35 +1,21 @@
 import got from "got";
+import packageJson from "../../package.json";
 import promisePipe from "promisepipe";
 import tar from "tar";
 
-export type RepoInfo = {
-  username: string;
-  name: string;
-  branch: string;
-  filePath: string;
-};
+import { isUrlOk } from "./networking";
 
-export function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
+export function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
   return promisePipe(
-    got.stream("https://codeload.github.com/paulrberg/create-eth-app/tar.gz/develop"),
-    tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-develop/templates/${name}`]),
+    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/develop`),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-develop/templates/${framework}/${name}`]),
   );
 }
 
-export async function downloadAndExtractDefaultTemplate(root: string): Promise<void> {
-  return await promisePipe(
-    got.stream("https://codeload.github.com/paulrberg/cea-template/tar.gz/develop"),
-    tar.extract({ cwd: root, strip: 1 }),
-  );
-}
-
-export function hasTemplate(name: string): Promise<boolean> {
+export function hasTemplate(framework: string, name: string): Promise<boolean> {
   return isUrlOk(
-    `https://api.github.com/repos/paulrberg/create-eth-app/contents/templates/${encodeURIComponent(name)}/package.json`,
+    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
+      name,
+    )}/package.json?ref=develop`,
   );
-}
-
-export async function isUrlOk(url: string) {
-  const res = await got(url).catch(e => e);
-  return res.statusCode === 200;
 }
