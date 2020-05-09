@@ -1,7 +1,7 @@
-import erc20 from "./abis/erc20";
-import exchange from "./abis/exchange";
-import factory from "./abis/factory";
-import token from "./abis/token";
+import erc20 from "./abis/erc20.json";
+import exchange from "./abis/exchange.json";
+import factory from "./abis/factory.json";
+import token from "./abis/token.json";
 
 export default {
   erc20,

@@ -1,6 +1,6 @@
-import erc20 from "./abis/erc20";
-import payroll from "./abis/payroll";
-import sablier from "./abis/sablier";
+import erc20 from "./abis/erc20.json";
+import payroll from "./abis/payroll.json";
+import sablier from "./abis/sablier.json";
 
 export default {
   erc20,

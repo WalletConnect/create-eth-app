@@ -46,6 +46,7 @@ function App() {
         <p>
           Edit <code>packages/react-app/src/App.js</code> and save to reload.
         </p>
+        {/* Remove the "display: none" style and open the JavaScript console in the browser to see what this function does */}
         <button onClick={() => readOnChainData()} style={{ display: "none" }}>
           Read On-Chain Balance
         </button>

@@ -1,7 +1,7 @@
-import aToken from "./abis/aToken";
-import lendingPoolAddressesProvider from "./abis/lendingPoolAddressesProvider";
-import lendingPool from "./abis/lendingPool";
-import lendingPoolCore from "./abis/lendingPoolCore";
+import aToken from "./abis/aToken.json";
+import lendingPoolAddressesProvider from "./abis/lendingPoolAddressesProvider.json";
+import lendingPool from "./abis/lendingPool.json";
+import lendingPoolCore from "./abis/lendingPoolCore.json";
 
 export default {
   aToken,
