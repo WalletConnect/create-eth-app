@@ -1,9 +1,9 @@
-# folders
+# generic folders
 build/
 dist/
 node_modules/
 
-# files
+# generic files
 .DS_Store
 .env*
 .pnp*
@@ -14,3 +14,7 @@ yarn-debug.log*
 yarn-error.log*
 *.log
 !/yarn.lock
+
+# templates
+templates/**/build/
+templates/**/src/types/

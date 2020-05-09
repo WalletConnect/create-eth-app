@@ -5,13 +5,6 @@ import tar from "tar";
 
 import { isUrlOk } from "./networking";
 
-export type RepoInfo = {
-  username: string;
-  name: string;
-  branch: string;
-  filePath: string;
-};
-
 export function downloadAndExtractTemplate(root: string, name: string): Promise<void> {
   return promisePipe(
     got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/develop`),
@@ -19,16 +12,9 @@ export function downloadAndExtractTemplate(root: string, name: string): Promise<
   );
 }
 
-export async function downloadAndExtractDefaultTemplate(root: string): Promise<void> {
-  return await promisePipe(
-    got.stream("https://codeload.github.com/paulrberg/cea-template/tar.gz/develop"),
-    tar.extract({ cwd: root, strip: 1 }),
-  );
-}
-
-export function hasTemplate(name: string): Promise<boolean> {
+export function hasTemplate(framework: string, name: string): Promise<boolean> {
   return isUrlOk(
-    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${encodeURIComponent(
+    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
       name,
     )}/package.json`,
   );

@@ -3,19 +3,43 @@ import fs from "fs";
 import makeDir from "make-dir";
 import path from "path";
 
-import { downloadAndExtractDefaultTemplate, downloadAndExtractTemplate, hasTemplate } from "./helpers/templates";
-import { getOnline } from "./helpers/isOnline";
+import { downloadAndExtractTemplate, hasTemplate } from "./helpers/templates";
+import { getOnline } from "./helpers/networking";
+import { hasFramework } from "./helpers/frameworks";
 import { install } from "./helpers/install";
 import { isFolderEmpty } from "./helpers/isFolderEmpty";
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
 import { tryGitInit } from "./helpers/git";
 
-export async function createEthApp({ appPath, template }: { appPath: string; template?: string }) {
+export async function createEthApp({
+  appPath,
+  framework,
+  template,
+}: {
+  appPath: string;
+  framework?: string;
+  template?: string;
+}) {
+  if (framework) {
+    const found = await hasFramework(framework);
+
+    if (!found) {
+      console.error(
+        `Could not locate a UI framework named ${chalk.red(
+          `"${framework}"`,
+        )}. Please check your spelling and try again.`,
+      );
+      process.exit(1);
+    }
+  } else {
+    framework = "react";
+  }
+
   if (template) {
     if (template === "uniswap") {
       template = "uniswap-v1";
     }
-    const found = await hasTemplate(template);
+    const found = await hasTemplate(framework, template);
 
     if (!found) {
       console.error(
@@ -23,6 +47,8 @@ export async function createEthApp({ appPath, template }: { appPath: string; tem
       );
       process.exit(1);
     }
+  } else {
+    template = "default";
   }
 
   const root = path.resolve(appPath);
@@ -39,26 +65,28 @@ export async function createEthApp({ appPath, template }: { appPath: string; tem
   const originalDirectory = process.cwd();
 
   console.log();
-  console.log(`Creating a new Ethereum-powered React app in ${chalk.green(root)}.`);
+  console.log(
+    `Creating a new Ethereum-powered ${framework.charAt(0).toUpperCase() + framework.slice(1)} app in ${chalk.green(
+      root,
+    )}.`,
+  );
   console.log();
 
   await makeDir(root);
   process.chdir(root);
 
-  if (template) {
-    console.log(`Downloading files for template ${chalk.cyan(template)}. This might take a moment.`);
-    console.log();
-    await downloadAndExtractTemplate(root, template);
-
-    /* Copy our default `.gitignore` if the application did not provide one */
-    const ignorePath = path.join(root, ".gitignore");
-    if (!fs.existsSync(ignorePath)) {
-      fs.copyFileSync(path.join(__dirname, "gitignore"), ignorePath);
-    }
-  } else {
+  if (template === "default") {
     console.log("Downloading template files. This might take a moment.");
-    console.log();
-    await downloadAndExtractDefaultTemplate(root);
+  } else {
+    console.log(`Downloading files for template ${chalk.cyan(template)}. This might take a moment.`);
+  }
+  console.log();
+  await downloadAndExtractTemplate(root, framework, template);
+
+  /* Copy our default `.gitignore` if the application did not provide one */
+  const ignorePath = path.join(root, ".gitignore");
+  if (!fs.existsSync(ignorePath)) {
+    fs.copyFileSync(path.join(__dirname, "gitignore"), ignorePath);
   }
 
   console.log("Installing packages. This might take a couple of minutes.");
@@ -81,13 +109,29 @@ export async function createEthApp({ appPath, template }: { appPath: string; tem
 
   console.log(`${chalk.green("Success!")} Created ${appName} at ${appPath}`);
   console.log("Inside that directory, you can run several commands:");
-  console.log();
-  console.log(chalk.cyan("  yarn react-app:start"));
-  console.log("    Starts the development server.");
-  console.log();
-  console.log(chalk.cyan("  yarn react-app:build"));
-  console.log("    Builds the app for production.");
-  console.log();
+
+  const reactAppPath = path.join(root, "packages", "react-app");
+  if (fs.existsSync(reactAppPath)) {
+    console.log();
+    console.log(chalk.cyan("  yarn react-app:start"));
+    console.log("    Starts the development server.");
+    console.log();
+    console.log(chalk.cyan("  yarn react-app:build"));
+    console.log("    Builds the app for production.");
+    console.log();
+  }
+
+  const vueAppPath = path.join(root, "packages", "vue-app");
+  if (fs.existsSync(vueAppPath)) {
+    console.log();
+    console.log(chalk.cyan("  yarn vue-app:start"));
+    console.log("    Starts the development server.");
+    console.log();
+    console.log(chalk.cyan("  yarn vue-app:build"));
+    console.log("    Builds the app for production.");
+    console.log();
+  }
+
   const subgraphPath = path.join(root, "packages", "subgraph");
   if (fs.existsSync(subgraphPath)) {
     console.log(chalk.cyan("  yarn subgraph:codegen"));
@@ -97,9 +141,14 @@ export async function createEthApp({ appPath, template }: { appPath: string; tem
     console.log("    Deploys the subgraph to the official Graph Node.");
     console.log();
   }
+
   console.log("We suggest that you begin by typing:");
   console.log();
   console.log(chalk.cyan("  cd"), cdPath);
-  console.log(`  ${chalk.cyan("yarn react-app:start")}`);
+  if (fs.existsSync(reactAppPath)) {
+    console.log(`  ${chalk.cyan("yarn react-app:start")}`);
+  } else if (fs.existsSync(vueAppPath)) {
+    console.log(`  ${chalk.cyan("yarn vue-app:start")}`);
+  }
   console.log();
 }

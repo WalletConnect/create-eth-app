@@ -19,10 +19,15 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
     projectPath = name;
   })
   .option(
-    "-t, --template <name>|<github-url>",
+    "-f, --framework <name>",
     `
-  A custom template to bootstrap the app with. You can use a template
-  from the official Create Eth App repo.
+  The UI framework to bootstrap the app with. You can use a framework from the official Create Eth App repo. The default is React.
+`,
+  )
+  .option(
+    "-t, --template <name>",
+    `
+  A custom template to bootstrap the app with. You can use a template from the official Create Eth App repo.
 `,
   )
   .allowUnknownOption()
@@ -80,6 +85,7 @@ async function run() {
 
   await createEthApp({
     appPath: resolvedProjectPath,
+    framework: (typeof program.framework === "string" && program.framework.trim()) || undefined,
     template: (typeof program.template === "string" && program.template.trim()) || undefined,
   });
 }
