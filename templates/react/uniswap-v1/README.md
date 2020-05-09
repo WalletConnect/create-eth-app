@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Uniswap v1 Template](https://github.com/PaulRBerg/create-eth-app/tree/develop/templates/uniswap).
+This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Uniswap v1 Template](https://github.com/paulrberg/create-eth-app/tree/develop/templates/uniswap-v1).
 
 This template contains two packages:
 

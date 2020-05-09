@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Compound Template](https://github.com/PaulRBerg/create-eth-app/tree/develop/templates/compound).
+This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Compound Template](https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/compound).
 
 This template contains two packages:
 

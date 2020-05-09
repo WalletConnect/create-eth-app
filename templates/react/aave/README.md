@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Aave Template](https://github.com/PaulRBerg/create-eth-app/tree/develop/templates/aave).
+This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Aave Template](https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/aave).
 
 This template contains two packages:
 
