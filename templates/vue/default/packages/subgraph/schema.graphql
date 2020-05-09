@@ -1,0 +1,13 @@
+type Token @entity {
+  id: ID!
+  decimals: Int
+  name: String
+  symbol: String
+}
+
+type Transfer @entity {
+  id: ID!
+  from: String!
+  to: String!
+  value: BigInt!
+}

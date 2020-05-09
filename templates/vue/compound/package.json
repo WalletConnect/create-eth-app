@@ -1,0 +1,22 @@
+{
+  "name": "@compound-app/monorepo",
+  "version": "1.0.0",
+  "keywords": [
+    "compound-finance",
+    "ethereum",
+    "vue",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "vue-app:build": "yarn workspace @compound-app/vue-app build",
+    "vue-app:lint": "yarn workspace @compound-app/vue-app lint",
+    "vue-app:serve": "yarn workspace @compound-app/vue-app serve"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

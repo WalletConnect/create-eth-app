@@ -1,0 +1,35 @@
+{
+  "name": "@uniswap-v1-app/vue-app",
+  "version": "0.1.0",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.9",
+    "apollo-link-http": "^1.5.17",
+    "core-js": "^3.6.4",
+    "ethers": "^4.0.47",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "vue": "^2.6.11",
+    "vue-apollo": "^3.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve"
+  }
+}

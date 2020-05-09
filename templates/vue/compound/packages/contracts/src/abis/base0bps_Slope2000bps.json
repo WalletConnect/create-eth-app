@@ -1,0 +1,110 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "cash",
+        "type": "uint256"
+      },
+      {
+        "name": "borrows",
+        "type": "uint256"
+      },
+      {
+        "name": "_reserves",
+        "type": "uint256"
+      }
+    ],
+    "name": "getBorrowRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x15f24053"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "multiplier",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x1b3ed722"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "baseRate",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x1f68f20a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isInterestRateModel",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x2191f92a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "blocksPerYear",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xa385fb96"
+  },
+  {
+    "inputs": [
+      {
+        "name": "baseRate_",
+        "type": "uint256"
+      },
+      {
+        "name": "multiplier_",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  }
+]

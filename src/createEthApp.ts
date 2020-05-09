@@ -36,6 +36,9 @@ export async function createEthApp({
   }
 
   if (template) {
+    if (template === "sablier") {
+      template = "sablier-v1";
+    }
     if (template === "uniswap") {
       template = "uniswap-v1";
     }
@@ -124,7 +127,7 @@ export async function createEthApp({
   const vueAppPath = path.join(root, "packages", "vue-app");
   if (fs.existsSync(vueAppPath)) {
     console.log();
-    console.log(chalk.cyan("  yarn vue-app:start"));
+    console.log(chalk.cyan("  yarn vue-app:serve"));
     console.log("    Starts the development server.");
     console.log();
     console.log(chalk.cyan("  yarn vue-app:build"));
@@ -148,7 +151,7 @@ export async function createEthApp({
   if (fs.existsSync(reactAppPath)) {
     console.log(`  ${chalk.cyan("yarn react-app:start")}`);
   } else if (fs.existsSync(vueAppPath)) {
-    console.log(`  ${chalk.cyan("yarn vue-app:start")}`);
+    console.log(`  ${chalk.cyan("yarn vue-app:serve")}`);
   }
   console.log();
 }
