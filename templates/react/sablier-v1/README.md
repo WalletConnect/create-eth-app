@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Sablier Template](https://github.com/PaulRBerg/create-eth-app/tree/develop/templates/sablier).
+This project was bootstrapped with [Create Eth App](https://github.com/paulrberg/create-eth-app) and the [Sablier v1 Template](https://github.com/paulrberg/create-eth-app/tree/develop/templates/sablier).
 
 This template contains two packages:
 

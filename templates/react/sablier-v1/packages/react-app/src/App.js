@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./ethereumLogo.png";
-import { MAINNET_ID, addresses, abis } from "@sablier-app/contracts";
+import { MAINNET_ID, addresses, abis } from "@sablier-v1-app/contracts";
 import { gql } from "apollo-boost";
 import { ethers } from "ethers";
 import { useQuery } from "@apollo/react-hooks";
@@ -92,7 +92,7 @@ function App() {
           Learn React
         </a>
         <a className="App-link" href="https://docs.sablier.finance/" target="_blank" rel="noopener noreferrer">
-          Learn Sablier
+          Learn Sablier v1
         </a>
       </header>
     </div>

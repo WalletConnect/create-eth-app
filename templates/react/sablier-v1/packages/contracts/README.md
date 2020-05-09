@@ -1,4 +1,4 @@
-## @sablier-app/contracts
+## @sablier-v1-app/contracts
 
 A minimalist, opinionated structure for managing smart contract ABIs and addresses.<br/>
 
