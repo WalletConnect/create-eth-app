@@ -1,0 +1,26 @@
+specVersion: 0.0.2
+description: Subgraph that indexes the blockchain data
+repository: https://github.com/sablierhq/sablier-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: CeaErc20
+    network: mainnet
+    source:
+      abi: erc20
+      address: "0xc1C0472c0C80bCcDC7F5D01A376Bd97a734B8815"
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      abis:
+        - name: erc20
+          file: ../contracts/src/abis/erc20.json
+      entities:
+        - Token
+        - Transfer
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mappings/transfers.ts
+      language: wasm/assemblyscript

@@ -1,0 +1,15 @@
+{
+  "name": "@project/subgraph",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.18.0",
+    "@graphprotocol/graph-ts": "0.18.1"
+  },
+  "license": "MIT",
+  "scripts": {
+    "auth": "graph auth https://api.thegraph.com/ $GRAPH_ACCESS_TOKEN",
+    "build": "graph build",
+    "codegen": "graph codegen --output-dir src/types/",
+    "deploy": "graph deploy paulrberg/create-eth-app --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/"
+  }
+}
