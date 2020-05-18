@@ -23,7 +23,7 @@ export function install(root: string, dependencies: string[] | null, { isOnline 
 
     const child = spawn(command, args, {
       env: { ...process.env, ADBLOCK: "1", DISABLE_OPENCOLLECTIVE: "1" },
-      stdio: "inherit",
+      stdio: ["inherit", "inherit", "ignore"],
     });
     child.on("close", (code: number) => {
       if (code !== 0) {
