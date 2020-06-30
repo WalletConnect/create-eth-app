@@ -1,0 +1,63 @@
+import React from "react";
+import logo from "./ethereumLogo.png";
+{{{ contractsImportLine }}}
+import { gql } from "apollo-boost";
+import { ethers } from "ethers";
+import { useQuery } from "@apollo/react-hooks";
+import "./App.css";
+
+{{#each graphqlQuery }}
+{{{ this }}}
+{{/each}}
+
+async function readOnChainData() {
+  // Should replace with the end-user wallet, e.g. Metamask
+  const defaultProvider = ethers.getDefaultProvider();
+  // Create an instance of ethers.Contract
+  // Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/
+  {{#each readOnChainData}}
+  {{{ this }}}
+  {{/each}}
+}
+
+function App() {
+  const { loading, error, data } = useQuery({{ graphqlQueryName }});
+
+  React.useEffect(() => {
+    {{#each hooks.readData }}
+    {{{ this }}}
+    {{/each}}
+  }, [loading, error, data]);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="react-logo" />
+        <p>
+          Edit <code>packages/react-app/src/App.js</code> and save to reload.
+        </p>
+        {/* Remove the "display: none" style and open the JavaScript console in the browser to see what this function does */}
+        <button onClick={() => readOnChainData()} style={{{{raw-helper}}}} {{ display: "none" }} {{{{/raw-helper}}}}>
+          {{ callToAction }}
+        </button>
+        <a
+          className="App-link"
+          href="https://ethereum.org/developers/#getting-started"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{{{raw-helper}}}} {{ marginTop: "0px" }} {{{{/raw-helper}}}}
+        >
+          Learn Ethereum
+        </a>
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+          Learn React
+        </a>
+        <a className="App-link" href="{{ learnUrl }}" target="_blank" rel="noopener noreferrer">
+          Learn {{ whatToLearn }}
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;

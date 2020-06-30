@@ -1,0 +1,22 @@
+{
+  "nohoist": [
+    "**/@graphprotocol/graph-ts",
+    "**/@graphprotocol/graph-ts/**"
+  ],
+  "orgName": "@project",
+  "packageName": "@project/monorepo",
+  "scripts": {
+    "keys": [
+      "subgraph:auth",
+      "subgraph:codegen",
+      "subgraph:build",
+      "subgraph:deploy"
+    ],
+    "values": [
+      "yarn workspace @project/subgraph auth",
+      "yarn workspace @project/subgraph codegen",
+      "yarn workspace @project/subgraph build",
+      "yarn workspace @project/subgraph deploy"
+    ]
+  }
+}

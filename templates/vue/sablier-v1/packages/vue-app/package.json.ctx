@@ -1,0 +1,11 @@
+{
+  "packageName": "@sablier-v1-app/vue-app",
+  "dependencies": {
+    "keys": [],
+    "values": []
+  },
+  "devDependencies": {
+    "keys": [],
+    "values": []
+  }
+}

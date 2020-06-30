@@ -42,7 +42,7 @@ export function getOnline(): Promise<boolean> {
   });
 }
 
-export async function isUrlOk(url: string) {
-  const res = await got(url).catch(e => e);
+export async function isUrlOk(urlToCheck: string) {
+  const res = await got(urlToCheck).catch(e => e);
   return res.statusCode === 200;
 }

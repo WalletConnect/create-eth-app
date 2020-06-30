@@ -1,0 +1,49 @@
+{
+  "callToAction": "Read On-Chain Exchange Rate",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
+  "graphqlQuery": [
+    "const GET_EXCHANGES = gql`",
+    "  {",
+    "    exchanges(first: 5) {",
+    "      id",
+    "      tokenAddress",
+    "      tokenSymbol",
+    "      tokenName",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_EXCHANGES",
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://uniswap.org/docs/v1/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discord.gg/EwFs3Pp"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/uniswapprotocol"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !stale && data && data.exchanges) {",
+      "  console.log({ exchanges: data.exchanges });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "const ethDaiExchangeContract = new ethers.Contract(",
+    "  addresses[MAINNET_ID].exchanges[\"ETH-DAI\"],",
+    "  abis.exchange,",
+    "  defaultProvider,",
+    ");",
+    "// Price of 1 Ether in DAI",
+    "const exchangeRate = await ethDaiExchangeContract.getEthToTokenInputPrice(\"1000000000000000000\");",
+    "console.log({ exchangeRate: exchangeRate.toString() });"
+  ],
+  "whatToLearn": "Uniswap v1"
+}

@@ -1,0 +1,11 @@
+{
+  "packageName": "@project/vue-app",
+  "dependencies": {
+    "keys": [],
+    "values": []
+  },
+  "devDependencies": {
+    "keys": [],
+    "values": []
+  }
+}

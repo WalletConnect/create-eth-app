@@ -1,0 +1,46 @@
+{
+  "callToAction": "Read On-Chain Balance",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+  "graphqlQuery": [
+    "const GET_MONEY_MARKETS = gql`",
+    "  {",
+    "    markets(first: 7) {",
+    "      borrowRate",
+    "      cash",
+    "      collateralFactor",
+    "      exchangeRate",
+    "      interestRateModelAddress",
+    "      name",
+    "      reserves",
+    "      supplyRate",
+    "      symbol",
+    "      id",
+    "      totalBorrows",
+    "      totalSupply",
+    "      underlyingAddress",
+    "      underlyingName",
+    "      underlyingPrice",
+    "      underlyingSymbol",
+    "      reserveFactor",
+    "      underlyingPriceUSD",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_MONEY_MARKETS",
+  "hooks": {
+    "readData": [
+      "if (!loading && !error && data && data.markets) {",
+      "  console.log({ markets: data.markets });",
+      "}"
+    ]
+  },
+  "learnUrl": "https://compound.finance/developers",
+  "readOnChainData": [
+    "const cDAIContract = new ethers.Contract(addresses[MAINNET_ID].tokens.cDAI, abis.tokens.cDAI, defaultProvider);",
+    "// A pre-defined address that owns some cDAI tokens",
+    "const cDAIBalance = await cDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
+    "console.log({ cDAIBalance: cDAIBalance.toString() });"
+  ],
+  "whatToLearn": "Compound"
+}
