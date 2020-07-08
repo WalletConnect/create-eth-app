@@ -1,0 +1,11 @@
+{
+  "packageName": "@compound-app/react-app",
+  "dependencies": {
+    "keys": [],
+    "values": []
+  },
+  "devDependencies": {
+    "keys": [],
+    "values": []
+  }
+}

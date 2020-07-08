@@ -3,12 +3,24 @@ import fs from "fs";
 import makeDir from "make-dir";
 import path from "path";
 
-import { downloadAndExtractTemplate, hasTemplate } from "./helpers/templates";
+import {
+  FrameworkKey,
+  downloadAndExtractFrameworkHandlebars,
+  hasFramework,
+  hasFrameworkHandlebars,
+} from "./helpers/frameworks";
+import {
+  TemplateKey,
+  downloadAndExtractTemplate,
+  hasTemplate,
+  parseTemplate,
+  registerHandlebarsHelpers,
+} from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
-import { hasFramework } from "./helpers/frameworks";
 import { install } from "./helpers/install";
 import { isFolderEmpty } from "./helpers/isFolderEmpty";
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
+import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
 import { tryGitInit } from "./helpers/git";
 
 export async function createEthApp({
@@ -21,15 +33,11 @@ export async function createEthApp({
   template?: string;
 }) {
   if (framework) {
-    const found = await hasFramework(framework);
+    const foundFramework: boolean = await hasFramework(framework);
+    const foundFrameworkHandlebars: boolean = await hasFrameworkHandlebars(framework);
 
-    if (!found) {
-      console.error(
-        `Could not locate a UI framework named ${chalk.red(
-          `"${framework}"`,
-        )}. Please check your spelling and try again.`,
-      );
-      process.exit(1);
+    if (!foundFramework || !foundFrameworkHandlebars) {
+      throwFrameworkNotFoundError(framework);
     }
   } else {
     framework = "react";
@@ -45,17 +53,14 @@ export async function createEthApp({
     const found = await hasTemplate(framework, template);
 
     if (!found) {
-      console.error(
-        `Could not locate a template named ${chalk.red(`"${template}"`)}. Please check your spelling and try again.`,
-      );
-      process.exit(1);
+      throwTemplateNotFoundError(template);
     }
   } else {
     template = "default";
   }
 
-  const root = path.resolve(appPath);
-  const appName = path.basename(root);
+  const root: string = path.resolve(appPath);
+  const appName: string = path.basename(root);
 
   await makeDir(root);
   if (!isFolderEmpty(root, appName)) {
@@ -64,8 +69,8 @@ export async function createEthApp({
 
   shouldUseYarn();
   shouldUseYarnWorkspaces();
-  const isOnline = await getOnline();
-  const originalDirectory = process.cwd();
+  const isOnline: boolean = await getOnline();
+  const originalDirectory: string = process.cwd();
 
   console.log();
   console.log(
@@ -83,8 +88,11 @@ export async function createEthApp({
   } else {
     console.log(`Downloading files for template ${chalk.cyan(template)}. This might take a moment.`);
   }
+
   console.log();
-  await downloadAndExtractTemplate(root, framework, template);
+  registerHandlebarsHelpers();
+  await downloadAndExtractFrameworkHandlebars(root, framework);
+  await parseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
 
   /* Copy our default `.gitignore` if the application did not provide one */
   const ignorePath = path.join(root, ".gitignore");

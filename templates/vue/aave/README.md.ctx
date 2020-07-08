@@ -1,0 +1,11 @@
+{
+  "description": "Aave is a decentralized non-custodial money market protocol where users can participate as depositors or borrowers. Read more about it in the [official documentation](https://developers.aave.com/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[vue-app](/packages/vue-app)"
+  ],
+  "subgraphName": "Aave",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/aave/protocol",
+  "templateName": "Aave",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/aave"
+}

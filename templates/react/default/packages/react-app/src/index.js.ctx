@@ -1,0 +1,4 @@
+{
+  "subgraphComment": "// You should replace this url with your own and put it into a .env file",
+  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/paulrberg/create-eth-app"
+}

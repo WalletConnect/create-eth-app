@@ -1,0 +1,11 @@
+{
+  "description": "Sablier is the protocol for real-time finance on the Ethereum blockchain. Just like you can stream movies on Netflix or music on Spotify, so you can stream money on Sablier. Read more about it in the [official documentation](https://docs.sablier.finance/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[react-app](/packages/react-app)"
+  ],
+  "subgraphName": "Sablier v1",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/sablierhq/sablier",
+  "templateName": "Sablier v1",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/sablier-v1"
+}

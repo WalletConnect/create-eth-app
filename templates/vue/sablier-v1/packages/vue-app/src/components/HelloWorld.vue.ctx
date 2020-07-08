@@ -1,0 +1,75 @@
+{
+  "callToAction": "Read On-Chain Data",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
+  "graphqlQuery": [
+    "const GET_STREAMS = gql`",
+    "  {",
+    "    streams(first: 10, orderBy: timestamp, orderDirection: desc) {",
+    "      id",
+    "      cancellation {",
+    "        recipientBalance",
+    "        recipientInterest",
+    "        timestamp",
+    "        txhash",
+    "      }",
+    "      deposit",
+    "      exchangeRateInitial",
+    "      ratePerSecond",
+    "      recipient",
+    "      recipientSharePercentage",
+    "      sender",
+    "      senderSharePercentage",
+    "      startTime",
+    "      stopTime",
+    "      timestamp",
+    "      token {",
+    "        id",
+    "        decimals",
+    "        name",
+    "        symbol",
+    "      }",
+    "      txs {",
+    "        id",
+    "        block",
+    "        event",
+    "        from",
+    "        timestamp",
+    "        to",
+    "      }",
+    "      withdrawals {",
+    "        id",
+    "        amount",
+    "      }",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_STREAMS",
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://docs.sablier.finance/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discord.gg/KXajCXC/"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/sablierhq/"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !stale && data && data.streams) {",
+      "  console.log({ streams: data.streams });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "const sablierContract = new ethers.Contract(addresses[MAINNET_ID].sablier, abis.sablier, defaultProvider);",
+    "const nextStreamId = await sablierContract.nextStreamId();",
+    "console.log({ nextStreamId: nextStreamId.toString() });"
+  ],
+  "whatToLearn": "Sablier v1"
+}
