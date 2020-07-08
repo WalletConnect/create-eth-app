@@ -21,7 +21,7 @@
       "}"
     ]
   },
-  "learnUrl": "https://developers.aave.com/",
+  "learnUrl": "https://uniswap.org/docs/v1/",
   "readOnChainData": [
     "const ethDaiExchangeContract = new ethers.Contract(",
     "  addresses[MAINNET_ID].exchanges[\"ETH-DAI\"],",
