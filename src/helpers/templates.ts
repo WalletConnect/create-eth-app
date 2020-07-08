@@ -36,7 +36,7 @@ export const standardFiles: Record<FrameworkKey, string[]> = {
     "packages/vue-app/README.md",
     "packages/vue-app/src/main.js",
     "packages/vue-app/src/components/HelloWorld.vue",
-  ]
+  ],
 };
 
 const commonBespokeFiles: string[] = [
@@ -49,24 +49,14 @@ export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> =
   react: {
     aave: commonBespokeFiles,
     compound: commonBespokeFiles,
-    default: [
-      ...commonBespokeFiles,
-      ".gitignore",
-      "README.md",
-      "packages/subgraph"
-    ],
+    default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
     "sablier-v1": commonBespokeFiles,
     "uniswap-v1": commonBespokeFiles,
   },
   vue: {
     aave: commonBespokeFiles,
     compound: commonBespokeFiles,
-    default: [
-      ...commonBespokeFiles,
-      ".gitignore",
-      "README.md",
-      "packages/subgraph",
-    ],
+    default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
     "sablier-v1": commonBespokeFiles,
     "uniswap-v1": commonBespokeFiles,
   },
@@ -74,8 +64,8 @@ export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> =
 
 export function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
   return promisePipe(
-    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/refactor-templating-system`),
-    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-refactor-templating-system/templates/${framework}/${name}`]),
+    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/staging`),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-staging/templates/${framework}/${name}`]),
   );
 }
 
@@ -83,15 +73,11 @@ export function hasTemplate(framework: string, name: string): Promise<boolean> {
   return isUrlOk(
     `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
       name,
-    )}?ref=refactor-templating-system`,
+    )}?ref=staging`,
   );
 }
 
-export async function parseTemplate(
-  appPath: string,
-  framework: FrameworkKey,
-  template: TemplateKey
-): Promise<void> {
+export async function parseTemplate(appPath: string, framework: FrameworkKey, template: TemplateKey): Promise<void> {
   /* Download the context of the current template */
   const templateContextPath: string = path.join(appPath, "context");
   await makeDir(templateContextPath);
