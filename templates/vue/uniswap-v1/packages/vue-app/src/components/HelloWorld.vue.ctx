@@ -36,7 +36,7 @@
     ]
   },
   "readOnChainData": [
-    "const ethDaiExchangeContract = new ethers.Contract(",
+    "const ethDaiExchangeContract = new Contract(",
     "  addresses[MAINNET_ID].exchanges[\"ETH-DAI\"],",
     "  abis.exchange,",
     "  defaultProvider,",

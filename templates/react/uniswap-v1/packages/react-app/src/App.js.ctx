@@ -23,7 +23,7 @@
   },
   "learnUrl": "https://uniswap.org/docs/v1/",
   "readOnChainData": [
-    "const ethDaiExchangeContract = new ethers.Contract(",
+    "const ethDaiExchangeContract = new Contract(",
     "  addresses[MAINNET_ID].exchanges[\"ETH-DAI\"],",
     "  abis.exchange,",
     "  defaultProvider,",

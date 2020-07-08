@@ -25,7 +25,7 @@
   },
   "learnUrl": "https://developers.aave.com/",
   "readOnChainData": [
-    "const aDAIContract = new ethers.Contract(addresses[MAINNET_ID].tokens.aDAI, abis.aToken, defaultProvider);",
+    "const aDAIContract = new Contract(addresses[MAINNET_ID].tokens.aDAI, abis.aToken, defaultProvider);",
     "// A pre-defined address that owns some aDAI tokens",
     "const aDAIBalance = await aDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
     "console.log({ aDAIBalance: aDAIBalance.toString() });"

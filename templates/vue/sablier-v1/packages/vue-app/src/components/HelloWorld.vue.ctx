@@ -67,7 +67,7 @@
     ]
   },
   "readOnChainData": [
-    "const sablierContract = new ethers.Contract(addresses[MAINNET_ID].sablier, abis.sablier, defaultProvider);",
+    "const sablierContract = new Contract(addresses[MAINNET_ID].sablier, abis.sablier, defaultProvider);",
     "const nextStreamId = await sablierContract.nextStreamId();",
     "console.log({ nextStreamId: nextStreamId.toString() });"
   ],

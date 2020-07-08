@@ -55,7 +55,7 @@
     ]
   },
   "readOnChainData": [
-    "const cDAIContract = new ethers.Contract(addresses[MAINNET_ID].tokens.cDAI, abis.tokens.cDAI, defaultProvider);",
+    "const cDAIContract = new Contract(addresses[MAINNET_ID].tokens.cDAI, abis.tokens.cDAI, defaultProvider);",
     "// A pre-defined address that owns some cDAI tokens",
     "const cDAIBalance = await cDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
     "console.log({ cDAIBalance: cDAIBalance.toString() });"
