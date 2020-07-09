@@ -1,0 +1,45 @@
+{
+  "callToAction": "Read On-Chain Reserves",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";",
+  "graphqlQuery": [
+    "// See more example queries on https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2",
+    "const GET_AGGREGATED_UNISWAP_DATA = gql`",
+    "  {",
+    "    uniswapFactories(first: 1) {",
+    "      pairCount",
+    "      totalVolumeUSD",
+    "      totalLiquidityUSD",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_AGGREGATED_UNISWAP_DATA",
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://uniswap.org/docs/v2/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discord.gg/EwFs3Pp"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/uniswapprotocol"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !error && data && data.uniswapFactories) {",
+      "  console.log({ uniswapFactories: data.uniswapFactories });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "const daiWethExchangeContract = new Contract(addresses[MAINNET_ID].pairs[\"DAI-WETH\"], abis.pair, defaultProvider);",
+    "// Reserves held in the DAI-WETH pair contract",
+    "const reserves = await daiWethExchangeContract.getReserves();",
+    "console.log({ reserves });"
+  ],
+  "whatToLearn": "Uniswap v2"
+}
