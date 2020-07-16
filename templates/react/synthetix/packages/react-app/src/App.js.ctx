@@ -1,0 +1,34 @@
+{
+  "callToAction": "Read On-Chain Balance",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
+  "graphqlQuery": [
+    "const GET_TRANSFERS = gql`",
+    "  {",
+    "    transfers(where: {source_in: [\"sETH\", \"sUSD\"], to_not: \"0x0000000000000000000000000000000000000000\", from_not: \"0x0000000000000000000000000000000000000000\"}, orderBy: timestamp, orderDirection: desc) {",
+    "      id",
+    "      from",
+    "      to",
+    "      value",
+    "      source",
+    "      block",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_TRANSFERS",
+  "hooks": {
+    "readData": [
+      "if (!loading && !error && data && data.transfers) {",
+      "  console.log({ transfers: data.transfers });",
+      "}"
+    ]
+  },
+  "learnUrl": "https://docs.synthetix.io/",
+  "readOnChainData": [
+    "const snxContract = new Contract(addresses[MAINNET_ID].tokens.SNX, abis.tokens.SNX, defaultProvider);",
+    "// A pre-defined address that owns some SNX tokens",
+    "const snxBalance = await snxContract.balanceOf(\"0x49BE88F0fcC3A8393a59d3688480d7D253C37D2A\");",
+    "console.log({ snxBalance: snxBalance.toString() });"
+  ],
+  "whatToLearn": "Synthetix"
+}

@@ -1,0 +1,665 @@
+[
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "requireSystemActive",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x086dabd1"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SECTION_SYSTEM",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x12bde514"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "resumeSystem",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x157c51d3"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "suspendExchange",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x1588e817"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "nominateNewOwner",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x1627540c"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "accessControl",
+    "outputs": [
+      {
+        "name": "canSuspend",
+        "type": "bool"
+      },
+      {
+        "name": "canResume",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x20f2bf00"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "issuanceSuspension",
+    "outputs": [
+      {
+        "name": "suspended",
+        "type": "bool"
+      },
+      {
+        "name": "reason",
+        "type": "uint248"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x2366245e"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "systemSuspension",
+    "outputs": [
+      {
+        "name": "suspended",
+        "type": "bool"
+      },
+      {
+        "name": "reason",
+        "type": "uint248"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x2dd8afdb"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isSystemUpgrading",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x2e8d0b9e"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "suspendIssuance",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x396e258e"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "currencyKey",
+        "type": "bytes32"
+      }
+    ],
+    "name": "requireSynthActive",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x42a28e21"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "section",
+        "type": "bytes32"
+      },
+      {
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "name": "canSuspend",
+        "type": "bool"
+      },
+      {
+        "name": "canResume",
+        "type": "bool"
+      }
+    ],
+    "name": "updateAccessControl",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x48bf1971"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SECTION_ISSUANCE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x4abdb44d"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "nominatedOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x53a47bb7"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "sourceCurrencyKey",
+        "type": "bytes32"
+      },
+      {
+        "name": "destinationCurrencyKey",
+        "type": "bytes32"
+      }
+    ],
+    "name": "requireSynthsActive",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x6132eba4"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "resumeIssuance",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x67a280b2"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "requireExchangeActive",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x7118d431"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "name": "synthSuspension",
+    "outputs": [
+      {
+        "name": "suspended",
+        "type": "bool"
+      },
+      {
+        "name": "reason",
+        "type": "uint248"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x7243bc2c"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x79ba5097"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "requireIssuanceActive",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x7c312541"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8da5cb5b"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "currencyKey",
+        "type": "bytes32"
+      }
+    ],
+    "name": "resumeSynth",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x94c79f74"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SUSPENSION_REASON_UPGRADE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint248"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x9f8a95ba"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "currencyKey",
+        "type": "bytes32"
+      },
+      {
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "suspendSynth",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xabc0bb6e"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "synths",
+        "type": "bytes32[]"
+      }
+    ],
+    "name": "getSynthSuspensions",
+    "outputs": [
+      {
+        "name": "suspensions",
+        "type": "bool[]"
+      },
+      {
+        "name": "reasons",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb9a49869"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "suspendSystem",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xe470df58"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SECTION_EXCHANGE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf1616207"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "resumeExchange",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xf405f65a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SECTION_SYNTH",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf44d1e0b"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "exchangeSuspension",
+    "outputs": [
+      {
+        "name": "suspended",
+        "type": "bool"
+      },
+      {
+        "name": "reason",
+        "type": "uint248"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xf8b4b084"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor",
+    "signature": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "SystemSuspended",
+    "type": "event",
+    "signature": "0x86b7ed06c3a2c3763514d475ced33f9ac8b1bb8f028ded18de0100b7678f3c4f"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "SystemResumed",
+    "type": "event",
+    "signature": "0xb392a95118344e8edff8eff56183afb4bb0240310c406a0fc1217d2755c66d8f"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "IssuanceSuspended",
+    "type": "event",
+    "signature": "0xee8bf45d6e3141aa521ae4f0d05dfefe0327a3f23a9fbae6a64680458b34ebb8"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "IssuanceResumed",
+    "type": "event",
+    "signature": "0x0f1a80395faba9a11017f830db5f90ad6525a1621dbfb2cbc2b6679ba5716837"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeSuspended",
+    "type": "event",
+    "signature": "0x078773069a9216cdb6acaa7b184785f12f62048c7ce8b7ede1bad6785de16b22"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "ExchangeResumed",
+    "type": "event",
+    "signature": "0x07966fe79d35c7abf1f3b2ad9970ea24cae0f11406e283e848e3e6608ae3c214"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "currencyKey",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "SynthSuspended",
+    "type": "event",
+    "signature": "0x9cca506f9028bbcc0d976db0eaf80dfe6a6d7cadd99024edd88f690e1eda5541"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "currencyKey",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "name": "reason",
+        "type": "uint256"
+      }
+    ],
+    "name": "SynthResumed",
+    "type": "event",
+    "signature": "0x691b6c9654fa1f01847f7e98a061557ca10378bb9670782b60ed13891703d220"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "section",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "canSuspend",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "name": "canResume",
+        "type": "bool"
+      }
+    ],
+    "name": "AccessControlUpdated",
+    "type": "event",
+    "signature": "0x95bad30f8fe717e4a02906d7b05a6f90698c7135cd053e5b6d5239146b4c40d1"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnerNominated",
+    "type": "event",
+    "signature": "0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "oldOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnerChanged",
+    "type": "event",
+    "signature": "0xb532073b38c83145e3e5135377a08bf9aab55bc0fd7c1179cd4fb995d2a5159c"
+  }
+]

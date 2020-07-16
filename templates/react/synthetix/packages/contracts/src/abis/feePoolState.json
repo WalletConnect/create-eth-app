@@ -1,0 +1,460 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      }
+    ],
+    "name": "nominateNewOwner",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x1627540c"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "initiationTime",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x17c70de4"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_feePool",
+        "type": "address"
+      }
+    ],
+    "name": "setFeePool",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x19db2228"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_beneficiary",
+        "type": "address"
+      }
+    ],
+    "name": "setSelfDestructBeneficiary",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x20714f88"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "terminateSelfDestruct",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x3278c960"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "accounts",
+        "type": "address[]"
+      },
+      {
+        "name": "ratios",
+        "type": "uint256[]"
+      },
+      {
+        "name": "periodToInsert",
+        "type": "uint256"
+      },
+      {
+        "name": "feePeriodCloseIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "importIssuerData",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x39a3f63f"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "nominatedOwner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x53a47bb7"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x79ba5097"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "",
+        "type": "address"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "accountIssuanceLedger",
+    "outputs": [
+      {
+        "name": "debtPercentage",
+        "type": "uint256"
+      },
+      {
+        "name": "debtEntryIndex",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x7de65545"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0x8da5cb5b"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "name": "debtRatio",
+        "type": "uint256"
+      },
+      {
+        "name": "debtEntryIndex",
+        "type": "uint256"
+      },
+      {
+        "name": "currentPeriodStartDebtIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "appendAccountIssuanceRecord",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x94e1a448"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "selfDestruct",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0x9cb8a26a"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "SELFDESTRUCT_DELAY",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xa461fc82"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "feePool",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xae2e933b"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "getAccountsDebtEntry",
+    "outputs": [
+      {
+        "name": "debtPercentage",
+        "type": "uint256"
+      },
+      {
+        "name": "debtEntryIndex",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb326f84e"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "selfDestructInitiated",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xb8225dec"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "initiateSelfDestruct",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "signature": "0xbd32aa44"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "selfDestructBeneficiary",
+    "outputs": [
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xc58aaae6"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "FEE_PERIOD_LENGTH",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xcff2ddad"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "name": "closingDebtIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "applicableIssuanceData",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function",
+    "signature": "0xd29c000a"
+  },
+  {
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_feePool",
+        "type": "address"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "debtRatio",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "feePeriodCloseIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "IssuanceDebtRatioEntry",
+    "type": "event",
+    "signature": "0x3846bc3c5dca9c6ef89995aa7b28d43a5a99aa2e3ea230494da474b8d4b29aea"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "SelfDestructTerminated",
+    "type": "event",
+    "signature": "0x6adcc7125002935e0aa31697538ebbd65cfddf20431eb6ecdcfc3e238bfd082c"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "beneficiary",
+        "type": "address"
+      }
+    ],
+    "name": "SelfDestructed",
+    "type": "event",
+    "signature": "0x8a09e1677ced846cb537dc2b172043bd05a1a81ad7e0033a7ef8ba762df990b7"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "selfDestructDelay",
+        "type": "uint256"
+      }
+    ],
+    "name": "SelfDestructInitiated",
+    "type": "event",
+    "signature": "0xcbd94ca75b8dc45c9d80c77e851670e78843c0d75180cb81db3e2158228fa9a6"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newBeneficiary",
+        "type": "address"
+      }
+    ],
+    "name": "SelfDestructBeneficiaryUpdated",
+    "type": "event",
+    "signature": "0xd5da63a0b864b315bc04128dedbc93888c8529ee6cf47ce664dc204339228c53"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnerNominated",
+    "type": "event",
+    "signature": "0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "oldOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnerChanged",
+    "type": "event",
+    "signature": "0xb532073b38c83145e3e5135377a08bf9aab55bc0fd7c1179cd4fb995d2a5159c"
+  }
+]

@@ -1,0 +1,89 @@
+/**
+ * See all ids below
+ * https://ethereum.stackexchange.com/questions/17051/how-to-select-a-network-id-or-is-there-a-list-of-network-ids
+ */
+export const KOVAN_ID = 42;
+export const MAINNET_ID = 1;
+
+/**
+ * Please note that these may not be the most up-to-date addresses for the Synthetix contracts.
+ * https://docs.synthetix.io/addresses/
+ */
+export default {
+  [KOVAN_ID]: {
+    addressResolver: "0x25ee175d78B22A55982c09e6A03D605aE5B5c17C",
+    delegateApprovals: "0xB8CFB40B4c66533cD8f760c1b15cc228452bB03E",
+    eternalStorage: "0x3C11FE34E416eDA134D30f7550f2986BDF8B5c08",
+    depot: "0xF92e70301E26AaDeCCEc5016b7D0167DAF416d72",
+    escrowChecker: "0xF778Ec504245EfE1eA010C5C3E50b6F5f5E117da",
+    exchangeRates: "0xD79c83bd0A7B1e6d63a5394305552d73D1f1F6C7",
+    exchangeState: "0xa3F59b8E28cABC4411198dDa2e65C380BD5d6Dfe",
+    exchanger: "0xfaDAFb3ece40Eac206404B8dF5aF841F16f60E62",
+    feePoolEternalStorage: "0xC9DFff5fA5605fd94F8B7927b892F2B57391e8bB",
+    feePoolState: "0x11164F6a47C3f8472D19b9aDd516Fc780cb7Ee02",
+    issuanceEternalStorage: "0x631E93A0fb06B5eC6d52c0A2D89a3f9672d6Ba64",
+    issuer: "0xb7D018F57b82D1523f15a270d6b942836204310b",
+    liquidations: "0xBde26A97eb38A74F171085fb4B77d524923EFdDB",
+    liquidationsEternalStorage: "0x5D4A4B51A824E2dD1C25aD16023Bf8FF3F648602",
+    proxyFeePool: "0xc43b833F93C3896472dED3EfF73311f571e38742",
+    rewardEscrow: "0x8c6680412e914932A9abC02B6c7cbf690e583aFA",
+    rewardsDistribution: "0xD29160e4f5D2e5818041f9Cd9192853BA349c47E",
+    supplySchedule: "0x3728543A1e0ca98FFC0A979cF817C95b6F8d9E7b",
+    synthetixEscrow: "0x548c18a49a66Ad1238e17824C18B0b9Be35fB604",
+    systemStatus: "0x5b01D9f87080CABcA881A0Cf4e45C0E2ccB7Edde",
+    tokens: {
+      SNX: "0x22f1ba6dB6ca0A065e1b7EAe6FC22b7E675310EF",
+      iETH: "0x498df32429693fE31685Da7fb9B4b65696a5508d",
+      sBTC: "0x3Aa2d4A15aA7F50158DEEAE0208F862a461f19Cf",
+      sDEFI: "0xf91b2d345838922b26c8899483be3f867eeaFAb5",
+      sETH: "0x54c4B5cb58C880DD1734123c8b588e49eDf442Fb",
+      sUSD: "0xC674ad732Dfd4E1359ec4B18fA5472c0747E480A"
+    },
+    tokenStates: {
+      SNX: "0x46824bFAaFd049fB0Af9a45159A88e595Bbbb9f7",
+      iETH: "0xe95134Cc50EADFE2C9dd950C8a86c0766a3C829F",
+      sBTC: "0x029E1687c7BB8ead5Ab02DB390eB82b87b2D54a2",
+      sDEFI: "0xa8eE3730031f28a4a4a3Ed28A3308d83cabd9Ce1",
+      sETH: "0xFbB6526ed92DA8915d4843a86166020d0B7bAAd0",
+      sUSD: "0x9aF5763Dc180f388A5fd20Dd7BA4B2790566f2eF"
+    },
+  },
+  [MAINNET_ID]: {
+    addressResolver: "0x61166014E3f04E40C953fe4EAb9D9E40863C83AE",
+    delegateApprovals: "0x15fd6e554874B9e70F832Ed37f231Ac5E142362f",
+    delegateApprovalsEternalStorage: "0x8F586F063ffbb89b186C8e604FC6614766f9C9d1",
+    depot: "0xE1f64079aDa6Ef07b03982Ca34f1dD7152AA3b86",
+    escrowChecker: "0x3b399e00AFd8201ACf8A5a0EcCF1C47d8D5E41da",
+    exchangeRates: "0xba727c69636491ecdfE3E6F64cBE9428aD371e48",
+    exchangeState: "0x545973f28950f50fc6c7F52AAb4Ad214A27C0564",
+    exchanger: "0xfaDAFb3ece40Eac206404B8dF5aF841F16f60E62",
+    feePoolEternalStorage: "0xC9DFff5fA5605fd94F8B7927b892F2B57391e8bB",
+    feePoolState: "0x11164F6a47C3f8472D19b9aDd516Fc780cb7Ee02",
+    issuanceEternalStorage: "0x631E93A0fb06B5eC6d52c0A2D89a3f9672d6Ba64",
+    issuer: "0xb7D018F57b82D1523f15a270d6b942836204310b",
+    liquidations: "0x9f9C7BA80442767e7BeF5E8121cEc53cF8182827",
+    liquidationsEternalStorage: "0x0F7c200C4d3b5570C777764884Ce6DE67F31D3Ba",
+    proxyFeePool: "0xb440DD674e1243644791a4AdfE3A2AbB0A92d309",
+    rewardEscrow: "0xb671F2210B1F6621A2607EA63E6B2DC3e2464d1F",
+    rewardsDistribution: "0x29C295B046a73Cde593f21f63091B072d407e3F2",
+    supplySchedule: "0xA05e45396703BabAa9C276B5E5A9B6e2c175b521",
+    synthetixEscrow: "0x971e78e0C92392A4E39099835cF7E6aB535b2227",
+    systemStatus: "0x4534E92eefecc63C6105F53893D355C14aA129cf",
+    tokens: {
+      SNX: "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
+      iETH: "0xaE55F163337A2A46733AA66dA9F35299f9A46e9e",
+      sBTC: "0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6",
+      sDEFI: "0xe1aFe1Fd76Fd88f78cBf599ea1846231B8bA3B6B",
+      sETH: "0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb",
+      sUSD: "0x57Ab1E02fEE23774580C119740129eAC7081e9D3"
+    },
+    tokenStates: {
+      SNX: "0x5b1b5fEa1b99D83aD479dF0C222F0492385381dD",
+      iETH: "0x7b6ab32Ca02B31485fbf7265437c2853792CC5d9",
+      sBTC: "0x4F6296455F8d754c19821cF1EC8FeBF2cD456E67",
+      sDEFI: "0x7Ac2D37098a65B0f711CFfA3be635F1E6aCacFaB",
+      sETH: "0x34A5ef81d18F3a305aE9C2d7DF42beef4c79031c",
+      sUSD: "0x05a9CBe762B36632b3594DA4F082340E0e5343e8"
+    },
+  },
+};
