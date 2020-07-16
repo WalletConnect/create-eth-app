@@ -1,0 +1,679 @@
+[
+  {
+    "constant": false,
+    "inputs": [{ "name": "alerter", "type": "address" }],
+    "name": "removeAlerter",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxSellRateInPrecision",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "reserve", "type": "address" }],
+    "name": "setReserveAddress",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "val", "type": "int256" }],
+    "name": "abs",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "qtyInwei", "type": "uint256" }],
+    "name": "fromWeiToFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "r", "type": "uint256" },
+      { "name": "pMIn", "type": "uint256" },
+      { "name": "e", "type": "uint256" },
+      { "name": "precision", "type": "uint256" }
+    ],
+    "name": "pE",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "pendingAdmin",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "p", "type": "uint256" },
+      { "name": "q", "type": "uint256" },
+      { "name": "numPrecisionBits", "type": "uint256" }
+    ],
+    "name": "ln",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxEthCapSellInFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getOperators",
+    "outputs": [{ "name": "", "type": "address[]" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "BIG_NUMBER",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "token", "type": "address" },
+      { "name": "amount", "type": "uint256" },
+      { "name": "sendTo", "type": "address" }
+    ],
+    "name": "withdrawToken",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "collectedFeesInTwei",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "newAlerter", "type": "address" }],
+    "name": "addAlerter",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "rInFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxEthCapBuyInFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "formulaPrecision",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "_rInFp", "type": "uint256" },
+      { "name": "_pMinInFp", "type": "uint256" },
+      { "name": "_numFpBits", "type": "uint256" },
+      { "name": "_maxCapBuyInWei", "type": "uint256" },
+      { "name": "_maxCapSellInWei", "type": "uint256" },
+      { "name": "_feeInBps", "type": "uint256" },
+      { "name": "_maxTokenToEthRateInPrecision", "type": "uint256" },
+      { "name": "_minTokenToEthRateInPrecision", "type": "uint256" }
+    ],
+    "name": "setLiquidityParams",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "x", "type": "uint256" },
+      { "name": "y", "type": "uint256" }
+    ],
+    "name": "checkMultOverflow",
+    "outputs": [{ "name": "", "type": "bool" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "eInFp", "type": "uint256" },
+      { "name": "deltaEInFp", "type": "uint256" }
+    ],
+    "name": "buyRate",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "eInFp", "type": "uint256" }],
+    "name": "sellRateZeroQuantity",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "val", "type": "uint256" }],
+    "name": "valueAfterReducingFee",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "numFpBits",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "newAdmin", "type": "address" }],
+    "name": "transferAdmin",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "claimAdmin",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "newAdmin", "type": "address" }],
+    "name": "transferAdminQuickly",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getAlerters",
+    "outputs": [{ "name": "", "type": "address[]" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "r", "type": "uint256" },
+      { "name": "pMIn", "type": "uint256" },
+      { "name": "e", "type": "uint256" },
+      { "name": "deltaE", "type": "uint256" },
+      { "name": "precision", "type": "uint256" }
+    ],
+    "name": "deltaTFunc",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "x", "type": "uint256" },
+      { "name": "numPrecisionBits", "type": "uint256" }
+    ],
+    "name": "log2ForSmallNumber",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "p", "type": "uint256" },
+      { "name": "q", "type": "uint256" },
+      { "name": "precision", "type": "uint256" }
+    ],
+    "name": "compactFraction",
+    "outputs": [
+      { "name": "", "type": "uint256" },
+      { "name": "", "type": "uint256" }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "conversionToken", "type": "address" },
+      { "name": "buy", "type": "bool" },
+      { "name": "qtyInSrcWei", "type": "uint256" },
+      { "name": "eInFp", "type": "uint256" }
+    ],
+    "name": "getRateWithE",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "p", "type": "uint256" },
+      { "name": "q", "type": "uint256" }
+    ],
+    "name": "countLeadingZeros",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "eInFp", "type": "uint256" },
+      { "name": "sellInputTokenQtyInFp", "type": "uint256" },
+      { "name": "deltaTInFp", "type": "uint256" }
+    ],
+    "name": "sellRate",
+    "outputs": [
+      { "name": "rateInPrecision", "type": "uint256" },
+      { "name": "deltaEInFp", "type": "uint256" }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "qtyInTwei", "type": "uint256" }],
+    "name": "fromTweiToFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "newOperator", "type": "address" }],
+    "name": "addOperator",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "r", "type": "uint256" },
+      { "name": "pMIn", "type": "uint256" },
+      { "name": "e", "type": "uint256" },
+      { "name": "deltaT", "type": "uint256" },
+      { "name": "precision", "type": "uint256" },
+      { "name": "numPrecisionBits", "type": "uint256" }
+    ],
+    "name": "deltaEFunc",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "feeInBps",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "p", "type": "uint256" },
+      { "name": "q", "type": "uint256" },
+      { "name": "numPrecisionBits", "type": "uint256" }
+    ],
+    "name": "logBase2",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "rateInPrecision", "type": "uint256" },
+      { "name": "buy", "type": "bool" }
+    ],
+    "name": "rateAfterValidation",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "reserveContract",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "val", "type": "uint256" }],
+    "name": "calcCollectedFee",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [{ "name": "operator", "type": "address" }],
+    "name": "removeOperator",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "p", "type": "uint256" },
+      { "name": "q", "type": "uint256" },
+      { "name": "precision", "type": "uint256" }
+    ],
+    "name": "exp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "resetCollectedFees",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      { "name": "conversionToken", "type": "address" },
+      { "name": "currentBlockNumber", "type": "uint256" },
+      { "name": "buy", "type": "bool" },
+      { "name": "qtyInSrcWei", "type": "uint256" }
+    ],
+    "name": "getRate",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "conversionToken", "type": "address" },
+      { "name": "buyAmountInTwei", "type": "int256" },
+      { "name": "rateUpdateBlock", "type": "uint256" },
+      { "name": "currentBlock", "type": "uint256" }
+    ],
+    "name": "recordImbalance",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      { "name": "amount", "type": "uint256" },
+      { "name": "sendTo", "type": "address" }
+    ],
+    "name": "withdrawEther",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [{ "name": "eInFp", "type": "uint256" }],
+    "name": "buyRateZeroQuantity",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxBuyRateInPrecision",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "minSellRateInPrecision",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "pMinInFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "maxQtyInFp",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "admin",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "minBuyRateInPrecision",
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "token",
+    "outputs": [{ "name": "", "type": "address" }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "name": "_admin", "type": "address" },
+      { "name": "_token", "type": "address" }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [{ "indexed": false, "name": "reserve", "type": "address" }],
+    "name": "ReserveAddressSet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "rInFp", "type": "uint256" },
+      { "indexed": false, "name": "pMinInFp", "type": "uint256" },
+      { "indexed": false, "name": "numFpBits", "type": "uint256" },
+      { "indexed": false, "name": "maxCapBuyInFp", "type": "uint256" },
+      { "indexed": false, "name": "maxEthCapSellInFp", "type": "uint256" },
+      { "indexed": false, "name": "feeInBps", "type": "uint256" },
+      { "indexed": false, "name": "formulaPrecision", "type": "uint256" },
+      { "indexed": false, "name": "maxQtyInFp", "type": "uint256" },
+      { "indexed": false, "name": "maxBuyRateInPrecision", "type": "uint256" },
+      { "indexed": false, "name": "minBuyRateInPrecision", "type": "uint256" },
+      { "indexed": false, "name": "maxSellRateInPrecision", "type": "uint256" },
+      { "indexed": false, "name": "minSellRateInPrecision", "type": "uint256" }
+    ],
+    "name": "LiquidityParamsSet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [{ "indexed": false, "name": "resetFeesInTwei", "type": "uint256" }],
+    "name": "CollectedFeesReset",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "token", "type": "address" },
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "sendTo", "type": "address" }
+    ],
+    "name": "TokenWithdraw",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "amount", "type": "uint256" },
+      { "indexed": false, "name": "sendTo", "type": "address" }
+    ],
+    "name": "EtherWithdraw",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [{ "indexed": false, "name": "pendingAdmin", "type": "address" }],
+    "name": "TransferAdminPending",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "newAdmin", "type": "address" },
+      { "indexed": false, "name": "previousAdmin", "type": "address" }
+    ],
+    "name": "AdminClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "newAlerter", "type": "address" },
+      { "indexed": false, "name": "isAdd", "type": "bool" }
+    ],
+    "name": "AlerterAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": false, "name": "newOperator", "type": "address" },
+      { "indexed": false, "name": "isAdd", "type": "bool" }
+    ],
+    "name": "OperatorAdded",
+    "type": "event"
+  }
+]

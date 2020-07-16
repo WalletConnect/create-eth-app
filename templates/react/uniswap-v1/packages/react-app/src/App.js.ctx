@@ -28,7 +28,7 @@
     "  abis.exchange,",
     "  defaultProvider,",
     ");",
-    "// Price of 1 Ether in DAI",
+    "// Price of 1 ETH in DAI",
     "const exchangeRate = await ethDaiExchangeContract.getEthToTokenInputPrice(\"1000000000000000000\");",
     "console.log({ exchangeRate: exchangeRate.toString() });"
   ],

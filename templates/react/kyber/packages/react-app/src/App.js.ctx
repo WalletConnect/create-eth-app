@@ -1,0 +1,46 @@
+{
+  "callToAction": "Read On-Chain Exchange Rates",
+  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+  "graphqlQuery": [
+    "const GET_FULL_TRADES = gql`",
+    "  {",
+    "    fullTrades(first: 5) {",
+    "      id",
+    "      trader {",
+    "        id",
+    "      }",
+    "      src {",
+    "        id",
+    "      }",
+    "      dest {",
+    "        id",
+    "      }",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_FULL_TRADES",
+  "hooks": {
+    "readData": [
+      "if (!loading && !error && data && data.fullTrades) {",
+      "  console.log({ markets: data.fullTrades });",
+      "}"
+    ]
+  },
+  "learnUrl": "https://developer.kyber.network/",
+  "readOnChainData": [
+    "const kyberNetworkProxy = new Contract(",
+    "  addresses[MAINNET_ID].kyberNetworkProxyV2,",
+    "  abis.kyberNetworkProxyV2,",
+    "  defaultProvider,",
+    ");",
+    "// Price of 1 ETH in DAI",
+    "const exchangeRate = await kyberNetworkProxy.getExpectedRate(",
+    "  \"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\"",
+    "  \"0x6B175474E89094C44Da98b954EedeAC495271d0F\"",
+    "  \"1000000000000000000\",",
+    ");",
+    "console.log({ exchangeRate });"
+  ],
+  "whatToLearn": "Kyber"
+}

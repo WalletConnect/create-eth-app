@@ -8,12 +8,12 @@ import App from "./App";
 {{{ subgraphComment }}}
 // See all subgraphs: https://thegraph.com/explorer/
 const client = new ApolloClient({
-uri: "{{ subgraphUrl }}",
+  uri: "{{ subgraphUrl }}",
 });
 
 ReactDOM.render(
-<ApolloProvider client={client}>
-  <App />
-</ApolloProvider>,
-document.getElementById("root"),
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
+  document.getElementById("root"),
 );
