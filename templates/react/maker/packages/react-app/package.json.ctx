@@ -1,0 +1,13 @@
+{
+  "packageName": "@maker-app/react-app",
+  "dependencies": {
+    "keys": [
+      "@makerdao/dai",
+      "@makerdao/dai-plugin-mcd"
+    ],
+    "values": [
+      "^0.31.7",
+      "^1.5.13-rc.1"
+    ]
+  }
+}

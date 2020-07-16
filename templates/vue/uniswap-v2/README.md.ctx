@@ -7,5 +7,5 @@
   "subgraphName": "Uniswap v2",
   "subgraphUrl": "https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2",
   "templateName": "Uniswap v2",
-  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/uniswap-v2"
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/uniswap-v2"
 }
