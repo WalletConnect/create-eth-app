@@ -24,14 +24,31 @@
     "`;"
   ],
   "graphqlQueryName": "GET_TRANSFERS",
-  "hooks": {
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://docs.synthetix.io/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discordapp.com/invite/AEdUHzt"
+    },
+    {
+      "label": "Reddit Community",
+      "url": "https://reddit.com/r/synthetix_io"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/synthetix_io"
+    }
+  ],
+  "mounted": {
     "readData": [
       "if (!loading && !error && data && data.transfers) {",
       "  console.log({ transfers: data.transfers });",
       "}"
     ]
   },
-  "learnUrl": "https://docs.synthetix.io/",
   "readOnChainData": [
     "/*** 1st method: get snx price with synthetix-js ***/",
     "",

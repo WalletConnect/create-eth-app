@@ -1,0 +1,11 @@
+{
+  "description": "Synthetix is a protocol for trading synthetic assets on Ethereum. It gives traders on -chain exposure to any asset. Read more about it in the [official documentation](https://docs.synthetix.io/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[vue-app](/packages/vue-app)"
+  ],
+  "subgraphName": "Synthetix",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/synthetixio-team/synthetix",
+  "templateName": "Synthetix",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/synthetix"
+}
