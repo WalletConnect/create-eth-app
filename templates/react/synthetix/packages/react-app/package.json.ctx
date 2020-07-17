@@ -1,7 +1,13 @@
 {
   "packageName": "@synthetix-app/react-app",
   "dependencies": {
-    "keys": [],
-    "values": []
+    "keys": [
+      "synthetix-data",
+      "synthetix-js"
+    ],
+    "values": [
+      "^2.1.19",
+      "^2.25.0-alpha"
+    ]
   }
 }

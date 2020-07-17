@@ -62,10 +62,6 @@
   export default {
     methods: {
       readOnchainData: async function () {
-        // Should replace with the end-user wallet, e.g. Metamask
-        const defaultProvider = getDefaultProvider();
-        // Create an instance of ethers.js Contract
-        // Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/
         {{#each readOnChainData}}
         {{{ this }}}
         {{/each}}

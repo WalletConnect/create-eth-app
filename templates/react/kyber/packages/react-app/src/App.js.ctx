@@ -29,6 +29,10 @@
   },
   "learnUrl": "https://developer.kyber.network/",
   "readOnChainData": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
     "const kyberNetworkProxy = new Contract(",
     "  addresses[MAINNET_ID].kyberNetworkProxyV2,",
     "  abis.kyberNetworkProxyV2,",
