@@ -1,10 +1,12 @@
 import React from "react";
 import logo from "./ethereumLogo.png";
-{{{ contractsImportLine }}}
 import { Contract } from "@ethersproject/contracts";
 import { getDefaultProvider } from "@ethersproject/providers";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+{{#each imports}}
+{{{ this }}}
+{{/each}}
 import "./App.css";
 
 {{#each graphqlQuery }}

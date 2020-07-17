@@ -51,9 +51,11 @@
 
 <script>
   import gql from "graphql-tag";
-  {{{ contractsImportLine }}}
   import { Contract } from "@ethersproject/contracts";
   import { getDefaultProvider } from "@ethersproject/providers";
+  {{#each imports}}
+  {{{ this }}}
+  {{/each}}
 
   {{#each graphqlQuery }}
   {{{ this }}}

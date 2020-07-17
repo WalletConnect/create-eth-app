@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
   "graphqlQuery": [
     "const GET_TRANSFERS = gql`",
     "  {",
@@ -31,6 +30,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
+  ],
   "learnUrl": "https://docs.synthetix.io/",
   "readOnChainData": [
     "/*** 1st method: get snx price with synthetix-js ***/",

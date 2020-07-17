@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Exchange Rate",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
   "graphqlQuery": [
     "const GET_EXCHANGES = gql`",
     "  {",
@@ -21,6 +20,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
+  ],
   "learnUrl": "https://uniswap.org/docs/v1/",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Data",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
   "graphqlQuery": [
     "const GET_STREAMS = gql`",
     "  {",
@@ -45,6 +44,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_STREAMS",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
+  ],
   "learnItems": [
     {
       "label": "Core Docs",

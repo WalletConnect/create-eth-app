@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
   "graphqlQuery": [
     "const GET_MONEY_MARKETS = gql`",
     "  {",
@@ -35,6 +34,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+  ],
   "learnUrl": "https://compound.finance/developers",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

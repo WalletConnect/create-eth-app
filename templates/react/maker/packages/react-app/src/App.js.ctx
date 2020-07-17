@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Collateral Information",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
   "graphqlQuery": [
     "const GET_COLLATERAL_TYPES = gql`",
     "  {",
@@ -23,6 +22,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_COLLATERAL_TYPES",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+  ],
   "hooks": {
     "readData": [
       "if (!loading && !error && data && data.collateralTypes) {",

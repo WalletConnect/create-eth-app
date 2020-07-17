@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Data",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
   "graphqlQuery": [
     "const GET_STREAMS = gql`",
     "  {",
@@ -52,6 +51,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
+  ],
   "learnUrl": "https://docs.sablier.finance/",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

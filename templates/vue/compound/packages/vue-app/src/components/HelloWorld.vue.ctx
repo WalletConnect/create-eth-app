@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
   "graphqlQuery": [
     "const GET_MONEY_MARKETS = gql`",
     "  {",
@@ -28,6 +27,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_MONEY_MARKETS",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+  ],
   "learnItems": [
     {
       "label": "Core Docs",

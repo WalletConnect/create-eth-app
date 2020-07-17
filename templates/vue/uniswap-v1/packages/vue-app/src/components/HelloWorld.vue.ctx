@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Exchange Rate",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
   "graphqlQuery": [
     "const GET_EXCHANGES = gql`",
     "  {",
@@ -14,6 +13,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_EXCHANGES",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
+  ],
   "learnItems": [
     {
       "label": "Core Docs",

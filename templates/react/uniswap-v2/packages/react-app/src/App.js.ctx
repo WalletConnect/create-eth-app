@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Reserves",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";",
   "graphqlQuery": [
     "// See more example queries on https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2",
     "const GET_AGGREGATED_UNISWAP_DATA = gql`",
@@ -21,6 +20,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";",
+  ],
   "learnUrl": "https://uniswap.org/docs/v2/",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

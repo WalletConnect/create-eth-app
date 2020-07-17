@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { addresses, abis } from \"@project/contracts\";",
   "graphqlQuery": [
     "const GET_TRANSFERS = gql`",
     "  {",
@@ -21,6 +20,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { addresses, abis } from \"@project/contracts\";",
+  ],
   "learnUrl": "https://thegraph.com/docs/quick-start",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

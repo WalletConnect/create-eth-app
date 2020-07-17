@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { addresses, abis } from \"@project/contracts\";",
   "graphqlQuery": [
     "const GET_TRANSFERS = gql`",
     "  {",
@@ -14,6 +13,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_TRANSFERS",
+  "imports": [
+    "import { addresses, abis } from \"@project/contracts\";",
+  ],
   "learnItems": [
     {
       "label": "Core Docs",

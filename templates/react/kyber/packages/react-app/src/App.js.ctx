@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Exchange Rates",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
   "graphqlQuery": [
     "const GET_FULL_TRADES = gql`",
     "  {",
@@ -27,6 +26,9 @@
       "}"
     ]
   },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+  ],
   "learnUrl": "https://developer.kyber.network/",
   "readOnChainData": [
     "// Should replace with the end-user wallet, e.g. Metamask",

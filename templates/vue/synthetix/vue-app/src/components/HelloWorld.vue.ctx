@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
   "graphqlQuery": [
     "const GET_TRANSFERS = gql`",
     "  {",
@@ -24,6 +23,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_TRANSFERS",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";"
+  ],
   "learnItems": [
     {
       "label": "Core Docs",

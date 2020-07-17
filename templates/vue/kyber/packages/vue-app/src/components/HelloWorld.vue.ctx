@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Exchange Rate",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
   "graphqlQuery": [
     "const GET_FULL_TRADES = gql`",
     "  {",
@@ -20,6 +19,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_FULL_TRADES",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+  ],
   "learnItems": [
     {
       "label": "Core Docs",
