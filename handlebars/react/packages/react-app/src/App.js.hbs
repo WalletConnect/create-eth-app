@@ -1,10 +1,12 @@
 import React from "react";
 import logo from "./ethereumLogo.png";
-{{{ contractsImportLine }}}
 import { Contract } from "@ethersproject/contracts";
 import { getDefaultProvider } from "@ethersproject/providers";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+{{#each imports}}
+{{{ this }}}
+{{/each}}
 import "./App.css";
 
 {{#each graphqlQuery }}
@@ -12,10 +14,6 @@ import "./App.css";
 {{/each}}
 
 async function readOnChainData() {
-  // Should replace with the end-user wallet, e.g. Metamask
-  const defaultProvider = getDefaultProvider();
-  // Create an instance of an ethers.js Contract
-  // Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/
   {{#each readOnChainData}}
   {{{ this }}}
   {{/each}}

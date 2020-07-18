@@ -1,6 +1,5 @@
 {
   "callToAction": "Read On-Chain Collateral Information",
-  "contractsImportLine": "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
   "graphqlQuery": [
     "const GET_COLLATERAL_TYPES = gql`",
     "  {",
@@ -23,6 +22,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_COLLATERAL_TYPES",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+  ],
   "hooks": {
     "readData": [
       "if (!loading && !error && data && data.collateralTypes) {",
@@ -32,6 +34,10 @@
   },
   "learnUrl": "https://docs.makerdao.com/",
   "readOnChainData": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
     "const vatContract = new Contract(addresses[MAINNET_ID].vat, abis.vat, defaultProvider);",
     "// Ilk = Collateral in Maker jargon. The code below pulls data for the ETH collateral.",
     "// Refer to the glossary for more information: https://docs.makerdao.com/other-documentation/system-glossary",
