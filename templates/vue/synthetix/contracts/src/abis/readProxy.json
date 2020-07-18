@@ -47,6 +47,25 @@
     "signature": "0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newTarget",
+        "type": "address"
+      }
+    ],
+    "name": "TargetUpdated",
+    "type": "event",
+    "signature": "0x814250a3b8c79fcbe2ead2c131c952a278491c8f4322a79fe84b5040a810373e"
+  },
+  {
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "fallback"
+  },
+  {
     "constant": false,
     "inputs": [],
     "name": "acceptOwnership",
@@ -55,71 +74,6 @@
     "stateMutability": "nonpayable",
     "type": "function",
     "signature": "0x79ba5097"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "name",
-        "type": "bytes32"
-      }
-    ],
-    "name": "getAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x21f8a721"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "key",
-        "type": "bytes32"
-      }
-    ],
-    "name": "getSynth",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function",
-    "signature": "0x51456061"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "internalType": "bytes32[]",
-        "name": "names",
-        "type": "bytes32[]"
-      },
-      {
-        "internalType": "address[]",
-        "name": "destinations",
-        "type": "address[]"
-      }
-    ],
-    "name": "importAddresses",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function",
-    "signature": "0xab0b8f77"
   },
   {
     "constant": false,
@@ -170,42 +124,25 @@
     "signature": "0x8da5cb5b"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "name": "repository",
-    "outputs": [
-      {
         "internalType": "address",
-        "name": "",
+        "name": "_target",
         "type": "address"
       }
     ],
+    "name": "setTarget",
+    "outputs": [],
     "payable": false,
-    "stateMutability": "view",
+    "stateMutability": "nonpayable",
     "type": "function",
-    "signature": "0x187f7935"
+    "signature": "0x776d1a01"
   },
   {
     "constant": true,
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "name",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "string",
-        "name": "reason",
-        "type": "string"
-      }
-    ],
-    "name": "requireAndGetAddress",
+    "inputs": [],
+    "name": "target",
     "outputs": [
       {
         "internalType": "address",
@@ -216,6 +153,6 @@
     "payable": false,
     "stateMutability": "view",
     "type": "function",
-    "signature": "0xdacb2d01"
+    "signature": "0xd4b83992"
   }
 ]

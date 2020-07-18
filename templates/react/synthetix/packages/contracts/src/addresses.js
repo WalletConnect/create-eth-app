@@ -11,7 +11,7 @@ export const MAINNET_ID = 1;
  */
 export default {
   [KOVAN_ID]: {
-    addressResolver: "0x25ee175d78B22A55982c09e6A03D605aE5B5c17C",
+    addressResolver: "0x242a3DF52c375bEe81b1c668741D7c63aF68FDD2",
     systemStatus: "0x5b01D9f87080CABcA881A0Cf4e45C0E2ccB7Edde",
     tokens: {
       SNX: "0x22f1ba6dB6ca0A065e1b7EAe6FC22b7E675310EF",
@@ -21,7 +21,7 @@ export default {
     },
   },
   [MAINNET_ID]: {
-    addressResolver: "0x61166014E3f04E40C953fe4EAb9D9E40863C83AE",
+    readProxyAddressResolver: "0x4E3b31eB0E5CB73641EE1E65E7dCEFe520bA3ef2",
     tokens: {
       SNX: "0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F",
     },

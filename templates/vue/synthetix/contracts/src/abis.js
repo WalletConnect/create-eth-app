@@ -1,8 +1,8 @@
 import SNX from "./abis/snx.json";
-import addressResolver from "./abis/addressResolver.json";
+import readProxy from "./abis/readProxy.json";
 
 export default {
-  addressResolver,
+  readProxy,
   tokens: {
     SNX,
   },
