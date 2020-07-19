@@ -21,7 +21,7 @@
     ]
   },
   "imports": [
-    "import { addresses, abis } from \"@project/contracts\";",
+    "import { addresses, abis } from \"@project/contracts\";"
   ],
   "learnUrl": "https://thegraph.com/docs/quick-start",
   "readOnChainData": [
