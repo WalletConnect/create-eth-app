@@ -171,8 +171,8 @@ documentation](https://github.com/facebook/create-react-app/blob/master/README.m
 This project exists thanks to all the people who contributed:
 
 - [@PaulRBerg](https://github.com/paulrberg)
-- [@KadenZipfel](https://github.com/kadenzipfel)
 - [@TomAFrench](https://github.com/TomAFrench)
+- [@KadenZipfel](https://github.com/kadenzipfel)
 - [@rnbrady](https://github.com/rnbrady)
 
 ## Acknowledgements
