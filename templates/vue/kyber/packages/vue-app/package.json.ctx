@@ -1,0 +1,11 @@
+{
+  "packageName": "@kyber-app/vue-app",
+  "dependencies": {
+    "keys": [
+      "@kyber-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
+  }
+}

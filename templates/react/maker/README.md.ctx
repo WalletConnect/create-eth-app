@@ -1,0 +1,11 @@
+{
+  "description": "Maker created Dai, the world’s first unbiased currency. It be used by anyone, anywhere, anytime. Read more about it in the [official documentation](https://docs.makerdao.com/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[react-app](/packages/react-app)"
+  ],
+  "subgraphName": "Multi Collateral Dai",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/protofire/maker-protocol",
+  "templateName": "Maker",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/maker"
+}

@@ -1,0 +1,53 @@
+{
+  "callToAction": "Read On-Chain Balance",
+  "graphqlQuery": [
+    "const GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS = gql`",
+    "  {",
+    "    lendingPoolConfigurationHistoryItems(first: 5) {",
+    "      id",
+    "      provider {",
+    "        id",
+    "      }",
+    "      lendingPool",
+    "      lendingPoolCore",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@aave-app/contracts\";"
+  ],
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://docs.aave.com/developers/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://t.me/Aavesome/"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/aaveaave/"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !stale && data && data.lendingPoolConfigurationHistoryItems) {",
+      "  console.log({ lendingPoolConfigurationHistoryItems: data.lendingPoolConfigurationHistoryItems });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
+    "const aDAIContract = new Contract(addresses[MAINNET_ID].tokens.aDAI, abis.aToken, defaultProvider);",
+    "// A pre-defined address that owns some aDAI tokens",
+    "const aDAIBalance = await aDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
+    "console.log({ aDAIBalance: aDAIBalance.toString() });"
+  ],
+  "whatToLearn": "Aave"
+}

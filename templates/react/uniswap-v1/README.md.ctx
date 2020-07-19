@@ -1,0 +1,11 @@
+{
+  "description": "Uniswap is a protocol for automated token exchange on Ethereum. Read more about it in the [official documentation](https://uniswap.org/docs/v1/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[react-app](/packages/react-app)"
+  ],
+  "subgraphName": "Uniswap v1",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/graphprotocol/uniswap",
+  "templateName": "Uniswap v1",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/uniswap-v1"
+}

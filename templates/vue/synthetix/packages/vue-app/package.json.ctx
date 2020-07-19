@@ -1,0 +1,15 @@
+{
+  "packageName": "@synthetix-app/vue-app",
+  "dependencies": {
+    "keys": [
+      "@synthetix-app/contracts",
+      "synthetix-data",
+      "synthetix-js"
+    ],
+    "values": [
+      "^1.0.0",
+      "^2.1.19",
+      "^2.25.0-alpha"
+    ]
+  }
+}

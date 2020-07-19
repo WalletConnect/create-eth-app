@@ -1,0 +1,11 @@
+{
+  "description": "Kyber is a blockchain-based liquidity protocol that aggregates liquidity from a wide range of reserves, powering instant and secure token exchange in any decentralized application. Read more about it in the [official documentation](https://developer.kyber.network/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[vue-app](/packages/vue-app)"
+  ],
+  "subgraphName": "Kyber",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/protofire/kyber",
+  "templateName": "Kyber",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/kyber"
+}

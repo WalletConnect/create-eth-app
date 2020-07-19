@@ -1,0 +1,8 @@
+{
+  "orgName": "@synthetix-app",
+  "packageName": "@synthetix-app/monorepo",
+  "keywords": [
+    "snx",
+    "synthetix"
+  ]
+}

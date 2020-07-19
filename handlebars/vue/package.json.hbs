@@ -1,0 +1,36 @@
+{
+  "name": "{{ packageName }}",
+  "version": "1.0.0",
+  "keywords": [
+    {{#each keywords}}
+    "{{ this }}",
+    {{/each}}
+    "ethereum",
+    "vue",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    {{#with scripts }}
+    {{#each keys }}
+    "{{ this }}": "{{{lookup ../values @index }}}",
+    {{/each }}
+    {{/with }}
+    "vue-app:build": "yarn workspace {{ orgName }}/vue-app build",
+    "vue-app:lint": "yarn workspace {{ orgName }}/vue-app lint",
+    "vue-app:serve": "yarn workspace {{ orgName }}/vue-app serve"
+  },
+  "workspaces": {
+    {{#if nohoist.length}}
+    "nohoist": [
+      {{#each nohoist}}
+      "{{ this }}"{{#unless @last}},{{/unless}}
+      {{/each}}
+    ],
+    {{/if}}
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

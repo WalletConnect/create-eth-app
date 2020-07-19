@@ -1,0 +1,11 @@
+{
+  "packageName": "@compound-app/vue-app",
+  "dependencies": {
+    "keys": [
+      "@compound-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
+  }
+}

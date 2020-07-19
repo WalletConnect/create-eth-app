@@ -1,0 +1,11 @@
+{
+  "packageName": "@sablier-v1-app/vue-app",
+  "dependencies": {
+    "keys": [
+      "@sablier-v1-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
+  }
+}

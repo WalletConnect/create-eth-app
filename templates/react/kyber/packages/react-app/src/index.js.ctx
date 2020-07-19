@@ -1,0 +1,4 @@
+{
+  "subgraphComment": "// This Kyber subgraph is developed by a third-party. You can replace it with your own, if you need to.",
+  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/protofire/kyber"
+}

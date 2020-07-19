@@ -1,0 +1,51 @@
+{
+  "callToAction": "Read On-Chain Reserves",
+  "graphqlQuery": [
+    "// See more example queries on https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2",
+    "const GET_AGGREGATED_UNISWAP_DATA = gql`",
+    "  {",
+    "    uniswapFactories(first: 1) {",
+    "      pairCount",
+    "      totalVolumeUSD",
+    "      totalLiquidityUSD",
+    "    }",
+    "  }",
+    "`;"
+  ],
+  "graphqlQueryName": "GET_AGGREGATED_UNISWAP_DATA",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";"
+  ],
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://uniswap.org/docs/v2/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discord.gg/EwFs3Pp"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/uniswapprotocol"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !stale && data && data.uniswapFactories) {",
+      "  console.log({ uniswapFactories: data.uniswapFactories });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
+    "const daiWethExchangeContract = new Contract(addresses[MAINNET_ID].pairs[\"DAI-WETH\"], abis.pair, defaultProvider);",
+    "// Reserves held in the DAI-WETH pair contract",
+    "const reserves = await daiWethExchangeContract.getReserves();",
+    "console.log({ reserves });"
+  ],
+  "whatToLearn": "Uniswap v2"
+}

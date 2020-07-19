@@ -1,0 +1,11 @@
+{
+  "description": "Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications. Read more about it in the [official documentation](https://compound.finance/developers).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[vue-app](/packages/vue-app)"
+  ],
+  "subgraphName": "Compound",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/graphprotocol/compound-v2",
+  "templateName": "Compound",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/compound"
+}

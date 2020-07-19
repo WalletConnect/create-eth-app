@@ -1,0 +1,92 @@
+[
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenDest", "type": "address" },
+      { "internalType": "enum IKyberHint.TradeType", "name": "ethToTokenType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "ethToTokenReserveIds", "type": "bytes32[]" },
+      { "internalType": "uint256[]", "name": "ethToTokenSplits", "type": "uint256[]" }
+    ],
+    "name": "buildEthToTokenHint",
+    "outputs": [{ "internalType": "bytes", "name": "hint", "type": "bytes" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenSrc", "type": "address" },
+      { "internalType": "enum IKyberHint.TradeType", "name": "tokenToEthType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "tokenToEthReserveIds", "type": "bytes32[]" },
+      { "internalType": "uint256[]", "name": "tokenToEthSplits", "type": "uint256[]" }
+    ],
+    "name": "buildTokenToEthHint",
+    "outputs": [{ "internalType": "bytes", "name": "hint", "type": "bytes" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenSrc", "type": "address" },
+      { "internalType": "enum IKyberHint.TradeType", "name": "tokenToEthType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "tokenToEthReserveIds", "type": "bytes32[]" },
+      { "internalType": "uint256[]", "name": "tokenToEthSplits", "type": "uint256[]" },
+      { "internalType": "contract IERC20", "name": "tokenDest", "type": "address" },
+      { "internalType": "enum IKyberHint.TradeType", "name": "ethToTokenType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "ethToTokenReserveIds", "type": "bytes32[]" },
+      { "internalType": "uint256[]", "name": "ethToTokenSplits", "type": "uint256[]" }
+    ],
+    "name": "buildTokenToTokenHint",
+    "outputs": [{ "internalType": "bytes", "name": "hint", "type": "bytes" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenDest", "type": "address" },
+      { "internalType": "bytes", "name": "hint", "type": "bytes" }
+    ],
+    "name": "parseEthToTokenHint",
+    "outputs": [
+      { "internalType": "enum IKyberHint.TradeType", "name": "ethToTokenType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "ethToTokenReserveIds", "type": "bytes32[]" },
+      { "internalType": "contract IKyberReserve[]", "name": "ethToTokenAddresses", "type": "address[]" },
+      { "internalType": "uint256[]", "name": "ethToTokenSplits", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenSrc", "type": "address" },
+      { "internalType": "bytes", "name": "hint", "type": "bytes" }
+    ],
+    "name": "parseTokenToEthHint",
+    "outputs": [
+      { "internalType": "enum IKyberHint.TradeType", "name": "tokenToEthType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "tokenToEthReserveIds", "type": "bytes32[]" },
+      { "internalType": "contract IKyberReserve[]", "name": "tokenToEthAddresses", "type": "address[]" },
+      { "internalType": "uint256[]", "name": "tokenToEthSplits", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "contract IERC20", "name": "tokenSrc", "type": "address" },
+      { "internalType": "contract IERC20", "name": "tokenDest", "type": "address" },
+      { "internalType": "bytes", "name": "hint", "type": "bytes" }
+    ],
+    "name": "parseTokenToTokenHint",
+    "outputs": [
+      { "internalType": "enum IKyberHint.TradeType", "name": "tokenToEthType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "tokenToEthReserveIds", "type": "bytes32[]" },
+      { "internalType": "contract IKyberReserve[]", "name": "tokenToEthAddresses", "type": "address[]" },
+      { "internalType": "uint256[]", "name": "tokenToEthSplits", "type": "uint256[]" },
+      { "internalType": "enum IKyberHint.TradeType", "name": "ethToTokenType", "type": "uint8" },
+      { "internalType": "bytes32[]", "name": "ethToTokenReserveIds", "type": "bytes32[]" },
+      { "internalType": "contract IKyberReserve[]", "name": "ethToTokenAddresses", "type": "address[]" },
+      { "internalType": "uint256[]", "name": "ethToTokenSplits", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
