@@ -28,7 +28,7 @@
   ],
   "graphqlQueryName": "GET_MONEY_MARKETS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";"
   ],
   "learnItems": [
     {

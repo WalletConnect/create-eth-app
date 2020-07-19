@@ -14,7 +14,7 @@
   ],
   "graphqlQueryName": "GET_TRANSFERS",
   "imports": [
-    "import { addresses, abis } from \"@project/contracts\";",
+    "import { addresses, abis } from \"@project/contracts\";"
   ],
   "learnItems": [
     {

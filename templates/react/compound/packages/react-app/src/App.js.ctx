@@ -35,7 +35,7 @@
     ]
   },
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";"
   ],
   "learnUrl": "https://compound.finance/developers",
   "readOnChainData": [

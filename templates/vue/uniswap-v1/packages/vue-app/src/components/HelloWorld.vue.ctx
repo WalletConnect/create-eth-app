@@ -14,7 +14,7 @@
   ],
   "graphqlQueryName": "GET_EXCHANGES",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";"
   ],
   "learnItems": [
     {

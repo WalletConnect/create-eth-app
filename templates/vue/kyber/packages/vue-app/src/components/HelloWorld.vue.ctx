@@ -20,7 +20,7 @@
   ],
   "graphqlQueryName": "GET_FULL_TRADES",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";"
   ],
   "learnItems": [
     {

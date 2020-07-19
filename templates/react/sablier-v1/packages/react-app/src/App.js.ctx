@@ -52,7 +52,7 @@
     ]
   },
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";"
   ],
   "learnUrl": "https://docs.sablier.finance/",
   "readOnChainData": [

@@ -8,10 +8,9 @@ import promisePipe from "promisepipe";
 import tar from "tar";
 
 import { FrameworkKey } from "./frameworks";
+import { branch, templates } from "./constants";
 import { isUrlOk } from "./networking";
-import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./errors";
 
-export const templates = ["aave", "compound", "default", "sablier-v1", "uniswap-v1"] as const;
 export type TemplateKey = typeof templates[number];
 
 export const standardFiles: Record<FrameworkKey, string[]> = {
@@ -50,22 +49,30 @@ export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> =
     aave: commonBespokeFiles,
     compound: commonBespokeFiles,
     default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
+    kyber: commonBespokeFiles,
+    maker: commonBespokeFiles,
     "sablier-v1": commonBespokeFiles,
+    synthetix: commonBespokeFiles,
     "uniswap-v1": commonBespokeFiles,
+    "uniswap-v2": commonBespokeFiles,
   },
   vue: {
     aave: commonBespokeFiles,
     compound: commonBespokeFiles,
     default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
+    kyber: commonBespokeFiles,
+    maker: commonBespokeFiles,
     "sablier-v1": commonBespokeFiles,
+    synthetix: commonBespokeFiles,
     "uniswap-v1": commonBespokeFiles,
+    "uniswap-v2": commonBespokeFiles,
   },
 };
 
 export function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
   return promisePipe(
-    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/staging`),
-    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-staging/templates/${framework}/${name}`]),
+    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/${branch}`),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${branch}/templates/${framework}/${name}`]),
   );
 }
 
@@ -73,7 +80,7 @@ export function hasTemplate(framework: string, name: string): Promise<boolean> {
   return isUrlOk(
     `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
       name,
-    )}?ref=staging`,
+    )}?ref=${branch}`,
   );
 }
 

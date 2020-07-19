@@ -23,7 +23,7 @@
   ],
   "graphqlQueryName": "GET_COLLATERAL_TYPES",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";"
   ],
   "learnItems": [
     {
