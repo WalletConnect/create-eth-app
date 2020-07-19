@@ -13,6 +13,9 @@
     "`;"
   ],
   "graphqlQueryName": "GET_AGGREGATED_UNISWAP_DATA",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";"
+  ],
   "learnItems": [
     {
       "label": "Core Docs",
