@@ -24,7 +24,8 @@
   ],
   "graphqlQueryName": "GET_TRANSFERS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
+    "import { SynthetixJs } from \"synthetix-js\";"
   ],
   "learnItems": [
     {
