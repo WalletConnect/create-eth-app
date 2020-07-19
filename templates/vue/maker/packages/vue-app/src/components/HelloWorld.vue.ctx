@@ -45,7 +45,7 @@
   ],
   "mounted": {
     "readData": [
-      "if (!loading && !error && data && data.collateralTypes) {",
+      "if (!loading && !stale && data && data.collateralTypes) {",
       "  console.log({ collateralTypes: data.collateralTypes });",
       "}"
     ]

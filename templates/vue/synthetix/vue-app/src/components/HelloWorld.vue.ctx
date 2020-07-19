@@ -46,7 +46,7 @@
   ],
   "mounted": {
     "readData": [
-      "if (!loading && !error && data && data.transfers) {",
+      "if (!loading && !stale && data && data.transfers) {",
       "  console.log({ transfers: data.transfers });",
       "}"
     ]

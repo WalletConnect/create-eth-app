@@ -29,7 +29,7 @@
   ],
   "mounted": {
     "readData": [
-      "if (!loading && !error && data && data.uniswapFactories) {",
+      "if (!loading && !stale && data && data.uniswapFactories) {",
       "  console.log({ uniswapFactories: data.uniswapFactories });",
       "}"
     ]

@@ -42,7 +42,7 @@
   ],
   "mounted": {
     "readData": [
-      "if (!loading && !error && data && data.fullTrades) {",
+      "if (!loading && !stale && data && data.fullTrades) {",
       "  console.log({ markets: data.fullTrades });",
       "}"
     ]
