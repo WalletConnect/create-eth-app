@@ -48,7 +48,7 @@ export async function createEthApp({
       template = "sablier-v1";
     }
     if (template === "uniswap") {
-      template = "uniswap-v1";
+      template = "uniswap-v2";
     }
     const found = await hasTemplate(framework, template);
 
