@@ -1,7 +1,11 @@
 {
   "packageName": "@aave-app/vue-app",
   "dependencies": {
-    "keys": [],
-    "values": []
+    "keys": [
+      "@aave-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
   }
 }

@@ -2,14 +2,12 @@
   "packageName": "@uniswap-v1-app/vue-app",
   "dependencies": {
     "keys": [
-      "@uniswap/sdk"
+      "@uniswap/sdk",
+      "@uniswap-v1-app/contracts"
     ],
     "values": [
-      "^1.0.0-beta.4"
+      "^1.0.0-beta.4",
+      "^1.0.0"
     ]
-  },
-  "devDependencies": {
-    "keys": [],
-    "values": []
   }
 }

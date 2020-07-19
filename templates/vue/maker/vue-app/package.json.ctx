@@ -2,14 +2,14 @@
   "packageName": "@maker-app/vue-app",
   "dependencies": {
     "keys": [
-      "@uniswap/sdk",
-      "@uniswap/v2-core",
-      "@uniswap/v2-periphery"
+      "@makerdao/dai",
+      "@makerdao/dai-plugin-mcd",
+      "@maker-app/contracts"
     ],
     "values": [
-      "^2.0.6",
-      "^1.0.1",
-      "^1.1.0-beta.0"
+      "^0.31.7",
+      "^1.5.13-rc.1",
+      "^1.0.0"
     ]
   }
 }

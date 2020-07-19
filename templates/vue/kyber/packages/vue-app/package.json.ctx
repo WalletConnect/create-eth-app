@@ -1,8 +1,8 @@
 {
-  "packageName": "@sablier-v1-app/react-app",
+  "packageName": "@kyber-app/vue-app",
   "dependencies": {
     "keys": [
-      "@sablier-v1-app/contracts"
+      "@kyber-app/contracts"
     ],
     "values": [
       "^1.0.0"

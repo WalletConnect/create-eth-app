@@ -1,7 +1,11 @@
 {
   "packageName": "@compound-app/react-app",
   "dependencies": {
-    "keys": [],
-    "values": []
+    "keys": [
+      "@compound-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
   }
 }

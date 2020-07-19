@@ -1,7 +1,11 @@
 {
   "packageName": "@kyber-app/react-app",
   "dependencies": {
-    "keys": [],
-    "values": []
+    "keys": [
+      "@kyber-app/contracts"
+    ],
+    "values": [
+      "^1.0.0"
+    ]
   }
 }

@@ -3,11 +3,13 @@
   "dependencies": {
     "keys": [
       "@makerdao/dai",
-      "@makerdao/dai-plugin-mcd"
+      "@makerdao/dai-plugin-mcd",
+      "@maker-app/contracts"
     ],
     "values": [
       "^0.31.7",
-      "^1.5.13-rc.1"
+      "^1.5.13-rc.1",
+      "^1.0.0"
     ]
   }
 }
