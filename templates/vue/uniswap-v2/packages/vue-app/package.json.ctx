@@ -5,7 +5,7 @@
       "@uniswap/sdk",
       "@uniswap/v2-core",
       "@uniswap/v2-periphery",
-      "@uniswap-app/contracts"
+      "@uniswap-v2-app/contracts"
     ],
     "values": [
       "^2.0.6",
