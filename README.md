@@ -41,7 +41,7 @@ _[`yarn create <starter-kit-package>`](https://yarnpkg.com/lang/en/docs/cli/crea
 
 It will create a directory called `my-eth-app` inside the current folder.<br>
 
-Inside that directory, if you didn't use a custom [framework](https://github.com/paulrberg/create-eth-app#frameworks) or [template](https://github.com/paulrberg/create-eth-app#templates), it will generate the initial project structure:
+Inside that directory, if you didn't use a custom [framework](https://github.com/paulrberg/create-eth-app#frameworks) or [template](https://github.com/paulrberg/create-eth-app#templates), you will get the initial project structure:
 
 ```
 my-eth-app
@@ -94,8 +94,6 @@ Once the installation is done, you can open your project folder:
 ```sh
 cd my-eth-app
 ```
-
-Inside the newly created project, you can run some built-in commands:
 
 ### Frameworks
 
