@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2020-07-30
+
+## Changed
+
+- The Compound template, as per [issue #39](https://github.com/PaulRBerg/create-eth-app/issues/39)
+
+### Fixed
+
+- Bug in Aave template, as per [pull request #46](https://github.com/PaulRBerg/create-eth-app/pull/46)
+- Incorrect paths in .gitignore, as per [5eabf30](https://github.com/PaulRBerg/create-eth-app/commit/5eabf30a664b68b66b28754e542b791b598249bd)
+
+### Removed
+
+- TypeScript as a dev dependency in the React app, as per [issue #41](https://github.com/PaulRBerg/create-eth-app/issues/41)
+
 ## [1.3.0] - 2020-07-19
 
 ### Added
