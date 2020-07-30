@@ -16,7 +16,7 @@
   ],
   "graphqlQueryName": "GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@aave-app/contracts\";"
   ],
   "hooks": {
     "readData": [

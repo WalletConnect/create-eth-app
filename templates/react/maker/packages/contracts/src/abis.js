@@ -31,5 +31,5 @@ export default {
   proxyActions,
   proxyRegistry,
   spotter,
-  vat
+  vat,
 };

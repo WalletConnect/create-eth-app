@@ -77,6 +77,18 @@
       },
       {
         "indexed": false,
+        "internalType": "uint256",
+        "name": "startBlock",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "endBlock",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
         "internalType": "string",
         "name": "description",
         "type": "string"
@@ -84,7 +96,7 @@
     ],
     "name": "ProposalCreated",
     "type": "event",
-    "signature": "0xbaab6dcd2ae57433cc1372e25bc5139c3bd664075695546fde8821591a226e38"
+    "signature": "0x7d84a6263ae0d98d3329bd7b46bb4e8d6f98cd35a7adb45c274c8b7fd5ebd5e0"
   },
   {
     "anonymous": false,
