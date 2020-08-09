@@ -24,6 +24,7 @@ export const standardFiles: Record<FrameworkKey, string[]> = {
     "packages/react-app/README.md",
     "packages/react-app/src/index.js",
     "packages/react-app/src/App.js",
+    "packages/react-app/src/graphql/subgraph.js",
   ],
   vue: [
     "package.json",
