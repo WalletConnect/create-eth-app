@@ -36,6 +36,7 @@ export const standardFiles: Record<FrameworkKey, string[]> = {
     "packages/vue-app/README.md",
     "packages/vue-app/src/main.js",
     "packages/vue-app/src/components/HelloWorld.vue",
+    "packages/vue-app/src/graphql/subgraph.js",
   ],
 };
 

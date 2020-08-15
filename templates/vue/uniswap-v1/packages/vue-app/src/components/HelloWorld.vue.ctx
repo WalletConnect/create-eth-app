@@ -1,20 +1,9 @@
 {
   "callToAction": "Read On-Chain Exchange Rate",
-  "graphqlQuery": [
-    "const GET_EXCHANGES = gql`",
-    "  {",
-    "    exchanges(first: 5) {",
-    "      id",
-    "      tokenAddress",
-    "      tokenSymbol",
-    "      tokenName",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_EXCHANGES",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v1-app/contracts\";",
+    "import GET_EXCHANGES from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {

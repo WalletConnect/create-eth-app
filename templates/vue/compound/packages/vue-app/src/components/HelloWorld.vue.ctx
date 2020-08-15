@@ -1,34 +1,9 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQuery": [
-    "const GET_MONEY_MARKETS = gql`",
-    "  {",
-    "    markets(first: 7) {",
-    "      borrowRate",
-    "      cash",
-    "      collateralFactor",
-    "      exchangeRate",
-    "      interestRateModelAddress",
-    "      name",
-    "      reserves",
-    "      supplyRate",
-    "      symbol",
-    "      id",
-    "      totalBorrows",
-    "      totalSupply",
-    "      underlyingAddress",
-    "      underlyingName",
-    "      underlyingPrice",
-    "      underlyingSymbol",
-    "      reserveFactor",
-    "      underlyingPriceUSD",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_MONEY_MARKETS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+    "import GET_MONEY_MARKETS from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {
