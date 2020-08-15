@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 // See more example queries on https://thegraph.com/explorer/subgraph/paulrberg/create-eth-app
 const GET_TRANSFERS = gql`

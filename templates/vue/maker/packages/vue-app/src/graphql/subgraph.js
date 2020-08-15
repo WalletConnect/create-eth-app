@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 // See more example queries on https://thegraph.com/explorer/subgraph/protofire/maker-protocol
 const GET_COLLATERAL_TYPES = gql`
