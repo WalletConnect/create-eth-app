@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Body = styled.body`
   background-color: #282c34;
@@ -9,20 +9,21 @@ export const Body = styled.body`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-`
+`;
+
 export const Image = styled.img`
   height: 40vmin;
   margin-bottom: 16px;
   pointer-events: none;
-`
+`;
 
 export const Link = styled.a.attrs({
-  target:"_blank",
-  rel:"noopener noreferrer"
+  target: "_blank",
+  rel: "noopener noreferrer",
 })`
   color: #61dafb;
   margin-top: 10px;
-`
+`;
 
 export const Button = styled.button`
   background-color: white;
@@ -36,10 +37,8 @@ export const Button = styled.button`
   text-decoration: none;
   margin: 0px 20px;
 
-  ${(props) => props.hidden && "hidden"}
-  
-  :focus {
+  ${props => props.hidden && "hidden"} :focus {
     border: none;
     outline: none;
   }
-`
+`;
