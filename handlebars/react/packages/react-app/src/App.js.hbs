@@ -10,7 +10,6 @@ import { Body, Button, Image, Link } from "./components";
 {{#each imports}}
 {{{ this }}}
 {{/each}}
-import "./App.css";
 
 {{#each graphqlQuery }}
 {{{ this }}}
@@ -44,7 +43,7 @@ function App() {
         </Button>
         <Link
           href="https://ethereum.org/developers/#getting-started"
-          style={{{{raw-helper}}}}{{ marginTop: "0px" }}{{{{/raw-helper}}}}
+          style={{{{raw-helper}}}}{{ marginTop: "8px" }}{{{{/raw-helper}}}}
         >
           Learn Ethereum
         </Link>
