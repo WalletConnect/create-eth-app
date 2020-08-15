@@ -4,6 +4,9 @@ import { Contract } from "@ethersproject/contracts";
 import { getDefaultProvider } from "@ethersproject/providers";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+
+import { Body, Button, Image, Link } from ""./components";
+
 {{#each imports}}
 {{{ this }}}
 {{/each}}
@@ -29,32 +32,29 @@ function App() {
   }, [loading, error, data]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="react-logo" />
+    <div>
+      <Body>
+        <Image src={logo} alt="react-logo" />
         <p>
           Edit <code>packages/react-app/src/App.js</code> and save to reload.
         </p>
-        {/* Remove the "display: none" style and open the JavaScript console in the browser to see what this function does */}
-        <button onClick={() => readOnChainData()} style={{{{raw-helper}}}}{{ display: "none" }}{{{{/raw-helper}}}}>
+        {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
+        <Button hidden onClick={() => readOnChainData()} >
           {{ callToAction }}
-        </button>
-        <a
-          className="App-link"
+        </Button>
+        <Link
           href="https://ethereum.org/developers/#getting-started"
-          target="_blank"
-          rel="noopener noreferrer"
           style={{{{raw-helper}}}}{{ marginTop: "0px" }}{{{{/raw-helper}}}}
         >
           Learn Ethereum
-        </a>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link href="https://reactjs.org" >
           Learn React
-        </a>
-        <a className="App-link" href="{{ learnUrl }}" target="_blank" rel="noopener noreferrer">
+        </Link>
+        <Link href="{{ learnUrl }}" >
           Learn {{ whatToLearn }}
-        </a>
-      </header>
+        </Link>
+      </Body>
     </div>
   );
 }
