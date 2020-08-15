@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Body = styled.body`
+  align-items: center;
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center;
+  min-height: 100vh;
 `;
 
 export const Image = styled.img`
@@ -31,11 +31,11 @@ export const Button = styled.button`
   border-radius: 8px;
   color: #282c34;
   cursor: pointer;
-  padding: 12px 24px;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   margin: 0px 20px;
+  padding: 12px 24px;
 
   ${props => props.hidden && "hidden"} :focus {
     border: none;
