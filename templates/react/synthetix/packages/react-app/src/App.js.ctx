@@ -1,27 +1,5 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQuery": [
-    "const GET_TRANSFERS = gql`",
-    "  {",
-    "    transfers(",
-    "      where: {",
-    "        source_in: [\"sETH\", \"sUSD\"]",
-    "        to_not: \"0x0000000000000000000000000000000000000000\"",
-    "        from_not: \"0x0000000000000000000000000000000000000000\"",
-    "      }",
-    "      orderBy: timestamp",
-    "      orderDirection: desc",
-    "    ) {",
-    "      id",
-    "      from",
-    "      to",
-    "      value",
-    "      source",
-    "      block",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_TRANSFERS",
   "hooks": {
     "readData": [
@@ -32,7 +10,8 @@
   },
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
-    "import { SynthetixJs } from \"synthetix-js\";"
+    "import { SynthetixJs } from \"synthetix-js\";",
+    "import GET_TRANSFERS from \"./graphql/subgraph\";"
   ],
   "learnUrl": "https://docs.synthetix.io/",
   "readOnChainData": [

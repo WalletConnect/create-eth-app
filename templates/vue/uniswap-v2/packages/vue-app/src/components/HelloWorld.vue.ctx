@@ -1,20 +1,9 @@
 {
   "callToAction": "Read On-Chain Reserves",
-  "graphqlQuery": [
-    "// See more example queries on https://thegraph.com/explorer/subgraph/uniswap/uniswap-v2",
-    "const GET_AGGREGATED_UNISWAP_DATA = gql`",
-    "  {",
-    "    uniswapFactories(first: 1) {",
-    "      pairCount",
-    "      totalVolumeUSD",
-    "      totalLiquidityUSD",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_AGGREGATED_UNISWAP_DATA",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@uniswap-v2-app/contracts\";",
+    "import GET_AGGREGATED_UNISWAP_DATA from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {
