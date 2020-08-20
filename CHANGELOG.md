@@ -5,9 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2020-08-15
+
+### Added
+
+- New IPFS deployment script allowing publishing of apps with `yarn ipfs`, as per [pull request #58](https://github.com/PaulRBerg/create-eth-app/pull/58)
+
+### Changed
+
+- React template component styling has been updated to use [styled-components](https://styled-components.com/), as per [pull request #51](https://github.com/PaulRBerg/create-eth-app/pull/51)
+- The location of subgraph query definitions has been updated, as per [pull request #50](https://github.com/PaulRBerg/create-eth-app/pull/50)
+- The @uniswap/sdk version has been updated to v3.0.2, as per [pull request #52](https://github.com/PaulRBerg/create-eth-app/pull/52)
+
+### Fixed
+
+- Incorrect package names in certain templates' READMEs fixed, as per [pull request #54](https://github.com/PaulRBerg/create-eth-app/pull/54)
+
 ## [1.3.1] - 2020-07-30
 
-## Changed
+### Changed
 
 - The Compound template, as per [issue #39](https://github.com/PaulRBerg/create-eth-app/issues/39)
 
