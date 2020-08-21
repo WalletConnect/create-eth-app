@@ -44,15 +44,9 @@ const commonBespokeFiles: string[] = [
   "packages/contracts/src/abis",
 ];
 
-const reactBespokeFiles: string[] = [
-  ...commonBespokeFiles,
-  "packages/react-app/src/graphql/subgraph.js",
-];
+const reactBespokeFiles: string[] = [...commonBespokeFiles, "packages/react-app/src/graphql/subgraph.js"];
 
-const vueBespokeFiles: string[] = [
-  ...commonBespokeFiles,
-  "packages/vue-app/src/graphql/subgraph.js",
-];
+const vueBespokeFiles: string[] = [...commonBespokeFiles, "packages/vue-app/src/graphql/subgraph.js"];
 
 export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
   react: {
@@ -104,12 +98,12 @@ export async function parseTemplate(appPath: string, framework: FrameworkKey, te
     const contextFileName: string = standardFile + ".ctx";
     const contextFilePath: string = path.join(templateContextPath, contextFileName);
     const context: JSON = JSON.parse(await fs.readFile(contextFilePath, "utf-8"));
-  
+
     const hbsFileName: string = standardFile + ".hbs";
     const hbsFilePath: string = path.join(appPath, hbsFileName);
     const hbs: string = await fs.readFile(hbsFilePath, "utf-8");
     const contents: string = Handlebars.compile(hbs)(context);
-  
+
     const appFilePath: string = path.join(appPath, standardFile);
     await fs.writeFile(appFilePath, contents);
     await fs.remove(hbsFilePath);

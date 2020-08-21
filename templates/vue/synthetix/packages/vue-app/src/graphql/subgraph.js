@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 
-
 // See more example queries on https://thegraph.com/explorer/subgraph/synthetixio-team/synthetix
 const GET_TRANSFERS = gql`
   {
