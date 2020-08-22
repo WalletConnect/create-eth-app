@@ -33,7 +33,7 @@ async function publishHashToIpns(ipfsHash) {
   }
 }
 
-async function nodeMayAllowPublish(ipfsClient) {
+function nodeMayAllowPublish(ipfsClient) {
   // You must have your own IPFS node in order to publish an IPNS name
   // This contains a blacklist of known nodes which do not allow users to publish IPNS names.
   const nonPublishingNodes = ["ipfs.infura.io"];
@@ -75,7 +75,7 @@ async function nodeMayAllowPublish(ipfsClient) {
   console.log("🚀 Deployment to IPFS complete!");
   console.log();
 
-  console.log(`🌐 Use the link${ipnsName && "s"} below to access your app:`);
+  console.log(`🌐 Use the link${ipnsName ? "s" : ""} below to access your app:`);
   const link = ipfsGateway + cid.toString();
   console.log(`   IPFS: ${chalk.cyan(link)}`);
 
