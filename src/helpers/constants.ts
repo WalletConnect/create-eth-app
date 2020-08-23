@@ -1,4 +1,4 @@
-export const branch: string = "develop";
+export const branch: string = "staging";
 export const frameworks = ["react", "vue"] as const;
 export const templates = [
   "aave",

@@ -9,12 +9,7 @@ import {
   hasFramework,
   hasFrameworkHandlebars,
 } from "./helpers/frameworks";
-import {
-  TemplateKey,
-  hasTemplate,
-  parseTemplate,
-  registerHandlebarsHelpers,
-} from "./helpers/templates";
+import { TemplateKey, hasTemplate, parseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
 import { install } from "./helpers/install";
 import { isFolderEmpty } from "./helpers/isFolderEmpty";
