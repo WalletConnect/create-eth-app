@@ -1,29 +1,9 @@
 {
   "callToAction": "Read On-Chain Collateral Information",
-  "graphqlQuery": [
-    "const GET_COLLATERAL_TYPES = gql`",
-    "  {",
-    "    collateralTypes(orderBy: addedAt) {",
-    "      name: id",
-    "      price {",
-    "        block",
-    "        value",
-    "      }",
-    "      debtCeiling",
-    "      totalDebt",
-    "      liquidationLotSize",
-    "      liquidationPenalty",
-    "      liquidationRatio",
-    "      stabilityFee",
-    "      auctionCount",
-    "      vaultCount",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_COLLATERAL_TYPES",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+    "import GET_COLLATERAL_TYPES from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {

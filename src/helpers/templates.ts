@@ -44,28 +44,32 @@ const commonBespokeFiles: string[] = [
   "packages/contracts/src/abis",
 ];
 
+const reactBespokeFiles: string[] = [...commonBespokeFiles, "packages/react-app/src/graphql/subgraph.js"];
+
+const vueBespokeFiles: string[] = [...commonBespokeFiles, "packages/vue-app/src/graphql/subgraph.js"];
+
 export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
   react: {
-    aave: commonBespokeFiles,
-    compound: commonBespokeFiles,
-    default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
-    kyber: commonBespokeFiles,
-    maker: commonBespokeFiles,
-    "sablier-v1": commonBespokeFiles,
-    synthetix: commonBespokeFiles,
-    "uniswap-v1": commonBespokeFiles,
-    "uniswap-v2": commonBespokeFiles,
+    aave: reactBespokeFiles,
+    compound: reactBespokeFiles,
+    default: [...reactBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
+    kyber: reactBespokeFiles,
+    maker: reactBespokeFiles,
+    "sablier-v1": reactBespokeFiles,
+    synthetix: reactBespokeFiles,
+    "uniswap-v1": reactBespokeFiles,
+    "uniswap-v2": reactBespokeFiles,
   },
   vue: {
-    aave: commonBespokeFiles,
-    compound: commonBespokeFiles,
-    default: [...commonBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
-    kyber: commonBespokeFiles,
-    maker: commonBespokeFiles,
-    "sablier-v1": commonBespokeFiles,
-    synthetix: commonBespokeFiles,
-    "uniswap-v1": commonBespokeFiles,
-    "uniswap-v2": commonBespokeFiles,
+    aave: vueBespokeFiles,
+    compound: vueBespokeFiles,
+    default: [...vueBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
+    kyber: vueBespokeFiles,
+    maker: vueBespokeFiles,
+    "sablier-v1": vueBespokeFiles,
+    synthetix: vueBespokeFiles,
+    "uniswap-v1": vueBespokeFiles,
+    "uniswap-v2": vueBespokeFiles,
   },
 };
 

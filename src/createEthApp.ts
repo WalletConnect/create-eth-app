@@ -11,7 +11,6 @@ import {
 } from "./helpers/frameworks";
 import {
   TemplateKey,
-  downloadAndExtractTemplate,
   hasTemplate,
   parseTemplate,
   registerHandlebarsHelpers,

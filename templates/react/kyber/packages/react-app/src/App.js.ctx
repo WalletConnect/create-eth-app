@@ -1,23 +1,5 @@
 {
   "callToAction": "Read On-Chain Exchange Rates",
-  "graphqlQuery": [
-    "const GET_FULL_TRADES = gql`",
-    "  {",
-    "    fullTrades(first: 5) {",
-    "      id",
-    "      trader {",
-    "        id",
-    "      }",
-    "      src {",
-    "        id",
-    "      }",
-    "      dest {",
-    "        id",
-    "      }",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_FULL_TRADES",
   "hooks": {
     "readData": [
@@ -27,7 +9,8 @@
     ]
   },
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+    "import GET_FULL_TRADES from \"./graphql/subgraph\";"
   ],
   "learnUrl": "https://developer.kyber.network/",
   "readOnChainData": [

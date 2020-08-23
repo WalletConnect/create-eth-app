@@ -1,22 +1,9 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQuery": [
-    "const GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS = gql`",
-    "  {",
-    "    lendingPoolConfigurationHistoryItems(first: 5) {",
-    "      id",
-    "      provider {",
-    "        id",
-    "      }",
-    "      lendingPool",
-    "      lendingPoolCore",
-    "    }",
-    "  }",
-    "`;"
-  ],
   "graphqlQueryName": "GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@aave-app/contracts\";"
+    "import { MAINNET_ID, addresses, abis } from \"@aave-app/contracts\";",
+    "import GET_LENDING_POOL_CONFIGURATION_HISTORY_ITEMS from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {
