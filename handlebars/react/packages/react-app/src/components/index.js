@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+export const Header = styled.header`
+  background-color: #282c34;
+  min-height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+`
+
 export const Body = styled.body`
   align-items: center;
   background-color: #282c34;
@@ -8,7 +18,7 @@ export const Body = styled.body`
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
 `;
 
 export const Image = styled.img`

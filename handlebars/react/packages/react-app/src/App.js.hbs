@@ -4,7 +4,8 @@ import { Contract } from "@ethersproject/contracts";
 import { getDefaultProvider } from "@ethersproject/providers";
 import { useQuery } from "@apollo/react-hooks";
 
-import { Body, Button, Image, Link } from "./components";
+import { Body, Button, Header, Image, Link } from "./components";
+import { web3Modal, logoutOfWeb3Modal } from './utils/web3Modal'
 
 {{#each imports}}
 {{{ this }}}
@@ -17,8 +18,35 @@ async function readOnChainData() {
   {{/each}}
 }
 
+function WalletButton({provider, loadWeb3Modal}) {
+  return (
+    <Button onClick={() => {
+      if (!provider) {
+        loadWeb3Modal()
+      } else {
+        logoutOfWeb3Modal()
+      }}}>
+      {!provider ? "Connect Wallet" : "Disconnect Wallet"} 
+    </Button>
+  )
+}
+
 function App() {
   const { loading, error, data } = useQuery({{ graphqlQueryName }});
+  const [provider, setProvider] = useState()
+
+  // Open wallet selection modal
+  const loadWeb3Modal = useCallback(async () => {
+    const newProvider = await web3Modal.connect();
+    setProvider(new Web3Provider(newProvider))
+  }, []);
+
+  // If user has loaded a wallet before then load it automatically
+  useEffect(() => {
+    if (web3Modal.cachedProvider) {
+      loadWeb3Modal();
+    }
+  }, [loadWeb3Modal]);
 
   React.useEffect(() => {
     {{#each hooks.readData }}
@@ -28,6 +56,9 @@ function App() {
 
   return (
     <div>
+      <Header>
+        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} />
+      </Header>
       <Body>
         <Image src={logo} alt="react-logo" />
         <p>
