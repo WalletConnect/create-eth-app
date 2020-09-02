@@ -8,7 +8,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: flex-end;
   color: white;
-`
+`;
 
 export const Body = styled.body`
   align-items: center;

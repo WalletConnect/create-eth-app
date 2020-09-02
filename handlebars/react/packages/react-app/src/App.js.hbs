@@ -1,16 +1,15 @@
-import React from "react";
-import logo from "./ethereumLogo.png";
+import React, { useCallback, useEffect, useState } from "react";
 import { Contract } from "@ethersproject/contracts";
-import { getDefaultProvider } from "@ethersproject/providers";
+import { Web3Provider, getDefaultProvider } from "@ethersproject/providers";
 import { useQuery } from "@apollo/react-hooks";
 
 import { Body, Button, Header, Image, Link } from "./components";
 import { web3Modal, logoutOfWeb3Modal } from './utils/web3Modal'
+import logo from "./ethereumLogo.png";
 
 {{#each imports}}
 {{{ this }}}
 {{/each}}
-
 
 async function readOnChainData() {
   {{#each readOnChainData}}
@@ -18,30 +17,33 @@ async function readOnChainData() {
   {{/each}}
 }
 
-function WalletButton({provider, loadWeb3Modal}) {
+function WalletButton({ provider, loadWeb3Modal }) {
   return (
-    <Button onClick={() => {
-      if (!provider) {
-        loadWeb3Modal()
-      } else {
-        logoutOfWeb3Modal()
-      }}}>
-      {!provider ? "Connect Wallet" : "Disconnect Wallet"} 
+    <Button
+      onClick={() => {
+        if (!provider) {
+          loadWeb3Modal();
+        } else {
+          logoutOfWeb3Modal();
+        }
+      }}
+    >
+      {!provider ? "Connect Wallet" : "Disconnect Wallet"}
     </Button>
-  )
+  );
 }
 
 function App() {
   const { loading, error, data } = useQuery({{ graphqlQueryName }});
-  const [provider, setProvider] = useState()
+  const [provider, setProvider] = useState();
 
-  // Open wallet selection modal
+  /* Open wallet selection modal. */
   const loadWeb3Modal = useCallback(async () => {
     const newProvider = await web3Modal.connect();
-    setProvider(new Web3Provider(newProvider))
+    setProvider(new Web3Provider(newProvider));
   }, []);
 
-  // If user has loaded a wallet before then load it automatically
+  /* If user has loaded a wallet before, load it automatically. */
   useEffect(() => {
     if (web3Modal.cachedProvider) {
       loadWeb3Modal();
@@ -65,7 +67,7 @@ function App() {
           Edit <code>packages/react-app/src/App.js</code> and save to reload.
         </p>
         {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
-        <Button hidden onClick={() => readOnChainData()} >
+        <Button hidden onClick={() => readOnChainData()}>
           {{ callToAction }}
         </Button>
         <Link
@@ -74,12 +76,8 @@ function App() {
         >
           Learn Ethereum
         </Link>
-        <Link href="https://reactjs.org" >
-          Learn React
-        </Link>
-        <Link href="{{ learnUrl }}" >
-          Learn {{ whatToLearn }}
-        </Link>
+        <Link href="https://reactjs.org">Learn React</Link>
+        <Link href="{{ learnUrl }}" >Learn {{ whatToLearn }}</Link>
       </Body>
     </div>
   );
