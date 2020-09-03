@@ -20,7 +20,7 @@ export const web3Modal = new Web3Modal({
   },
 });
 
-export const logoutOfWeb3Modal = async () => {
+export const logoutOfWeb3Modal = async function() {
   await web3Modal.clearCachedProvider();
   window.location.reload();
 };
