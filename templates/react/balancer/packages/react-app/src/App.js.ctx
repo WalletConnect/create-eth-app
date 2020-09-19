@@ -1,0 +1,26 @@
+{
+  "callToAction": "Find optimal swap",
+  "graphqlQueryName": "GET_PUBLIC_POOL_DATA",
+  "hooks": {
+    "readData": [
+      "if (!loading && !error && data && data.pools) {",
+      "  console.log({ pools: data.pools });",
+      "}"
+    ]
+  },
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@balancer-app/contracts\";",
+    "import GET_PUBLIC_POOL_DATA from \"./graphql/subgraph\";"
+  ],
+  "learnUrl": "https://docs.balancer.finance/getting-started/faq",
+  "readOnChainData": [
+    "// Search for all pools which allow swapping ETH for DAI",
+    "const { DAI, WETH } = addresses[MAINNET_ID].tokens",
+    "const ethDaiPools = getPoolsWithTokens(WETH, DAI);",
+    "// Use the Balancer Smart Order Router to look for the 3 best pools to split a trade of 1 ETH for DAI between",
+    "// The last argument accounts for the gas costs of adding another pool. Here we ignore it",
+    "const swaps = smartOrderRouter(ethDaiPools, "swapExactIn", parseEther(1), 3, 0);",
+    "console.log({ swaps });"
+  ],
+  "whatToLearn": "Balancer"
+}
