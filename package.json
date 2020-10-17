@@ -42,6 +42,7 @@
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
     "husky": "^4.3.0",
+    "lerna": "^3.22.1",
     "make-dir": "^3.1.0",
     "prettier": "2.x",
     "promisepipe": "^3.0.0",
@@ -80,8 +81,5 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
-  },
-  "dependencies": {
-    "lerna": "^3.22.1"
   }
 }

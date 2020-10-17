@@ -1,24 +1,17 @@
 {
   "compilerOptions": {
-    /* Basic Options */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "lib": ["ES2015"],
     "module": "ES2015",
-    "outDir": "dist",
-    "sourceMap": true,
-    "target": "ES2015",
-
-    /* Strict Type-Checking Options  */
-    "noImplicitAny": true,
-    "strict": true,
-
-    /* Module Resolution Options */
-    "esModuleInterop": true,
     "moduleResolution": "node",
+    "noImplicitAny": true,
+    "outDir": "dist",
     "resolveJsonModule": true,
     "skipLibCheck": false,
-
-    /* Advanced Options */
-    "forceConsistentCasingInFileNames": true
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2015"
   },
-  "exclude": ["**/*.spec*", "**/*.test*", "__tests__", "dist", "lib", "node_modules", "templates"]
+  "exclude": ["__tests__", "dist", "lib", "node_modules", "templates"]
 }
