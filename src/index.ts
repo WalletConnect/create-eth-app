@@ -49,7 +49,12 @@ async function run() {
         if (validation.valid) {
           return true;
         }
-        return "Invalid project name: " + validation.problems![0];
+
+        if (validation.problems && validation.problems[0]) {
+          return "Invalid project name: " + validation.problems[0];
+        } else {
+          return "Invalid project name";
+        }
       },
     });
 
@@ -79,7 +84,9 @@ async function run() {
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
     );
 
-    problems!.forEach((problem: string) => console.error(`    ${chalk.red.bold("*")} ${problem}`));
+    if (problems) {
+      problems.forEach((problem: string) => console.error(`    ${chalk.red.bold("*")} ${problem}`));
+    }
     process.exit(1);
   }
 

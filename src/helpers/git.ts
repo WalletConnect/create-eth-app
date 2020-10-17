@@ -22,7 +22,7 @@ function isInMercurialRepository() {
   return false;
 }
 
-export function tryGitInit(root: string) {
+export function tryGitInit(root: string): boolean {
   let didInit: boolean = false;
   try {
     execSync("git --version", { stdio: "ignore" });

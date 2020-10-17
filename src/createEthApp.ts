@@ -25,7 +25,7 @@ export async function createEthApp({
   appPath: string;
   framework?: string;
   template?: string;
-}) {
+}): Promise<void> {
   if (framework) {
     const foundFramework: boolean = await hasFramework(framework);
     const foundFrameworkHandlebars: boolean = await hasFrameworkHandlebars(framework);

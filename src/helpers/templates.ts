@@ -1,4 +1,4 @@
-import Handlebars, { HelperDelegate } from "handlebars";
+import Handlebars from "handlebars";
 import fs from "fs-extra";
 import got from "got";
 import makeDir from "make-dir";
