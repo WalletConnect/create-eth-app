@@ -19,36 +19,36 @@
     }
   ],
   "devDependencies": {
-    "@commitlint/cli": "^8.3.4",
+    "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/config-lerna-scopes": "^8.3.4",
-    "@types/cross-spawn": "^6.0.1",
+    "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.1",
     "@types/got": "9.6.2",
-    "@types/node": "^13.7.0",
+    "@types/node": "^13.13.26",
     "@types/prompts": "2.0.1",
     "@types/rimraf": "^2.0.3",
     "@types/tar": "4.0.3",
-    "@zeit/ncc": "^0.21.1",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "@vercel/ncc": "^0.24.1",
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
-    "commitizen": "^4.0.3",
-    "cosmiconfig": "^6.0.0",
-    "cpy": "^8.0.0",
-    "cross-spawn": "^7.0.1",
+    "commitizen": "^4.2.1",
+    "cross-spawn": "^7.0.3",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
+    "fs-extra": "^9.0.1",
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
-    "husky": "^4.0.7",
-    "lerna": "3.20.2",
-    "make-dir": "^3.0.0",
-    "prettier": "^1.19.1",
+    "husky": "^4.3.0",
+    "make-dir": "^3.1.0",
+    "prettier": "2.x",
     "promisepipe": "^3.0.0",
     "prompts": "^2.3.0",
+    "rimraf": "^3.0.2",
     "shx": "^0.3.2",
-    "tar": "^6.0.1",
-    "ts-node": "^8.10.2",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
+    "tar": "^6.0.5",
     "typescript": "3.9.6",
     "update-check": "^1.5.3",
     "validate-npm-package-name": "^3.0.0"
@@ -56,11 +56,12 @@
   "files": [
     "/dist"
   ],
-  "homepage": "https://github.com/paulrberg/create-eth-app",
+  "homepage": "https://github.com/paulrberg/create-eth-app#readme",
   "keywords": [
     "ethereum",
     "react",
     "vue",
+    "web3",
     "workspaces",
     "yarn"
   ],
@@ -74,9 +75,13 @@
   "scripts": {
     "build": "ncc build ./src/index.ts --out dist/",
     "clean": "shx rm -rf ./dist",
-    "lint": "tslint --config tslint.json --project .",
-    "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
-    "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
+    "lint": "yarn run lint:ts && yarn run prettier:list-different",
+    "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,jsx,.ts,tsx .",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
+    "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
+  },
+  "dependencies": {
+    "lerna": "^3.22.1"
   }
 }

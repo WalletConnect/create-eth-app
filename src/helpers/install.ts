@@ -1,12 +1,15 @@
 import chalk from "chalk";
 import spawn from "cross-spawn";
 
-export function install(root: string, dependencies: string[] | null, { isOnline }: { isOnline: boolean }) {
+export function install(
+  root: string,
+  dependencies: string[] | null,
+  { isOnline }: { isOnline: boolean },
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const command: string = "yarnpkg";
-    let args: string[];
+    const args: string[] = dependencies ? ["add", "--exact"] : ["install"];
 
-    args = dependencies ? ["add", "--exact"] : ["install"];
     if (!isOnline) {
       args.push("--offline");
     }

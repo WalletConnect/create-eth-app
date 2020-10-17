@@ -9,9 +9,7 @@ function getProxy(): string | undefined {
   }
 
   try {
-    const httpsProxy = execSync("npm config get https-proxy")
-      .toString()
-      .trim();
+    const httpsProxy = execSync("npm config get https-proxy").toString().trim();
     return httpsProxy !== "null" ? httpsProxy : undefined;
   } catch (e) {
     return;
@@ -42,7 +40,7 @@ export function getOnline(): Promise<boolean> {
   });
 }
 
-export async function isUrlOk(urlToCheck: string) {
+export async function isUrlOk(urlToCheck: string): Promise<boolean> {
   const res = await got(urlToCheck).catch(e => e);
   return res.statusCode === 200;
 }

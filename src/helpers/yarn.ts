@@ -1,5 +1,4 @@
 import chalk from "chalk";
-import os from "os";
 import { execSync } from "child_process";
 
 export function shouldUseYarn(): void {

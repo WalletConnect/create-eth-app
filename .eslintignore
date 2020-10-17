@@ -1,0 +1,8 @@
+# folders
+dist/
+handlebars/
+templates/
+
+# files
+.solcover.js
+coverage.json
