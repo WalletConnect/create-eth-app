@@ -48,7 +48,7 @@ export const Button = styled.button`
   padding: 12px 24px;
 
   ${props => props.hidden && "hidden"}
-  
+
   :focus {
     border: none;
     outline: none;
