@@ -74,7 +74,8 @@
   "scripts": {
     "build": "ncc build ./src/index.ts --out dist/",
     "clean": "shx rm -rf ./dist",
-    "lint": "tslint --config tslint.json --project .",
+    "lint": "yarn run lint:ts && yarn run prettier:list-different",
+    "lint:ts": "tslint --config tslint.json --project .",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
