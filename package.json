@@ -33,20 +33,18 @@
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
     "commitizen": "^4.2.1",
-    "cosmiconfig": "^6.0.0",
-    "cpy": "^8.1.1",
     "cross-spawn": "^7.0.3",
+    "fs-extra": "^9.0.1",
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
     "husky": "^4.3.0",
-    "lerna": "3.20.2",
     "make-dir": "^3.1.0",
     "prettier": "2.x",
     "promisepipe": "^3.0.0",
     "prompts": "^2.3.0",
+    "rimraf": "^3.0.2",
     "shx": "^0.3.2",
     "tar": "^6.0.5",
-    "ts-node": "^8.10.2",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "3.9.6",
@@ -80,5 +78,8 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
+  },
+  "dependencies": {
+    "lerna": "^3.22.1"
   }
 }
