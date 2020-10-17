@@ -29,7 +29,7 @@
     "@types/prompts": "2.0.1",
     "@types/rimraf": "^2.0.3",
     "@types/tar": "4.0.3",
-    "@zeit/ncc": "^0.21.1",
+    "@vercel/ncc": "^0.24.1",
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
     "commitizen": "^4.2.1",
