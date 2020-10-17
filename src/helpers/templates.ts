@@ -3,13 +3,14 @@ import fs from "fs-extra";
 import got from "got";
 import makeDir from "make-dir";
 import path from "path";
-import packageJson from "../../package.json";
 import promisePipe from "promisepipe";
 import tar from "tar";
 
+import packageJson from "../../package.json";
+
 import { FrameworkKey } from "./frameworks";
-import { branch, templates } from "./constants";
 import { isUrlOk } from "./networking";
+import { templates } from "./constants";
 
 export type TemplateKey = typeof templates[number];
 
@@ -38,17 +39,21 @@ export const standardFiles: Record<FrameworkKey, string[]> = {
   ],
 };
 
-const commonBespokeFiles: string[] = [
+/* Files that are found in all templates. */
+const commonFiles: string[] = [
   "packages/contracts/src/abis.js",
   "packages/contracts/src/addresses.js",
   "packages/contracts/src/abis",
 ];
 
-const reactBespokeFiles: string[] = [...commonBespokeFiles, "packages/react-app/src/graphql/subgraph.js"];
+/* Files that are unique to the React templates. */
+const reactBespokeFiles: string[] = [...commonFiles, "packages/react-app/src/graphql/subgraph.js"];
 
-const vueBespokeFiles: string[] = [...commonBespokeFiles, "packages/vue-app/src/graphql/subgraph.js"];
+/* Files that are unique to the Vue templates. */
+const vueBespokeFiles: string[] = [...commonFiles, "packages/vue-app/src/graphql/subgraph.js"];
 
-export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
+/* Files that are unique for each individual template. */
+const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
   react: {
     aave: reactBespokeFiles,
     compound: reactBespokeFiles,
@@ -75,8 +80,8 @@ export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> =
 
 export function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
   return promisePipe(
-    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/${branch}`),
-    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${branch}/templates/${framework}/${name}`]),
+    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/${packageJson.version}`),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${packageJson.version}/templates/${framework}/${name}`]),
   );
 }
 
@@ -84,12 +89,12 @@ export function hasTemplate(framework: string, name: string): Promise<boolean> {
   return isUrlOk(
     `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
       name,
-    )}?ref=${branch}`,
+    )}?ref=${packageJson.version}`,
   );
 }
 
 export async function parseTemplate(appPath: string, framework: FrameworkKey, template: TemplateKey): Promise<void> {
-  /* Download the context of the current template */
+  /* Download the context of the template. */
   const templateContextPath: string = path.join(appPath, "context");
   await makeDir(templateContextPath);
   await downloadAndExtractTemplate(templateContextPath, framework, template);
@@ -113,14 +118,14 @@ export async function parseTemplate(appPath: string, framework: FrameworkKey, te
     const contextFilePath: string = path.join(templateContextPath, bespokeFile);
     const appFilePath: string = path.join(appPath, bespokeFile);
 
-    /* Any standard file with the same name as a bespoke file gets overridden */
+    /* Any standard file with the same name as a bespoke file gets overridden. */
     if (fs.existsSync(appFilePath)) {
       await fs.remove(appFilePath);
     }
     await fs.move(contextFilePath, appFilePath);
   }
 
-  /* After all parsing is complete, prune the context of the current template */
+  /* After all parsing is complete, prune the context of the current template. */
   await fs.remove(templateContextPath);
 }
 
