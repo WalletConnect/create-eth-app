@@ -29,11 +29,15 @@
     "@types/prompts": "2.0.1",
     "@types/rimraf": "^2.0.3",
     "@types/tar": "4.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
     "@vercel/ncc": "^0.24.1",
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
     "commitizen": "^4.2.1",
     "cross-spawn": "^7.0.3",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.13.0",
     "fs-extra": "^9.0.1",
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
@@ -45,8 +49,6 @@
     "rimraf": "^3.0.2",
     "shx": "^0.3.2",
     "tar": "^6.0.5",
-    "tslint": "^6.0.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "3.9.6",
     "update-check": "^1.5.3",
     "validate-npm-package-name": "^3.0.0"
@@ -54,7 +56,7 @@
   "files": [
     "/dist"
   ],
-  "homepage": "https://github.com/paulrberg/create-eth-app",
+  "homepage": "https://github.com/paulrberg/create-eth-app#readme",
   "keywords": [
     "ethereum",
     "react",
@@ -74,9 +76,9 @@
     "build": "ncc build ./src/index.ts --out dist/",
     "clean": "shx rm -rf ./dist",
     "lint": "yarn run lint:ts && yarn run prettier:list-different",
-    "lint:ts": "tslint --config tslint.json --project .",
-    "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
-    "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
+    "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.ts .",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
+    "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
   },
   "dependencies": {
