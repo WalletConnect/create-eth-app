@@ -3,16 +3,17 @@ import fs from "fs";
 import makeDir from "make-dir";
 import path from "path";
 
+import { FrameworkKey, TemplateKey } from "./helpers/constants";
 import {
-  FrameworkKey,
   downloadAndExtractFrameworkHandlebars,
   hasFramework,
   hasFrameworkHandlebars,
-} from "./helpers/frameworks";
-import { TemplateKey, hasTemplate, parseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
+  hasTemplate,
+} from "./helpers/github";
 import { getOnline } from "./helpers/networking";
 import { install } from "./helpers/install";
-import { isFolderEmpty } from "./helpers/isFolderEmpty";
+import { isFolderEmpty } from "./helpers/files";
+import { parseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
 import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
 import { tryGitInit } from "./helpers/git";

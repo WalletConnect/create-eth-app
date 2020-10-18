@@ -50,7 +50,7 @@
     "rimraf": "^3.0.2",
     "shx": "^0.3.2",
     "tar": "^6.0.5",
-    "typescript": "3.9.6",
+    "typescript": "^4.0.3",
     "update-check": "^1.5.3",
     "validate-npm-package-name": "^3.0.0"
   },
