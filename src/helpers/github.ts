@@ -11,18 +11,18 @@ const ceaEnv: string = process.env.CEA_ENV || "";
 const githubApiBaseUrl: string = "https://codeload.github.com/" + packageJson.repository.name + "/tar.gz/";
 
 /* https://gist.github.com/jhorsman/62eeea161a13b80e39f5249281e17c39 */
-const semanticVersionRegex: RegExp = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+const semanticVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/;
 
 /**
  * If the program is run in development mode, we source the templates from
  * a development ref. In production, we use the current version of the
  * package prepended by the letter "v".
  */
+let githubRef: string = "";
 let ref: string = "";
 let tarGzRef: string = "";
 
 if (ceaEnv === "development") {
-  let githubRef: string = "";
   if (process.env.GITHUB_REF) {
     githubRef = process.env.GITHUB_REF;
   } else if (process.env.CEA_GITHUB_REF) {
@@ -32,7 +32,9 @@ if (ceaEnv === "development") {
     process.exit(1);
   }
 
-  if (new RegExp("^v" + semanticVersionRegex.source).test(githubRef)) {
+  if (new RegExp("^v" + semanticVersionRegex.source + "$").test(githubRef)) {
+    console.log("Hello World");
+
     /* This is a version tag, like "v1.4.1" */
     ref = githubRef;
     tarGzRef = githubRef.slice(1);
