@@ -48,7 +48,7 @@ function nodeMayAllowPublish(ipfsClient) {
   console.log("🛰  Sending to IPFS...");
   console.log();
 
-  const { cid } = await pushDirectoryToIpfs("./dist");
+  const { cid } = await pushDirectoryToIpfs("./build");
   if (!cid) {
     console.log(`📡 App deployment failed`);
     return false;
