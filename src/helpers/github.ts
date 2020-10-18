@@ -9,16 +9,13 @@ import { isUrlOk } from "./networking";
 
 const ceaEnv: string = process.env.CEA_ENV || "";
 const githubApiBaseUrl: string = "https://codeload.github.com/" + packageJson.repository.name + "/tar.gz/";
-const semanticVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/
 
-console.log({
-  CEA_ENV: process.env.CEA_ENV,
-  CEA_GITHUB_REF: process.env.CEA_GITHUB_REF,
-});
+/* https://gist.github.com/jhorsman/62eeea161a13b80e39f5249281e17c39 */
+const semanticVersionRegex: RegExp = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
 
 /**
  * If the program is run in development mode, we source the templates from
- * a development branch. In production, we use the current version of the
+ * a development ref. In production, we use the current version of the
  * package prepended by the letter "v".
  */
 let ref: string = "";
@@ -35,21 +32,17 @@ if (ceaEnv === "development") {
     process.exit(1);
   }
 
-  if (RegExp(`^${semanticVersionRegex.source}$`).test(githubRef)) {
-    // e.g githubRef = 1.4.1
-    ref = "v" + githubRef;
-    tarGzRef = githubRef;
-  } else if (RegExp(`^v${semanticVersionRegex.source}$`).test(githubRef)) {
-    // e.g githubRef = v1.4.1
+  if (new RegExp("^v" + semanticVersionRegex.source).test(githubRef)) {
+    /* This is a version tag, like "v1.4.1" */
     ref = githubRef;
     tarGzRef = githubRef.slice(1);
   } else {
-    // e.g githubRef = develop
+    /* This is a branch name, like "develop". */
     ref = githubRef;
     tarGzRef = githubRef;
   }
 } else {
-  /* This is a git tag. */
+  /* This is a version tag, like "v1.4.1" */
   ref = "v" + packageJson.version;
   tarGzRef = packageJson.version;
 }
@@ -76,7 +69,6 @@ export async function downloadAndExtractTemplate(root: string, framework: string
   }
 
   const downloadUrl: string = getRepoArchiveDownloadUrl();
-  console.log({ downloadUrl });
   return promisePipe(
     got.stream(downloadUrl),
     tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${tarGzRef}/templates/${framework}/${name}`]),
