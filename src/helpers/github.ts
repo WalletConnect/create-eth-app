@@ -9,6 +9,7 @@ import { isUrlOk } from "./networking";
 
 const ceaEnv: string = process.env.CEA_ENV || "";
 const githubApiBaseUrl: string = "https://codeload.github.com/" + packageJson.repository.name + "/tar.gz/";
+const sematicVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/
 
 console.log({
   CEA_ENV: process.env.CEA_ENV,
@@ -34,8 +35,19 @@ if (ceaEnv === "development") {
     process.exit(1);
   }
 
-  ref = githubRef;
-  tarGzRef = githubRef;
+  if (RegExp(`^${sematicVersionRegex.source}$`).test(githubRef)) {
+    // e.g githubRef = 1.4.1
+    ref = "v" + githubRef;
+    tarGzRef = githubRef;
+  } else if (RegExp(`^v${sematicVersionRegex.source}$`).test(githubRef)) {
+    // e.g githubRef = v1.4.1
+    ref = githubRef;
+    tarGzRef = githubRef.slice(1);
+  } else {
+    // e.g githubRef = develop
+    ref = githubRef;
+    tarGzRef = githubRef;
+  }
 } else {
   /* This is a git tag. */
   ref = "v" + packageJson.version;
