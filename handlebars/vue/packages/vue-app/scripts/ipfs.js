@@ -44,7 +44,7 @@ function nodeMayAllowPublish(ipfsClient) {
   });
 }
 
-(async function () {
+(async function() {
   console.log("🛰  Sending to IPFS...");
   console.log();
 
