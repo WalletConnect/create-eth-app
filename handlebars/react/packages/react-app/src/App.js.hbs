@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { Contract } from "@ethersproject/contracts";
-import { Web3Provider, getDefaultProvider } from "@ethersproject/providers";
+import { getDefaultProvider } from "@ethersproject/providers";
 import { useQuery } from "@apollo/react-hooks";
 
 import { Body, Button, Header, Image, Link } from "./components";
-import { web3Modal, logoutOfWeb3Modal } from './utils/web3Modal'
+import useWeb3Modal from './hooks/useWeb3Modal'
 import logo from "./ethereumLogo.png";
 
 {{#each imports}}
@@ -17,7 +17,7 @@ async function readOnChainData() {
   {{/each}}
 }
 
-function WalletButton({ provider, loadWeb3Modal }) {
+function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   return (
     <Button
       onClick={() => {
@@ -35,20 +35,7 @@ function WalletButton({ provider, loadWeb3Modal }) {
 
 function App() {
   const { loading, error, data } = useQuery({{ graphqlQueryName }});
-  const [provider, setProvider] = useState();
-
-  /* Open wallet selection modal. */
-  const loadWeb3Modal = useCallback(async () => {
-    const newProvider = await web3Modal.connect();
-    setProvider(new Web3Provider(newProvider));
-  }, []);
-
-  /* If user has loaded a wallet before, load it automatically. */
-  useEffect(() => {
-    if (web3Modal.cachedProvider) {
-      loadWeb3Modal();
-    }
-  }, [loadWeb3Modal]);
+  const [provider, loadWeb3Modal, logoutOfWeb3Modal ] = useWeb3Modal();
 
   React.useEffect(() => {
     {{#each hooks.readData }}
@@ -59,7 +46,7 @@ function App() {
   return (
     <div>
       <Header>
-        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} />
+        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
         <Image src={logo} alt="react-logo" />
