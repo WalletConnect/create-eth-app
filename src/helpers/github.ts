@@ -10,10 +10,10 @@ import { isUrlOk } from "./networking";
 const ceaEnv: string = process.env.CEA_ENV || "";
 const githubApiBaseUrl: string = "https://codeload.github.com/" + packageJson.repository.name + "/tar.gz/";
 
-/* https://gist.github.com/jhorsman/62eeea161a13b80e39f5249281e17c39 */
 /* https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string */
 const semanticVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/;
 const packageVersionRegex: RegExp = new RegExp("^v" + semanticVersionRegex.source + "$");
+
 /**
  * If the program is run in development mode, we source the templates from
  * a development ref. In production, we use the current version of the
