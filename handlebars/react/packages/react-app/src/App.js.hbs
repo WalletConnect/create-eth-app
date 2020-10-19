@@ -4,8 +4,8 @@ import { getDefaultProvider } from "@ethersproject/providers";
 import { useQuery } from "@apollo/react-hooks";
 
 import { Body, Button, Header, Image, Link } from "./components";
-import useWeb3Modal from './hooks/useWeb3Modal'
 import logo from "./ethereumLogo.png";
+import useWeb3Modal from "./hooks/useWeb3Modal";
 
 {{#each imports}}
 {{{ this }}}
@@ -35,7 +35,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
 
 function App() {
   const { loading, error, data } = useQuery({{ graphqlQueryName }});
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal ] = useWeb3Modal();
+  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
 
   React.useEffect(() => {
     {{#each hooks.readData }}
@@ -57,14 +57,11 @@ function App() {
         <Button hidden onClick={() => readOnChainData()}>
           {{ callToAction }}
         </Button>
-        <Link
-          href="https://ethereum.org/developers/#getting-started"
-          style={{{{raw-helper}}}}{{ marginTop: "8px" }}{{{{/raw-helper}}}}
-        >
+        <Link href="https://ethereum.org/developers/#getting-started" style={{{{raw-helper}}}}{{ marginTop: "8px" }}{{{{/raw-helper}}}}>
           Learn Ethereum
         </Link>
         <Link href="https://reactjs.org">Learn React</Link>
-        <Link href="{{ learnUrl }}" >Learn {{ whatToLearn }}</Link>
+        <Link href="{{ learnUrl }}">Learn {{ whatToLearn }}</Link>
       </Body>
     </div>
   );
