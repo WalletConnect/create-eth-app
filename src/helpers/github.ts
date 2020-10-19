@@ -33,8 +33,6 @@ if (ceaEnv === "development") {
   }
 
   if (new RegExp("^v" + semanticVersionRegex.source + "$").test(githubRef)) {
-    console.log("Hello World");
-
     /* This is a version tag, like "v1.4.1" */
     ref = githubRef;
     tarGzRef = githubRef.slice(1);
