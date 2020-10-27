@@ -10,10 +10,10 @@ import {
   hasFrameworkHandlebars,
   hasTemplate,
 } from "./helpers/github";
+import { downloadAndParseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
-import { install } from "./helpers/install";
-import { isFolderEmpty } from "./helpers/files";
-import { parseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
+import { installDeps } from "./helpers/installDeps";
+import { isFolderEmpty } from "./helpers/folders";
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
 import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
 import { tryGitInit } from "./helpers/git";
@@ -45,8 +45,8 @@ export async function createEthApp({
     if (template === "uniswap") {
       template = "uniswap-v2";
     }
-    const found = await hasTemplate(framework, template);
 
+    const found: boolean = await hasTemplate(framework, template);
     if (!found) {
       throwTemplateNotFoundError(template);
     }
@@ -83,11 +83,11 @@ export async function createEthApp({
   } else {
     console.log(`Downloading files for template ${chalk.cyan(template)}. This might take a moment.`);
   }
-
   console.log();
+
   registerHandlebarsHelpers();
   await downloadAndExtractFrameworkHandlebars(root, framework);
-  await parseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
+  await downloadAndParseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
 
   /* Copy the default `.gitignore` if the template does not provide one. */
   const ignorePath = path.join(root, ".gitignore");
@@ -98,7 +98,7 @@ export async function createEthApp({
   console.log("Installing packages. This might take a couple of minutes.");
   console.log();
 
-  await install(root, null, { isOnline });
+  await installDeps(root, null, { isOnline });
   console.log();
 
   if (tryGitInit(root)) {

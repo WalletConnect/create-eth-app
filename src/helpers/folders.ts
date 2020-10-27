@@ -26,11 +26,17 @@ export function isFolderEmpty(root: string, name: string): boolean {
 
   const conflicts: string[] = fs
     .readdirSync(root)
-    .filter(file => !validFiles.includes(file))
+    .filter(function (file: string) {
+      return !validFiles.includes(file);
+    })
     /* Support IntelliJ IDEA-based editors */
-    .filter(file => !/\.iml$/.test(file));
+    .filter(function (file: string) {
+      !/\.iml$/.test(file);
+    });
 
   if (conflicts.length > 0) {
+    console.log({ conflicts });
+
     console.log(`The directory ${chalk.green(name)} contains files that could conflict:`);
     console.log();
     for (const file of conflicts) {

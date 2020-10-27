@@ -5,7 +5,7 @@ import path from "path";
 import { HandlebarsFiles, HardcodedTemplateFiles, FrameworkKey, TemplateKey } from "./constants";
 import { downloadAndExtractTemplate } from "./github";
 
-export async function parseTemplate(appPath: string, framework: FrameworkKey, template: TemplateKey): Promise<void> {
+export async function downloadAndParseTemplate(appPath: string, framework: FrameworkKey, template: TemplateKey): Promise<void> {
   /* Download the context of the template. */
   const templateContextPath: string = path.join(appPath, "context");
   await downloadAndExtractTemplate(templateContextPath, framework, template);
@@ -41,7 +41,7 @@ export async function parseTemplate(appPath: string, framework: FrameworkKey, te
 }
 
 export function registerHandlebarsHelpers(): void {
-  Handlebars.registerHelper("raw-helper", options => {
+  Handlebars.registerHelper("raw-helper", function (options) {
     return options.fn();
   });
 }

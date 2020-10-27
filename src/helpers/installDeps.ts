@@ -1,12 +1,12 @@
 import chalk from "chalk";
 import spawn from "cross-spawn";
 
-export function install(
+export function installDeps(
   root: string,
   dependencies: string[] | null,
   { isOnline }: { isOnline: boolean },
 ): Promise<void> {
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     const command: string = "yarnpkg";
     const args: string[] = dependencies ? ["add", "--exact"] : ["install"];
 
@@ -28,7 +28,7 @@ export function install(
       env: { ...process.env, ADBLOCK: "1", DISABLE_OPENCOLLECTIVE: "1" },
       stdio: "inherit",
     });
-    child.on("close", (code: number) => {
+    child.on("close", function (code: number) {
       if (code !== 0) {
         reject({ command: `${command} ${args.join(" ")}` });
         return;

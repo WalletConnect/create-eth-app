@@ -15,7 +15,7 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .version(packageJson.version)
   .arguments("<project-directory>")
   .usage(`${chalk.green("<project-directory>")} [options]`)
-  .action(name => {
+  .action(function (name: string) {
     projectPath = name;
   })
   .option(
@@ -40,11 +40,11 @@ async function run() {
 
   if (!projectPath) {
     const res: prompts.Answers<string> = await prompts({
-      initial: "my-app",
+      initial: "my-eth-app",
       message: "What is your project named?",
       name: "path",
       type: "text",
-      validate: (name: string) => {
+      validate: function (name: string) {
         const validation: { valid: boolean; problems?: string[] } = validateNpmName(path.basename(path.resolve(name)));
         if (validation.valid) {
           return true;
@@ -85,7 +85,9 @@ async function run() {
     );
 
     if (problems) {
-      problems.forEach((problem: string) => console.error(`    ${chalk.red.bold("*")} ${problem}`));
+      problems.forEach(function (problem: string) {
+        return console.error(`    ${chalk.red.bold("*")} ${problem}`);
+      });
     }
     process.exit(1);
   }
@@ -97,9 +99,11 @@ async function run() {
   });
 }
 
-const update = updateCheck(packageJson).catch(() => null);
+const update = updateCheck(packageJson).catch(function () {
+  return null;
+});
 
-async function notifyUpdate() {
+async function notifyUpdate(): Promise<void> {
   try {
     const res: { latest: boolean } = await update;
     if (res?.latest) {
@@ -115,19 +119,21 @@ async function notifyUpdate() {
 
 run()
   .then(notifyUpdate)
-  .catch(async reason => {
-    console.log();
-    console.log("Aborting installation.");
+  .catch(async function (reason) {
+    {
+      console.log();
+      console.log("Aborting installation.");
 
-    if (reason.command) {
-      console.log(`  ${chalk.cyan(reason.command)} has failed.`);
-    } else {
-      console.log(chalk.red("Unexpected error. Please report it as a bug:"));
-      console.log(reason);
+      if (reason.command) {
+        console.log(`  ${chalk.cyan(reason.command)} has failed.`);
+      } else {
+        console.log(chalk.red("Unexpected error. Please report it as a bug:"));
+        console.log(reason);
+      }
+      console.log();
+
+      await notifyUpdate();
+
+      process.exit(1);
     }
-    console.log();
-
-    await notifyUpdate();
-
-    process.exit(1);
   });
