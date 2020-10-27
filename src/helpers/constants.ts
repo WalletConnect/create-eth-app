@@ -27,7 +27,7 @@ export const HandlebarsFiles: Record<FrameworkKey, string[]> = {
   ],
 };
 
-/* Hardcoded that are unique to each template. */
+// Hardcoded that are unique to each template.
 export const HardcodedBespokeTemplateFiles: Record<FrameworkKey, string[]> = {
   react: [
     "packages/contracts/src/abis.js",

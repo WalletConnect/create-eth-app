@@ -10,7 +10,7 @@ export async function downloadAndParseTemplate(
   framework: FrameworkKey,
   template: TemplateKey,
 ): Promise<void> {
-  /* Download the context of the template. */
+  // Download the context of the template.
   const templateContextPath: string = path.join(appPath, "context");
   await downloadAndExtractTemplate(templateContextPath, framework, template);
 
@@ -33,14 +33,14 @@ export async function downloadAndParseTemplate(
     const contextFilePath: string = path.join(templateContextPath, hardcodedFile);
     const appFilePath: string = path.join(appPath, hardcodedFile);
 
-    /* Any standard file with the same name as a hardcoded file gets overridden. */
+    // Any standard file with the same name as a hardcoded file gets overridden.
     if (fs.existsSync(appFilePath)) {
       await fs.remove(appFilePath);
     }
     await fs.move(contextFilePath, appFilePath);
   }
 
-  /* After all parsing is complete, prune the context of the current template. */
+  // After all parsing is complete, prune the context of the current template.
   await fs.remove(templateContextPath);
 }
 
@@ -49,3 +49,4 @@ export function registerHandlebarsHelpers(): void {
     return options.fn();
   });
 }
+    

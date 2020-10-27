@@ -89,7 +89,7 @@ export async function createEthApp({
   await downloadAndExtractFrameworkHandlebars(root, framework);
   await downloadAndParseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
 
-  /* Copy the default `.gitignore` if the template does not provide one. */
+  // Copy the default `.gitignore` if the template does not provide one.
   const ignorePath = path.join(root, ".gitignore");
   if (!fs.existsSync(ignorePath)) {
     fs.copyFileSync(path.join(__dirname, "gitignore"), ignorePath);

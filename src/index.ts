@@ -113,7 +113,7 @@ async function notifyUpdate(): Promise<void> {
       console.log();
     }
   } catch {
-    /* Ignore error */
+    // Ignore error.
   }
 }
 

@@ -29,7 +29,7 @@ export function isFolderEmpty(root: string, name: string): boolean {
     .filter(function (file: string) {
       return !validFiles.includes(file);
     })
-    /* Support IntelliJ IDEA-based editors */
+    // Support IntelliJ IDEA-based editors
     .filter(function (file: string) {
       !/\.iml$/.test(file);
     });
