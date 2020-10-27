@@ -22,9 +22,11 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/config-lerna-scopes": "^8.3.4",
+    "@jest/globals": "^26.6.1",
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.1",
     "@types/got": "9.6.2",
+    "@types/jest": "^26.0.15",
     "@types/node": "^13.13.26",
     "@types/prompts": "2.0.1",
     "@types/rimraf": "^2.0.3",
@@ -38,10 +40,12 @@
     "cross-spawn": "^7.0.3",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
+    "execa": "^4.0.3",
     "fs-extra": "^9.0.1",
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
     "husky": "^4.3.0",
+    "jest": "26.6.1",
     "lerna": "^3.22.1",
     "make-dir": "^3.1.0",
     "prettier": "2.x",
@@ -50,6 +54,7 @@
     "rimraf": "^3.0.2",
     "shx": "^0.3.2",
     "tar": "^6.0.5",
+    "ts-jest": "26.4.3",
     "typescript": "^4.0.3",
     "update-check": "^1.5.3",
     "validate-npm-package-name": "^3.0.0"
@@ -80,6 +85,7 @@
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,jsx,.ts,tsx .",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
+    "test": "jest",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
   }
 }
