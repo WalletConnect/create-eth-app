@@ -37,7 +37,7 @@ function useWeb3Modal(config = {}) {
   }, [web3Modal]);
 
   const logoutOfWeb3Modal = useCallback(
-    async function() {
+    async function () {
       await web3Modal.clearCachedProvider();
       window.location.reload();
     },
