@@ -46,6 +46,7 @@
     "handlebars": "^4.7.6",
     "husky": "^4.3.0",
     "jest": "26.6.1",
+    "jest-when": "^3.0.0",
     "lerna": "^3.22.1",
     "make-dir": "^3.1.0",
     "prettier": "2.x",
@@ -87,5 +88,8 @@
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "test": "jest",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
+  },
+  "dependencies": {
+    "@types/jest-when": "^2.7.2"
   }
 }

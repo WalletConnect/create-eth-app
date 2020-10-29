@@ -40,6 +40,9 @@ describe("refs", function () {
         process.env.CEA_GITHUB_REF = undefined;
         getRefs();
         expect(mockProcessExit).toHaveBeenCalledWith(1);
+        expect(console.log).toHaveBeenCalledWith(
+          "Please set either a GITHUB_REF or a CEA_GITHUB_REF environment variable.",
+        );
       });
     });
 
@@ -78,7 +81,6 @@ describe("refs", function () {
   });
 
   afterAll(() => {
-    process.env = oldEnv;
     mockProcessExit.mockRestore();
   });
 });
