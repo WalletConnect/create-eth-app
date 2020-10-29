@@ -72,8 +72,8 @@ describe("networking", function () {
       });
 
       test("it returns true", async function () {
-        const isOnline = await getOnline();
-        expect(isOnline).toBe(true);
+        const result = await getOnline();
+        expect(result).toBe(true);
       });
     });
 
@@ -86,8 +86,8 @@ describe("networking", function () {
 
       describe("when the proxy is not set", function () {
         test("it returns false", async function () {
-          const isOnline = await getOnline();
-          expect(isOnline).toBe(false);
+          const result = await getOnline();
+          expect(result).toBe(false);
         });
       });
 
@@ -102,8 +102,8 @@ describe("networking", function () {
           });
 
           test("it returns false", async function () {
-            const isOnline = await getOnline();
-            expect(isOnline).toBe(false);
+            const result = await getOnline();
+            expect(result).toBe(false);
           });
         });
 
@@ -120,8 +120,8 @@ describe("networking", function () {
             });
 
             test("it returns false", async function () {
-              const isOnline = await getOnline();
-              expect(isOnline).toBe(false);
+              const result = await getOnline();
+              expect(result).toBe(false);
             });
           });
 
@@ -133,8 +133,8 @@ describe("networking", function () {
             });
 
             test("it returns true", async function () {
-              const isOnline = await getOnline();
-              expect(isOnline).toBe(true);
+              const result = await getOnline();
+              expect(result).toBe(true);
             });
           });
         });
