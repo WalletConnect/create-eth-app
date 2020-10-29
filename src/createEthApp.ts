@@ -1,16 +1,12 @@
+import Handlebars from "handlebars";
 import chalk from "chalk";
 import fs from "fs";
 import makeDir from "make-dir";
 import path from "path";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
-import {
-  downloadAndExtractFrameworkHandlebars,
-  hasFramework,
-  hasFrameworkHandlebars,
-  hasTemplate,
-} from "./helpers/github";
-import { downloadAndParseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
+import { downloadAndExtractFrameworkHandlebars, hasFramework, hasFrameworkHandlebars } from "./helpers/frameworks";
+import { downloadAndParseTemplate, hasTemplate } from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
 import { installDeps } from "./helpers/installDeps";
 import { isFolderEmpty } from "./helpers/folders";
@@ -85,7 +81,9 @@ export async function createEthApp({
   }
   console.log();
 
-  registerHandlebarsHelpers();
+  Handlebars.registerHelper("raw-helper", function (options) {
+    return options.fn();
+  });
   await downloadAndExtractFrameworkHandlebars(root, framework);
   await downloadAndParseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
 

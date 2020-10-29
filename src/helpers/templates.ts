@@ -1,9 +1,29 @@
-import Handlebars from "handlebars";
 import fs from "fs-extra";
+import got from "got";
+import makeDir from "make-dir";
 import path from "path";
+import promisePipe from "promisepipe";
+import tar from "tar";
 
+import packageJson from "../../package.json";
 import { HandlebarsFiles, HardcodedTemplateFiles, FrameworkKey, TemplateKey } from "./constants";
-import { downloadAndExtractTemplate } from "./github";
+import { githubApiBaseUrl } from "./constants";
+import { getRefs } from "./refs";
+import { isUrlOk } from "./networking";
+
+const { ref, tarGzRef } = getRefs();
+
+export async function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
+  if (!fs.existsSync(root)) {
+    await makeDir(root);
+  }
+
+  const downloadUrl: string = githubApiBaseUrl + ref;
+  return promisePipe(
+    got.stream(downloadUrl),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${tarGzRef}/templates/${framework}/${name}`]),
+  );
+}
 
 export async function downloadAndParseTemplate(
   appPath: string,
@@ -44,9 +64,9 @@ export async function downloadAndParseTemplate(
   await fs.remove(templateContextPath);
 }
 
-export function registerHandlebarsHelpers(): void {
-  Handlebars.registerHelper("raw-helper", function (options) {
-    return options.fn();
-  });
+export function hasTemplate(framework: string, name: string): Promise<boolean> {
+  const url: string = `https://api.github.com/repos/${
+    packageJson.repository.name
+  }/contents/templates/${framework}/${encodeURIComponent(name)}?ref=${ref}`;
+  return isUrlOk(url);
 }
-    

@@ -2,6 +2,8 @@ export const Frameworks = ["react", "vue"] as const;
 
 export type FrameworkKey = typeof Frameworks[number];
 
+export const githubApiBaseUrl: string = "https://codeload.github.com/paulrberg/create-eth-app/tar.gz/";
+
 export const HandlebarsFiles: Record<FrameworkKey, string[]> = {
   react: [
     "package.json",
