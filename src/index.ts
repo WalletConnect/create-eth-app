@@ -7,7 +7,7 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { validateNpmName } from "./helpers/validatePkg";
+import { validateNpmName } from "./helpers/npm";
 
 let projectPath: string = "";
 
