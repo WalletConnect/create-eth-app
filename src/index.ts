@@ -7,7 +7,7 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { validateNpmName } from "./helpers/npm";
+import { validatePkgName } from "./helpers/npm";
 
 let projectPath: string = "";
 
@@ -45,7 +45,7 @@ async function run() {
       name: "path",
       type: "text",
       validate: function (name: string) {
-        const validation: { valid: boolean; problems?: string[] } = validateNpmName(path.basename(path.resolve(name)));
+        const validation: { valid: boolean; problems?: string[] } = validatePkgName(path.basename(path.resolve(name)));
         if (validation.valid) {
           return true;
         }
@@ -78,7 +78,7 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
-  const { problems, valid } = validateNpmName(projectName);
+  const { problems, valid } = validatePkgName(projectName);
   if (!valid) {
     console.error(
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
