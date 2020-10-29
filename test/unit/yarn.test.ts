@@ -1,6 +1,5 @@
 import chalk from "chalk";
-import childProcess from "child_process";
-import { when } from "jest-when";
+import child_process from "child_process";
 
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "../../src/helpers/yarn";
 
@@ -11,7 +10,7 @@ describe("yarn", function () {
   beforeAll(function () {
     console.error = jest.fn();
     console.log = jest.fn();
-    mockExecSync = jest.spyOn(childProcess, "execSync");
+    mockExecSync = jest.spyOn(child_process, "execSync");
     mockProcessExit = jest.spyOn(process, "exit").mockImplementation(function (code?: number) {
       return code as never;
     });
@@ -20,7 +19,7 @@ describe("yarn", function () {
   describe("shouldUseYarn", function () {
     describe("when the child process does not throw an error", function () {
       beforeEach(function () {
-        when(mockExecSync).calledWith("yarnpkg --version", { stdio: "ignore" }).mockReturnValueOnce(true);
+        mockExecSync.mockReturnValueOnce(true);
       });
 
       test("it works", function () {
@@ -30,11 +29,9 @@ describe("yarn", function () {
 
     describe("when the child process throws an error", function () {
       beforeEach(function () {
-        when(mockExecSync)
-          .calledWith("yarnpkg --version", { stdio: "ignore" })
-          .mockImplementationOnce(function () {
-            throw new Error();
-          });
+        mockExecSync.mockImplementationOnce(function () {
+          throw new Error();
+        });
       });
 
       test("it exits the process", function () {
@@ -52,7 +49,7 @@ describe("yarn", function () {
   describe("shouldUseYarnWorkspaces", function () {
     describe("when the yarn version starts with non-zero", function () {
       beforeEach(function () {
-        when(mockExecSync).calledWith("yarnpkg --version", { encoding: "utf8" }).mockReturnValueOnce("1.22.10");
+        mockExecSync.mockReturnValueOnce("1.22.10");
       });
 
       test("it works", function () {
@@ -62,14 +59,12 @@ describe("yarn", function () {
 
     describe("when the yarn version starts with zero", function () {
       beforeEach(function () {
-        when(mockExecSync).calledWith("yarnpkg --version", { encoding: "utf8" }).mockReturnValueOnce("0.28.1");
+        mockExecSync.mockReturnValueOnce("0.28.1");
       });
 
       describe("when the workspaces flag = true", function () {
         beforeEach(function () {
-          when(mockExecSync)
-            .calledWith("yarnpkg config get workspaces-experimental", { encoding: "utf8" })
-            .mockReturnValueOnce("true");
+          mockExecSync.mockReturnValueOnce("true");
         });
 
         test("it works", function () {
@@ -79,9 +74,7 @@ describe("yarn", function () {
 
       describe("when the workspaces flag = false", function () {
         beforeEach(function () {
-          when(mockExecSync)
-            .calledWith("yarnpkg config get workspaces-experimental", { encoding: "utf8" })
-            .mockReturnValueOnce("false");
+          mockExecSync.mockReturnValueOnce("false");
         });
 
         test("it exits the process", function () {

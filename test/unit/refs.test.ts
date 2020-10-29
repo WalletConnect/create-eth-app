@@ -38,10 +38,13 @@ describe("refs", function () {
   });
 
   describe("when CEA_ENV = development", function () {
+    beforeEach(function () {
+      console.log = jest.fn();
+      process.env.CEA_ENV = "development";
+    });
+
     describe("when both GITHUB_REF and CEA_GITHUB_REF are undefined", function () {
       beforeEach(function () {
-        console.log = jest.fn();
-        process.env.CEA_ENV = "development";
         process.env.GITHUB_REF = undefined;
         process.env.CEA_GITHUB_REF = undefined;
       });
@@ -57,7 +60,6 @@ describe("refs", function () {
 
     describe("when GITHUB_REF = staging", function () {
       beforeEach(function () {
-        process.env.CEA_ENV = "development";
         process.env.GITHUB_REF = "staging";
         process.env.CEA_GITHUB_REF = undefined;
       });
@@ -69,31 +71,33 @@ describe("refs", function () {
       });
     });
 
-    describe("when CEA_GITHUB_REF = v1.4.1", function () {
+    describe("when GITHUB_REF = undefined", function () {
       beforeEach(function () {
-        process.env.CEA_ENV = "development";
         process.env.GITHUB_REF = undefined;
-        process.env.CEA_GITHUB_REF = "v1.4.1";
       });
 
-      test("it returns v1.4.1", function () {
-        const { ref, tarGzRef } = getRefs();
-        expect(ref).toBe("v1.4.1");
-        expect(tarGzRef).toBe("1.4.1");
-      });
-    });
+      describe("when CEA_GITHUB_REF = v1.4.1", function () {
+        beforeEach(function () {
+          process.env.CEA_GITHUB_REF = "v1.4.1";
+        });
 
-    describe("when CEA_GITHUB_REF = develop", function () {
-      beforeEach(function () {
-        process.env.CEA_ENV = "development";
-        process.env.GITHUB_REF = undefined;
-        process.env.CEA_GITHUB_REF = "develop";
+        test("it returns v1.4.1", function () {
+          const { ref, tarGzRef } = getRefs();
+          expect(ref).toBe("v1.4.1");
+          expect(tarGzRef).toBe("1.4.1");
+        });
       });
 
-      test("it returns develop", function () {
-        const { ref, tarGzRef } = getRefs();
-        expect(ref).toBe("develop");
-        expect(tarGzRef).toBe("develop");
+      describe("when CEA_GITHUB_REF = develop", function () {
+        beforeEach(function () {
+          process.env.CEA_GITHUB_REF = "develop";
+        });
+
+        test("it returns develop", function () {
+          const { ref, tarGzRef } = getRefs();
+          expect(ref).toBe("develop");
+          expect(tarGzRef).toBe("develop");
+        });
       });
     });
   });

@@ -6,7 +6,7 @@ import tempy from "tempy";
 
 import { isDirectoryEmpty } from "../../src/helpers/directories";
 
-describe.only("directories", function () {
+describe("directories", function () {
   const appName: string = "my-eth-app";
   let directoryPath: string;
 
