@@ -9,8 +9,6 @@ const INFURA_ID = "INVALID_INFURA_KEY";
 
 const NETWORK_NAME = "mainnet";
 
-// Enter a valid infura key here to avoid being rate limited
-// You can get a key for free at https://infura.io/register
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState();
   const { autoLoad = true, infuraId = INFURA_ID, NETWORK = NETWORK_NAME } = config;
