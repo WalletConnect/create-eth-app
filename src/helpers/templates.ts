@@ -1,6 +1,5 @@
-import fs from "fs-extra";
+import fsExtra from "fs-extra";
 import got from "got";
-import makeDir from "make-dir";
 import path from "path";
 import promisePipe from "promisepipe";
 import tar from "tar";
@@ -14,8 +13,8 @@ import { isUrlOk } from "./networking";
 const { ref, tarGzRef } = getRefs();
 
 export async function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
-  if (!fs.existsSync(root)) {
-    await makeDir(root);
+  if (!fsExtra.existsSync(root)) {
+    await fsExtra.mkdir(root);
   }
 
   const downloadUrl: string = githubApiBaseUrl + ref;
@@ -37,16 +36,16 @@ export async function downloadAndParseTemplate(
   for (const standardFile of HandlebarsFiles[framework]) {
     const contextFileName: string = standardFile + ".ctx";
     const contextFilePath: string = path.join(templateContextPath, contextFileName);
-    const context: JSON = JSON.parse(await fs.readFile(contextFilePath, "utf-8"));
+    const context: JSON = JSON.parse(await fsExtra.readFile(contextFilePath, "utf-8"));
 
     const hbsFileName: string = standardFile + ".hbs";
     const hbsFilePath: string = path.join(appPath, hbsFileName);
-    const hbs: string = await fs.readFile(hbsFilePath, "utf-8");
+    const hbs: string = await fsExtra.readFile(hbsFilePath, "utf-8");
     const contents: string = Handlebars.compile(hbs)(context);
 
     const appFilePath: string = path.join(appPath, standardFile);
-    await fs.writeFile(appFilePath, contents);
-    await fs.remove(hbsFilePath);
+    await fsExtra.writeFile(appFilePath, contents);
+    await fsExtra.remove(hbsFilePath);
   }
 
   for (const hardcodedFile of HardcodedTemplateFiles[framework][template]) {
@@ -54,14 +53,14 @@ export async function downloadAndParseTemplate(
     const appFilePath: string = path.join(appPath, hardcodedFile);
 
     // Any standard file with the same name as a hardcoded file gets overridden.
-    if (fs.existsSync(appFilePath)) {
-      await fs.remove(appFilePath);
+    if (fsExtra.existsSync(appFilePath)) {
+      await fsExtra.remove(appFilePath);
     }
-    await fs.move(contextFilePath, appFilePath);
+    await fsExtra.move(contextFilePath, appFilePath);
   }
 
   // After all parsing is complete, prune the context of the current template.
-  await fs.remove(templateContextPath);
+  await fsExtra.remove(templateContextPath);
 }
 
 export function hasTemplate(framework: string, name: string): Promise<boolean> {

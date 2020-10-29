@@ -1,6 +1,5 @@
-import fs from "fs";
+import fsExtra from "fs-extra";
 import got from "got";
-import makeDir from "make-dir";
 import promisePipe from "promisepipe";
 import tar from "tar";
 
@@ -12,8 +11,8 @@ import { isUrlOk } from "./networking";
 const { ref, tarGzRef } = getRefs();
 
 export async function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
-  if (!fs.existsSync(root)) {
-    await makeDir(root);
+  if (!fsExtra.existsSync(root)) {
+    await fsExtra.mkdir(root);
   }
 
   const downloadUrl: string = githubApiBaseUrl + ref;
