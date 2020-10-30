@@ -82,7 +82,7 @@
   },
   "scripts": {
     "build": "ncc build ./src/index.ts --out dist/",
-    "clean": "shx rm -rf ./dist",
+    "clean": "shx rm -rf ./coverage ./dist",
     "lint": "yarn run lint:ts && yarn run prettier:list-different",
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,jsx,.ts,tsx .",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
