@@ -1,3 +1,4 @@
+import Handlebars from "handlebars";
 import fsExtra from "fs-extra";
 import got from "got";
 import path from "path";
