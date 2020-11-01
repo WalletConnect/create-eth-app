@@ -15,6 +15,8 @@ export function isDirectoryEmpty(directoryPath: string, appName: string): boolea
     ".idea",
     ".npmignore",
     ".travis.yml",
+    ".yarn",
+    ".yarnrc.yml",
     "LICENSE",
     "Thumbs.db",
     "docs",
@@ -27,11 +29,11 @@ export function isDirectoryEmpty(directoryPath: string, appName: string): boolea
   const conflicts: string[] = fs
     .readdirSync(directoryPath)
     .filter(function (file: string) {
-      return !validFiles.includes(file);
+      return validFiles.includes(file) === false;
     })
     // Support IntelliJ IDEA-based editors
     .filter(function (file: string) {
-      return !/\.iml$/.test(file);
+      return /\.iml$/.test(file) === false;
     });
 
   if (conflicts.length > 0) {
