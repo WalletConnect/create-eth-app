@@ -51,15 +51,17 @@ export async function createEthApp({
   const root: string = path.resolve(appPath);
   const appName: string = path.basename(root);
 
-  await fsExtra.mkdir(root);
+  await fsExtra.ensureDir(root);
   if (!isDirectoryEmpty(root, appName)) {
     process.exit(1);
   }
 
   shouldUseYarn();
   shouldUseYarnWorkspaces();
+
   const isOnline: boolean = await getOnline();
   const originalDirectory: string = process.cwd();
+  process.chdir(root);
 
   console.log();
   console.log(
@@ -68,9 +70,6 @@ export async function createEthApp({
     )}.`,
   );
   console.log();
-
-  await fsExtra.mkdir(root);
-  process.chdir(root);
 
   if (template === "default") {
     console.log("Downloading template files. This might take a moment.");

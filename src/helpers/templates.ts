@@ -20,10 +20,7 @@ export async function downloadAndExtractTemplateContext(
   framework: FrameworkKey,
   template: TemplateKey,
 ): Promise<void> {
-  if (!fsExtra.existsSync(root)) {
-    await fsExtra.mkdir(root);
-  }
-
+  await fsExtra.ensureDir(root);
   const repository: string = getRepository();
   const { ref, tarGzRef } = getRefs();
   const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
