@@ -3,7 +3,7 @@ import { getRefs, getRepository } from "../../src/helpers/env";
 
 describe("env", function () {
   const oldEnv = process.env;
-  let mockProcessExit: jest.SpyInstance;
+  let processExitMock: jest.SpyInstance;
 
   beforeAll(function () {
     // Clears the process.env cache.
@@ -11,7 +11,7 @@ describe("env", function () {
     process.env = { ...oldEnv };
 
     console.log = jest.fn();
-    mockProcessExit = jest.spyOn(process, "exit").mockImplementation(function (code?: number): never {
+    processExitMock = jest.spyOn(process, "exit").mockImplementation(function (code?: number): never {
       return code as never;
     });
   });
@@ -48,7 +48,7 @@ describe("env", function () {
           test("it exits the process", function () {
             getRefs();
             expect(console.log).toHaveBeenCalledWith("Please set a DEVELOPMENT_REF environment variable.");
-            expect(mockProcessExit).toHaveBeenCalledWith(1);
+            expect(processExitMock).toHaveBeenCalledWith(1);
           });
         });
 
@@ -91,7 +91,7 @@ describe("env", function () {
         test("it exits the process", function () {
           getRefs();
           expect(console.log).toHaveBeenCalledWith("Please set a GITHUB_REF environment variable.");
-          expect(mockProcessExit).toHaveBeenCalledWith(1);
+          expect(processExitMock).toHaveBeenCalledWith(1);
         });
 
         describe("when GITHUB_REF = v1.5.0", function () {
@@ -158,7 +158,7 @@ describe("env", function () {
         test("it exits the process", function () {
           getRepository();
           expect(console.log).toHaveBeenCalledWith("Please set a GITHUB_REPOSITORY environment variable.");
-          expect(mockProcessExit).toHaveBeenCalledWith(1);
+          expect(processExitMock).toHaveBeenCalledWith(1);
         });
       });
 
@@ -176,6 +176,6 @@ describe("env", function () {
   });
 
   afterAll(() => {
-    mockProcessExit.mockRestore();
+    processExitMock.mockRestore();
   });
 });

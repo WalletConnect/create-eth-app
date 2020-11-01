@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import spawn from "cross-spawn";
-import { execSync } from "child_process";
+import { ChildProcess, execSync } from "child_process";
 
 export function installDeps(
   root: string,
@@ -25,7 +25,7 @@ export function installDeps(
       console.log();
     }
 
-    const child = spawn(command, args, {
+    const child: ChildProcess = spawn(command, args, {
       env: { ...process.env, ADBLOCK: "1", DISABLE_OPENCOLLECTIVE: "1" },
       stdio: "inherit",
     });

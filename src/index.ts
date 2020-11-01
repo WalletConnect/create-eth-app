@@ -99,7 +99,7 @@ async function run(): Promise<void> {
   });
 }
 
-const update = updateCheck(packageJson).catch(function () {
+const update: Promise<{ latest: boolean }> = updateCheck(packageJson).catch(function () {
   return null;
 });
 

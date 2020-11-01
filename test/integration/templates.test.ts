@@ -1,4 +1,4 @@
-import rimraf from "rimraf";
+import fsExtra from "fs-extra";
 import path from "path";
 import tempy from "tempy";
 import { Result, compare } from "dir-compare";
@@ -9,7 +9,13 @@ import { FrameworkKey, TemplateKey } from "../../src/helpers/constants";
 import { downloadAndExtractTemplateContext, hasTemplate } from "../../src/helpers/templates";
 
 describe("templates", function () {
-  describe.only("downloadAndExtractTemplateContext", function () {
+  let getRefsMock: jest.SpyInstance;
+
+  beforeAll(function () {
+    getRefsMock = jest.spyOn(envHelpers, "getRefs");
+  });
+
+  describe("downloadAndExtractTemplateContext", function () {
     let testDirPath: string;
 
     beforeEach(function () {
@@ -227,7 +233,7 @@ describe("templates", function () {
     });
 
     afterEach(function () {
-      rimraf.sync(testDirPath);
+      fsExtra.rmdirSync(testDirPath);
     });
   });
 
@@ -238,7 +244,7 @@ describe("templates", function () {
       const ref: string = "develop";
 
       beforeEach(function () {
-        jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+        getRefsMock.mockReturnValueOnce({ ref, tarGzRef: ref });
       });
 
       test("it returns false", async function () {
@@ -256,7 +262,7 @@ describe("templates", function () {
         const ref: string = "develop";
 
         beforeEach(function () {
-          jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+          getRefsMock.mockReturnValueOnce({ ref, tarGzRef: ref });
         });
 
         test("it returns false", async function () {
@@ -272,7 +278,7 @@ describe("templates", function () {
           const ref: string = "invalid-ref";
 
           beforeEach(function () {
-            jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+            getRefsMock.mockReturnValueOnce({ ref, tarGzRef: ref });
           });
 
           test("it returns false", async function () {
@@ -286,7 +292,7 @@ describe("templates", function () {
             const ref: string = "develop";
 
             beforeEach(function () {
-              jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+              getRefsMock.mockReturnValueOnce({ ref, tarGzRef: ref });
             });
 
             test("it returns true", async function () {
@@ -299,7 +305,7 @@ describe("templates", function () {
             const tarGzRef: string = "1.5.0";
 
             beforeEach(function () {
-              jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef });
+              getRefsMock.mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef });
             });
 
             test("it returns true", async function () {
@@ -310,5 +316,9 @@ describe("templates", function () {
         });
       });
     });
+  });
+
+  afterAll(function () {
+    getRefsMock.mockRestore();
   });
 });

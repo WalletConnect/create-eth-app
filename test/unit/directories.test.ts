@@ -1,7 +1,6 @@
 import chalk from "chalk";
 import fsExtra from "fs-extra";
 import path from "path";
-import rimraf from "rimraf";
 import tempy from "tempy";
 
 import { isDirectoryEmpty } from "../../src/helpers/directories";
@@ -251,6 +250,6 @@ describe("directories", function () {
   });
 
   afterEach(function () {
-    rimraf.sync(testDirPath);
+    fsExtra.rmdirSync(testDirPath);
   });
 });

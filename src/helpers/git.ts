@@ -1,5 +1,5 @@
+import fsExtra from "fs-extra";
 import path from "path";
-import rimraf from "rimraf";
 import { execSync } from "child_process";
 
 export function isInGitRepository(): boolean {
@@ -41,7 +41,7 @@ export function tryGitInit(root: string): boolean {
   } catch (error) {
     if (didInit) {
       try {
-        rimraf.sync(path.join(root, ".git"));
+        fsExtra.rmdirSync(path.join(root, ".git"));
       } catch (_) {
         // Ignore error.
       }

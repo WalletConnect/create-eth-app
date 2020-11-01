@@ -1,5 +1,5 @@
 import child_process from "child_process";
-import rimraf from "rimraf";
+import fsExtra from "fs-extra";
 import tempy from "tempy";
 import { when } from "jest-when";
 
@@ -7,10 +7,10 @@ import { isInGitRepository, isInMercurialRepository, tryGitInit } from "../../sr
 
 describe("git", function () {
   let testDirPath: string;
-  let mockExecSync: jest.SpyInstance;
+  let execSyncMock: jest.SpyInstance;
 
   beforeAll(function () {
-    mockExecSync = jest.spyOn(child_process, "execSync");
+    execSyncMock = jest.spyOn(child_process, "execSync");
   });
 
   beforeEach(function () {
@@ -20,7 +20,7 @@ describe("git", function () {
   describe("isInGitRepository", function () {
     describe("when the rev-parse command fails", function () {
       beforeEach(function () {
-        when(mockExecSync)
+        when(execSyncMock)
           .calledWith("git rev-parse --is-inside-work-tree", { stdio: "ignore" })
           .mockImplementationOnce(function () {
             throw new Error();
@@ -34,7 +34,7 @@ describe("git", function () {
 
     describe("when the rev-parse command executes successfully", function () {
       beforeEach(function () {
-        when(mockExecSync)
+        when(execSyncMock)
           .calledWith("git rev-parse --is-inside-work-tree", { stdio: "ignore" })
           .mockReturnValueOnce(true);
       });
@@ -48,7 +48,7 @@ describe("git", function () {
   describe("isInMercurialRepository", function () {
     describe("when the hg command fails", function () {
       beforeEach(function () {
-        when(mockExecSync)
+        when(execSyncMock)
           .calledWith("hg --cwd . root", { stdio: "ignore" })
           .mockImplementationOnce(function () {
             throw new Error();
@@ -62,7 +62,7 @@ describe("git", function () {
 
     describe("when the hg command executes successfully", function () {
       beforeEach(function () {
-        when(mockExecSync).calledWith("hg --cwd . root", { stdio: "ignore" }).mockReturnValueOnce(true);
+        when(execSyncMock).calledWith("hg --cwd . root", { stdio: "ignore" }).mockReturnValueOnce(true);
       });
 
       test("it returns true", function () {
@@ -74,7 +74,7 @@ describe("git", function () {
   describe("tryGitInit", function () {
     describe("when the git --version command fails", function () {
       beforeEach(function () {
-        when(mockExecSync)
+        when(execSyncMock)
           .calledWith("git --version", { stdio: "ignore" })
           .mockImplementationOnce(function () {
             throw new Error();
@@ -88,12 +88,12 @@ describe("git", function () {
 
     describe("when the git --version command executes successfully", function () {
       beforeEach(function () {
-        when(mockExecSync).calledWith("git --version", { stdio: "ignore" }).mockReturnValueOnce(true);
+        when(execSyncMock).calledWith("git --version", { stdio: "ignore" }).mockReturnValueOnce(true);
       });
 
       describe("when git is already set up", function () {
         beforeEach(function () {
-          when(mockExecSync)
+          when(execSyncMock)
             .calledWith("git rev-parse --is-inside-work-tree", { stdio: "ignore" })
             .mockReturnValueOnce(true);
         });
@@ -105,12 +105,12 @@ describe("git", function () {
 
       describe("when mercurial is already set up", function () {
         beforeEach(function () {
-          when(mockExecSync)
+          when(execSyncMock)
             .calledWith("git rev-parse --is-inside-work-tree", { stdio: "ignore" })
             .mockImplementationOnce(function () {
               throw new Error();
             });
-          when(mockExecSync).calledWith("hg --cwd . root", { stdio: "ignore" }).mockReturnValueOnce(true);
+          when(execSyncMock).calledWith("hg --cwd . root", { stdio: "ignore" }).mockReturnValueOnce(true);
         });
 
         test("it returns false", function () {
@@ -120,12 +120,12 @@ describe("git", function () {
 
       describe("when neither git nor mercurial is set up", function () {
         beforeEach(function () {
-          when(mockExecSync)
+          when(execSyncMock)
             .calledWith("git rev-parse --is-inside-work-tree", { stdio: "ignore" })
             .mockImplementationOnce(function () {
               throw new Error();
             });
-          when(mockExecSync)
+          when(execSyncMock)
             .calledWith("hg --cwd . root", { stdio: "ignore" })
             .mockImplementationOnce(function () {
               throw new Error();
@@ -134,7 +134,7 @@ describe("git", function () {
 
         describe("when the git init command fails", function () {
           beforeEach(function () {
-            when(mockExecSync)
+            when(execSyncMock)
               .calledWith("git init", { stdio: "ignore" })
               .mockImplementationOnce(function () {
                 throw new Error();
@@ -148,12 +148,12 @@ describe("git", function () {
 
         describe("when the git init command executes successfully", function () {
           beforeEach(function () {
-            when(mockExecSync).calledWith("git init", { stdio: "ignore" }).mockReturnValueOnce(true);
+            when(execSyncMock).calledWith("git init", { stdio: "ignore" }).mockReturnValueOnce(true);
           });
 
           describe("when the git add -A command fails", function () {
             beforeEach(function () {
-              when(mockExecSync)
+              when(execSyncMock)
                 .calledWith("git add -A", { stdio: "ignore" })
                 .mockImplementationOnce(function () {
                   throw new Error();
@@ -167,12 +167,12 @@ describe("git", function () {
 
           describe("when the git add -A command executes successfully", function () {
             beforeEach(function () {
-              when(mockExecSync).calledWith("git add -A", { stdio: "ignore" }).mockReturnValueOnce(true);
+              when(execSyncMock).calledWith("git add -A", { stdio: "ignore" }).mockReturnValueOnce(true);
             });
 
             describe("when the git commit -m command fails", function () {
               beforeEach(function () {
-                when(mockExecSync)
+                when(execSyncMock)
                   .calledWith('git commit -m "Initial commit from Create Eth App"', { stdio: "ignore" })
                   .mockImplementationOnce(function () {
                     throw new Error();
@@ -186,7 +186,7 @@ describe("git", function () {
 
             describe("when the git commit -m command executes successfully", function () {
               beforeEach(function () {
-                when(mockExecSync)
+                when(execSyncMock)
                   .calledWith('git commit -m "Initial commit from Create Eth App"', { stdio: "ignore" })
                   .mockReturnValueOnce(true);
               });
@@ -202,10 +202,10 @@ describe("git", function () {
   });
 
   afterAll(function () {
-    mockExecSync.mockRestore();
+    execSyncMock.mockRestore();
   });
 
   afterEach(function () {
-    rimraf.sync(testDirPath);
+    fsExtra.rmdirSync(testDirPath);
   });
 });

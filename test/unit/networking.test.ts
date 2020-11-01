@@ -5,14 +5,14 @@ import url from "url";
 import { getOnline, getProxy } from "../../src/helpers/networking";
 
 describe("networking", function () {
-  let mockDnsLookup: jest.SpyInstance;
-  let mockExecSync: jest.SpyInstance;
-  let mockUrlParse: jest.SpyInstance;
+  let dnsLookupMock: jest.SpyInstance;
+  let execSyncMock: jest.SpyInstance;
+  let urlParseMock: jest.SpyInstance;
 
   beforeAll(function () {
-    mockDnsLookup = jest.spyOn(dns, "lookup");
-    mockExecSync = jest.spyOn(child_process, "execSync");
-    mockUrlParse = jest.spyOn(url, "parse");
+    dnsLookupMock = jest.spyOn(dns, "lookup");
+    execSyncMock = jest.spyOn(child_process, "execSync");
+    urlParseMock = jest.spyOn(url, "parse");
   });
 
   describe("getProxy", function () {
@@ -32,7 +32,7 @@ describe("networking", function () {
 
     describe("when the npm config proxy is null", function () {
       beforeEach(function () {
-        mockExecSync.mockReturnValueOnce("null");
+        execSyncMock.mockReturnValueOnce("null");
       });
 
       test("it returns an empty string", function () {
@@ -42,7 +42,7 @@ describe("networking", function () {
 
     describe("when the npm config proxy throws an error", function () {
       beforeEach(function () {
-        mockExecSync.mockImplementationOnce(function () {
+        execSyncMock.mockImplementationOnce(function () {
           throw new Error();
         });
       });
@@ -54,7 +54,7 @@ describe("networking", function () {
 
     describe("when the npm config proxy is set", function () {
       beforeEach(function () {
-        mockExecSync.mockReturnValueOnce("https://127.0.0.1");
+        execSyncMock.mockReturnValueOnce("https://127.0.0.1");
       });
 
       test("it returns the npm config proxy", function () {
@@ -66,7 +66,7 @@ describe("networking", function () {
   describe("getOnline", function () {
     describe("when the dns lookup returns no registry error", function () {
       beforeEach(function () {
-        mockDnsLookup.mockImplementationOnce(function (_hostname: string, callback) {
+        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
           callback(null);
         });
       });
@@ -79,7 +79,7 @@ describe("networking", function () {
 
     describe("when the dns lookup returns a registry error", function () {
       beforeEach(function () {
-        mockDnsLookup.mockImplementationOnce(function (_hostname: string, callback) {
+        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
           callback(new Error("Registry error"));
         });
       });
@@ -93,12 +93,12 @@ describe("networking", function () {
 
       describe("when the proxy is set", function () {
         beforeEach(function () {
-          mockExecSync.mockReturnValueOnce("https://127.0.0.1");
+          execSyncMock.mockReturnValueOnce("https://127.0.0.1");
         });
 
         describe("when the hostname is not valid", function () {
           beforeEach(function () {
-            mockUrlParse.mockReturnValueOnce({ hostname: undefined });
+            urlParseMock.mockReturnValueOnce({ hostname: undefined });
           });
 
           test("it returns false", async function () {
@@ -109,12 +109,12 @@ describe("networking", function () {
 
         describe("when the hostname is valid", function () {
           beforeEach(function () {
-            mockUrlParse.mockReturnValueOnce({ hostname: "127.0.0.1" });
+            urlParseMock.mockReturnValueOnce({ hostname: "127.0.0.1" });
           });
 
           describe("when the dns lookup returns a registry error", function () {
             beforeEach(function () {
-              mockDnsLookup.mockImplementationOnce(function (_hostname: string, callback) {
+              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
                 callback(new Error("Registry error"));
               });
             });
@@ -127,7 +127,7 @@ describe("networking", function () {
 
           describe("when the dns lookup returns no registry error", function () {
             beforeEach(function () {
-              mockDnsLookup.mockImplementationOnce(function (_hostname: string, callback) {
+              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
                 callback(null);
               });
             });
@@ -143,8 +143,8 @@ describe("networking", function () {
   });
 
   afterAll(function () {
-    mockDnsLookup.mockRestore();
-    mockExecSync.mockRestore();
-    mockUrlParse.mockRestore();
+    dnsLookupMock.mockRestore();
+    execSyncMock.mockRestore();
+    urlParseMock.mockRestore();
   });
 });
