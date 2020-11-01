@@ -1,0 +1,36 @@
+name: "Continuous Integration"
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "develop"
+      - "staging"
+
+jobs:
+  ci:
+    runs-on: "ubuntu-18.04"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Install Node.js 12.x"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: "12.x"
+
+      - uses: "actions/cache@v2"
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('./yarn.lock') }}
+          path: "./node_modules"
+
+      - name: "Install dependencies"
+        run: "yarn install --frozen-lockfile"
+
+      - name: "Lint TypeScript code"
+        run: "yarn run lint"
+
+      - name: "Run unit tests"
+        run: "yarn run test:unit"
