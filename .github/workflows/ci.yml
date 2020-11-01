@@ -34,3 +34,6 @@ jobs:
 
       - name: "Run unit tests"
         run: "yarn run test:unit"
+
+      - name: "Run integration tests"
+        run: "yarn run test:integration"
