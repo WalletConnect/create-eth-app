@@ -41,7 +41,7 @@ export function tryGitInit(root: string): boolean {
   } catch (error) {
     if (didInit) {
       try {
-        fsExtra.rmdirSync(path.join(root, ".git"));
+        fsExtra.removeSync(path.join(root, ".git"));
       } catch (_) {
         // Ignore error.
       }

@@ -206,6 +206,6 @@ describe("git", function () {
   });
 
   afterEach(function () {
-    fsExtra.rmdirSync(testDirPath);
+    fsExtra.removeSync(testDirPath);
   });
 });

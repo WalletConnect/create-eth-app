@@ -233,7 +233,7 @@ describe("templates", function () {
     });
 
     afterEach(function () {
-      fsExtra.rmdirSync(testDirPath);
+      fsExtra.removeSync(testDirPath);
     });
   });
 
