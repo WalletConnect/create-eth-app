@@ -4,53 +4,60 @@ import path from "path";
 import promisePipe from "promisepipe";
 import tar from "tar";
 
-import packageJson from "../../package.json";
-import { HandlebarsFiles, HardcodedTemplateFiles, FrameworkKey, TemplateKey } from "./constants";
-import { githubApiBaseUrl } from "./constants";
-import { getRefs } from "./refs";
+import {
+  HandlebarsFiles,
+  HardcodedTemplateFiles,
+  FrameworkKey,
+  TemplateKey,
+  codeloadBaseUrl,
+  githubApiBaseUrl,
+} from "./constants";
+import { getRefs, getRepository } from "./env";
 import { isUrlOk } from "./networking";
 
-const { ref, tarGzRef } = getRefs();
-
-export async function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
+export async function downloadAndExtractTemplateContext(
+  root: string,
+  framework: FrameworkKey,
+  template: TemplateKey,
+): Promise<void> {
   if (!fsExtra.existsSync(root)) {
     await fsExtra.mkdir(root);
   }
 
-  const downloadUrl: string = githubApiBaseUrl + ref;
+  const repository: string = getRepository();
+  const { ref, tarGzRef } = getRefs();
+  const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
   return promisePipe(
     got.stream(downloadUrl),
-    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${tarGzRef}/templates/${framework}/${name}`]),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${tarGzRef}/templates/${framework}/${template}`]),
   );
 }
 
-export async function downloadAndParseTemplate(
+export async function parseTemplate(
   appPath: string,
+  templateContextPath: string,
   framework: FrameworkKey,
   template: TemplateKey,
 ): Promise<void> {
-  // Download the context of the template.
-  const templateContextPath: string = path.join(appPath, "context");
-  await downloadAndExtractTemplate(templateContextPath, framework, template);
-
-  for (const standardFile of HandlebarsFiles[framework]) {
-    const contextFileName: string = standardFile + ".ctx";
+  for (const handlebarFile of HandlebarsFiles[framework]) {
+    const contextFileName: string = handlebarFile + ".ctx";
     const contextFilePath: string = path.join(templateContextPath, contextFileName);
-    const context: JSON = JSON.parse(await fsExtra.readFile(contextFilePath, "utf-8"));
+    const contextFileContents: string = await fsExtra.readFile(contextFilePath, "utf-8");
+    const context: JSON = JSON.parse(contextFileContents);
 
-    const hbsFileName: string = standardFile + ".hbs";
+    const hbsFileName: string = handlebarFile + ".hbs";
     const hbsFilePath: string = path.join(appPath, hbsFileName);
-    const hbs: string = await fsExtra.readFile(hbsFilePath, "utf-8");
-    const contents: string = Handlebars.compile(hbs)(context);
+    const hnsFileContents: string = await fsExtra.readFile(hbsFilePath, "utf-8");
 
-    const appFilePath: string = path.join(appPath, standardFile);
-    await fsExtra.writeFile(appFilePath, contents);
+    const appFilePath: string = path.join(appPath, handlebarFile);
+    const appFileContents: string = Handlebars.compile(hnsFileContents)(context);
+    await fsExtra.writeFile(appFilePath, appFileContents);
     await fsExtra.remove(hbsFilePath);
   }
 
-  for (const hardcodedFile of HardcodedTemplateFiles[framework][template]) {
-    const contextFilePath: string = path.join(templateContextPath, hardcodedFile);
-    const appFilePath: string = path.join(appPath, hardcodedFile);
+  for (const hardcodedTemplateFile of HardcodedTemplateFiles[framework][template]) {
+    const contextFilePath: string = path.join(templateContextPath, hardcodedTemplateFile);
+    const appFilePath: string = path.join(appPath, hardcodedTemplateFile);
 
     // Any standard file with the same name as a hardcoded file gets overridden.
     if (fsExtra.existsSync(appFilePath)) {
@@ -63,9 +70,11 @@ export async function downloadAndParseTemplate(
   await fsExtra.remove(templateContextPath);
 }
 
-export function hasTemplate(framework: string, name: string): Promise<boolean> {
-  const url: string = `https://api.github.com/repos/${
-    packageJson.repository.name
-  }/contents/templates/${framework}/${encodeURIComponent(name)}?ref=${ref}`;
+export function hasTemplate(framework: string, template: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${framework}/${encodeURIComponent(
+    template,
+  )}?ref=${ref}`;
   return isUrlOk(url);
 }

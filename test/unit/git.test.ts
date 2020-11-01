@@ -6,7 +6,7 @@ import { when } from "jest-when";
 import { isInGitRepository, isInMercurialRepository, tryGitInit } from "../../src/helpers/git";
 
 describe("git", function () {
-  let directoryPath: string;
+  let testDirPath: string;
   let mockExecSync: jest.SpyInstance;
 
   beforeAll(function () {
@@ -14,7 +14,7 @@ describe("git", function () {
   });
 
   beforeEach(function () {
-    directoryPath = tempy.directory();
+    testDirPath = tempy.directory();
   });
 
   describe("isInGitRepository", function () {
@@ -82,7 +82,7 @@ describe("git", function () {
       });
 
       test("it returns false", function () {
-        expect(tryGitInit(directoryPath)).toBe(false);
+        expect(tryGitInit(testDirPath)).toBe(false);
       });
     });
 
@@ -99,7 +99,7 @@ describe("git", function () {
         });
 
         test("it returns false", function () {
-          expect(tryGitInit(directoryPath)).toBe(false);
+          expect(tryGitInit(testDirPath)).toBe(false);
         });
       });
 
@@ -114,7 +114,7 @@ describe("git", function () {
         });
 
         test("it returns false", function () {
-          expect(tryGitInit(directoryPath)).toBe(false);
+          expect(tryGitInit(testDirPath)).toBe(false);
         });
       });
 
@@ -142,7 +142,7 @@ describe("git", function () {
           });
 
           test("returns false", function () {
-            expect(tryGitInit(directoryPath)).toBe(false);
+            expect(tryGitInit(testDirPath)).toBe(false);
           });
         });
 
@@ -161,7 +161,7 @@ describe("git", function () {
             });
 
             test("returns false", function () {
-              expect(tryGitInit(directoryPath)).toBe(false);
+              expect(tryGitInit(testDirPath)).toBe(false);
             });
           });
 
@@ -180,7 +180,7 @@ describe("git", function () {
               });
 
               test("returns false", function () {
-                expect(tryGitInit(directoryPath)).toBe(false);
+                expect(tryGitInit(testDirPath)).toBe(false);
               });
             });
 
@@ -192,7 +192,7 @@ describe("git", function () {
               });
 
               test("returns true", function () {
-                expect(tryGitInit(directoryPath)).toBe(true);
+                expect(tryGitInit(testDirPath)).toBe(true);
               });
             });
           });
@@ -206,6 +206,6 @@ describe("git", function () {
   });
 
   afterEach(function () {
-    rimraf.sync(directoryPath);
+    rimraf.sync(testDirPath);
   });
 });

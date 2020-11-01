@@ -5,7 +5,7 @@ import path from "path";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
 import { downloadAndExtractFrameworkHandlebars, hasFramework, hasFrameworkHandlebars } from "./helpers/frameworks";
-import { downloadAndParseTemplate, hasTemplate } from "./helpers/templates";
+import { downloadAndExtractTemplateContext, hasTemplate, parseTemplate } from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
 import { installDeps, shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
 import { isDirectoryEmpty } from "./helpers/directories";
@@ -83,7 +83,9 @@ export async function createEthApp({
     return options.fn();
   });
   await downloadAndExtractFrameworkHandlebars(root, framework);
-  await downloadAndParseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
+  const templateContextPath: string = path.join(appPath, "context");
+  await downloadAndExtractTemplateContext(templateContextPath, framework as FrameworkKey, template as TemplateKey);
+  await parseTemplate(appPath, templateContextPath, framework as FrameworkKey, template as TemplateKey);
 
   // Copy the default `.gitignore` if the template does not provide one.
   const ignorePath = path.join(root, ".gitignore");

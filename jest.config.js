@@ -4,7 +4,8 @@ module.exports = {
   coverageReporters: ["lcov", "html"],
   modulePathIgnorePatterns: ["<rootDir>/handlebars", "<rootDir>/templates"],
   preset: "ts-jest",
-  setupFilesAfterEnv: ["./jest.setup.js"],
+  setupFiles: ["./.jest/env.js"],
+  setupFilesAfterEnv: ["./.jest/setup.js"],
   testEnvironment: "node",
   testMatch: ["**/test/**/*.test.ts"],
 };

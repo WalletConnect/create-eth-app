@@ -3,35 +3,38 @@ import got from "got";
 import promisePipe from "promisepipe";
 import tar from "tar";
 
-import packageJson from "../../package.json";
-import { githubApiBaseUrl } from "./constants";
-import { getRefs } from "./refs";
+import { codeloadBaseUrl, githubApiBaseUrl } from "./constants";
+import { getRefs, getRepository } from "./env";
 import { isUrlOk } from "./networking";
-
-const { ref, tarGzRef } = getRefs();
 
 export async function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
   if (!fsExtra.existsSync(root)) {
     await fsExtra.mkdir(root);
   }
 
-  const downloadUrl: string = githubApiBaseUrl + ref;
+  const repository: string = getRepository();
+  const { ref, tarGzRef } = getRefs();
+  const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
   return promisePipe(
     got.stream(downloadUrl),
     tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-${tarGzRef}/handlebars/${framework}`]),
   );
 }
 
-export function hasFramework(name: string): Promise<boolean> {
-  const url: string = `https://api.github.com/repos/${
-    packageJson.repository.name
-  }/contents/templates/${encodeURIComponent(name)}?ref=${ref}`;
+export function hasFramework(framework: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${encodeURIComponent(
+    framework,
+  )}?ref=${ref}`;
   return isUrlOk(url);
 }
 
-export function hasFrameworkHandlebars(name: string): Promise<boolean> {
-  const url: string = `https://api.github.com/repos/${
-    packageJson.repository.name
-  }/contents/handlebars/${encodeURIComponent(name)}?ref=${ref}`;
+export function hasFrameworkHandlebars(framework: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/handlebars/${encodeURIComponent(
+    framework,
+  )}?ref=${ref}`;
   return isUrlOk(url);
 }

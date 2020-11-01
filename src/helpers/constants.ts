@@ -1,8 +1,9 @@
-export const Frameworks = ["react", "vue"] as const;
+export const codeloadBaseUrl: string = "https://codeload.github.com";
 
+export const Frameworks = ["react", "vue"] as const;
 export type FrameworkKey = typeof Frameworks[number];
 
-export const githubApiBaseUrl: string = "https://codeload.github.com/paulrberg/create-eth-app/tar.gz/";
+export const githubApiBaseUrl: string = "https://api.github.com/repos";
 
 export const HandlebarsFiles: Record<FrameworkKey, string[]> = {
   react: [
@@ -70,6 +71,9 @@ export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, st
   },
 };
 
+// https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+export const semanticVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?/;
+
 export const Templates = [
   "aave",
   "compound",
@@ -81,5 +85,4 @@ export const Templates = [
   "uniswap-v1",
   "uniswap-v2",
 ] as const;
-
 export type TemplateKey = typeof Templates[number];

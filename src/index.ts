@@ -33,13 +33,13 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .allowUnknownOption()
   .parse(process.argv);
 
-async function run() {
+async function run(): Promise<void> {
   if (typeof projectPath === "string") {
     projectPath = projectPath.trim();
   }
 
   if (!projectPath) {
-    const res: prompts.Answers<string> = await prompts({
+    const result: prompts.Answers<string> = await prompts({
       initial: "my-eth-app",
       message: "What is your project named?",
       name: "path",
@@ -58,8 +58,8 @@ async function run() {
       },
     });
 
-    if (typeof res.path === "string") {
-      projectPath = res.path.trim();
+    if (typeof result.path === "string") {
+      projectPath = result.path.trim();
     }
   }
 

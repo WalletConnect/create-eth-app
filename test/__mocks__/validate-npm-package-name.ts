@@ -1,5 +1,3 @@
-import { validatePkgName } from "../../src/helpers/npm";
-
 function validateNpmPackageName(
   projectName: string,
 ): {

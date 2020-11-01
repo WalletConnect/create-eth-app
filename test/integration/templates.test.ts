@@ -1,0 +1,314 @@
+import rimraf from "rimraf";
+import path from "path";
+import tempy from "tempy";
+import { Result, compare } from "dir-compare";
+
+import * as envHelpers from "../../src/helpers/env";
+
+import { FrameworkKey, TemplateKey } from "../../src/helpers/constants";
+import { downloadAndExtractTemplateContext, hasTemplate } from "../../src/helpers/templates";
+
+describe("templates", function () {
+  describe.only("downloadAndExtractTemplateContext", function () {
+    let testDirPath: string;
+
+    beforeEach(function () {
+      testDirPath = tempy.directory();
+    });
+
+    describe("when the framework = react", function () {
+      const framework: FrameworkKey = "react";
+
+      describe("when the template = aave", function () {
+        const template: TemplateKey = "aave";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          try {
+            await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          } catch (error) {
+            console.log({ error });
+          }
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = compound", function () {
+        const template: TemplateKey = "compound";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = default", function () {
+        const template: TemplateKey = "default";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = kyber", function () {
+        const template: TemplateKey = "kyber";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = maker", function () {
+        const template: TemplateKey = "maker";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = sablier-v1", function () {
+        const template: TemplateKey = "sablier-v1";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = synthetix", function () {
+        const template: TemplateKey = "synthetix";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = uniswap-v1", function () {
+        const template: TemplateKey = "uniswap-v1";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = uniswap-v2", function () {
+        const template: TemplateKey = "uniswap-v2";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+    });
+
+    describe("when the framework = vue", function () {
+      const framework: FrameworkKey = "vue";
+
+      describe("when the template = aave", function () {
+        const template: TemplateKey = "aave";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = compound", function () {
+        const template: TemplateKey = "compound";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = default", function () {
+        const template: TemplateKey = "default";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = kyber", function () {
+        const template: TemplateKey = "kyber";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = maker", function () {
+        const template: TemplateKey = "maker";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = sablier-v1", function () {
+        const template: TemplateKey = "sablier-v1";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = synthetix", function () {
+        const template: TemplateKey = "synthetix";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = uniswap-v1", function () {
+        const template: TemplateKey = "uniswap-v1";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+
+      describe("when the template = uniswap-v2", function () {
+        const template: TemplateKey = "uniswap-v2";
+        const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
+
+        test("it works", async function () {
+          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+          const result: Result = await compare(sourceCodePath, testDirPath);
+          expect(result.same).toBe(true);
+        });
+      });
+    });
+
+    afterEach(function () {
+      rimraf.sync(testDirPath);
+    });
+  });
+
+  describe("hasTemplate", function () {
+    describe("when the framework is not valid", function () {
+      const framework: string = "angular";
+      const template: string = "default";
+      const ref: string = "develop";
+
+      beforeEach(function () {
+        jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+      });
+
+      test("it returns false", async function () {
+        const result: boolean = await hasTemplate(framework, template);
+        expect(result).toBe(false);
+      });
+    });
+
+    describe("when the framework is valid", function () {
+      const framework: string = "react";
+
+      describe("when the template is not valid", function () {
+        const framework: string = "react";
+        const template: string = "bitconnect";
+        const ref: string = "develop";
+
+        beforeEach(function () {
+          jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+        });
+
+        test("it returns false", async function () {
+          const result: boolean = await hasTemplate(framework, template);
+          expect(result).toBe(false);
+        });
+      });
+
+      describe("when the template is valid", function () {
+        const template: string = "default";
+
+        describe("when the ref is not valid", function () {
+          const ref: string = "invalid-ref";
+
+          beforeEach(function () {
+            jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+          });
+
+          test("it returns false", async function () {
+            const result: boolean = await hasTemplate(framework, template);
+            expect(result).toBe(false);
+          });
+        });
+
+        describe("when the ref is valid", function () {
+          describe("when the ref is a branch", function () {
+            const ref: string = "develop";
+
+            beforeEach(function () {
+              jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref, tarGzRef: ref });
+            });
+
+            test("it returns true", async function () {
+              const result: boolean = await hasTemplate(framework, template);
+              expect(result).toBe(true);
+            });
+          });
+
+          describe("when the ref is a semver", function () {
+            const tarGzRef: string = "1.5.0";
+
+            beforeEach(function () {
+              jest.spyOn(envHelpers, "getRefs").mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef });
+            });
+
+            test("it returns true", async function () {
+              const result: boolean = await hasTemplate(framework, template);
+              expect(result).toBe(true);
+            });
+          });
+        });
+      });
+    });
+  });
+});

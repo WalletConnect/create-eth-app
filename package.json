@@ -39,6 +39,7 @@
     "commander": "^4.1.0",
     "commitizen": "^4.2.1",
     "cross-spawn": "^7.0.3",
+    "dir-compare": "^2.3.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
     "execa": "^4.0.3",
@@ -84,10 +85,12 @@
     "build": "ncc build ./src/index.ts --out dist/",
     "clean": "shx rm -rf ./coverage ./dist",
     "lint": "yarn run lint:ts && yarn run prettier:list-different",
-    "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,jsx,.ts,tsx .",
+    "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.jsx,.ts,.tsx .",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
-    "test": "jest",
+    "test": "yarn run test:unit && yarn run test:integration",
+    "test:integration": "jest test/integration",
+    "test:unit": "jest test/unit",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
   }
 }
