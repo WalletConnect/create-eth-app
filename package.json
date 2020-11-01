@@ -87,7 +87,7 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "test": "yarn run test:unit && yarn run test:integration",
-    "test:integration": "jest test/integration/frameworks.test.ts",
+    "test:integration": "jest test/integration",
     "test:unit": "jest test/unit",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
   }

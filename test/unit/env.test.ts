@@ -39,7 +39,7 @@ describe("env", function () {
           process.env.CEA_ENV = "development";
         });
 
-        describe("when DEVELOPMENT_REF is undefined", function () {
+        describe("when DEVELOPMENT_REF = undefined", function () {
           beforeEach(function () {
             process.env.GITHUB_REF = undefined;
             process.env.DEVELOPMENT_REF = undefined;
@@ -69,7 +69,7 @@ describe("env", function () {
             process.env.DEVELOPMENT_REF = "staging";
           });
 
-          test("it returns staging", function () {
+          test.only("it returns staging", function () {
             const { ref, tarGzRef } = getRefs();
             expect(ref).toBe("staging");
             expect(tarGzRef).toBe("staging");
@@ -123,10 +123,10 @@ describe("env", function () {
             process.env.GITHUB_REF = "refs/heads/staging";
           });
 
-          test("it returns staging", function () {
+          test("it returns refs/heads/staging and refs-heads-staging", function () {
             const { ref, tarGzRef } = getRefs();
-            expect(ref).toBe("staging");
-            expect(tarGzRef).toBe("staging");
+            expect(ref).toBe("refs/heads/staging");
+            expect(tarGzRef).toBe("refs-heads-staging");
           });
         });
       });

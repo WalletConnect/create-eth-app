@@ -9,7 +9,6 @@ const packageVersionRegex: RegExp = new RegExp("^v" + semanticVersionRegex.sourc
  * Otherwise, assume it is production mode and use the package version.
  */
 export function getRefs(): { ref: string; tarGzRef: string } {
-  let githubRef: string = "";
   let ref: string = "";
   let tarGzRef: string = "";
 
@@ -19,14 +18,13 @@ export function getRefs(): { ref: string; tarGzRef: string } {
         console.log("Please set a DEVELOPMENT_REF environment variable.");
         process.exit(1);
       } else {
-        githubRef = process.env.DEVELOPMENT_REF;
+        ref = process.env.DEVELOPMENT_REF;
       }
 
-      ref = githubRef;
-      if (packageVersionRegex.test(githubRef)) {
-        tarGzRef = githubRef.slice(1).replace("/", "-");
+      if (packageVersionRegex.test(ref)) {
+        tarGzRef = ref.slice(1);
       } else {
-        tarGzRef = githubRef.replace("/", "-");
+        tarGzRef = ref.replace(new RegExp(/\//g), "-");
       }
     } else {
       ref = "v" + packageJson.version;
@@ -37,16 +35,11 @@ export function getRefs(): { ref: string; tarGzRef: string } {
       console.log("Please set a GITHUB_REF environment variable.");
       process.exit(1);
     } else {
-      githubRef = process.env.GITHUB_REF;
-      if (githubRef.startsWith("refs/heads/")) {
-        githubRef = githubRef.slice(11);
-      }
-
-      ref = githubRef;
-      if (packageVersionRegex.test(githubRef)) {
-        tarGzRef = githubRef.slice(1).replace("/", "-");
+      ref = process.env.GITHUB_REF;
+      if (packageVersionRegex.test(ref)) {
+        tarGzRef = ref.slice(1);
       } else {
-        tarGzRef = githubRef.replace("/", "-");
+        tarGzRef = ref.replace(new RegExp(/\//g), "-");
       }
     }
   }

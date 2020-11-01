@@ -30,17 +30,10 @@ describe("frameworks", function () {
       const framework: string = "react";
       const sourceCodePath: string = path.join(__dirname, "..", "..", "handlebars", framework);
 
-      test.only("it works", async function () {
+      test("it works", async function () {
         await downloadAndExtractFrameworkHandlebars(testDirPath, framework);
         const result: Result = await compare(sourceCodePath, testDirPath);
         console.log({ testDirPath, result });
-        // if (result.diffSet) {
-        //   for (const diff of result.diffSet) {
-        //     if (diff.state !== "equal") {
-        //       console.log({ diff });
-        //     }
-        //   }
-        // }
         expect(result.same).toBe(true);
       });
     });
