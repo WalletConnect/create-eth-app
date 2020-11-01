@@ -33,6 +33,14 @@ describe("frameworks", function () {
       test.only("it works", async function () {
         await downloadAndExtractFrameworkHandlebars(testDirPath, framework);
         const result: Result = await compare(sourceCodePath, testDirPath);
+        console.log({ testDirPath, result });
+        // if (result.diffSet) {
+        //   for (const diff of result.diffSet) {
+        //     if (diff.state !== "equal") {
+        //       console.log({ diff });
+        //     }
+        //   }
+        // }
         expect(result.same).toBe(true);
       });
     });

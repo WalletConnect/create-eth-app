@@ -13,10 +13,6 @@ export function getRefs(): { ref: string; tarGzRef: string } {
   let ref: string = "";
   let tarGzRef: string = "";
 
-  console.log("process.env.CI", process.env.CI);
-  console.log("process.env.GITHUB_REF", process.env.GITHUB_REF);
-  console.log("process.env.GITHUB_REPOSITORY", process.env.GITHUB_REPOSITORY);
-
   if (!process.env.CI) {
     if (process.env.CEA_ENV === "development") {
       if (!process.env.DEVELOPMENT_REF) {
@@ -28,9 +24,9 @@ export function getRefs(): { ref: string; tarGzRef: string } {
 
       ref = githubRef;
       if (packageVersionRegex.test(githubRef)) {
-        tarGzRef = githubRef.slice(1);
+        tarGzRef = githubRef.slice(1).replace("/", "-");
       } else {
-        tarGzRef = githubRef;
+        tarGzRef = githubRef.replace("/", "-");
       }
     } else {
       ref = "v" + packageJson.version;
@@ -48,9 +44,9 @@ export function getRefs(): { ref: string; tarGzRef: string } {
 
       ref = githubRef;
       if (packageVersionRegex.test(githubRef)) {
-        tarGzRef = githubRef.slice(1);
+        tarGzRef = githubRef.slice(1).replace("/", "-");
       } else {
-        tarGzRef = githubRef;
+        tarGzRef = githubRef.replace("/", "-");
       }
     }
   }

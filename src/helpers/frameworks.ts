@@ -15,6 +15,9 @@ export async function downloadAndExtractFrameworkHandlebars(root: string, framew
   const repository: string = getRepository();
   const { ref, tarGzRef } = getRefs();
   const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
+
+  console.log({ repository, ref, tarGzRef, downloadUrl });
+
   return promisePipe(
     got.stream(downloadUrl),
     tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-${tarGzRef}/handlebars/${framework}`]),

@@ -3,7 +3,8 @@ name: "Continuous Integration"
 on:
   push:
     branches:
-      - "**"
+      - "develop"
+      - "staging"
   pull_request:
     branches:
       - "develop"
