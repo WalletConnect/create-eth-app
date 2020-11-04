@@ -1,0 +1,34 @@
+name: "End-to-End Tests"
+
+on:
+  push:
+    branches:
+      - "develop"
+      - "staging"
+  pull_request:
+    branches:
+      - "develop"
+      - "staging"
+
+jobs:
+  ci:
+    runs-on: "ubuntu-18.04"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Install Node.js 12.x"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: "12.x"
+
+      - uses: "actions/cache@v2"
+        with:
+          key: ${{ runner.os }}-modules-${{ hashFiles('./dist') }}
+          path: "./dist"
+
+      - name: "Build the distributable if it doesn't exist"
+        run: "./scripts/ensureDist.sh"
+
+      - name: "Run the e2e test"
+        run: ".yarn run test:e2e"

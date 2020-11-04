@@ -24,6 +24,7 @@
     "@commitlint/config-lerna-scopes": "^8.3.4",
     "@jest/globals": "^26.6.1",
     "@types/cross-spawn": "^6.0.2",
+    "@types/execa": "^2.0.0",
     "@types/fs-extra": "^9.0.1",
     "@types/got": "9.6.2",
     "@types/jest": "^26.0.15",
@@ -41,7 +42,7 @@
     "dir-compare": "^2.3.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
-    "execa": "^4.0.3",
+    "execa": "^4.1.0",
     "fs-extra": "^9.0.1",
     "got": "^10.4.0",
     "handlebars": "^4.7.6",
@@ -58,7 +59,8 @@
     "ts-jest": "26.4.3",
     "typescript": "^4.0.3",
     "update-check": "^1.5.3",
-    "validate-npm-package-name": "^3.0.0"
+    "validate-npm-package-name": "^3.0.0",
+    "wait-for-localhost": "^3.3.0"
   },
   "files": [
     "/dist"
@@ -87,6 +89,7 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,json,md,sol,ts,tsx}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,jsx,md,sol,ts,tsx}\"",
     "test": "yarn run test:unit && yarn run test:integration",
+    "test:e2e": "jest test/e2e",
     "test:integration": "jest test/integration",
     "test:unit": "jest test/unit",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
