@@ -23,6 +23,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@commitlint/config-lerna-scopes": "^8.3.4",
     "@jest/globals": "^26.6.1",
+    "@octokit/request": "^5.4.10",
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.1",
     "@types/got": "9.6.2",
@@ -58,6 +59,7 @@
     "ts-jest": "26.4.3",
     "typescript": "^4.0.3",
     "update-check": "^1.5.3",
+    "url-exist": "^2.0.2",
     "validate-npm-package-name": "^3.0.0"
   },
   "files": [

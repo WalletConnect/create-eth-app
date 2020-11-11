@@ -2,10 +2,10 @@ import fsExtra from "fs-extra";
 import got from "got";
 import promisePipe from "promisepipe";
 import tar from "tar";
+import urlExists from "url-exist";
 
 import { codeloadBaseUrl, githubApiBaseUrl } from "./constants";
 import { getRefs, getRepository } from "./env";
-import { isUrlOk } from "./networking";
 
 export async function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
   await fsExtra.ensureDir(root);
@@ -24,7 +24,7 @@ export function hasFramework(framework: string): Promise<boolean> {
   const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${encodeURIComponent(
     framework,
   )}?ref=${ref}`;
-  return isUrlOk(url);
+  return urlExists(url);
 }
 
 export function hasFrameworkHandlebars(framework: string): Promise<boolean> {
@@ -33,5 +33,5 @@ export function hasFrameworkHandlebars(framework: string): Promise<boolean> {
   const url: string = `${githubApiBaseUrl}/${repository}/contents/handlebars/${encodeURIComponent(
     framework,
   )}?ref=${ref}`;
-  return isUrlOk(url);
+  return urlExists(url);
 }

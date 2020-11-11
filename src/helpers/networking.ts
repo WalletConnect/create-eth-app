@@ -1,6 +1,6 @@
 import dns from "dns";
-import got from "got";
 import url from "url";
+
 import { execSync } from "child_process";
 
 export function getProxy(): string {
@@ -42,11 +42,4 @@ export function getOnline(): Promise<boolean> {
       });
     });
   });
-}
-
-export async function isUrlOk(urlToCheck: string): Promise<boolean> {
-  const res = await got(urlToCheck).catch(function (error) {
-    return error;
-  });
-  return res.statusCode === 200;
 }

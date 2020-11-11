@@ -4,6 +4,7 @@ import got from "got";
 import path from "path";
 import promisePipe from "promisepipe";
 import tar from "tar";
+import urlExists from "url-exist";
 
 import {
   HandlebarsFiles,
@@ -14,7 +15,6 @@ import {
   githubApiBaseUrl,
 } from "./constants";
 import { getRefs, getRepository } from "./env";
-import { isUrlOk } from "./networking";
 
 export async function downloadAndExtractTemplateContext(
   root: string,
@@ -74,5 +74,5 @@ export function hasTemplate(framework: string, template: string): Promise<boolea
   const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${framework}/${encodeURIComponent(
     template,
   )}?ref=${ref}`;
-  return isUrlOk(url);
+  return urlExists(url);
 }

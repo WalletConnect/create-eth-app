@@ -69,7 +69,7 @@ describe("env", function () {
             process.env.DEVELOPMENT_REF = "staging";
           });
 
-          test.only("it returns staging", function () {
+          test("it returns staging", function () {
             const { ref, tarGzRef } = getRefs();
             expect(ref).toBe("staging");
             expect(tarGzRef).toBe("staging");
