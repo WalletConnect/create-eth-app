@@ -7,7 +7,7 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { validateNpmName } from "./helpers/validatePkg";
+import { validatePkgName } from "./helpers/npm";
 
 let projectPath: string = "";
 
@@ -33,19 +33,19 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .allowUnknownOption()
   .parse(process.argv);
 
-async function run() {
+async function run(): Promise<void> {
   if (typeof projectPath === "string") {
     projectPath = projectPath.trim();
   }
 
   if (!projectPath) {
-    const res: prompts.Answers<string> = await prompts({
+    const result: prompts.Answers<string> = await prompts({
       initial: "my-eth-app",
       message: "What is your project named?",
       name: "path",
       type: "text",
       validate: function (name: string) {
-        const validation: { valid: boolean; problems?: string[] } = validateNpmName(path.basename(path.resolve(name)));
+        const validation: { valid: boolean; problems?: string[] } = validatePkgName(path.basename(path.resolve(name)));
         if (validation.valid) {
           return true;
         }
@@ -58,8 +58,8 @@ async function run() {
       },
     });
 
-    if (typeof res.path === "string") {
-      projectPath = res.path.trim();
+    if (typeof result.path === "string") {
+      projectPath = result.path.trim();
     }
   }
 
@@ -78,7 +78,7 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
-  const { problems, valid } = validateNpmName(projectName);
+  const { problems, valid } = validatePkgName(projectName);
   if (!valid) {
     console.error(
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
@@ -99,7 +99,7 @@ async function run() {
   });
 }
 
-const update = updateCheck(packageJson).catch(function () {
+const update: Promise<{ latest: boolean }> = updateCheck(packageJson).catch(function () {
   return null;
 });
 
@@ -113,7 +113,7 @@ async function notifyUpdate(): Promise<void> {
       console.log();
     }
   } catch {
-    /* Ignore error */
+    // Ignore error.
   }
 }
 

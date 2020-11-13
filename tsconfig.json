@@ -13,5 +13,5 @@
     "strict": true,
     "target": "ES2015"
   },
-  "exclude": ["__tests__", "dist", "lib", "node_modules", "templates"]
+  "exclude": ["dist", "lib", "node_modules", "templates"]
 }

@@ -1,24 +1,28 @@
-import { execSync } from "child_process";
 import dns from "dns";
-import got from "got";
 import url from "url";
 
-function getProxy(): string | undefined {
+import { execSync } from "child_process";
+
+export function getProxy(): string {
   if (process.env.https_proxy) {
     return process.env.https_proxy;
   }
 
   try {
     const httpsProxy = execSync("npm config get https-proxy").toString().trim();
-    return httpsProxy !== "null" ? httpsProxy : undefined;
+    if (httpsProxy !== "null") {
+      return httpsProxy;
+    } else {
+      return "";
+    }
   } catch (e) {
-    return;
+    return "";
   }
 }
 
 export function getOnline(): Promise<boolean> {
   return new Promise(function (resolve) {
-    dns.lookup("registry.yarnpkg.com", function (registryErr) {
+    dns.lookup("registry.yarnpkg.com", function (registryErr: NodeJS.ErrnoException | null) {
       if (!registryErr) {
         return resolve(true);
       }
@@ -33,16 +37,9 @@ export function getOnline(): Promise<boolean> {
         return resolve(false);
       }
 
-      dns.lookup(hostname, function (proxyErr) {
+      dns.lookup(hostname, function (proxyErr: NodeJS.ErrnoException | null) {
         resolve(proxyErr == null);
       });
     });
   });
-}
-
-export async function isUrlOk(urlToCheck: string): Promise<boolean> {
-  const res = await got(urlToCheck).catch(function (error) {
-    return error;
-  });
-  return res.statusCode === 200;
 }

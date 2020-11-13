@@ -1,20 +1,14 @@
+import Handlebars from "handlebars";
 import chalk from "chalk";
-import fs from "fs";
-import makeDir from "make-dir";
+import fsExtra from "fs-extra";
 import path from "path";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
-import {
-  downloadAndExtractFrameworkHandlebars,
-  hasFramework,
-  hasFrameworkHandlebars,
-  hasTemplate,
-} from "./helpers/github";
-import { downloadAndParseTemplate, registerHandlebarsHelpers } from "./helpers/templates";
+import { downloadAndExtractFrameworkHandlebars, hasFramework, hasFrameworkHandlebars } from "./helpers/frameworks";
+import { downloadAndExtractTemplateContext, hasTemplate, parseTemplate } from "./helpers/templates";
 import { getOnline } from "./helpers/networking";
-import { installDeps } from "./helpers/installDeps";
-import { isFolderEmpty } from "./helpers/folders";
-import { shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
+import { installDeps, shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
+import { isDirectoryEmpty } from "./helpers/directories";
 import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
 import { tryGitInit } from "./helpers/git";
 
@@ -57,15 +51,17 @@ export async function createEthApp({
   const root: string = path.resolve(appPath);
   const appName: string = path.basename(root);
 
-  await makeDir(root);
-  if (!isFolderEmpty(root, appName)) {
+  await fsExtra.ensureDir(root);
+  if (!isDirectoryEmpty(root, appName)) {
     process.exit(1);
   }
 
   shouldUseYarn();
   shouldUseYarnWorkspaces();
+
   const isOnline: boolean = await getOnline();
   const originalDirectory: string = process.cwd();
+  process.chdir(root);
 
   console.log();
   console.log(
@@ -75,9 +71,6 @@ export async function createEthApp({
   );
   console.log();
 
-  await makeDir(root);
-  process.chdir(root);
-
   if (template === "default") {
     console.log("Downloading template files. This might take a moment.");
   } else {
@@ -85,14 +78,18 @@ export async function createEthApp({
   }
   console.log();
 
-  registerHandlebarsHelpers();
+  Handlebars.registerHelper("raw-helper", function (options) {
+    return options.fn();
+  });
   await downloadAndExtractFrameworkHandlebars(root, framework);
-  await downloadAndParseTemplate(appPath, framework as FrameworkKey, template as TemplateKey);
+  const templateContextPath: string = path.join(appPath, "context");
+  await downloadAndExtractTemplateContext(templateContextPath, framework as FrameworkKey, template as TemplateKey);
+  await parseTemplate(appPath, templateContextPath, framework as FrameworkKey, template as TemplateKey);
 
-  /* Copy the default `.gitignore` if the template does not provide one. */
+  // Copy the default `.gitignore` if the template does not provide one.
   const ignorePath = path.join(root, ".gitignore");
-  if (!fs.existsSync(ignorePath)) {
-    fs.copyFileSync(path.join(__dirname, "gitignore"), ignorePath);
+  if (!fsExtra.existsSync(ignorePath)) {
+    fsExtra.copyFileSync(path.join(__dirname, "gitignore"), ignorePath);
   }
 
   console.log("Installing packages. This might take a couple of minutes.");
@@ -117,7 +114,7 @@ export async function createEthApp({
   console.log("Inside that directory, you can run several commands:");
 
   const reactAppPath = path.join(root, "packages", "react-app");
-  if (fs.existsSync(reactAppPath)) {
+  if (fsExtra.existsSync(reactAppPath)) {
     console.log();
     console.log(chalk.cyan("  yarn react-app:start"));
     console.log("    Starts the development server.");
@@ -128,7 +125,7 @@ export async function createEthApp({
   }
 
   const vueAppPath = path.join(root, "packages", "vue-app");
-  if (fs.existsSync(vueAppPath)) {
+  if (fsExtra.existsSync(vueAppPath)) {
     console.log();
     console.log(chalk.cyan("  yarn vue-app:serve"));
     console.log("    Starts the development server.");
@@ -139,7 +136,7 @@ export async function createEthApp({
   }
 
   const subgraphPath = path.join(root, "packages", "subgraph");
-  if (fs.existsSync(subgraphPath)) {
+  if (fsExtra.existsSync(subgraphPath)) {
     console.log(chalk.cyan("  yarn subgraph:codegen"));
     console.log("    Generates AssemblyScript types for smart contract ABIs and the subgraph schema.");
     console.log();
@@ -151,9 +148,9 @@ export async function createEthApp({
   console.log("We suggest that you begin by typing:");
   console.log();
   console.log(chalk.cyan("  cd"), cdPath);
-  if (fs.existsSync(reactAppPath)) {
+  if (fsExtra.existsSync(reactAppPath)) {
     console.log(`  ${chalk.cyan("yarn react-app:start")}`);
-  } else if (fs.existsSync(vueAppPath)) {
+  } else if (fsExtra.existsSync(vueAppPath)) {
     console.log(`  ${chalk.cyan("yarn vue-app:serve")}`);
   }
   console.log();

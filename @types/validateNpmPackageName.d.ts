@@ -1,5 +1,5 @@
 declare module "validate-npm-package-name" {
-  function validate(
+  function validateNpmPackageName(
     projectName: string,
   ): {
     errors?: string[] | null;
@@ -8,5 +8,5 @@ declare module "validate-npm-package-name" {
     warnings?: string[] | null;
   };
 
-  export default validate;
+  export default validateNpmPackageName;
 }
