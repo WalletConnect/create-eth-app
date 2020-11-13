@@ -3,7 +3,9 @@ import urlExists from "url-exist";
 import { request } from "@octokit/request";
 
 // Set this env variable when you hit the API rate limit while testing.
-const githubOauthToken: string = process.env.GITHUB_OAUTH_TOKEN || "";
+const githubOauthToken: string = process.env.GH_OAUTH_TOKEN || "";
+
+console.info({ githubOauthToken });
 
 async function stubbedUrlExists(urlToCheck: string): Promise<boolean> {
   if (githubOauthToken) {
