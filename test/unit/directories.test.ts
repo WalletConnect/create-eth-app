@@ -24,7 +24,7 @@ const filesDirsTable: string[][] = [
   ["yarn-debug.log", "file"],
   ["yarn-error.log", "file"],
   ["proj.iml", "file"],
-]
+];
 
 describe("directories", function () {
   const appName: string = "my-eth-app";
@@ -43,9 +43,9 @@ describe("directories", function () {
   describe("when the directory is not empty", function () {
     describe.each(filesDirsTable)("when it contains a %s %s", function (name: string, type: string) {
       beforeEach(async function () {
-        if (type === "file"){
+        if (type === "file") {
           await fsExtra.open(path.join(testDirPath, name), "w");
-        } else if (type === "directory"){
+        } else if (type === "directory") {
           await fsExtra.mkdir(path.join(testDirPath, name));
         }
       });

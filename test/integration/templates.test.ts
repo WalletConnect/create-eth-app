@@ -8,7 +8,7 @@ import * as envHelpers from "../../src/helpers/env";
 import { FrameworkKey, TemplateKey, Templates } from "../../src/helpers/constants";
 import { downloadAndExtractTemplateContext, hasTemplate } from "../../src/helpers/templates";
 
-const templateTable = Templates.map((template) => [template])
+const templateTable = Templates.map(template => [template]);
 
 describe("templates", function () {
   let getRefsMock: jest.SpyInstance;
@@ -26,7 +26,7 @@ describe("templates", function () {
 
     describe("when the framework = react", function () {
       const framework: FrameworkKey = "react";
-  
+
       describe.each(templateTable)(`when the template = %s`, function (template: TemplateKey) {
         const sourceCodePath: string = path.join(__dirname, "..", "..", "templates", framework, template);
 
