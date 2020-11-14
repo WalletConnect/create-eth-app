@@ -5,6 +5,7 @@ import tempy from "tempy";
 
 import { isDirectoryEmpty } from "../../src/helpers/directories";
 
+// This has to be in sync with the valid files defined "helpers/directories".
 const filesDirsTable: string[][] = [
   [".DS_Store", "file"],
   [".git", "directory"],
@@ -41,7 +42,7 @@ describe("directories", function () {
   });
 
   describe("when the directory is not empty", function () {
-    describe.each(filesDirsTable)("when it contains a %s %s", function (name: string, type: string) {
+    describe.each(filesDirsTable)("when it contains a \"%s\" %s", function (name: string, type: string) {
       beforeEach(async function () {
         if (type === "file") {
           await fsExtra.open(path.join(testDirPath, name), "w");
