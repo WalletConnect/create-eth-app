@@ -1,6 +1,6 @@
 {
-  "orgName": "@mStable-app",
-  "packageName": "@mStable-app/monorepo",
+  "orgName": "@mstable-app",
+  "packageName": "@mstable-app/monorepo",
   "keywords": [
     "mstable"
   ]

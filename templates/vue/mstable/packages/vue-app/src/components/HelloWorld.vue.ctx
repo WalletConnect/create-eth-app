@@ -2,7 +2,7 @@
   "callToAction": "Read On-Chain mAssets",
   "graphqlQueryName": "GET_MASSETS",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+    "import { MAINNET_ID, addresses, abis } from \"@mstable-app/contracts\";",
     "import GET_MASSETS from \"../graphql/subgraph\";"
   ],
   "learnItems": [
