@@ -42,7 +42,7 @@ describe("directories", function () {
   });
 
   describe("when the directory is not empty", function () {
-    describe.each(filesDirsTable)("when it contains a \"%s\" %s", function (name: string, type: string) {
+    describe.each(filesDirsTable)('when it contains a "%s" %s', function (name: string, type: string) {
       beforeEach(async function () {
         if (type === "file") {
           await fsExtra.open(path.join(testDirPath, name), "w");

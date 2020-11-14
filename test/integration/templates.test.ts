@@ -9,7 +9,7 @@ import { FrameworkKey, TemplateKey, Templates } from "../../src/helpers/constant
 import { downloadAndExtractTemplateContext, hasTemplate } from "../../src/helpers/templates";
 
 const templateTable = Templates.map(template => {
-  return [template]
+  return [template];
 });
 
 describe("templates", function () {
