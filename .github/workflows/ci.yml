@@ -1,5 +1,8 @@
 name: "Continuous Integration"
 
+env:
+  GH_OAUTH_TOKEN: ${{ secrets.GH_OAUTH_TOKEN }}
+
 on:
   push:
     branches:
