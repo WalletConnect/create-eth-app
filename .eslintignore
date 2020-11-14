@@ -1,10 +1,9 @@
 # folders
+.vscode/
 dist/
 handlebars/
 templates/
 
 # files
-.solcover.js
-coverage.json
 jest.config.js
 jest.setup.js
