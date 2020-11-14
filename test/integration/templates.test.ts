@@ -52,7 +52,7 @@ describe("templates", function () {
 
         test("it works", async function () {
           try {
-          await downloadAndExtractTemplateContext(testDirPath, framework, template);
+            await downloadAndExtractTemplateContext(testDirPath, framework, template);
           } catch (error) {
             console.log({ error });
           }
