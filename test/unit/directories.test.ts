@@ -5,6 +5,28 @@ import tempy from "tempy";
 
 import { isDirectoryEmpty } from "../../src/helpers/directories";
 
+// This has to be in sync with the valid files defined "helpers/directories".
+const filesDirsTable: string[][] = [
+  [".DS_Store", "file"],
+  [".git", "directory"],
+  [".gitattributes", "file"],
+  [".gitignore", "file"],
+  [".gitlab-ci.yml", "file"],
+  [".hg", "directory"],
+  [".hgcheck", "file"],
+  [".hgignore", "file"],
+  [".idea", "directory"],
+  ["Thumbs.db", "file"],
+  [".travis.yml", "file"],
+  ["docs", "directory"],
+  ["LICENSE", "file"],
+  ["mkdocs.yml", "file"],
+  ["npm-debug.log", "file"],
+  ["yarn-debug.log", "file"],
+  ["yarn-error.log", "file"],
+  ["proj.iml", "file"],
+];
+
 describe("directories", function () {
   const appName: string = "my-eth-app";
   let testDirPath: string;
@@ -20,179 +42,13 @@ describe("directories", function () {
   });
 
   describe("when the directory is not empty", function () {
-    describe("when it contains a .DS_Store file", function () {
+    describe.each(filesDirsTable)('when it contains a "%s" %s', function (name: string, type: string) {
       beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".DS_Store"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .git directory", function () {
-      beforeEach(async function () {
-        await fsExtra.mkdir(path.join(testDirPath, ".git"));
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .gitattributes file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".gitattributes"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .gitignore file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".gitignore"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .gitlab-ci.yml file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".gitlab-ci.yml"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .hg directory", function () {
-      beforeEach(async function () {
-        await fsExtra.mkdir(path.join(testDirPath, ".hg"));
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .hgcheck file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".hgcheck"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .hgignore file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".hgignore"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains an .idea folder", function () {
-      beforeEach(async function () {
-        await fsExtra.mkdir(path.join(testDirPath, ".idea"));
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a .travis.yml file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, ".travis.yml"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a LICENSE file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "LICENSE"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a Thumbs.db file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "Thumbs.db"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a docs directory", function () {
-      beforeEach(async function () {
-        await fsExtra.mkdir(path.join(testDirPath, "docs"));
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a mkdocs.yml file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "mkdocs.yml"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a npm-debug.log file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "npm-debug.log"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a yarn-debug.log file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "yarn-debug.log"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains a yarn-error.log file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "yarn-error.log"), "w");
-      });
-
-      test("returns true", async function () {
-        expect(isDirectoryEmpty(testDirPath, appName)).toBe(true);
-      });
-    });
-
-    describe("when it contains an proj.iml file", function () {
-      beforeEach(async function () {
-        await fsExtra.open(path.join(testDirPath, "proj.iml"), "w");
+        if (type === "file") {
+          await fsExtra.open(path.join(testDirPath, name), "w");
+        } else if (type === "directory") {
+          await fsExtra.mkdir(path.join(testDirPath, name));
+        }
       });
 
       test("returns true", async function () {
