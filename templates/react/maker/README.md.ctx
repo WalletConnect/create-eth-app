@@ -1,5 +1,5 @@
 {
-  "description": "Maker created Dai, the world’s first unbiased currency. It be used by anyone, anywhere, anytime. Read more about it in the [official documentation](https://docs.makerdao.com/).",
+  "description": "Maker is the creator of DAI, the world’s first unbiased currency. It be used by anyone, anywhere, anytime. Read more about it in the [official documentation](https://docs.makerdao.com/).",
   "packages": [
     "[contracts](/packages/contracts)",
     "[react-app](/packages/react-app)"
