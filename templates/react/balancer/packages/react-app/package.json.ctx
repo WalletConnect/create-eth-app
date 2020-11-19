@@ -2,10 +2,10 @@
   "packageName": "@balancer-app/react-app",
   "dependencies": {
     "keys": [
-      "@balancer-labs/sor",
+      "@balancer-labs/sor"
     ],
     "values": [
-      "^0.3.3",
+      "^0.3.3"
     ]
   }
 }
