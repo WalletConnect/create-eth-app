@@ -15,5 +15,5 @@ export default {
   dsProxyRegistry,
   erc20,
   exchangeProxy,
-  weth
+  weth,
 };
