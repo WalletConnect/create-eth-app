@@ -1,0 +1,13 @@
+{
+  "packageName": "@balancer-app/vue-app",
+  "dependencies": {
+    "keys": [
+      "@balancer-app/contracts",
+      "@balancer-labs/sor"
+    ],
+    "values": [
+      "^1.0.0"
+      "^0.3.3",
+    ]
+  }
+}

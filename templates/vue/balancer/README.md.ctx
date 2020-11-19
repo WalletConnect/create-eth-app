@@ -1,0 +1,11 @@
+{
+  "description": "Balancer is an automated portfolio manager, liquidity provider, and price sensor on Ethereum. It has the unique features of Smart Pools and supporting up to 8 tokens per pool. Read more about it in the [official documentation](https://docs.balancer.finance/).",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[vue-app](/packages/vue-app)"
+  ],
+  "subgraphName": "Balancer",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/balancer-labs/balancer",
+  "templateName": "Balancer",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/vue/balancer"
+}

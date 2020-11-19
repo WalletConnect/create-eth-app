@@ -49,6 +49,7 @@ export const HardcodedBespokeTemplateFiles: Record<FrameworkKey, string[]> = {
 export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
   react: {
     aave: HardcodedBespokeTemplateFiles.react,
+    balancer: HardcodedBespokeTemplateFiles.react,
     compound: HardcodedBespokeTemplateFiles.react,
     default: [...HardcodedBespokeTemplateFiles.react, ".gitignore", "README.md", "packages/subgraph"],
     kyber: HardcodedBespokeTemplateFiles.react,
@@ -61,6 +62,7 @@ export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, st
   },
   vue: {
     aave: HardcodedBespokeTemplateFiles.vue,
+    balancer: HardcodedBespokeTemplateFiles.vue,
     compound: HardcodedBespokeTemplateFiles.vue,
     default: [...HardcodedBespokeTemplateFiles.vue, ".gitignore", "README.md", "packages/subgraph"],
     kyber: HardcodedBespokeTemplateFiles.vue,
@@ -78,6 +80,7 @@ export const semanticVersionRegex: RegExp = /(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9
 
 export const Templates = [
   "aave",
+  "balancer",
   "compound",
   "default",
   "kyber",
