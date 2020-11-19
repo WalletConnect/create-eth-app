@@ -9,7 +9,9 @@
     ]
   },
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@balancer-app/contracts\";",
+    "import { parseEther } from \"@ethersproject/units\";",
+    "import { MAINNET_ID, addresses } from \"@balancer-app/contracts\";",
+    "import { getPoolsWithTokens, smartOrderRouter } from \"@balancer-labs/sor\";",
     "import GET_PUBLIC_POOL_DATA from \"./graphql/subgraph\";"
   ],
   "learnUrl": "https://docs.balancer.finance/getting-started/faq",

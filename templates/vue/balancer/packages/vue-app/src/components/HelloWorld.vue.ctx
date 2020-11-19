@@ -2,8 +2,10 @@
   "callToAction": "Find optimal swap",
   "graphqlQueryName": "GET_PUBLIC_POOL_DATA",
   "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@balancer-app/contracts\";",
-    "import GET_PUBLIC_POOL_DATA from \"./graphql/subgraph\";"
+    "import { parseEther } from \"@ethersproject/units\";",
+    "import { MAINNET_ID, addresses } from \"@balancer-app/contracts\";",
+    "import { getPoolsWithTokens, smartOrderRouter } from \"@balancer-labs/sor\";",
+    "import GET_PUBLIC_POOL_DATA from \"../graphql/subgraph\";"
   ],
   "learnItems": [
     {
@@ -21,7 +23,7 @@
   ],
   "mounted": {
     "readData": [
-      "if (!loading && !error && data && data.pools) {",
+      "if (!loading && !stale && data && data.pools) {",
       "  console.log({ pools: data.pools });",
       "}"
     ]
