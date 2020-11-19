@@ -4,7 +4,7 @@
     "keys": [
       "@balancer-app/contracts",
       "@balancer-labs/sor",
-      "@ethersproject/units",
+      "@ethersproject/units"
     ],
     "values": [
       "^1.0.0",
