@@ -23,16 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   #76](https://github.com/PaulRBerg/create-eth-app/pull/76)
 - Upgrade dependencies, both ours and the react and vue template ones
 - [Internal] Rename many of the helpers, e.g. "isFolderEmpty" to "directories"
-- [Internal] Set up CI on GitHub Actions, fixing [issue #56](https://github.com/PaulRBerg/create-eth-app/issues/56)
 - [Internal] Upgrade to TypeScript v4
-- [Internal] Use ESlint instead of TSLint, fixing [issue #74](https://github.com/PaulRBerg/create-eth-app/issues/74)
-- [Internal] Use @vercel/ncc instead of @zeit/ncc, fixing [issue #21](https://github.com/PaulRBerg/create-eth-app/issues/21)
+- [Internal] Use ESlint instead of TSLint and fix [issue #74](https://github.com/PaulRBerg/create-eth-app/issues/74)
+- [Internal] Use @vercel/ncc instead of @zeit/ncc and fix [issue #21](https://github.com/PaulRBerg/create-eth-app/issues/21)
 
 ### Fixed
 
-- Duplicated comment about Infura, [courtesy]
-  #84](https://github.com/PaulRBerg/create-eth-app/pull/84) of @gasolin
-
+- Duplicated comment about Infura, [courtesy](https://github.com/PaulRBerg/create-eth-app/pull/84) of @gasolin
+- [Internal] [Issue #56](https://github.com/PaulRBerg/create-eth-app/issues/56) by setting up CI on GitHub Actions
 ## [1.5.0] - 2020-09-14
 
 ### Added
