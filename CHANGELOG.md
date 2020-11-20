@@ -5,17 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2020-09-20
+
+### Added
+
+- Balancer template, as per [pull request #98](https://github.com/PaulRBerg/create-eth-app/pull/98)
+- mStable template, as per [pull request #97](https://github.com/PaulRBerg/create-eth-app/pull/97)
+- [Internal] Comprehensive unit and integration tests with good coverage of the repo, as per [pull request #86](https://github.com/PaulRBerg/create-eth-app/pull/86)
+- [Internal] New [env.ts](https://github.com/PaulRBerg/create-eth-app/tree/v1.6.0/src/helpers/env.ts) helper that deals with environment variable management
+
+### Changed
+
+- Refactor web3Modal code as a React Hook, [courtesy](https://github.com/PaulRBerg/create-eth-app/pull/79) of @gasolin
+- Rename "dist" to "build" in Vue.js templates, as per [pull request
+  #77](https://github.com/PaulRBerg/create-eth-app/pull/77)
+- Strict version tags for the download urls, as per [pull request
+  #76](https://github.com/PaulRBerg/create-eth-app/pull/76)
+- Upgrade dependencies, both ours and the react and vue template ones
+- [Internal] Rename many of the helpers, e.g. "isFolderEmpty" to "directories"
+- [Internal] Set up CI on GitHub Actions, fixing [issue #56](https://github.com/PaulRBerg/create-eth-app/issues/56)
+- [Internal] Upgrade to TypeScript v4
+- [Internal] Use ESlint instead of TSLint, fixing [issue #74](https://github.com/PaulRBerg/create-eth-app/issues/74)
+- [Internal] Use @vercel/ncc instead of @zeit/ncc, fixing [issue #21](https://github.com/PaulRBerg/create-eth-app/issues/21)
+
+### Fixed
+
+- Duplicated comment about Infura, [courtesy]
+  #84](https://github.com/PaulRBerg/create-eth-app/pull/84) of @gasolin
+
 ## [1.5.0] - 2020-09-14
 
 ### Added
 
-- Add simple integration of web3Modal to React templates, as per [pull request #63](https://github.com/PaulRBerg/create-eth-app/pull/63)
+- Simple integration of web3Modal to React templates, as per [pull request #63](https://github.com/PaulRBerg/create-eth-app/pull/63)
 
 ## [1.4.1] - 2020-09-03
 
 ### Fixed
 
-- The branch name has been set back to "develop" after being erroneously set to "staging" when v1.4.0 was shipped
+- Branch name set back to "develop" after being erroneously set to "staging" when v1.4.0 was shipped
 
 ## [1.4.0] - 2020-08-23
 
