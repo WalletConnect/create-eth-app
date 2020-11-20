@@ -1,28 +1,28 @@
-import { execSync } from "child_process";
+import fsExtra from "fs-extra";
 import path from "path";
-import rimraf from "rimraf";
+import { execSync } from "child_process";
 
-function isInGitRepository() {
+export function isInGitRepository(): boolean {
   try {
     execSync("git rev-parse --is-inside-work-tree", { stdio: "ignore" });
     return true;
   } catch (_) {
-    /* Ignore error */
+    // Ignore error.
   }
   return false;
 }
 
-function isInMercurialRepository() {
+export function isInMercurialRepository(): boolean {
   try {
     execSync("hg --cwd . root", { stdio: "ignore" });
     return true;
   } catch (_) {
-    /* Ignore error */
+    // Ignore error.
   }
   return false;
 }
 
-export function tryGitInit(root: string) {
+export function tryGitInit(root: string): boolean {
   let didInit: boolean = false;
   try {
     execSync("git --version", { stdio: "ignore" });
@@ -41,9 +41,9 @@ export function tryGitInit(root: string) {
   } catch (error) {
     if (didInit) {
       try {
-        rimraf.sync(path.join(root, ".git"));
+        fsExtra.removeSync(path.join(root, ".git"));
       } catch (_) {
-        /* Ignore error */
+        // Ignore error.
       }
     }
     return false;

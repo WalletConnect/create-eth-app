@@ -7,7 +7,7 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
-import { validateNpmName } from "./helpers/validatePkg";
+import { validatePkgName } from "./helpers/npm";
 
 let projectPath: string = "";
 
@@ -15,7 +15,7 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .version(packageJson.version)
   .arguments("<project-directory>")
   .usage(`${chalk.green("<project-directory>")} [options]`)
-  .action(name => {
+  .action(function (name: string) {
     projectPath = name;
   })
   .option(
@@ -33,28 +33,33 @@ const program: Commander.Command = new Commander.Command(packageJson.name)
   .allowUnknownOption()
   .parse(process.argv);
 
-async function run() {
+async function run(): Promise<void> {
   if (typeof projectPath === "string") {
     projectPath = projectPath.trim();
   }
 
   if (!projectPath) {
-    const res: prompts.Answers<string> = await prompts({
-      initial: "my-app",
+    const result: prompts.Answers<string> = await prompts({
+      initial: "my-eth-app",
       message: "What is your project named?",
       name: "path",
       type: "text",
-      validate: (name: string) => {
-        const validation: { valid: boolean; problems?: string[] } = validateNpmName(path.basename(path.resolve(name)));
+      validate: function (name: string) {
+        const validation: { valid: boolean; problems?: string[] } = validatePkgName(path.basename(path.resolve(name)));
         if (validation.valid) {
           return true;
         }
-        return "Invalid project name: " + validation.problems![0];
+
+        if (validation.problems && validation.problems[0]) {
+          return "Invalid project name: " + validation.problems[0];
+        } else {
+          return "Invalid project name";
+        }
       },
     });
 
-    if (typeof res.path === "string") {
-      projectPath = res.path.trim();
+    if (typeof result.path === "string") {
+      projectPath = result.path.trim();
     }
   }
 
@@ -73,13 +78,17 @@ async function run() {
   const resolvedProjectPath = path.resolve(projectPath);
   const projectName = path.basename(resolvedProjectPath);
 
-  const { problems, valid } = validateNpmName(projectName);
+  const { problems, valid } = validatePkgName(projectName);
   if (!valid) {
     console.error(
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
     );
 
-    problems!.forEach((problem: string) => console.error(`    ${chalk.red.bold("*")} ${problem}`));
+    if (problems) {
+      problems.forEach(function (problem: string) {
+        return console.error(`    ${chalk.red.bold("*")} ${problem}`);
+      });
+    }
     process.exit(1);
   }
 
@@ -90,9 +99,11 @@ async function run() {
   });
 }
 
-const update = updateCheck(packageJson).catch(() => null);
+const update: Promise<{ latest: boolean }> = updateCheck(packageJson).catch(function () {
+  return null;
+});
 
-async function notifyUpdate() {
+async function notifyUpdate(): Promise<void> {
   try {
     const res: { latest: boolean } = await update;
     if (res?.latest) {
@@ -102,25 +113,27 @@ async function notifyUpdate() {
       console.log();
     }
   } catch {
-    /* Ignore error */
+    // Ignore error.
   }
 }
 
 run()
   .then(notifyUpdate)
-  .catch(async reason => {
-    console.log();
-    console.log("Aborting installation.");
+  .catch(async function (reason) {
+    {
+      console.log();
+      console.log("Aborting installation.");
 
-    if (reason.command) {
-      console.log(`  ${chalk.cyan(reason.command)} has failed.`);
-    } else {
-      console.log(chalk.red("Unexpected error. Please report it as a bug:"));
-      console.log(reason);
+      if (reason.command) {
+        console.log(`  ${chalk.cyan(reason.command)} has failed.`);
+      } else {
+        console.log(chalk.red("Unexpected error. Please report it as a bug:"));
+        console.log(reason);
+      }
+      console.log();
+
+      await notifyUpdate();
+
+      process.exit(1);
     }
-    console.log();
-
-    await notifyUpdate();
-
-    process.exit(1);
   });

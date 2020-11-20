@@ -1,0 +1,40 @@
+{
+  "callToAction": "Read On-Chain mAssets",
+  "graphqlQueryName": "GET_MASSETS",
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@mstable-app/contracts\";",
+    "import GET_MASSETS from \"../graphql/subgraph\";"
+  ],
+  "learnItems": [
+    {
+      "label": "Core Docs",
+      "url": "https://docs.mstable.org/"
+    },
+    {
+      "label": "Community Chat",
+      "url": "https://discord.gg/pgCVG7e/"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/mstable_"
+    }
+  ],
+  "mounted": {
+    "readData": [
+      "if (!loading && !stale && data && data.massets) {",
+      "  console.log({ mAssets: data.massets });",
+      "}"
+    ]
+  },
+  "readOnChainData": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
+    "const mUsdContract = new Contract(addresses[MAINNET_ID].tokens.mUSD, abis.mAsset, defaultProvider);",
+    "// Total supply of mUSD",
+    "const mUsdTotalSupply = await mUsdContract.totalSupply();",
+    "console.log({ mUsdTotalSupply });"
+  ],
+  "whatToLearn": "mStable"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "mStable provides autonomous and non-custodial stablecoin infrastructure. Read more about it in the [official documentation](https://docs.mstable.org/",
+  "packages": [
+    "[contracts](/packages/contracts)",
+    "[react-app](/packages/react-app)"
+  ],
+  "subgraphName": "mstable-protocol",
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/mstable/mstable-protocol",
+  "templateName": "mStable",
+  "templateUrl": "https://github.com/paulrberg/create-eth-app/tree/develop/templates/react/mstable"
+}

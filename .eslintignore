@@ -1,0 +1,9 @@
+# folders
+.vscode/
+dist/
+handlebars/
+templates/
+
+# files
+jest.config.js
+jest.setup.js

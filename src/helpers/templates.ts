@@ -1,131 +1,78 @@
-import Handlebars, { HelperDelegate } from "handlebars";
-import fs from "fs-extra";
+import Handlebars from "handlebars";
+import fsExtra from "fs-extra";
 import got from "got";
-import makeDir from "make-dir";
 import path from "path";
-import packageJson from "../../package.json";
 import promisePipe from "promisepipe";
 import tar from "tar";
+import urlExists from "url-exist";
 
-import { FrameworkKey } from "./frameworks";
-import { branch, templates } from "./constants";
-import { isUrlOk } from "./networking";
+import {
+  HandlebarsFiles,
+  HardcodedTemplateFiles,
+  FrameworkKey,
+  TemplateKey,
+  codeloadBaseUrl,
+  githubApiBaseUrl,
+} from "./constants";
+import { getRefs, getRepository } from "./env";
 
-export type TemplateKey = typeof templates[number];
-
-export const standardFiles: Record<FrameworkKey, string[]> = {
-  react: [
-    "package.json",
-    "README.md",
-    "packages/contracts/package.json",
-    "packages/contracts/README.md",
-    "packages/contracts/src/index.js",
-    "packages/react-app/package.json",
-    "packages/react-app/README.md",
-    "packages/react-app/src/index.js",
-    "packages/react-app/src/App.js",
-  ],
-  vue: [
-    "package.json",
-    "README.md",
-    "packages/contracts/package.json",
-    "packages/contracts/README.md",
-    "packages/contracts/src/index.js",
-    "packages/vue-app/package.json",
-    "packages/vue-app/README.md",
-    "packages/vue-app/src/main.js",
-    "packages/vue-app/src/components/HelloWorld.vue",
-  ],
-};
-
-const commonBespokeFiles: string[] = [
-  "packages/contracts/src/abis.js",
-  "packages/contracts/src/addresses.js",
-  "packages/contracts/src/abis",
-];
-
-const reactBespokeFiles: string[] = [...commonBespokeFiles, "packages/react-app/src/graphql/subgraph.js"];
-
-const vueBespokeFiles: string[] = [...commonBespokeFiles, "packages/vue-app/src/graphql/subgraph.js"];
-
-export const bespokeFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
-  react: {
-    aave: reactBespokeFiles,
-    compound: reactBespokeFiles,
-    default: [...reactBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
-    kyber: reactBespokeFiles,
-    maker: reactBespokeFiles,
-    "sablier-v1": reactBespokeFiles,
-    synthetix: reactBespokeFiles,
-    "uniswap-v1": reactBespokeFiles,
-    "uniswap-v2": reactBespokeFiles,
-  },
-  vue: {
-    aave: vueBespokeFiles,
-    compound: vueBespokeFiles,
-    default: [...vueBespokeFiles, ".gitignore", "README.md", "packages/subgraph"],
-    kyber: vueBespokeFiles,
-    maker: vueBespokeFiles,
-    "sablier-v1": vueBespokeFiles,
-    synthetix: vueBespokeFiles,
-    "uniswap-v1": vueBespokeFiles,
-    "uniswap-v2": vueBespokeFiles,
-  },
-};
-
-export function downloadAndExtractTemplate(root: string, framework: string, name: string): Promise<void> {
+export async function downloadAndExtractTemplateContext(
+  root: string,
+  framework: FrameworkKey,
+  template: TemplateKey,
+): Promise<void> {
+  await fsExtra.ensureDir(root);
+  const repository: string = getRepository();
+  const { ref, tarGzRef } = getRefs();
+  const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
   return promisePipe(
-    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/${branch}`),
-    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${branch}/templates/${framework}/${name}`]),
+    got.stream(downloadUrl),
+    tar.extract({ cwd: root, strip: 4 }, [`create-eth-app-${tarGzRef}/templates/${framework}/${template}`]),
   );
 }
 
-export function hasTemplate(framework: string, name: string): Promise<boolean> {
-  return isUrlOk(
-    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${framework}/${encodeURIComponent(
-      name,
-    )}?ref=${branch}`,
-  );
-}
-
-export async function parseTemplate(appPath: string, framework: FrameworkKey, template: TemplateKey): Promise<void> {
-  /* Download the context of the current template */
-  const templateContextPath: string = path.join(appPath, "context");
-  await makeDir(templateContextPath);
-  await downloadAndExtractTemplate(templateContextPath, framework, template);
-
-  for (const standardFile of standardFiles[framework]) {
-    const contextFileName: string = standardFile + ".ctx";
+export async function parseTemplate(
+  appPath: string,
+  templateContextPath: string,
+  framework: FrameworkKey,
+  template: TemplateKey,
+): Promise<void> {
+  for (const handlebarFile of HandlebarsFiles[framework]) {
+    const contextFileName: string = handlebarFile + ".ctx";
     const contextFilePath: string = path.join(templateContextPath, contextFileName);
-    const context: JSON = JSON.parse(await fs.readFile(contextFilePath, "utf-8"));
+    const contextFileContents: string = await fsExtra.readFile(contextFilePath, "utf-8");
+    const context: JSON = JSON.parse(contextFileContents);
 
-    const hbsFileName: string = standardFile + ".hbs";
+    const hbsFileName: string = handlebarFile + ".hbs";
     const hbsFilePath: string = path.join(appPath, hbsFileName);
-    const hbs: string = await fs.readFile(hbsFilePath, "utf-8");
-    const contents: string = Handlebars.compile(hbs)(context);
+    const hnsFileContents: string = await fsExtra.readFile(hbsFilePath, "utf-8");
 
-    const appFilePath: string = path.join(appPath, standardFile);
-    await fs.writeFile(appFilePath, contents);
-    await fs.remove(hbsFilePath);
+    const appFilePath: string = path.join(appPath, handlebarFile);
+    const appFileContents: string = Handlebars.compile(hnsFileContents)(context);
+    await fsExtra.writeFile(appFilePath, appFileContents);
+    await fsExtra.remove(hbsFilePath);
   }
 
-  for (const bespokeFile of bespokeFiles[framework][template]) {
-    const contextFilePath: string = path.join(templateContextPath, bespokeFile);
-    const appFilePath: string = path.join(appPath, bespokeFile);
+  for (const hardcodedTemplateFile of HardcodedTemplateFiles[framework][template]) {
+    const contextFilePath: string = path.join(templateContextPath, hardcodedTemplateFile);
+    const appFilePath: string = path.join(appPath, hardcodedTemplateFile);
 
-    /* Any standard file with the same name as a bespoke file gets overridden */
-    if (fs.existsSync(appFilePath)) {
-      await fs.remove(appFilePath);
+    // Any standard file with the same name as a hardcoded file gets overridden.
+    if (fsExtra.existsSync(appFilePath)) {
+      await fsExtra.remove(appFilePath);
     }
-    await fs.move(contextFilePath, appFilePath);
+    await fsExtra.move(contextFilePath, appFilePath);
   }
 
-  /* After all parsing is complete, prune the context of the current template */
-  await fs.remove(templateContextPath);
+  // After all parsing is complete, prune the context of the current template.
+  await fsExtra.remove(templateContextPath);
 }
 
-export function registerHandlebarsHelpers(): void {
-  Handlebars.registerHelper("raw-helper", options => {
-    return options.fn();
-  });
+export function hasTemplate(framework: string, template: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${framework}/${encodeURIComponent(
+    template,
+  )}?ref=${ref}`;
+  return urlExists(url);
 }

@@ -1,32 +1,37 @@
+import fsExtra from "fs-extra";
 import got from "got";
-import packageJson from "../../package.json";
 import promisePipe from "promisepipe";
 import tar from "tar";
+import urlExists from "url-exist";
 
-import { branch, frameworks } from "./constants";
-import { isUrlOk } from "./networking";
+import { codeloadBaseUrl, githubApiBaseUrl } from "./constants";
+import { getRefs, getRepository } from "./env";
 
-export type FrameworkKey = typeof frameworks[number];
-
-export function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
+export async function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
+  await fsExtra.ensureDir(root);
+  const repository: string = getRepository();
+  const { ref, tarGzRef } = getRefs();
+  const downloadUrl: string = codeloadBaseUrl + "/" + repository + "/tar.gz/" + ref;
   return promisePipe(
-    got.stream(`https://codeload.github.com/${packageJson.repository.name}/tar.gz/${branch}`),
-    tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-${branch}/handlebars/${framework}`]),
+    got.stream(downloadUrl),
+    tar.extract({ cwd: root, strip: 3 }, [`create-eth-app-${tarGzRef}/handlebars/${framework}`]),
   );
 }
 
-export function hasFramework(name: string): Promise<boolean> {
-  return isUrlOk(
-    `https://api.github.com/repos/${packageJson.repository.name}/contents/templates/${encodeURIComponent(
-      name,
-    )}?ref=${branch}`,
-  );
+export function hasFramework(framework: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/templates/${encodeURIComponent(
+    framework,
+  )}?ref=${ref}`;
+  return urlExists(url);
 }
 
-export function hasFrameworkHandlebars(name: string): Promise<boolean> {
-  return isUrlOk(
-    `https://api.github.com/repos/${packageJson.repository.name}/contents/handlebars/${encodeURIComponent(
-      name,
-    )}?ref=${branch}`,
-  );
+export function hasFrameworkHandlebars(framework: string): Promise<boolean> {
+  const repository: string = getRepository();
+  const { ref } = getRefs();
+  const url: string = `${githubApiBaseUrl}/${repository}/contents/handlebars/${encodeURIComponent(
+    framework,
+  )}?ref=${ref}`;
+  return urlExists(url);
 }
