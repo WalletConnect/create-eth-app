@@ -11,7 +11,9 @@ const GET_MASSETS = gql`
         decimals
         name
         symbol
-        totalSupply
+        totalSupply {
+          exact
+        }
       }
     }
   }
