@@ -16,8 +16,6 @@
   ],
   "learnUrl": "https://docs.balancer.finance/getting-started/faq",
   "readOnChainData": [
-    "Contract;",
-    "getDefaultProvider;",
     "// Search for all pools which allow swapping ETH for DAI",
     "const { DAI, WETH } = addresses[MAINNET_ID].tokens",
     "const ethDaiPools = getPoolsWithTokens(WETH, DAI);",
