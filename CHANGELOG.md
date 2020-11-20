@@ -17,11 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refactor web3Modal code as a React Hook, [courtesy](https://github.com/PaulRBerg/create-eth-app/pull/79) of @gasolin
-- Rename "dist" to "build" in Vue.js templates, as per [pull request
-  #77](https://github.com/PaulRBerg/create-eth-app/pull/77)
-- Strict version tags for the download urls, as per [pull request
-  #76](https://github.com/PaulRBerg/create-eth-app/pull/76)
-- Upgrade dependencies, both ours and the react and vue template ones
+- Renamed "dist" to "build" in Vue.js templates, as per [pull request #77](https://github.com/PaulRBerg/create-eth-app/pull/77)
+- Strict version tags for the download urls, as per [pull request #76](https://github.com/PaulRBerg/create-eth-app/pull/76)
+- Upgraded dependencies, both ours and the react and vue template ones
 - [Internal] Rename many of the helpers, e.g. "isFolderEmpty" to "directories"
 - [Internal] Upgrade to TypeScript v4
 - [Internal] Use ESlint instead of TSLint and fix [issue #74](https://github.com/PaulRBerg/create-eth-app/issues/74)
