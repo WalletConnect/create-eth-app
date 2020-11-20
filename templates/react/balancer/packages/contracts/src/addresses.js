@@ -2,23 +2,9 @@
  * See all ids below
  * https://ethereum.stackexchange.com/questions/17051/how-to-select-a-network-id-or-is-there-a-list-of-network-ids
  */
-export const GOERLI_ID = 5;
-export const KOVAN_ID = 42;
 export const MAINNET_ID = 1;
-export const RINKEBY_ID = 4;
-export const ROPSTEN_ID = 3;
 
 export default {
-  [KOVAN_ID]: {
-    bFactory: "0x8f7F78080219d4066A8036ccD30D588B416a40DB",
-    bActions: "0x02EFDB542B9390ae7C1620B29674e02F9c0d86CC",
-    dsProxyRegistry: "0x130767E0cf05469CF11Fa3fcf270dfC1f52b9072",
-    exchangeProxy: "0xdf6F5B1f49eFf8d1C45f2AADC045cB91C33e44b8",
-    tokens: {
-      DAI: "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa",
-      WETH: "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
-    },
-  },
   [MAINNET_ID]: {
     bFactory: "0x9424B1412450D0f8Fc2255FAf6046b98213B76Bd",
     bActions: "0xde4A25A0b9589689945d842c5ba0CF4f0D4eB3ac",
