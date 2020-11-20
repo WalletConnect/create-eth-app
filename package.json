@@ -1,7 +1,7 @@
 {
   "name": "create-eth-app",
   "description": "Create Ethereum-powered apps with one command",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "bin": {
     "create-eth-app": "./dist/index.js"
   },
