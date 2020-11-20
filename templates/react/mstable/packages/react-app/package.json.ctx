@@ -1,0 +1,13 @@
+{
+  "packageName": "@mstable-app/react-app",
+  "dependencies": {
+    "keys": [
+      "@mstable/protocol",
+      "@mstable/mstable-js"
+    ],
+    "values": [
+      "^1.3.0",
+      "^0.1.0-alpha"
+    ]
+  }
+}
