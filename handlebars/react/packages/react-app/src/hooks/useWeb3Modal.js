@@ -11,6 +11,7 @@ const NETWORK_NAME = "mainnet";
 
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState();
+  const [autoLoaded, setAutoLoaded] = useState(false);
   const { autoLoad = true, infuraId = INFURA_ID, NETWORK = NETWORK_NAME } = config;
 
   // Web3Modal also supports many other wallets.
@@ -42,12 +43,13 @@ function useWeb3Modal(config = {}) {
     [web3Modal],
   );
 
-  // If user has loaded a wallet before, load it automatically.
+  // If autoLoad is enabled and the the wallet had been loaded before, load it automatically now.
   useEffect(() => {
-    if (autoLoad && web3Modal.cachedProvider) {
+    if (autoLoad && !autoLoaded && web3Modal.cachedProvider) {
       loadWeb3Modal();
+      setAutoLoaded(true);
     }
-  }, [autoLoad, loadWeb3Modal, web3Modal.cachedProvider]);
+  }, [autoLoad, autoLoaded, loadWeb3Modal, setAutoLoaded, web3Modal.cachedProvider]);
 
   return [provider, loadWeb3Modal, logoutOfWeb3Modal];
 }
