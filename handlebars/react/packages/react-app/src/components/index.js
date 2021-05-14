@@ -10,7 +10,7 @@ export const Header = styled.header`
   color: white;
 `;
 
-export const Body = styled.body`
+export const Body = styled.div`
   align-items: center;
   background-color: #282c34;
   color: white;
