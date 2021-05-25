@@ -52,13 +52,15 @@ export function shouldUseYarn(): void {
 
 export function shouldUseYarnWorkspaces(): void {
   const yarnVersion: string = execSync("yarnpkg --version", { encoding: "utf8" });
-  const workspacesFlag: string = execSync("yarnpkg config get workspaces-experimental", { encoding: "utf8" });
-  if (yarnVersion.startsWith("0") && !workspacesFlag.startsWith("true")) {
-    console.error(
-      "The Yarn Workspaces feature is necessary for Create Eth App. Please enable it by running this command:",
-    );
-    console.log();
-    console.log(chalk.cyan("  yarn config set workspaces-experimental true"));
-    process.exit(1);
+  if (yarnVersion.startsWith("0")) {
+    const workspacesFlag: string = execSync("yarnpkg config get workspaces-experimental", { encoding: "utf8" });
+    if (!workspacesFlag.startsWith("true")) {
+      console.error(
+        "The Yarn Workspaces feature is necessary for Create Eth App. Please enable it by running this command:",
+      );
+      console.log();
+      console.log(chalk.cyan("  yarn config set workspaces-experimental true"));
+      process.exit(1);
+    }
   }
 }
