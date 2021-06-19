@@ -20,31 +20,34 @@
     "{{ this }}": "{{{lookup ../values @index }}}",
     {{/each }}
     {{/with }}
-    "@apollo/react-hooks": "^3.1.5",
-    "@ethersproject/contracts": "^5.0.5",
-    "@ethersproject/providers": "^5.0.12",
-    "@testing-library/dom": "^6.16.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/react": "^16.9.53",
-    "@walletconnect/web3-provider": "^1.3.1",
+    "@apollo/react-hooks": "^4.0.0",
+    "@ethersproject/contracts": "^5.3.0",
+    "@ethersproject/providers": "^5.3.1",
+    "@testing-library/dom": "^7.31.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "@types/react": "^17.0.11",
+    "@walletconnect/web3-provider": "^1.4.1",
     "apollo-boost": "^0.4.9",
     "apollo-client": "^2.6.10",
-    "apollo-utilities": "^1.3.3",
-    "chalk": "^4.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-flowtype": "^4.6.0",
-    "graphql": "^14.7.0",
-    "ipfs-http-client": "^45.0.0",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "react-scripts": "3.4.3",
-    "styled-components": "^5.2.0",
-    "web3modal": "^1.9.1"
+    "apollo-utilities": "^1.3.4",
+    "chalk": "^4.1.1",
+    "eslint": "^7.29.0",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "graphql": "^15.5.0",
+    "ipfs-http-client": "^50.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.3.0",
+    "web3modal": "^1.9.3"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "scripts": {
     "build": "react-scripts build",
