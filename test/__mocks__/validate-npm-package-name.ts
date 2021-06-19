@@ -1,6 +1,4 @@
-function validateNpmPackageName(
-  projectName: string,
-): {
+function validateNpmPackageName(projectName: string): {
   errors?: string[] | null;
   validForNewPackages: boolean;
   warnings?: string[] | null;
