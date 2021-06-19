@@ -3,7 +3,7 @@ import path from "path";
 
 import chalk from "chalk";
 
-export function isSafeToCreateAppIn(directoryPath: string, appName: string): boolean {
+export function isDirectoryEmpty(directoryPath: string, appName: string): boolean {
   const validFiles: string[] = [
     ".DS_Store",
     ".git",
@@ -59,13 +59,4 @@ export function isSafeToCreateAppIn(directoryPath: string, appName: string): boo
   }
 
   return true;
-}
-
-export async function isDirectoryWriteable(directory: string): Promise<boolean> {
-  try {
-    await fs.promises.access(directory, (fs.constants || fs).W_OK);
-    return true;
-  } catch (err) {
-    return false;
-  }
 }
