@@ -4131,6 +4131,8 @@ __metadata:
     got: ^11.8.2
     handlebars: ^4.7.7
     husky: ^6.0.0
+    import-sort-parser-typescript: ^6.0.0
+    import-sort-style-module: ^6.0.0
     jest: 27.0.4
     jest-when: ^3.3.1
     lerna: ^4.0.0
@@ -6199,6 +6201,22 @@ fsevents@^2.3.2:
   bin:
     import-local-fixture: fixtures/cli.js
   checksum: 9ba5f1697b8b11aae8dab7964bf1c2409ed5dc51dd03fe8698fb32df04a3a683adbe9d95e6bb963a384373ec8d055c508f0c534b45aac1de4a3b4b653e6cfe82
+  languageName: node
+  linkType: hard
+
+"import-sort-parser-typescript@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "import-sort-parser-typescript@npm:6.0.0"
+  dependencies:
+    typescript: ^3.2.4
+  checksum: a1cad5a064f35cb6e5eb9423b3b6b31a6c1533198bfc489aced35e889a1f4ecdcdad3f250f74b3dfb76021d1a4e42a8c6cb728dd744b7a958067510f3e0846e5
+  languageName: node
+  linkType: hard
+
+"import-sort-style-module@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "import-sort-style-module@npm:6.0.0"
+  checksum: 15b9649bb3a67842f9d6522495a8b3b005f572a9db758c0c4f47a4b00d035ff4b2929fc158020e4e82f6fa4443253fd5949a57c85c5c7d20cb032617c8875dac
   languageName: node
   linkType: hard
 
@@ -11491,6 +11509,16 @@ resolve@^1.3.2:
   languageName: node
   linkType: hard
 
+typescript@^3.2.4:
+  version: 3.9.10
+  resolution: "typescript@npm:3.9.10"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 544f3810ac3d3fcd141907e7f52f0b8c70af178adc83af47e2b8a48351e5a119919a4d3bfbe2f62d5165b5aa203e896fe0432024cfbda670dbd03a4f53ce7748
+  languageName: node
+  linkType: hard
+
 typescript@^4.3.4:
   version: 4.3.4
   resolution: "typescript@npm:4.3.4"
@@ -11498,6 +11526,16 @@ typescript@^4.3.4:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 9791c5fe98db6cb70ec0efad8d3d2eb957b9643ee600b90bff49267de69768d0d5f59c41a8fd731cfd63df1ccfb2cb25505a2015d7b39ac10ea51f605a058e16
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^3.2.4#builtin<compat/typescript>":
+  version: 3.9.10
+  resolution: "typescript@patch:typescript@npm%3A3.9.10#builtin<compat/typescript>::version=3.9.10&hash=ddfc1b"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 744dab471ae59659b1618be636ab56b9c0afbca801e0640c3cdfad0a894315c87d30a290b7063c6a3f1860bf47fe44d9188cb85e46b2bdadda7f207d67e6b4e1
   languageName: node
   linkType: hard
 
