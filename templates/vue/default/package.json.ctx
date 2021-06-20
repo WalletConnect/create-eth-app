@@ -1,8 +1,4 @@
 {
-  "nohoist": [
-    "**/@graphprotocol/graph-ts",
-    "**/@graphprotocol/graph-ts/**"
-  ],
   "orgName": "@project",
   "packageName": "@project/monorepo",
   "scripts": {
