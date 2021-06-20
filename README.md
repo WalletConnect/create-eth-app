@@ -159,7 +159,7 @@ But Ethereum is a large ecosystem. Here are a few common cases where you might w
 - If you want **write smart contracts and also build a frontend app**, consider [using the
   Truffle React Box](https://github.com/truffle-box/react-box)
 - If you want to write smart contracts and keep the frontend app in the same repository but **React isn't your cup of tea**, consider [using the Embark framework](https://github.com/embarklabs/embark)
-- If you need to use a complex state container like Redux, consider [using Drizzle](https://www.trufflesuite.com/drizzle)
+- If you need to use a complex state container like Redux, consider [using Drizzle](https://trufflesuite.com/drizzle)
 
 For alternatives to React in particular, read the [official Create React App
 documentation](https://github.com/facebook/create-react-app/blob/master/README.md#popular-alternatives).
