@@ -23,13 +23,6 @@
     "vue-app:serve": "yarn workspace {{ orgName }}/vue-app serve"
   },
   "workspaces": {
-    {{#if nohoist.length}}
-    "nohoist": [
-      {{#each nohoist}}
-      "{{ this }}"{{#unless @last}},{{/unless}}
-      {{/each}}
-    ],
-    {{/if}}
     "packages": [
       "packages/*"
     ]

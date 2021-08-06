@@ -3,7 +3,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es6"],
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "dist",
@@ -13,5 +13,6 @@
     "strict": true,
     "target": "es6"
   },
-  "exclude": ["dist", "lib", "node_modules", "templates"]
+  "exclude": ["dist", "handlebars", "lib", "node_modules", "templates", "test"],
+  "include": ["src/**/*", "types/**/*"]
 }

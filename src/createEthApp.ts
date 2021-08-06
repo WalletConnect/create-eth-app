@@ -1,3 +1,4 @@
+import os from "os";
 import path from "path";
 
 import chalk from "chalk";
@@ -5,15 +6,48 @@ import fsExtra from "fs-extra";
 import Handlebars from "handlebars";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
-import { isDirectoryEmpty } from "./helpers/directories";
-import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
+import { installDeps } from "./helpers/deps";
+import { isSafeToCreateAppIn } from "./helpers/dirs";
+import { consoleErrorFrameworkNotFound, consoleErrorTemplateNotFound } from "./helpers/errors";
 import { downloadAndExtractFrameworkHandlebars, hasFramework, hasFrameworkHandlebars } from "./helpers/frameworks";
 import { tryGitInit } from "./helpers/git";
-import { getOnline } from "./helpers/networking";
 import { downloadAndExtractTemplateContext, hasTemplate, parseTemplate } from "./helpers/templates";
-import { installDeps, shouldUseYarn, shouldUseYarnWorkspaces } from "./helpers/yarn";
+import { getTemplateInstallPackage } from "./helpers/templates_v2";
 
-export async function createEthApp({
+export async function createEthApp(appPath: string, template?: string): Promise<void> {
+  const root: string = path.resolve(appPath);
+  const appName: string = path.basename(root);
+
+  // Create the directory if it doesn't exists and check it is safe to create a new app there.
+  await fsExtra.ensureDir(root);
+  if (!isSafeToCreateAppIn(root, appName)) {
+    process.exit(1);
+  }
+
+  console.log(`Creating a new Ethereum-powered app in ${chalk.green(root)}.`);
+  console.log();
+
+  // Create the package.json file.
+  const packageJson = {
+    name: appName,
+    version: "1.0.0",
+    private: true,
+  };
+  await fsExtra.writeFile(path.join(root, "package.json"), JSON.stringify(packageJson, null, 2) + os.EOL);
+
+  const originalDirectory: string = process.cwd();
+  process.chdir(root);
+
+  if (template) {
+    const templateToInstall: string = getTemplateInstallPackage(template);
+  }
+
+  return Promise.resolve();
+}
+
+/// ---------------------- ///
+
+export async function createEthAppV1({
   appPath,
   framework,
   template,
@@ -27,7 +61,7 @@ export async function createEthApp({
     const foundFrameworkHandlebars: boolean = await hasFrameworkHandlebars(framework);
 
     if (!foundFramework || !foundFrameworkHandlebars) {
-      throwFrameworkNotFoundError(framework);
+      consoleErrorFrameworkNotFound(framework);
     }
   } else {
     framework = "react";
@@ -43,7 +77,7 @@ export async function createEthApp({
 
     const found: boolean = await hasTemplate(framework, template);
     if (!found) {
-      throwTemplateNotFoundError(template);
+      consoleErrorTemplateNotFound(template);
     }
   } else {
     template = "default";
@@ -53,14 +87,10 @@ export async function createEthApp({
   const appName: string = path.basename(root);
 
   await fsExtra.ensureDir(root);
-  if (!isDirectoryEmpty(root, appName)) {
+  if (!isSafeToCreateAppIn(root, appName)) {
     process.exit(1);
   }
 
-  shouldUseYarn();
-  shouldUseYarnWorkspaces();
-
-  const isOnline: boolean = await getOnline();
   const originalDirectory: string = process.cwd();
   process.chdir(root);
 
@@ -96,7 +126,7 @@ export async function createEthApp({
   console.log("Installing packages. This might take a couple of minutes.");
   console.log();
 
-  await installDeps(root, null, { isOnline });
+  await installDeps(root, null);
   console.log();
 
   if (tryGitInit(root)) {

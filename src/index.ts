@@ -9,38 +9,52 @@ import updateCheck from "update-check";
 
 import packageJson from "../package.json";
 import { createEthApp } from "./createEthApp";
+import { checkNode, checkYarn, checkYarnWorkspaces } from "./helpers/env";
 import { validatePkgName } from "./helpers/npm";
 
-let projectPath: string = "";
+let appPath: string = "";
 
 const program: Commander.Command = new Commander.Command(packageJson.name)
-  .version(packageJson.version)
+  .version(packageJson.version, "-v, --version", "Output the version number")
   .arguments("<project-directory>")
   .usage(`${chalk.green("<project-directory>")} [options]`)
   .action(function (name: string) {
-    projectPath = name;
+    appPath = name;
   })
-  .option(
-    "-f, --framework <name>",
-    `
-  The UI framework to bootstrap the app with. You can use a framework from the official Create Eth App repo. The default is React.
-`,
-  )
   .option(
     "-t, --template <name>",
     `
-  A custom template to bootstrap the app with. You can use a template from the official Create Eth App repo.
+  The template to bootstrap the created app with.
 `,
   )
   .allowUnknownOption()
+  .on("--help", () => {
+    console.log(`    Only ${chalk.green("<project-directory>")} is required.`);
+    console.log();
+    console.log(`    A custom ${chalk.cyan("--template")} can be one of:`);
+    console.log(`      - a custom template published on npm: ${chalk.green("cea-template-uniswap-v3")}`);
+    console.log(
+      `      - a local path relative to the current working directory: ${chalk.green("file:../my-custom-template")}`,
+    );
+    console.log();
+    console.log(`    If you have any problems, do not hesitate to file an issue:`);
+    console.log(`      ${chalk.cyan("https://github.com/paulrberg/create-eth-app/issues/new")}`);
+    console.log();
+  })
   .parse(process.argv);
 
 async function run(): Promise<void> {
-  if (typeof projectPath === "string") {
-    projectPath = projectPath.trim();
+  // Check the node.js and yarn installations.
+  checkNode();
+  checkYarn();
+  checkYarnWorkspaces();
+
+  if (typeof appPath === "string") {
+    appPath = appPath.trim();
   }
 
-  if (!projectPath) {
+  // Promp the user to provide a path if they didn't provide one from the get-go.
+  if (!appPath) {
     const result: prompts.Answers<string> = await prompts({
       initial: "my-eth-app",
       message: "What is your project named?",
@@ -61,11 +75,12 @@ async function run(): Promise<void> {
     });
 
     if (typeof result.path === "string") {
-      projectPath = result.path.trim();
+      appPath = result.path.trim();
     }
   }
 
-  if (!projectPath) {
+  // Halt the execution if no path was provided.
+  if (!appPath) {
     console.log();
     console.log("Please specify the project directory:");
     console.log(`  ${chalk.cyan(program.name())} ${chalk.green("<project-directory>")}`);
@@ -77,11 +92,13 @@ async function run(): Promise<void> {
     process.exit(1);
   }
 
-  const resolvedProjectPath = path.resolve(projectPath);
-  const projectName = path.basename(resolvedProjectPath);
+  // Resolve the path.
+  const resolvedAppPath = path.resolve(appPath);
+  const projectName = path.basename(resolvedAppPath);
 
-  const { problems, valid } = validatePkgName(projectName);
-  if (!valid) {
+  // Check the package name.
+  const { problems, valid: isPackageNameValid } = validatePkgName(projectName);
+  if (!isPackageNameValid) {
     console.error(
       `Could not create a project called ${chalk.red(`"${projectName}"`)} because of npm naming restrictions:`,
     );
@@ -94,12 +111,10 @@ async function run(): Promise<void> {
     process.exit(1);
   }
 
+  // Run the idiosyncratic CEA program.
   const options = program.opts();
-  await createEthApp({
-    appPath: resolvedProjectPath,
-    framework: (typeof options.framework === "string" && options.framework.trim()) || undefined,
-    template: (typeof options.template === "string" && options.template.trim()) || undefined,
-  });
+  const template: string | undefined = (typeof options.template === "string" && options.template.trim()) || undefined;
+  await createEthApp(resolvedAppPath, template);
 }
 
 const update: Promise<{ latest: boolean }> = updateCheck(packageJson).catch(function () {

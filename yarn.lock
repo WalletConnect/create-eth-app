@@ -2538,6 +2538,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/semver@npm:^7.3.6":
+  version: 7.3.6
+  resolution: "@types/semver@npm:7.3.6"
+  checksum: 36776caed9a5d80cc7e0dd32fc08ac762918273bef849c369a300895646f9126e9857c9235e130493cf1fb2ee77e44cd1b599eded4fcbd11803962936771506a
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^1.0.1":
   version: 1.0.1
   resolution: "@types/stack-utils@npm:1.0.1"
@@ -4116,6 +4123,7 @@ __metadata:
     "@types/jest-when": ^2.7.3
     "@types/node": ^15.12.4
     "@types/prompts": 2.0.13
+    "@types/semver": ^7.3.6
     "@types/tar": 4.0.4
     "@typescript-eslint/eslint-plugin": ^4.27.0
     "@typescript-eslint/parser": ^4.27.0
@@ -4141,6 +4149,7 @@ __metadata:
     prettier: ^2.3.1
     promisepipe: ^3.0.0
     prompts: ^2.4.1
+    semver: ^7.3.5
     shx: ^0.3.3
     tar: ^6.1.0
     tempy: ^1.0.1

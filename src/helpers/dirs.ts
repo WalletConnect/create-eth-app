@@ -3,7 +3,7 @@ import path from "path";
 
 import chalk from "chalk";
 
-export function isDirectoryEmpty(directoryPath: string, appName: string): boolean {
+export function isSafeToCreateAppIn(directoryPath: string, appName: string): boolean {
   const validFiles: string[] = [
     ".DS_Store",
     ".git",

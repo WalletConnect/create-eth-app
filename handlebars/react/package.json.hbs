@@ -24,13 +24,6 @@
     "react-app:test": "yarn workspace {{ orgName }}/react-app test"
   },
   "workspaces": {
-    {{#if nohoist.length}}
-    "nohoist": [
-      {{#each nohoist}}
-      "{{ this }}"{{#unless @last}},{{/unless}}
-      {{/each}}
-    ],
-    {{/if}}
     "packages": [
       "packages/*"
     ]

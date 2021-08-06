@@ -1,8 +1,9 @@
-import chalk from "chalk";
 import childProcess from "child_process";
+
+import chalk from "chalk";
 import { when } from "jest-when";
 
-import { shouldUseYarn, shouldUseYarnWorkspaces } from "../../src/helpers/yarn";
+import { checkYarn, checkYarnWorkspaces } from "../../src/helpers/yarn";
 
 describe("yarn", function () {
   let execSyncMock: jest.SpyInstance;
@@ -17,14 +18,14 @@ describe("yarn", function () {
     });
   });
 
-  describe("shouldUseYarn", function () {
+  describe("checkYarn", function () {
     describe("when the child process does not throw an error", function () {
       beforeEach(function () {
         when(execSyncMock).calledWith("yarnpkg --version", { stdio: "ignore" }).mockReturnValueOnce(true);
       });
 
       test("it works", function () {
-        shouldUseYarn();
+        checkYarn();
       });
     });
 
@@ -38,7 +39,7 @@ describe("yarn", function () {
       });
 
       test("it exits the process", function () {
-        shouldUseYarn();
+        checkYarn();
         expect(console.error).toHaveBeenCalledWith(
           "Yarn is necessary for Create Eth App. Install it by following the official documentation:",
         );
@@ -49,14 +50,14 @@ describe("yarn", function () {
     });
   });
 
-  describe("shouldUseYarnWorkspaces", function () {
+  describe("checkYarnWorkspaces", function () {
     describe("when the yarn version starts with non-zero", function () {
       beforeEach(function () {
         when(execSyncMock).calledWith("yarnpkg --version", { encoding: "utf8" }).mockReturnValueOnce("1.22.10");
       });
 
       test("it works", function () {
-        shouldUseYarnWorkspaces();
+        checkYarnWorkspaces();
       });
     });
 
@@ -73,7 +74,7 @@ describe("yarn", function () {
         });
 
         test("it works", function () {
-          shouldUseYarnWorkspaces();
+          checkYarnWorkspaces();
         });
       });
 
@@ -85,7 +86,7 @@ describe("yarn", function () {
         });
 
         test("it exits the process", function () {
-          shouldUseYarnWorkspaces();
+          checkYarnWorkspaces();
           expect(console.error).toHaveBeenCalledWith(
             "The Yarn Workspaces feature is necessary for Create Eth App. Please enable it by running this command:",
           );
