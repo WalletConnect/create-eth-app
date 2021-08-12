@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "apollo-boost";
 
 // See more example queries on https://thegraph.com/legacy-explorer/subgraph/tomafrench/chainlink
 const GET_PRICES_FEEDS = gql`
