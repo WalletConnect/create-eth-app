@@ -29,11 +29,11 @@ jobs:
       - name: "Install dependencies"
         run: "yarn install --immutable"
 
-      - name: "Lint TypeScript code"
-        run: "yarn run lint"
+      - name: "Lint code"
+        run: "yarn lint"
 
       - name: "Run unit tests"
-        run: "yarn run test:unit"
+        run: "yarn test:unit"
 
       - name: "Run integration tests"
-        run: "yarn run test:integration"
+        run: "yarn test:integration"
