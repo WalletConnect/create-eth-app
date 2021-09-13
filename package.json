@@ -80,11 +80,11 @@
     }
   },
   "keywords": [
+    "ethers",
     "ethereum",
     "react",
     "vue",
     "web3",
-    "workspaces",
     "yarn"
   ],
   "license": "MIT",

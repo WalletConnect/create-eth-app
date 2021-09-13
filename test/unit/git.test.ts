@@ -1,7 +1,8 @@
 import child_process from "child_process";
+
 import fsExtra from "fs-extra";
-import tempy from "tempy";
 import { when } from "jest-when";
+import tempy from "tempy";
 
 import { isInGitRepository, isInMercurialRepository, tryGitInit } from "../../src/helpers/git";
 
