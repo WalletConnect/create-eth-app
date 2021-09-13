@@ -14,21 +14,17 @@ on:
       - "staging"
 
 jobs:
-  ci:
-    runs-on: "ubuntu-18.04"
+  integration:
+    runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
         uses: "actions/checkout@v2"
 
-      - name: "Install Node.js 12.x"
-        uses: "actions/setup-node@v1"
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v2"
         with:
-          node-version: "12.x"
-
-      - uses: "actions/cache@v2"
-        with:
-          key: ${{ runner.os }}-modules-${{ hashFiles('./yarn.lock') }}
-          path: "./node_modules"
+          cache: "yarn"
+          node-version: "16"
 
       - name: "Install dependencies"
         run: "yarn install --immutable"
@@ -36,8 +32,8 @@ jobs:
       - name: "Lint TypeScript code"
         run: "yarn run lint"
 
-      - name: "Run unit tests"
-        run: "yarn run test:unit"
+      # - name: "Run unit tests"
+      # run: "yarn run test:unit"
 
       - name: "Run integration tests"
         run: "yarn run test:integration"
