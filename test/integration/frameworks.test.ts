@@ -1,11 +1,11 @@
-import fsExtra from "fs-extra";
 import path from "path";
-import tempy from "tempy";
+
 import { Result, compare } from "dir-compare";
+import fsExtra from "fs-extra";
+import tempy from "tempy";
 
-import * as envHelpers from "../../src/helpers/env";
 import packageJson from "../../package.json";
-
+import * as envHelpers from "../../src/helpers/env";
 import {
   downloadAndExtractFrameworkHandlebars,
   hasFramework,

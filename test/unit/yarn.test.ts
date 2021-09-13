@@ -1,5 +1,6 @@
-import chalk from "chalk";
 import childProcess from "child_process";
+
+import chalk from "chalk";
 import { when } from "jest-when";
 
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "../../src/helpers/yarn";
