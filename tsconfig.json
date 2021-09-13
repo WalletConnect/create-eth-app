@@ -2,8 +2,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ES2015"],
-    "module": "ES2015",
+    "lib": ["es6"],
+    "module": "es6",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "outDir": "dist",
@@ -11,7 +11,7 @@
     "skipLibCheck": false,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2015"
+    "target": "es6"
   },
   "exclude": ["dist", "lib", "node_modules", "templates"]
 }

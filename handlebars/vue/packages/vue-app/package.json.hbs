@@ -1,6 +1,6 @@
 {
   "name": "{{ packageName }}",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -12,25 +12,39 @@
     "{{ this }}": "{{{lookup ../values @index }}}",
     {{/each }}
     {{/with }}
-    "@ethersproject/contracts": "^5.0.5",
-    "@ethersproject/providers": "^5.0.12",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@ethersproject/contracts": "^5.3.0",
+    "@ethersproject/providers": "^5.3.1",
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "babel-eslint": "^10.1.0",
-    "chalk": "^4.1.0",
-    "core-js": "^3.13.0",
+    "chalk": "^4.1.1",
+    "core-js": "^3.14.0",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "graphql": "^15.3.0",
-    "graphql-tag": "^2.11.0",
-    "ipfs-http-client": "^45.0.0",
-    "vue": "^2.6.12",
-    "vue-apollo": "^3.0.5",
-    "vue-template-compiler": "^2.6.12"
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.12.4",
+    "ipfs-http-client": "^50.1.2",
+    "vue": "^2.6.14",
+    "vue-apollo": "^3.0.7",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   },
   "private": true,
   "scripts": {
