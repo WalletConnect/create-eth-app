@@ -32,8 +32,8 @@ jobs:
       - name: "Lint TypeScript code"
         run: "yarn run lint"
 
-      # - name: "Run unit tests"
-      # run: "yarn run test:unit"
+      - name: "Run unit tests"
+        run: "yarn run test:unit"
 
       - name: "Run integration tests"
         run: "yarn run test:integration"
