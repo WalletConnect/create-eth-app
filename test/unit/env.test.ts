@@ -123,10 +123,10 @@ describe("env", function () {
             process.env.GITHUB_REF = "refs/heads/staging";
           });
 
-          test("it returns refs/heads/staging and refs-heads-staging", function () {
+          test("it returns staging and staging", function () {
             const { ref, tarGzRef } = getRefs();
-            expect(ref).toBe("refs/heads/staging");
-            expect(tarGzRef).toBe("refs-heads-staging");
+            expect(ref).toBe("staging");
+            expect(tarGzRef).toBe("staging");
           });
         });
       });

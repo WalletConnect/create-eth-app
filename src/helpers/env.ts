@@ -77,7 +77,8 @@ export function getRefs(): { ref: string; tarGzRef: string } {
       console.log("Please set a GITHUB_REF environment variable.");
       process.exit(1);
     } else {
-      ref = process.env.GITHUB_REF;
+      // TODO: handle "refs/", "refs/tags/", etc.
+      ref = process.env.GITHUB_REF.replace("refs/heads/", "");
       if (packageVersionRegex.test(ref)) {
         tarGzRef = ref.slice(1);
       } else {
