@@ -22,7 +22,7 @@ describe("frameworks", function () {
   describe("downloadAndExtractFrameworkHandlebars", function () {
     let testDirPath: string;
 
-    beforeEach(function () {
+    beforeEach(async function () {
       testDirPath = tempy.directory();
     });
 
@@ -30,7 +30,7 @@ describe("frameworks", function () {
       const framework: string = "react";
       const sourceCodePath: string = path.join(__dirname, "..", "..", "handlebars", framework);
 
-      test("it works", async function () {
+      test.only("it works", async function () {
         await downloadAndExtractFrameworkHandlebars(testDirPath, framework);
         const result: Result = await compare(sourceCodePath, testDirPath);
         expect(result.same).toBe(true);
