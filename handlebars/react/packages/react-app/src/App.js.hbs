@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/react-hooks";
 import { Contract } from "@ethersproject/contracts";
 import { getDefaultProvider } from "@ethersproject/providers";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Body, Button, Header, Image, Link } from "./components";
 import logo from "./ethereumLogo.png";
@@ -18,6 +18,38 @@ async function readOnChainData() {
 }
 
 function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
+  const [account, setAccount] = useState("");
+  const [rendered, setRendered] = useState("");
+
+  useEffect(() => {
+    async function fetchAccount() {
+      try {
+        if (!provider) {
+          return;
+        }
+
+        // Load the user's accounts.
+        const accounts = await provider.listAccounts();
+        setAccount(accounts[0]);
+
+        // Resolve the ENS name for the first account.
+        const name = await provider.lookupAddress(accounts[0]);
+
+        // Render either the ENS name or the shortened account address.
+        if (name) {
+          setRendered(name);
+        } else {
+          setRendered(account.substring(0, 6) + "..." + account.substring(36));
+        }
+      } catch (err) {
+        setAccount("");
+        setRendered("");
+        console.error(err);
+      }
+    }
+    fetchAccount();
+  }, [account, provider, setAccount, setRendered]);
+
   return (
     <Button
       onClick={() => {
@@ -28,33 +60,10 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
         }
       }}
     >
-      {!provider ? "Connect Wallet" : "Disconnect Wallet"}
+      {rendered === "" && "Connect Wallet"}
+      {rendered !== "" && rendered}
     </Button>
   );
-}
-
-function UserInfo({provider}){
-  const [account, setAccount] = useState(false);
-  const [name, setName] = useState(false);
-  React.useEffect(() => {
-    async function fetchAccount() {
-      try{
-        const a = (await provider.listAccounts())[0]
-        setAccount(a)
-        const n = await provider.lookupAddress(a);
-        setName(n)
-      }catch(e){
-        console.log(e)
-      }
-    }
-    if(provider) fetchAccount();
-  }, [provider]);
-
-  if(account){
-    return(`Connected as ${name || account.slice(0,5) + '...'}`);
-  }else{
-    return('')
-  }
 }
 
 function App() {
@@ -70,7 +79,6 @@ function App() {
   return (
     <div>
       <Header>
-        <UserInfo provider={provider} />
         <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
       </Header>
       <Body>
