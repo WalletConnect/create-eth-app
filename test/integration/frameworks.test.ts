@@ -1,8 +1,10 @@
+import path from "path";
+
 import { Result, compare } from "dir-compare";
 import fsExtra from "fs-extra";
-import path from "path";
 import tempy from "tempy";
 
+import packageJson from "../../package.json";
 import * as envHelpers from "../../src/helpers/env";
 import {
   downloadAndExtractFrameworkHandlebars,
@@ -11,7 +13,7 @@ import {
 } from "../../src/helpers/frameworks";
 
 describe("frameworks", function () {
-  let getRefsMock: any;
+  let getRefsMock: jest.SpyInstance;
 
   beforeAll(function () {
     getRefsMock = jest.spyOn(envHelpers, "getRefs");
@@ -20,7 +22,7 @@ describe("frameworks", function () {
   describe("downloadAndExtractFrameworkHandlebars", function () {
     let testDirPath: string;
 
-    beforeEach(async function () {
+    beforeEach(function () {
       testDirPath = tempy.directory();
     });
 
@@ -158,7 +160,7 @@ describe("frameworks", function () {
         });
 
         describe("when the ref is a semver", function () {
-          const tarGzRef: string = "1.5.0";
+          const tarGzRef: string = packageJson.version;
 
           beforeEach(function () {
             getRefsMock.mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef: tarGzRef });
