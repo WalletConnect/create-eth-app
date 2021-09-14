@@ -4,7 +4,6 @@ import { Result, compare } from "dir-compare";
 import fsExtra from "fs-extra";
 import tempy from "tempy";
 
-import packageJson from "../../package.json";
 import * as envHelpers from "../../src/helpers/env";
 import {
   downloadAndExtractFrameworkHandlebars,
@@ -160,7 +159,7 @@ describe("frameworks", function () {
         });
 
         describe("when the ref is a semver", function () {
-          const tarGzRef: string = packageJson.version;
+          const tarGzRef: string = "1.5.0";
 
           beforeEach(function () {
             getRefsMock.mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef: tarGzRef });
