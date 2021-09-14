@@ -1,7 +1,9 @@
 #!/usr/bin/env node
+
+import path from "path";
+
 import chalk from "chalk";
 import Commander from "commander";
-import path from "path";
 import prompts from "prompts";
 import updateCheck from "update-check";
 
@@ -92,10 +94,11 @@ async function run(): Promise<void> {
     process.exit(1);
   }
 
+  const options = program.opts();
   await createEthApp({
     appPath: resolvedProjectPath,
-    framework: (typeof program.framework === "string" && program.framework.trim()) || undefined,
-    template: (typeof program.template === "string" && program.template.trim()) || undefined,
+    framework: (typeof options.framework === "string" && options.framework.trim()) || undefined,
+    template: (typeof options.template === "string" && options.template.trim()) || undefined,
   });
 }
 

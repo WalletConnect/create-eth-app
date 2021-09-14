@@ -1,27 +1,24 @@
-import urlExists from "url-exist";
-
 import { request } from "@octokit/request";
 
 // Set this env variable when you hit the API rate limit while testing.
-const githubOauthToken: string = process.env.GH_OAUTH_TOKEN || "";
+const githubOAuthToken: string = process.env.GH_OAUTH_TOKEN || "";
+if (!githubOAuthToken) {
+  throw new Error("Please set GH_OAUTH_TOKEN as an environment variable");
+}
 
-async function stubbedUrlExists(urlToCheck: string): Promise<boolean> {
-  if (githubOauthToken) {
-    try {
-      const result = await request({
-        headers: {
-          authorization: "token " + githubOauthToken,
-        },
-        method: "HEAD",
-        url: urlToCheck,
-      });
-      return result.status === 200;
-    } catch (error) {
-      return false;
-    }
-  } else {
-    return urlExists(urlToCheck);
+async function stubbedUrlExist(urlToCheck: string): Promise<boolean> {
+  try {
+    const result = await request({
+      headers: {
+        authorization: "token " + githubOAuthToken,
+      },
+      method: "HEAD",
+      url: urlToCheck,
+    });
+    return result.status === 200;
+  } catch (error) {
+    return false;
   }
 }
 
-export default stubbedUrlExists;
+export default stubbedUrlExist;

@@ -1,0 +1,39 @@
+name: "Continuous Integration"
+
+env:
+  GH_OAUTH_TOKEN: ${{ secrets.GH_OAUTH_TOKEN }}
+
+on:
+  push:
+    branches:
+      - "develop"
+      - "staging"
+  pull_request:
+    branches:
+      - "develop"
+      - "staging"
+
+jobs:
+  integration:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Check out the repo"
+        uses: "actions/checkout@v2"
+
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v2"
+        with:
+          cache: "yarn"
+          node-version: "16"
+
+      - name: "Install dependencies"
+        run: "yarn install --immutable"
+
+      - name: "Lint code"
+        run: "yarn lint"
+
+      - name: "Run unit tests"
+        run: "yarn test:unit"
+
+      - name: "Run integration tests"
+        run: "yarn test:integration"

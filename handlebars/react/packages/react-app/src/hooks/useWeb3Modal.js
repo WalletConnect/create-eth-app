@@ -1,33 +1,35 @@
-import { useCallback, useEffect, useState } from "react";
 import { Web3Provider } from "@ethersproject/providers";
-import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import Web3Modal from "web3modal";
 
 // Enter a valid infura key here to avoid being rate limited
 // You can get a key for free at https://infura.io/register
 const INFURA_ID = "INVALID_INFURA_KEY";
 
-const NETWORK_NAME = "mainnet";
+const NETWORK = "mainnet";
 
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState();
   const [autoLoaded, setAutoLoaded] = useState(false);
-  const { autoLoad = true, infuraId = INFURA_ID, NETWORK = NETWORK_NAME } = config;
+  const { autoLoad = true, infuraId = INFURA_ID, network = NETWORK } = config;
 
   // Web3Modal also supports many other wallets.
   // You can see other options at https://github.com/Web3Modal/web3modal
-  const web3Modal = new Web3Modal({
-    network: NETWORK,
-    cacheProvider: true,
-    providerOptions: {
-      walletconnect: {
-        package: WalletConnectProvider,
-        options: {
-          infuraId,
+  const web3Modal = useMemo(() => {
+    return new Web3Modal({
+      network,
+      cacheProvider: true,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId,
+          },
         },
       },
-    },
-  });
+    });
+  }, [infuraId, network]);
 
   // Open wallet selection modal.
   const loadWeb3Modal = useCallback(async () => {

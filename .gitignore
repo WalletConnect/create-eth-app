@@ -1,4 +1,7 @@
 # generic folders
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
 build/
 coverage/
 dist/

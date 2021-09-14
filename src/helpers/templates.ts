@@ -1,15 +1,16 @@
-import Handlebars from "handlebars";
+import path from "path";
+
 import fsExtra from "fs-extra";
 import got from "got";
-import path from "path";
+import Handlebars from "handlebars";
 import promisePipe from "promisepipe";
 import tar from "tar";
 import urlExists from "url-exist";
 
 import {
+  FrameworkKey,
   HandlebarsFiles,
   HardcodedTemplateFiles,
-  FrameworkKey,
   TemplateKey,
   codeloadBaseUrl,
   githubApiBaseUrl,

@@ -1,11 +1,10 @@
-import fsExtra from "fs-extra";
 import path from "path";
-import tempy from "tempy";
+
 import { Result, compare } from "dir-compare";
+import fsExtra from "fs-extra";
+import tempy from "tempy";
 
 import * as envHelpers from "../../src/helpers/env";
-import packageJson from "../../package.json";
-
 import {
   downloadAndExtractFrameworkHandlebars,
   hasFramework,
@@ -22,7 +21,7 @@ describe("frameworks", function () {
   describe("downloadAndExtractFrameworkHandlebars", function () {
     let testDirPath: string;
 
-    beforeEach(function () {
+    beforeEach(async function () {
       testDirPath = tempy.directory();
     });
 
@@ -160,7 +159,7 @@ describe("frameworks", function () {
         });
 
         describe("when the ref is a semver", function () {
-          const tarGzRef: string = packageJson.version;
+          const tarGzRef: string = "1.5.0";
 
           beforeEach(function () {
             getRefsMock.mockReturnValueOnce({ ref: "v" + tarGzRef, tarGzRef: tarGzRef });
