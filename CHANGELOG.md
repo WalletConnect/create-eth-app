@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2021-09-20
+
+### Fixed
+
+- Pin version of `url-exist` dependency to 2.0.2 to fix [#162](https://github.com/paulrberg/create-eth-app/issues/162)
+- Types for `update-check`
+
 ## [1.7.0] - 2021-09-14
 
 ### Added
@@ -203,6 +210,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release of the tool
 - The default template
 
+[1.7.1]: https://github.com/paulrberg/create-eth-app/compare/v1.7.0...v1.7.1
 [1.7.0]: https://github.com/paulrberg/create-eth-app/compare/v1.6.5...v1.7.0
 [1.6.5]: https://github.com/paulrberg/create-eth-app/compare/v1.6.4...v1.6.5
 [1.6.4]: https://github.com/paulrberg/create-eth-app/compare/v1.6.3...v1.6.4
