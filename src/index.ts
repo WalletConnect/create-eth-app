@@ -117,13 +117,13 @@ async function run(): Promise<void> {
   await createEthApp(resolvedAppPath, template);
 }
 
-const update: Promise<{ latest: boolean }> = updateCheck(packageJson).catch(function () {
+const update = updateCheck(packageJson).catch(function () {
   return null;
 });
 
 async function notifyUpdate(): Promise<void> {
   try {
-    const res: { latest: boolean } = await update;
+    const res = await update;
     if (res?.latest) {
       console.log();
       console.log(chalk.yellow.bold("A new version of `create-eth-app` is available!"));
