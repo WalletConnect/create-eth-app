@@ -1,7 +1,7 @@
 {
   "name": "create-eth-app",
   "description": "Create Ethereum-powered apps with one command",
-  "version": "1.6.5",
+  "version": "1.7.2",
   "bin": "./dist/index.js",
   "bugs": {
     "url": "https://github.com/paulrberg/create-eth-app/issues"
@@ -65,7 +65,8 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "files": [
-    "/dist"
+    "/dist",
+    "CHANGELOG.md"
   ],
   "homepage": "https://github.com/paulrberg/create-eth-app#readme",
   "importSort": {

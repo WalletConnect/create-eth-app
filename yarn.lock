@@ -6744,10 +6744,12 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"is-url-superb@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "is-url-superb@npm:5.0.0"
-  checksum: dbd6f7da8ac7eb95582d9534db43cdee60f9a2cf8b9eac5f14a20e7c13bc08681a1061b0ee03cf63a0811bb464f64389c49474263860011a41d32b398f7905a5
+"is-url-superb@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "is-url-superb@npm:3.0.0"
+  dependencies:
+    url-regex: ^5.0.0
+  checksum: 5d1f9a945327b997fbfb3aafa18ccefe81b7a60b7101cd84d6fbd7321da738a45fb29447fa68de64324003d32bb1fbcb54cb68ee0f458c6fd4b5982feca70f9a
   languageName: node
   linkType: hard
 
