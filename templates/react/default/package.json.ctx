@@ -1,6 +1,6 @@
 {
-  "orgName": "@project",
-  "packageName": "@project/monorepo",
+  "orgName": "@my-app",
+  "packageName": "@my-app/monorepo",
   "scripts": {
     "keys": [
       "subgraph:auth",
@@ -9,10 +9,10 @@
       "subgraph:deploy"
     ],
     "values": [
-      "yarn workspace @project/subgraph auth",
-      "yarn workspace @project/subgraph codegen",
-      "yarn workspace @project/subgraph build",
-      "yarn workspace @project/subgraph deploy"
+      "yarn workspace @my-app/subgraph auth",
+      "yarn workspace @my-app/subgraph codegen",
+      "yarn workspace @my-app/subgraph build",
+      "yarn workspace @my-app/subgraph deploy"
     ]
   }
 }

@@ -1,8 +1,8 @@
 {
-  "packageName": "@project/vue-app",
+  "packageName": "@my-app/vue-app",
   "dependencies": {
     "keys": [
-      "@project/contracts"
+      "@my-app/contracts"
     ],
     "values": [
       "^1.0.0"

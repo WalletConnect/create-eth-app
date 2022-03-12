@@ -9,7 +9,7 @@
     ]
   },
   "imports": [
-    "import { addresses, abis } from \"@project/contracts\";",
+    "import { addresses, abis } from \"@my-app/contracts\";",
     "import GET_TRANSFERS from \"./graphql/subgraph\";"
   ],
   "learnUrl": "https://thegraph.com/docs/quick-start",
