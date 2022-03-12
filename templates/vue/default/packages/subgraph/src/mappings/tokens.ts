@@ -1,7 +1,7 @@
 import { Token } from "../types/schema";
 
 export function addToken(address: string): void {
-  let token = Token.load(address);
+  let token: Token | null = Token.load(address);
   if (token != null) {
     return;
   }
