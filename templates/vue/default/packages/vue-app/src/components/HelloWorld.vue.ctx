@@ -2,7 +2,7 @@
   "callToAction": "Read On-Chain Balance",
   "graphqlQueryName": "GET_TRANSFERS",
   "imports": [
-    "import { addresses, abis } from \"@project/contracts\";",
+    "import { addresses, abis } from \"@my-app/contracts\";",
     "import GET_TRANSFERS from \"../graphql/subgraph\";"
   ],
   "learnItems": [

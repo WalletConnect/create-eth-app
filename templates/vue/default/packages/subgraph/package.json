@@ -1,5 +1,5 @@
 {
-  "name": "@project/subgraph",
+  "name": "@my-app/subgraph",
   "version": "1.0.0",
   "dependencies": {
     "@graphprotocol/graph-cli": "0.20.1",
