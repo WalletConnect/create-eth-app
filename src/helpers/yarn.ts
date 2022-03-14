@@ -1,4 +1,5 @@
-import { ChildProcess, execSync } from "child_process";
+import { execSync } from "child_process";
+import type { ChildProcess } from "child_process";
 
 import chalk from "chalk";
 import spawn from "cross-spawn";
