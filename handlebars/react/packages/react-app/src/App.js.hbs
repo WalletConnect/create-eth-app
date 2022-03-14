@@ -66,9 +66,9 @@ function App() {
 
   useEffect(() => {
     if (subgraphQueryError) {
-      console.error(\"Error while querying subgraph:\", subgraphQueryError.message);
+      console.error("Error while querying subgraph:", subgraphQueryError.message);
       return;
-    },
+    }
     if (!loading && data && data.{{ subgraphQuery.key }}) {
       console.log({ {{ subgraphQuery.key }}: data.{{ subgraphQuery.key }} });
     }
