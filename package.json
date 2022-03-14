@@ -90,6 +90,7 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
+  "packageManager": "yarn@3.2.0",
   "repository": {
     "name": "paulrberg/create-eth-app",
     "type": "git",
