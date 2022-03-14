@@ -1,7 +1,6 @@
 import "./index.css";
 
-import { ApolloProvider } from "@apollo/react-hooks";
-import ApolloClient from "apollo-boost";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -10,6 +9,7 @@ import App from "./App";
 {{{ subgraphComment }}}
 // See all subgraphs: https://thegraph.com/explorer/
 const client = new ApolloClient({
+  cache: new InMemoryCache(),
   uri: "{{ subgraphUrl }}",
 });
 

@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from "@apollo/client";
 
 // See more example queries on https://thegraph.com/explorer/subgraph/mstable/mstable-protocol
 const GET_MASSETS = gql`
