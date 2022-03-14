@@ -6,8 +6,8 @@ import { when } from "jest-when";
 import { shouldUseYarn, shouldUseYarnWorkspaces } from "../../src/helpers/yarn";
 
 describe("yarn", function () {
-  let execSyncMock: jest.SpyInstance;
-  let processExitMock: jest.SpyInstance;
+  let execSyncMock: any;
+  let processExitMock: any;
 
   beforeAll(function () {
     console.error = jest.fn();

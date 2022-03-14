@@ -5,9 +5,9 @@ import url from "url";
 import { getOnline, getProxy } from "../../src/helpers/networking";
 
 describe("networking", function () {
-  let dnsLookupMock: jest.SpyInstance;
-  let execSyncMock: jest.SpyInstance;
-  let urlParseMock: jest.SpyInstance;
+  let dnsLookupMock: any;
+  let execSyncMock: any;
+  let urlParseMock: any;
 
   beforeAll(function () {
     dnsLookupMock = jest.spyOn(dns, "lookup");
@@ -66,7 +66,7 @@ describe("networking", function () {
   describe("getOnline", function () {
     describe("when the dns lookup returns no registry error", function () {
       beforeEach(function () {
-        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
+        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback: any) {
           callback(null);
         });
       });
@@ -79,7 +79,7 @@ describe("networking", function () {
 
     describe("when the dns lookup returns a registry error", function () {
       beforeEach(function () {
-        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
+        dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback: any) {
           callback(new Error("Registry error"));
         });
       });
@@ -114,7 +114,7 @@ describe("networking", function () {
 
           describe("when the dns lookup returns a registry error", function () {
             beforeEach(function () {
-              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
+              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback: any) {
                 callback(new Error("Registry error"));
               });
             });
@@ -127,7 +127,7 @@ describe("networking", function () {
 
           describe("when the dns lookup returns no registry error", function () {
             beforeEach(function () {
-              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback) {
+              dnsLookupMock.mockImplementationOnce(function (_hostname: string, callback: any) {
                 callback(null);
               });
             });
