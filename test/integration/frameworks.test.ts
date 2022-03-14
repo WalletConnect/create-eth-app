@@ -12,7 +12,7 @@ import {
 } from "../../src/helpers/frameworks";
 
 describe("frameworks", function () {
-  let getRefsMock: jest.SpyInstance;
+  let getRefsMock: any;
 
   beforeAll(function () {
     getRefsMock = jest.spyOn(envHelpers, "getRefs");

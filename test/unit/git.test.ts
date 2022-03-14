@@ -8,7 +8,7 @@ import { isInGitRepository, isInMercurialRepository, tryGitInit } from "../../sr
 
 describe("git", function () {
   let testDirPath: string;
-  let execSyncMock: jest.SpyInstance;
+  let execSyncMock: any;
 
   beforeAll(function () {
     execSyncMock = jest.spyOn(child_process, "execSync");

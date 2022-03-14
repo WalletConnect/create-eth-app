@@ -3,7 +3,7 @@ import { getRefs, getRepository } from "../../src/helpers/env";
 
 describe("env", function () {
   const oldEnv = process.env;
-  let processExitMock: jest.SpyInstance;
+  let processExitMock: any;
 
   beforeAll(function () {
     // Clears the process.env cache.
