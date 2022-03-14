@@ -57,24 +57,22 @@ function App() {
   const { loading, error: subgraphQueryError, data } = useQuery({{ subgraphQuery.name }});
 
   useEffect(() => {
-    {{#each subgraphQuery.useEffect }}
-    {{{ this }}}
-    {{/each}}
-  }, [loading, error, data]);
-
-  useEffect(() => {
     if (contractCallError) {
       console.error("Error while calling contract:", contractCallError.message);
       return;
     }
   }, [contractCallError]);
 
+
   useEffect(() => {
     if (subgraphQueryError) {
-      console.error("Error while querying subgraph:", subgraphQueryError.message);
+      console.error(\"Error while querying subgraph:\", subgraphQueryError.message);
       return;
+    },
+    if (!loading && data && data.{{ subgraphQuery.key }}) {
+      console.log({ {{ subgraphQuery.key }}: data.{{ subgraphQuery.key }} });
     }
-  }, [subgraphQueryError]);
+  }, [loading, subgraphQueryError, data]);
 
   return (
     <Container>
