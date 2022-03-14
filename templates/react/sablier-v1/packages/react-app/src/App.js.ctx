@@ -1,26 +1,23 @@
 {
-  "callToAction": "Read On-Chain Data",
-  "graphqlQueryName": "GET_STREAMS",
-  "hooks": {
-    "readData": [
-      "if (!loading && !error && data && data.streams) {",
-      "  console.log({ streams: data.streams });",
-      "}"
-    ]
-  },
+  "contractCall": [
+    "// Read more about useDapp on https://usedapp.readthedocs.io/",
+    "const { error: contractCallError, value: nextStreamId } =",
+    "  useCall({",
+    "     contract: new Contract(addresses[MAINNET_ID].sablier, abis.sablier),",
+    "     method: \"nextStreamId\",",
+    "     args: [],",
+    "  }) ?? {};"
+  ],
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
     "import GET_STREAMS from \"./graphql/subgraph\";"
   ],
-  "learnUrl": "https://docs.sablier.finance/",
-  "readOnChainData": [
-    "// Should replace with the end-user wallet, e.g. Metamask",
-    "const defaultProvider = getDefaultProvider();",
-    "// Create an instance of an ethers.js Contract",
-    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
-    "const sablierContract = new Contract(addresses[MAINNET_ID].sablier, abis.sablier, defaultProvider);",
-    "const nextStreamId = await sablierContract.nextStreamId();",
-    "console.log({ nextStreamId: nextStreamId.toString() });"
-  ],
-  "whatToLearn": "Sablier v1"
+  "learn": {
+    "name": "Sablier v1",
+    "url": "https://docs.sablier.finance/"
+  },
+  "subgraphQuery": {
+    "key": "streams",
+    "name": "GET_STREAMS"
+  }
 }
