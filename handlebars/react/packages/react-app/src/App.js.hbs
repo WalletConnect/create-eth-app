@@ -56,7 +56,6 @@ function App() {
 
   const { loading, error: subgraphQueryError, data } = useQuery({{ subgraphQuery.name }});
 
-
   useEffect(() => {
     if (subgraphQueryError) {
       console.error("Error while querying subgraph:", subgraphQueryError.message);
