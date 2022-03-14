@@ -88,13 +88,13 @@ function App() {
         </p>
         {/* Remove "display: none" to see the token balance displayed in the browser */}
         {tokenBalance && (
-          <span style={{ display: "none" }}>Token balance: {formatUnits(tokenBalance.toString(), 18)}</span>
+          <span style=\{{ display: "none" }}>Token balance: {formatUnits(tokenBalance.toString(), 18)}</span>
         )}
-        <Link href="https://reactjs.org" style={{ marginTop: "10px" }}>
+        <Link href="https://reactjs.org"}>
           Learn React
         </Link>
         <Link href="https://usedapp.readthedocs.io/">Learn useDapp</Link>
-         <Link href="{{ learn.url }}">Learn {{ learn.name }}</Link>
+        <Link href="{{ learn.url }}">Learn {{ learn.name }}</Link>
       </Body>
     </Container>
   );
