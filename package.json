@@ -89,6 +89,7 @@
   ],
   "license": "MIT",
   "main": "./dist/index.js",
+  "packageManager": "yarn@3.2.0",
   "repository": {
     "name": "paulrberg/create-eth-app",
     "type": "git",
@@ -109,6 +110,5 @@
     "test:integration": "jest test/integration",
     "test:unit": "jest test/unit",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
-  },
-  "packageManager": "yarn@3.1.0"
+  }
 }
