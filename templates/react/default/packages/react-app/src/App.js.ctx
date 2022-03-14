@@ -17,11 +17,7 @@
   },
   "learnUrl": "https://thegraph.com/docs/quick-start",
   "subgraphQuery": {
-    "name": "GET_TRANSFERS",
-    "useEffect": [
-      "if (!loading && !error && data && data.transfers) {",
-      "  console.log({ transfers: data.transfers });",
-      "}"
-    ]
+    "key": "transfers",
+    "name": "GET_TRANSFERS"
   }
 }
