@@ -56,13 +56,6 @@ function App() {
 
   const { loading, error: subgraphQueryError, data } = useQuery({{ subgraphQuery.name }});
 
-  useEffect(() => {
-    if (contractCallError) {
-      console.error("Error while calling contract:", contractCallError.message);
-      return;
-    }
-  }, [contractCallError]);
-
 
   useEffect(() => {
     if (subgraphQueryError) {
@@ -84,10 +77,6 @@ function App() {
         <p>
           Edit <code>packages/react-app/src/App.js</code> and save to reload.
         </p>
-        {/* Remove "display: none" to see the token balance displayed in the browser */}
-        {tokenBalance && (
-          <span style=\{{ display: "none" }}>Token balance: {formatUnits(tokenBalance.toString(), 18)}</span>
-        )}
         <Link href="https://reactjs.org">
           Learn React
         </Link>
