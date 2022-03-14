@@ -6,11 +6,11 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 
-{{{ subgraphComment }}}
+{{{ subgraph.comment }}}
 // See all subgraphs: https://thegraph.com/explorer/
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "{{ subgraphUrl }}",
+  uri: "{{ subgraph.url }}",
 });
 
 ReactDOM.render(
