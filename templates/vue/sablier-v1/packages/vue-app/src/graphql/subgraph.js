@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "@apollo/client";
 
 // See more example queries on https://thegraph.com/explorer/subgraph/sablierhq/sablier
 const GET_STREAMS = gql`
@@ -7,17 +7,13 @@ const GET_STREAMS = gql`
       id
       cancellation {
         recipientBalance
-        recipientInterest
         timestamp
         txhash
       }
       deposit
-      exchangeRateInitial
       ratePerSecond
       recipient
-      recipientSharePercentage
       sender
-      senderSharePercentage
       startTime
       stopTime
       timestamp
