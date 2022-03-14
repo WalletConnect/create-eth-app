@@ -1,62 +1,45 @@
 import { useQuery } from "@apollo/client";
 import { Contract } from "@ethersproject/contracts";
-import { getDefaultProvider } from "@ethersproject/providers";
+import { formatUnits } from "@ethersproject/units";
+import { shortenAddress, useCall, useEthers, useLookupAddress } from "@usedapp/core";
 import React, { useEffect, useState } from "react";
 
-import { Body, Button, Header, Image, Link } from "./components";
+import { Body, Button, Container, Header, Image, Link } from "./components";
 import logo from "./ethereumLogo.png";
-import useWeb3Modal from "./hooks/useWeb3Modal";
 
 {{#each imports}}
 {{{ this }}}
 {{/each}}
 
-async function readOnChainData() {
-  {{#each readOnChainData}}
-  {{{ this }}}
-  {{/each}}
-}
-
-function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
-  const [account, setAccount] = useState("");
+function WalletButton() {
   const [rendered, setRendered] = useState("");
 
+  const ens = useLookupAddress();
+  const { account, activateBrowserWallet, deactivate, error } = useEthers();
+
   useEffect(() => {
-    async function fetchAccount() {
-      try {
-        if (!provider) {
-          return;
-        }
-
-        // Load the user's accounts.
-        const accounts = await provider.listAccounts();
-        setAccount(accounts[0]);
-
-        // Resolve the ENS name for the first account.
-        const name = await provider.lookupAddress(accounts[0]);
-
-        // Render either the ENS name or the shortened account address.
-        if (name) {
-          setRendered(name);
-        } else {
-          setRendered(account.substring(0, 6) + "..." + account.substring(36));
-        }
-      } catch (err) {
-        setAccount("");
-        setRendered("");
-        console.error(err);
-      }
+    if (ens) {
+      setRendered(ens);
+    } else if (account) {
+      setRendered(shortenAddress(account));
+    } else {
+      setRendered("");
     }
-    fetchAccount();
-  }, [account, provider, setAccount, setRendered]);
+  }, [account, ens, setRendered]);
+
+  useEffect(() => {
+    if (error) {
+      console.error("Error while connecting wallet:", error.message);
+    }
+  }, [error]);
 
   return (
     <Button
       onClick={() => {
-        if (!provider) {
-          loadWeb3Modal();
+        if (!account) {
+          activateBrowserWallet();
         } else {
-          logoutOfWeb3Modal();
+          deactivate();
         }
       }}
     >
@@ -67,37 +50,52 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
 }
 
 function App() {
-  const { loading, error, data } = useQuery({{ graphqlQueryName }});
-  const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
+  {{#each contractCall }}
+  {{{ this }}}
+  {{/each}}
 
-  React.useEffect(() => {
-    {{#each hooks.readData }}
+  const { loading, error: subgraphQueryError, data } = useQuery({{ subgraphQuery.name }});
+
+  useEffect(() => {
+    {{#each subgraphQuery.useEffect }}
     {{{ this }}}
     {{/each}}
   }, [loading, error, data]);
 
+  useEffect(() => {
+    if (contractCallError) {
+      console.error("Error while calling contract:", contractCallError.message);
+      return;
+    }
+  }, [contractCallError]);
+
+  useEffect(() => {
+    if (subgraphQueryError) {
+      console.error("Error while querying subgraph:", subgraphQueryError.message);
+      return;
+    }
+  }, [subgraphQueryError]);
+
   return (
-    <div>
+    <Container>
       <Header>
-        <WalletButton provider={provider} loadWeb3Modal={loadWeb3Modal} logoutOfWeb3Modal={logoutOfWeb3Modal} />
+        <WalletButton />
       </Header>
       <Body>
-        <Image src={logo} alt="react-logo" />
+        <Image src={logo} alt="ethereum-logo" />
         <p>
           Edit <code>packages/react-app/src/App.js</code> and save to reload.
         </p>
-        {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
-        <Button hidden onClick={() => readOnChainData()}>
-          {{ callToAction }}
-        </Button>
-        <Link href="https://ethereum.org/developers/#getting-started" style={{{{raw-helper}}}}{{ marginTop: "8px" }}{{{{/raw-helper}}}}>
-          Learn Ethereum
+        {/* Remove "display: none" to see the token balance displayed in the browser */}
+        {tokenBalance && (
+          <span style={{ display: "none" }}>Token balance: {formatUnits(tokenBalance.toString(), 18)}</span>
+        )}
+        <Link href="https://reactjs.org" style={{ marginTop: "10px" }}>
+          Learn React
         </Link>
-        <Link href="https://reactjs.org">Learn React</Link>
-        <Link href="{{ learnUrl }}">Learn {{ whatToLearn }}</Link>
+        <Link href="https://usedapp.readthedocs.io/">Learn useDapp</Link>
+         <Link href="{{ learn.url }}">Learn {{ learn.name }}</Link>
       </Body>
-    </div>
+    </Container>
   );
 }
-
-export default App;
