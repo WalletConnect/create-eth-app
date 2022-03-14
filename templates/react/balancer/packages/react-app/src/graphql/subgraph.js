@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from "@apollo/client";
 
 // See more example queries on https://thegraph.com/explorer/subgraph/balancer-labs/balancer
 const GET_PUBLIC_POOL_DATA = gql`
