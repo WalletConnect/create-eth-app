@@ -1,3 +1,5 @@
 {
-  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/tomafrench/chainlink"
+  "subgraph": {
+    "url": "https://api.thegraph.com/subgraphs/name/tomafrench/chainlink"
+  }
 }
