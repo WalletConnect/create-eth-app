@@ -53,8 +53,6 @@
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
-    "import-sort-parser-typescript": "^6.0.0",
-    "import-sort-style-module": "^6.0.0",
     "jest": "^27.5.1",
     "jest-when": "^3.5.1",
     "lerna": "^4.0.0",
@@ -74,16 +72,6 @@
     "CHANGELOG.md"
   ],
   "homepage": "https://github.com/paulrberg/create-eth-app#readme",
-  "importSort": {
-    ".hbs, .js, .jsx": {
-      "parser": "babylon",
-      "style": "module"
-    },
-    ".ts, .tsx": {
-      "parser": "typescript",
-      "style": "module"
-    }
-  },
   "keywords": [
     "ethers",
     "ethereum",
