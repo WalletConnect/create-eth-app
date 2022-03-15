@@ -26,7 +26,7 @@
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
     "import { SynthetixJs } from \"synthetix-js\";",
-    "import GET_TRANSFERS from \"../graphql/subgraph\";"
+    "import GET_SYNTH_HOLDERS from \"../graphql/subgraph\";"
   ],
   "learn": {
     "items": [
@@ -50,7 +50,7 @@
     "name": "Synthetix"
   },
   "subgraphQuery": {
-    "key": "transfers",
-    "name": "GET_TRANSFERS"
+    "key": "synthHolders",
+    "name": "GET_SYNTH_HOLDERS"
   }
 }
