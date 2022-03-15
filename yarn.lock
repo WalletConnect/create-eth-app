@@ -2803,14 +2803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>= 8":
-  version: 14.11.10
-  resolution: "@types/node@npm:14.11.10"
-  checksum: 2303366e2791464366204f6695db0fd22f9d9023f06e1e736ce4e78a16b5ddea7034e5b9c764173b08c9de0b2623c68ccb5aacaccdeb4103a17fd41a5fd45000
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:>=12, @types/node@npm:^17.0.21":
+"@types/node@npm:*, @types/node@npm:>= 8, @types/node@npm:>=12, @types/node@npm:^17.0.21":
   version: 17.0.21
   resolution: "@types/node@npm:17.0.21"
   checksum: 89dcd2fe82f21d3634266f8384e9c865cf8af49685639fbdbd799bdd1040480fb1e8eeda2d3b9fce41edbe704d2a4be9f427118c4ae872e8d9bb7cbeb3c41a94
@@ -4553,8 +4546,6 @@ __metadata:
     got: 11.8.3
     handlebars: ^4.7.7
     husky: ^7.0.4
-    import-sort-parser-typescript: ^6.0.0
-    import-sort-style-module: ^6.0.0
     jest: ^27.5.1
     jest-when: ^3.5.1
     lerna: ^4.0.0
@@ -6644,22 +6635,6 @@ fsevents@^2.3.2:
   bin:
     import-local-fixture: fixtures/cli.js
   checksum: c74d9f9484c878cda1de3434613c7ff72d5dadcf20e5482542232d7c2575b713ff88701d6675fcf09a3684cb23fb407c8b333b9cbc59438712723d058d8e976c
-  languageName: node
-  linkType: hard
-
-"import-sort-parser-typescript@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "import-sort-parser-typescript@npm:6.0.0"
-  dependencies:
-    typescript: ^3.2.4
-  checksum: 81c5dd072623c3bbddee41704ddb15261f52cac4cc9b6161bdeea5d0700c3e60f395d8976d3a28e5dc8e8563abc78f7e8c160620f5187bbaa24c8f91ea92e333
-  languageName: node
-  linkType: hard
-
-"import-sort-style-module@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "import-sort-style-module@npm:6.0.0"
-  checksum: 591a8ac05eda17406a8b3b1c2ac828cbedfe3bcfe6d6e69acdac09761bd328c724c4b7f4729704cd42414dab5416d3313fdc801920f6221d5022eb1e756a2848
   languageName: node
   linkType: hard
 
@@ -12007,16 +11982,6 @@ resolve@^1.3.2:
   languageName: node
   linkType: hard
 
-typescript@^3.2.4:
-  version: 3.9.10
-  resolution: "typescript@npm:3.9.10"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 46c842e2cd4797b88b66ef06c9c41dd21da48b95787072ccf39d5f2aa3124361bc4c966aa1c7f709fae0509614d76751455b5231b12dbb72eb97a31369e1ff92
-  languageName: node
-  linkType: hard
-
 typescript@^4.4.3:
   version: 4.4.3
   resolution: "typescript@npm:4.4.3"
@@ -12034,16 +11999,6 @@ typescript@^4.4.3:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 8a44ed7e6f6c4cb1ebe8cf236ecda2fb119d84dcf0fbd77e707b2dfea1bbcfc4e366493a143513ce7f57203c75da9d4e20af6fe46de89749366351046be7577c
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^3.2.4#~builtin<compat/typescript>":
-  version: 3.9.10
-  resolution: "typescript@patch:typescript@npm%3A3.9.10#~builtin<compat/typescript>::version=3.9.10&hash=bda367"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: dc7141ab555b23a8650a6787f98845fc11692063d02b75ff49433091b3af2fe3d773650dea18389d7c21f47d620fb3b110ea363dab4ab039417a6ccbbaf96fc2
   languageName: node
   linkType: hard
 
