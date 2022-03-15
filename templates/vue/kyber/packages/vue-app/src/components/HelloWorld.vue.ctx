@@ -1,36 +1,6 @@
 {
   "callToAction": "Read On-Chain Exchange Rate",
-  "graphqlQueryName": "GET_FULL_TRADES",
-  "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
-    "import GET_FULL_TRADES from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://developer.kyber.network/"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://discord.gg/NfFMVz6"
-    },
-    {
-      "label": "Reddit Community",
-      "url": "https://reddit.com/r/kybernetwork/"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/kybernetwork"
-    }
-  ],
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.fullTrades) {",
-      "  console.log({ markets: data.fullTrades });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "// Should replace with the end-user wallet, e.g. Metamask",
     "const defaultProvider = getDefaultProvider();",
     "// Create an instance of an ethers.js Contract",
@@ -48,5 +18,33 @@
     ");",
     "console.log({ exchangeRate });"
   ],
-  "whatToLearn": "Kyber"
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
+    "import GET_FULL_TRADES from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://developer.kyber.network/"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://discord.gg/NfFMVz6"
+      },
+      {
+        "label": "Reddit Community",
+        "url": "https://reddit.com/r/kybernetwork/"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/kybernetwork"
+      }
+    ],
+    "name": "Kyber"
+  },
+  "subgraphQuery": {
+    "key": "fullTrades",
+    "name": "GET_FULL_TRADES"
+  }
 }

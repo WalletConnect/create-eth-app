@@ -1,3 +1,5 @@
 {
-  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/paulrberg/create-eth-app"
+  "subgraph": {
+    "url": "https://api.thegraph.com/subgraphs/name/paulrberg/create-eth-app"
+  }
 }

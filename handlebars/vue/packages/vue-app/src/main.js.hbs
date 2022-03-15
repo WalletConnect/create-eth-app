@@ -14,7 +14,7 @@ const cache = new InMemoryCache();
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: "{{ subgraphUrl }}",
+  uri: "{{ subgraph.url }}",
 });
 
 // Create the apollo client

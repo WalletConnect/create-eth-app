@@ -16,7 +16,6 @@
     "name": "The Graph",
     "url": "https://thegraph.com/docs/quick-start"
   },
-  "learnUrl": "https://thegraph.com/docs/quick-start",
   "subgraphQuery": {
     "key": "transfers",
     "name": "GET_TRANSFERS"
