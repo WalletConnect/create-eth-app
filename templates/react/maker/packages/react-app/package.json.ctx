@@ -4,12 +4,16 @@
     "keys": [
       "@makerdao/dai",
       "@makerdao/dai-plugin-mcd",
-      "@maker-app/contracts"
+      "@maker-app/contracts",
+      "babel-jest",
+      "babel-loader"
     ],
     "values": [
       "^0.31.7",
       "^1.5.13-rc.1",
-      "^1.0.0"
+      "^1.0.0",
+      "26.6.0",
+      "8.1.0"
     ]
   }
 }
