@@ -92,7 +92,7 @@
     "build": "ncc build ./src/index.ts --out dist/ && yarn copy-files",
     "clean": "shx rm -rf ./coverage ./dist",
     "copy-files": "copyfiles --up 1 \"src/gitignore\" dist/",
-    "lint": "yarn run lint:ts && yarn run prettier:check && yarn typecheck",
+    "lint": "yarn run lint:ts && yarn run prettier:check",
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.jsx,.ts,.tsx .",
     "postinstall": "husky install",
     "postpublish": "pinst --enable",
@@ -102,7 +102,6 @@
     "test": "yarn run test:unit && yarn run test:integration",
     "test:integration": "jest test/integration",
     "test:unit": "jest test/unit",
-    "typecheck": "tsc --noEmit",
     "watch": "ncc build ./src/index.ts --out dist/ --watch"
   }
 }
