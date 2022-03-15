@@ -1,32 +1,6 @@
 {
   "callToAction": "Read On-Chain Data",
-  "graphqlQueryName": "GET_STREAMS",
-  "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
-    "import GET_STREAMS from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://docs.sablier.finance/"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://discord.gg/KXajCXC/"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/sablierhq/"
-    }
-  ],
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.streams) {",
-      "  console.log({ streams: data.streams });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "// Should replace with the end-user wallet, e.g. Metamask",
     "const defaultProvider = getDefaultProvider();",
     "// Create an instance of an ethers.js Contract",
@@ -35,5 +9,29 @@
     "const nextStreamId = await sablierContract.nextStreamId();",
     "console.log({ nextStreamId: nextStreamId.toString() });"
   ],
-  "whatToLearn": "Sablier v1"
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@sablier-v1-app/contracts\";",
+    "import GET_STREAMS from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://docs.sablier.finance/"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://discord.gg/KXajCXC/"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/sablierhq/"
+      }
+    ],
+    "name": "Sablier v1"
+  },
+  "subgraphQuery": {
+    "key": "streams",
+    "name": "GET_STREAMS"
+  }
 }

@@ -1,37 +1,6 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQueryName": "GET_MONEY_MARKETS",
-  "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
-    "import GET_MONEY_MARKETS from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://compound.finance/docs"
-    },
-    {
-      "label": "Governance",
-      "url": "https://compound.finance/governance"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://compound.finance/discord"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/compoundfinance"
-    }
-  ],
-  "learnUrl": "https://compound.finance/developers",
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.markets) {",
-      "  console.log({ markets: data.markets });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "// Should replace with the end-user wallet, e.g. Metamask",
     "const defaultProvider = getDefaultProvider();",
     "// Create an instance of an ethers.js Contract",
@@ -41,5 +10,33 @@
     "const cDAIBalance = await cDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
     "console.log({ cDAIBalance: cDAIBalance.toString() });"
   ],
-  "whatToLearn": "Compound"
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
+    "import GET_MONEY_MARKETS from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://compound.finance/docs"
+      },
+      {
+        "label": "Governance",
+        "url": "https://compound.finance/governance"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://compound.finance/discord"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/compoundfinance"
+      }
+    ],
+    "name": "Compound"
+  },
+  "subgraphQuery": {
+    "key": "markets",
+    "name": "GET_MONEY_MARKETS"
+  }
 }

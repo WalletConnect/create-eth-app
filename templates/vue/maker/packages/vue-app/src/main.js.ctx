@@ -1,3 +1,5 @@
 {
-  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/protofire/maker-protocol"
+  "subgraph": {
+    "url": "https://api.thegraph.com/subgraphs/name/protofire/maker-protocol"
+  }
 }

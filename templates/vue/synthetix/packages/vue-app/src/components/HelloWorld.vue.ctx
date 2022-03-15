@@ -1,37 +1,6 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQueryName": "GET_TRANSFERS",
-  "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
-    "import { SynthetixJs } from \"synthetix-js\";",
-    "import GET_TRANSFERS from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://docs.synthetix.io/"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://discordapp.com/invite/AEdUHzt"
-    },
-    {
-      "label": "Reddit Community",
-      "url": "https://reddit.com/r/synthetix_io"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/synthetix_io"
-    }
-  ],
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.transfers) {",
-      "  console.log({ transfers: data.transfers });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "/*** 1st method: get snx price with synthetix-js ***/",
     "",
     "// NOTE a lot of the calls need to be formatted. You can reference the many formatting examples in the dashboard repo",
@@ -54,5 +23,34 @@
     "const snxBalance = await snxContract.balanceOf(\"0x49BE88F0fcC3A8393a59d3688480d7D253C37D2A\");",
     "console.log({ snxBalance: snxBalance.toString() });"
   ],
-  "whatToLearn": "Synthetix"
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@synthetix-app/contracts\";",
+    "import { SynthetixJs } from \"synthetix-js\";",
+    "import GET_TRANSFERS from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://docs.synthetix.io/"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://discordapp.com/invite/AEdUHzt"
+      },
+      {
+        "label": "Reddit Community",
+        "url": "https://reddit.com/r/synthetix_io"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/synthetix_io"
+      }
+    ],
+    "name": "Synthetix"
+  },
+  "subgraphQuery": {
+    "key": "transfers",
+    "name": "GET_TRANSFERS"
+  }
 }

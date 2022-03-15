@@ -1,3 +1,5 @@
 {
-  "subgraphUrl": "https://api.thegraph.com/explorer/subgraph/protofire/kyber"
+  "subgraph": {
+    "url": "https://api.thegraph.com/explorer/subgraph/protofire/kyber"
+  }
 }

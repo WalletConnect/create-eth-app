@@ -1,36 +1,6 @@
 {
   "callToAction": "Read On-Chain Collateral Information",
-  "graphqlQueryName": "GET_COLLATERAL_TYPES",
-  "imports": [
-    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
-    "import GET_COLLATERAL_TYPES from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://docs.makerdao.com/"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://chat.makerdao.com/"
-    },
-    {
-      "label": "Reddit Community",
-      "url": "https://reddit.com/r/makerdao/"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/makerdao/"
-    }
-  ],
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.collateralTypes) {",
-      "  console.log({ collateralTypes: data.collateralTypes });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "// Should replace with the end-user wallet, e.g. Metamask",
     "const defaultProvider = getDefaultProvider();",
     "// Create an instance of an ethers.js Contract",
@@ -41,5 +11,33 @@
     "const ilk = await vatContract.ilks(\"0x4554482d41000000000000000000000000000000000000000000000000000000\")",
     "console.log({ ilk });"
   ],
-  "whatToLearn": "Maker"
+  "imports": [
+    "import { MAINNET_ID, addresses, abis } from \"@maker-app/contracts\";",
+    "import GET_COLLATERAL_TYPES from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://docs.makerdao.com/"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://chat.makerdao.com/"
+      },
+      {
+        "label": "Reddit Community",
+        "url": "https://reddit.com/r/makerdao/"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/makerdao/"
+      }
+    ],
+    "name": "Maker"
+  },
+  "subgraphQuery": {
+    "key": "collateralTypes",
+    "name": "GET_COLLATERAL_TYPES"
+  }
 }

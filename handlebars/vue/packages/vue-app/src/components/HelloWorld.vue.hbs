@@ -7,7 +7,7 @@
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
     <!-- Remove the "display: none" style and open the JavaScript console in the browser to see what this function does -->
-    <button id="readOnchainData" style="display: none;" @click="readOnchainData">{{ callToAction }}</button>
+    <button id="contractCall" style="display: none;" @click="contractCall">{{ callToAction }}</button>
     <h3>Learn Vue</h3>
     <ul>
       <li>
@@ -41,9 +41,9 @@
         <a href="https://reddit.com/r/ethdev/" target="_blank" rel="noopener">Reddit</a>
       </li>
     </ul>
-    <h3>Learn {{ whatToLearn }}</h3>
+    <h3>Learn {{ learn.name }}</h3>
     <ul>
-      {{#each learnItems }}
+      {{#each learn.items }}
       <li>
         <a href="{{ this.url }}" target="_blank" rel="noopener">{{ this.label }}</a>
       </li>
@@ -61,8 +61,8 @@
 
   export default {
     methods: {
-      readOnchainData: async function () {
-        {{#each readOnChainData}}
+      contractCall: async function () {
+        {{#each contractCall}}
         {{{ this }}}
         {{/each}}
       },
@@ -74,11 +74,11 @@
     async mounted() {
       try {
         const { data, loading, stale } = await this.$apollo.query({
-          query: {{ graphqlQueryName }},
+          query: {{ subgraphQuery.name }},
         });
-        {{#each mounted.readData }}
-        {{{ this }}}
-        {{/each}}
+        if (!loading && !stale && data && data.{{ subgraphQuery.key }}) {
+          console.log({ {{ subgraphQuery.key }}: data.{{ subgraphQuery.key }} });
+        }
       } catch (error) {
         console.error("Error while pulling data from the subgraph:", error);
       }
