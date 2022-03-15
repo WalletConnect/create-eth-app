@@ -14,5 +14,8 @@
     "strict": true,
     "target": "es6"
   },
-  "exclude": ["dist", "lib", "node_modules", "templates"]
+  "exclude": ["dist", "lib", "node_modules", "templates"],
+  "ts-node": {
+    "files": true
+  }
 }
