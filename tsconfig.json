@@ -14,6 +14,8 @@
     "strict": true,
     "target": "es6"
   },
-  "exclude": ["dist", "handlebars", "lib", "node_modules", "templates", "test"],
-  "include": ["src/**/*", "types/**/*"]
+  "exclude": ["dist", "lib", "node_modules", "templates"],
+  "ts-node": {
+    "files": true
+  }
 }
