@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
-import path from "path";
-
 import chalk from "chalk";
 import Commander from "commander";
+import path from "path";
 import prompts from "prompts";
 import updateCheck from "update-check";
 
