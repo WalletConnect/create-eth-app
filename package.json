@@ -97,6 +97,7 @@
     "lint:ts": "eslint --config ./.eslintrc.yaml --ignore-path ./.eslintignore --ext .js,.jsx,.ts,.tsx .",
     "postinstall": "husky install",
     "postpublish": "pinst --enable",
+    "prepack": "yarn build",
     "prepublishOnly": "pinst --disable",
     "prettier": "prettier --config .prettierrc.yaml --write \"**/*.{js,jsx,json,md,sol,ts,tsx,yaml,yml}\"",
     "prettier:check": "prettier --check --config .prettierrc.yaml \"**/*.{js,json,jsx,md,sol,ts,tsx,yaml,yml}\"",
