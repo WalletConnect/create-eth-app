@@ -1,6 +1,6 @@
 {
   "contractCall": [
-    "// Read more about useDapp on https://usedapp.readthedocs.io/",
+    "// Read more about useDapp on https://usedapp.io/",
     "// ilk = collateral in Maker jargon. The code below pulls data for the ETH collateral.",
     "const { error: contractCallError, value: ilk } =",
     "  useCall({",

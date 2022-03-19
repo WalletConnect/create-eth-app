@@ -1,6 +1,6 @@
 {
   "contractCall": [
-    "// Read more about useDapp on https://usedapp.readthedocs.io/",
+    "// Read more about useDapp on https://usedapp.io/",
     "const { error: contractCallError, value: reserves } =",
     "  useCall({",
     "     contract: new Contract(addresses[MAINNET_ID].pairs[\"DAI-WETH\"], abis.pair),",
