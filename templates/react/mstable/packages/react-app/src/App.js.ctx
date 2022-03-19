@@ -1,27 +1,23 @@
 {
-  "callToAction": "Read On-Chain mAssets",
-  "graphqlQueryName": "GET_MASSETS",
+  "contractCall": [
+    "// Read more about useDapp on https://usedapp.io/",
+    "const { error: contractCallError, value: mUsdTotalSupply } =",
+    "  useCall({",
+    "     contract:new Contract(addresses[MAINNET_ID].tokens.mUSD, abis.mAsset),",
+    "     method: \"totalSupply\",",
+    "     args: [],",
+    "  }) ?? {};"
+  ],
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@mstable-app/contracts\";",
     "import GET_MASSETS from \"./graphql/subgraph\";"
   ],
-  "hooks": {
-    "readData": [
-      "if (!loading && !error && data && data.massets) {",
-      "  console.log({ mAssets: data.massets });",
-      "}"
-    ]
+  "learn": {
+    "name": "mStable",
+    "url": "https://docs.mstable.org/"
   },
-  "learnUrl": "https://docs.mstable.org/",
-  "readOnChainData": [
-    "// Should replace with the end-user wallet, e.g. Metamask",
-    "const defaultProvider = getDefaultProvider();",
-    "// Create an instance of an ethers.js Contract",
-    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
-    "const mUsdContract = new Contract(addresses[MAINNET_ID].tokens.mUSD, abis.mAsset, defaultProvider);",
-    "// Total supply of mUSD",
-    "const mUsdTotalSupply = await mUsdContract.totalSupply();",
-    "console.log({ mUsdTotalSupply });"
-  ],
-  "whatToLearn": "mStable"
+  "subgraphQuery": {
+    "key": "massets",
+    "name": "GET_MASSETS"
+  }
 }

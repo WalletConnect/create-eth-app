@@ -1,32 +1,6 @@
 {
   "callToAction": "Read On-Chain Balance",
-  "graphqlQueryName": "GET_TRANSFERS",
-  "imports": [
-    "import { addresses, abis } from \"@project/contracts\";",
-    "import GET_TRANSFERS from \"../graphql/subgraph\";"
-  ],
-  "learnItems": [
-    {
-      "label": "Core Docs",
-      "url": "https://thegraph.com/docs/quick-start"
-    },
-    {
-      "label": "Community Chat",
-      "url": "https://discord.gg/vtvv7FP"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/graphprotocol"
-    }
-  ],
-  "mounted": {
-    "readData": [
-      "if (!loading && !stale && data && data.transfers) {",
-      "  console.log({ transfers: data.transfers });",
-      "}"
-    ]
-  },
-  "readOnChainData": [
+  "contractCall": [
     "// Should replace with the end-user wallet, e.g. Metamask",
     "const defaultProvider = getDefaultProvider();",
     "// Create an instance of an ethers.js Contract",
@@ -36,5 +10,29 @@
     "const tokenBalance = await ceaErc20.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
     "console.log({ tokenBalance: tokenBalance.toString() });"
   ],
-  "whatToLearn": "The Graph"
+  "imports": [
+    "import { addresses, abis } from \"@my-app/contracts\";",
+    "import GET_TRANSFERS from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://thegraph.com/docs/quick-start"
+      },
+      {
+        "label": "Community Chat",
+        "url": "https://discord.gg/vtvv7FP"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/graphprotocol"
+      }
+    ],
+    "name": "The Graph"
+  },
+  "subgraphQuery": {
+    "key": "transfers",
+    "name": "GET_TRANSFERS"
+  }
 }

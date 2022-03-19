@@ -1,7 +1,6 @@
-import path from "path";
-
 import { Result, compare } from "dir-compare";
 import fsExtra from "fs-extra";
+import path from "path";
 import tempy from "tempy";
 
 import * as envHelpers from "../../src/helpers/env";
@@ -12,7 +11,7 @@ import {
 } from "../../src/helpers/frameworks";
 
 describe("frameworks", function () {
-  let getRefsMock: jest.SpyInstance;
+  let getRefsMock: any;
 
   beforeAll(function () {
     getRefsMock = jest.spyOn(envHelpers, "getRefs");

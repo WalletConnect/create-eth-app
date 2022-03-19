@@ -1,27 +1,23 @@
 {
-  "callToAction": "Read On-Chain Balance",
-  "graphqlQueryName": "GET_MONEY_MARKETS",
-  "hooks": {
-    "readData": [
-      "if (!loading && !error && data && data.markets) {",
-      "  console.log({ markets: data.markets });",
-      "}"
-    ]
-  },
+  "contractCall": [
+    "// Read more about useDapp on https://usedapp.io/",
+    "const { error: contractCallError, value: tokenBalance } =",
+    "  useCall({",
+    "     contract: new Contract(addresses[MAINNET_ID].tokens.cDAI, abis.tokens.cDAI),",
+    "     method: \"balanceOf\",",
+    "     args: [\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\"],",
+    "  }) ?? {};"
+  ],
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@compound-app/contracts\";",
     "import GET_MONEY_MARKETS from \"./graphql/subgraph\";"
   ],
-  "learnUrl": "https://compound.finance/developers",
-  "readOnChainData": [
-    "// Should replace with the end-user wallet, e.g. Metamask",
-    "const defaultProvider = getDefaultProvider();",
-    "// Create an instance of an ethers.js Contract",
-    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
-    "const cDAIContract = new Contract(addresses[MAINNET_ID].tokens.cDAI, abis.tokens.cDAI, defaultProvider);",
-    "// A pre-defined address that owns some cDAI tokens",
-    "const cDAIBalance = await cDAIContract.balanceOf(\"0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C\");",
-    "console.log({ cDAIBalance: cDAIBalance.toString() });"
-  ],
-  "whatToLearn": "Compound"
+  "learn": {
+    "name": "Compound",
+    "url": "https://compound.finance/developers"
+  },
+  "subgraphQuery": {
+    "key": "markets",
+    "name": "GET_MONEY_MARKETS"
+  }
 }

@@ -1,0 +1,36 @@
+{
+  "callToAction": "Read Price Feed",
+  "contractCall": [
+    "// Should replace with the end-user wallet, e.g. Metamask",
+    "const defaultProvider = getDefaultProvider();",
+    "// Create an instance of an ethers.js Contract",
+    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
+    "const priceFeedContract = new Contract(addresses[MAINNET_ID].ETHUSD, AggregatorV3InterfaceABI, defaultProvider);",
+    "const price = await priceFeedContract.latestRoundData();",
+    "// latestRoundData returns the price at the second argument (roundId, answer, startedAt, updatedAt, answeredInRound)",
+    "const [, priceFeedData] = price.toString().split(\",\");",
+    "console.log({ priceFeedData: priceFeedData });"
+  ],
+  "imports": [
+    "import { MAINNET_ID, addresses } from \"@chainlink-app/contracts\";",
+    "import AggregatorV3InterfaceABI from \"@chainlink/contracts/abi/v0.6/AggregatorV3Interface.json\";",
+    "import GET_PRICES_FEEDS from \"../graphql/subgraph\";"
+  ],
+  "learn": {
+    "items": [
+      {
+        "label": "Core Docs",
+        "url": "https://docs.chain.link/"
+      },
+      {
+        "label": "Twitter",
+        "url": "https://twitter.com/chainlink"
+      }
+    ],
+    "name": "Chainlink"
+  },
+  "subgraphQuery": {
+    "key": "priceFeeds",
+    "name": "GET_PRICES_FEEDS"
+  }
+}

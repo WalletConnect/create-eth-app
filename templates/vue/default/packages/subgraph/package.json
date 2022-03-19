@@ -1,9 +1,9 @@
 {
-  "name": "@project/subgraph",
+  "name": "@my-app/subgraph",
   "version": "1.0.0",
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.20.1",
-    "@graphprotocol/graph-ts": "0.20.0"
+    "@graphprotocol/graph-cli": "0.28.0",
+    "@graphprotocol/graph-ts": "0.26.0"
   },
   "license": "MIT",
   "scripts": {

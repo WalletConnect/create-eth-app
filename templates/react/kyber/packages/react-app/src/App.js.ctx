@@ -1,35 +1,27 @@
 {
-  "callToAction": "Read On-Chain Exchange Rates",
-  "graphqlQueryName": "GET_FULL_TRADES",
-  "hooks": {
-    "readData": [
-      "if (!loading && !error && data && data.fullTrades) {",
-      "  console.log({ markets: data.fullTrades });",
-      "}"
-    ]
-  },
+  "contractCall": [
+    "// Read more about useDapp on https://usedapp.io/",
+    "const { error: contractCallError, value: exchangeRate } =",
+    "  useCall({",
+    "     contract: new Contract(addresses[MAINNET_ID].kyberNetworkProxyV2, abis.kyberNetworkProxyV2),",
+    "     method: \"getExpectedRate\",",
+    "     args: [",
+    "       \"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",",
+    "       \"0x6B175474E89094C44Da98b954EedeAC495271d0F\",",
+    "       \"1000000000000000000\"",
+    "     ],",
+    "  }) ?? {};"
+  ],
   "imports": [
     "import { MAINNET_ID, addresses, abis } from \"@kyber-app/contracts\";",
     "import GET_FULL_TRADES from \"./graphql/subgraph\";"
   ],
-  "learnUrl": "https://developer.kyber.network/",
-  "readOnChainData": [
-    "// Should replace with the end-user wallet, e.g. Metamask",
-    "const defaultProvider = getDefaultProvider();",
-    "// Create an instance of an ethers.js Contract",
-    "// Read more about ethers.js on https://docs.ethers.io/v5/api/contract/contract/",
-    "const kyberNetworkProxy = new Contract(",
-    "  addresses[MAINNET_ID].kyberNetworkProxyV2,",
-    "  abis.kyberNetworkProxyV2,",
-    "  defaultProvider,",
-    ");",
-    "// Price of 1 ETH in DAI",
-    "const exchangeRate = await kyberNetworkProxy.getExpectedRate(",
-    "  \"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",",
-    "  \"0x6B175474E89094C44Da98b954EedeAC495271d0F\",",
-    "  \"1000000000000000000\",",
-    ");",
-    "console.log({ exchangeRate });"
-  ],
-  "whatToLearn": "Kyber"
+  "learn": {
+    "name": "Kyber",
+    "url": "https://developer.kyber.network/"
+  },
+  "subgraphQuery": {
+    "key": "fullTrades",
+    "name": "GET_FULL_TRADES"
+  }
 }

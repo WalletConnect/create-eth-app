@@ -49,7 +49,7 @@ export const HardcodedBespokeTemplateFiles: Record<FrameworkKey, string[]> = {
 export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, string[]>> = {
   react: {
     aave: HardcodedBespokeTemplateFiles.react,
-    balancer: HardcodedBespokeTemplateFiles.react,
+    chainlink: HardcodedBespokeTemplateFiles.react,
     compound: HardcodedBespokeTemplateFiles.react,
     default: [...HardcodedBespokeTemplateFiles.react, ".gitignore", "README.md", "packages/subgraph"],
     kyber: HardcodedBespokeTemplateFiles.react,
@@ -57,12 +57,11 @@ export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, st
     mstable: HardcodedBespokeTemplateFiles.react,
     "sablier-v1": HardcodedBespokeTemplateFiles.react,
     synthetix: HardcodedBespokeTemplateFiles.react,
-    "uniswap-v1": HardcodedBespokeTemplateFiles.react,
     "uniswap-v2": HardcodedBespokeTemplateFiles.react,
   },
   vue: {
     aave: HardcodedBespokeTemplateFiles.vue,
-    balancer: HardcodedBespokeTemplateFiles.vue,
+    chainlink: HardcodedBespokeTemplateFiles.vue,
     compound: HardcodedBespokeTemplateFiles.vue,
     default: [...HardcodedBespokeTemplateFiles.vue, ".gitignore", "README.md", "packages/subgraph"],
     kyber: HardcodedBespokeTemplateFiles.vue,
@@ -70,7 +69,6 @@ export const HardcodedTemplateFiles: Record<FrameworkKey, Record<TemplateKey, st
     mstable: HardcodedBespokeTemplateFiles.vue,
     "sablier-v1": HardcodedBespokeTemplateFiles.vue,
     synthetix: HardcodedBespokeTemplateFiles.vue,
-    "uniswap-v1": HardcodedBespokeTemplateFiles.vue,
     "uniswap-v2": HardcodedBespokeTemplateFiles.vue,
   },
 };
@@ -81,7 +79,7 @@ export const semanticVersionRegex: RegExp =
 
 export const Templates = [
   "aave",
-  "balancer",
+  "chainlink",
   "compound",
   "default",
   "kyber",
@@ -89,7 +87,6 @@ export const Templates = [
   "mstable",
   "sablier-v1",
   "synthetix",
-  "uniswap-v1",
   "uniswap-v2",
 ] as const;
 export type TemplateKey = typeof Templates[number];

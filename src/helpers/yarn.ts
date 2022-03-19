@@ -1,6 +1,6 @@
-import { ChildProcess, execSync } from "child_process";
-
 import chalk from "chalk";
+import { execSync } from "child_process";
+import type { ChildProcess } from "child_process";
 import spawn from "cross-spawn";
 
 export function installDeps(

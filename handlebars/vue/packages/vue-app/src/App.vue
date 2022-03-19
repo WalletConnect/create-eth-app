@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/ethereumLogo.png" width="205px" height="342px" />
+    <img alt="Ethereum logo" src="./assets/ethereumLogo.png" width="205" height="342" />
     <HelloWorld msg="Welcome to Your Ethereum App" />
   </div>
 </template>

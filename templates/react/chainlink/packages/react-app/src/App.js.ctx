@@ -1,0 +1,24 @@
+{
+  "contractCall": [
+    "// Read more about useDapp on https://usedapp.io/",
+    "const { error: contractCallError, value: price } =",
+    "  useCall({",
+    "     contract: new Contract(addresses[MAINNET_ID].ETHUSD, AggregatorV3InterfaceABI),",
+    "     method: \"latestRoundData\",",
+    "     args: [],",
+    "  }) ?? {};"
+  ],
+  "imports": [
+    "import { MAINNET_ID, addresses } from \"@chainlink-app/contracts\";",
+    "import AggregatorV3InterfaceABI from \"@chainlink/contracts/abi/v0.6/AggregatorV3Interface.json\";",
+    "import GET_PRICES_FEEDS from \"./graphql/subgraph\";"
+  ],
+  "learn": {
+    "name": "Chainlink",
+    "url": "https://docs.chain.link/"
+  },
+  "subgraphQuery": {
+    "key": "priceFeeds",
+    "name": "GET_PRICES_FEEDS"
+  }
+}

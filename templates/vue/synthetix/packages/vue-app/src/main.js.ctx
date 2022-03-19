@@ -1,3 +1,5 @@
 {
-  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/synthetixio-team/synthetix"
+  "subgraph": {
+    "url": "https://api.thegraph.com/subgraphs/name/synthetixio-team/synthetix"
+  }
 }

@@ -1,5 +1,4 @@
 import child_process from "child_process";
-
 import fsExtra from "fs-extra";
 import { when } from "jest-when";
 import tempy from "tempy";
@@ -8,7 +7,7 @@ import { isInGitRepository, isInMercurialRepository, tryGitInit } from "../../sr
 
 describe("git", function () {
   let testDirPath: string;
-  let execSyncMock: jest.SpyInstance;
+  let execSyncMock: any;
 
   beforeAll(function () {
     execSyncMock = jest.spyOn(child_process, "execSync");

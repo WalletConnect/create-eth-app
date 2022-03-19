@@ -1,7 +1,6 @@
 import { execSync } from "child_process";
-import path from "path";
-
 import fsExtra from "fs-extra";
+import path from "path";
 
 export function isInGitRepository(): boolean {
   try {

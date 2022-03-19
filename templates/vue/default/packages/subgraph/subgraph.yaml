@@ -1,4 +1,4 @@
-specVersion: 0.0.2
+specVersion: 0.0.4
 description: Subgraph that indexes the blockchain data
 repository: https://github.com/sablierhq/sablier-subgraph
 schema:
@@ -9,10 +9,10 @@ dataSources:
     network: mainnet
     source:
       abi: erc20
-      address: "0xc1C0472c0C80bCcDC7F5D01A376Bd97a734B8815"
+      address: "0xa6dF0C88916f3e2831A329CE46566dDfBe9E74b7"
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.6
       abis:
         - name: erc20
           file: ../contracts/src/abis/erc20.json
