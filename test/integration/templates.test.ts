@@ -1,7 +1,6 @@
-import path from "path";
-
 import { Result, compare } from "dir-compare";
 import fsExtra from "fs-extra";
+import path from "path";
 import tempy from "tempy";
 
 import { FrameworkKey, TemplateKey, Templates } from "../../src/helpers/constants";

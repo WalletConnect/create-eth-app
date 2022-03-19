@@ -1,8 +1,7 @@
-import path from "path";
-
 import chalk from "chalk";
 import fsExtra from "fs-extra";
 import Handlebars from "handlebars";
+import path from "path";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
 import { isDirectoryEmpty } from "./helpers/directories";

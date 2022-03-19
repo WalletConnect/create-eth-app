@@ -1,5 +1,4 @@
 import child_process from "child_process";
-
 import fsExtra from "fs-extra";
 import { when } from "jest-when";
 import tempy from "tempy";

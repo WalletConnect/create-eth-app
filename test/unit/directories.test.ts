@@ -1,7 +1,6 @@
-import path from "path";
-
 import chalk from "chalk";
 import fsExtra from "fs-extra";
+import path from "path";
 import tempy from "tempy";
 
 import { isDirectoryEmpty, isDirectoryWriteable } from "../../src/helpers/directories";
