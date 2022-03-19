@@ -1,7 +1,6 @@
+import chalk from "chalk";
 import fs from "fs";
 import path from "path";
-
-import chalk from "chalk";
 
 export function isDirectoryEmpty(directoryPath: string, appName: string): boolean {
   const validFiles: string[] = [
