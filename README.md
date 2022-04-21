@@ -154,7 +154,7 @@ Create Eth App is a great fit for:
 But Ethereum is a large ecosystem. Here are a few common cases where you might want to try something else:
 
 - If you want to **try Ethereum** in its most basic form, consider [using the Remix in-browser IDE](https://remix.ethereum.org/)
-- If you want to **write, test and deploy smart contracts**, consider using [Truffle](https://trufflesuite.com/), [Dapp
+- If you want to **write, test and deploy smart contracts**, consider using [Foundry](https://github.com/foundry-rs/foundry), [Truffle](https://trufflesuite.com/), [Dapp
   Tools](https://github.com/dapphub/dapptools) or [Etherlime](https://github.com/LimeChain/etherlime)
 - If you want **write smart contracts and also build a frontend app**, consider [using the
   Truffle React Box](https://github.com/truffle-box/react-box)
