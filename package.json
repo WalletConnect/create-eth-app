@@ -20,7 +20,7 @@
     "chalk": "4.1.2",
     "commander": "^9.0.0",
     "fs-extra": "^10.0.1",
-    "got": "11.8.3",
+    "got": "11.8.5",
     "handlebars": "^4.7.7",
     "promisepipe": "^3.0.0",
     "prompts": "^2.4.2",
