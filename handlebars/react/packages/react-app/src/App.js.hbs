@@ -13,7 +13,7 @@ import logo from "./ethereumLogo.png";
 function WalletButton() {
   const [rendered, setRendered] = useState("");
 
-  const ens = useLookupAddress();
+  const { ens } = useLookupAddress();
   const { account, activateBrowserWallet, deactivate, error } = useEthers();
 
   useEffect(() => {
