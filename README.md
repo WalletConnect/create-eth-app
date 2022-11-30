@@ -157,6 +157,8 @@ But Ethereum is a large ecosystem. Here are a few common cases where you might w
 - If you want to **write, test and deploy smart contracts**, consider using
   [Foundry](https://github.com/foundry-rs/foundry) or [Hardhat](https://hardhat.org/)
 - If you want to **write smart contracts and also build a frontend app**, consider using [scaffold-eth](https://github.com/scaffold-eth/scaffold-eth)
+- If you want to **get Goerli testETH**, consider using the [Goerli faucet](https://goerlifaucet.com)
+- If you want to **deploy to testnet or mainnet**, consider using [Alchemy](https://docs.alchemy.com), [Moralis](moralis.com), or another blockchain platform with RPC endpoints
 
 For alternatives to React in particular, read the [official Create React App
 documentation](https://github.com/facebook/create-react-app/blob/master/README.md#popular-alternatives).
