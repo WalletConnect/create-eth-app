@@ -163,14 +163,9 @@ But Ethereum is a large ecosystem. Here are a few common cases where you might w
 For alternatives to React in particular, read the [official Create React App
 documentation](https://github.com/facebook/create-react-app/blob/master/README.md#popular-alternatives).
 
-## Credits
+## Contributors
 
-This project exists thanks to all the people who contributed:
-
-- [@PaulRBerg](https://github.com/paulrberg)
-- [@TomAFrench](https://github.com/TomAFrench)
-- [@KadenZipfel](https://github.com/kadenzipfel)
-- [@rnbrady](https://github.com/rnbrady)
+<a href="https://github.com/PaulRBerg/create-eth-app/graphs/contributors"><img src="https://contrib.rocks/image?repo=PaulRBerg/create-eth-app" /></a>
 
 ## Acknowledgements
 
@@ -186,7 +181,3 @@ And also the Vue.js community for the CLI we used to generate our templates:
 ## License
 
 Create Eth App is open source software [licensed as MIT](https://github.com/paulrberg/create-eth-app/blob/develop/LICENSE).
-
-## Contributors
-
-<a href="https://github.com/PaulRBerg/create-eth-app/graphs/contributors"><img src="https://contrib.rocks/image?repo=PaulRBerg/create-eth-app" /></a>
