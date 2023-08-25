@@ -29,7 +29,6 @@ You will need the following software on your machine:
 
 - Enter the token name as: `create-eth-app`
 - Make sure `Only select repositories` option is selected, and choose your forked repo.
-- Enable the `Environments` permission under `Repository permissions` section, by choosing `Read and write`
 - Enable the `Secrets` permission under `Repository permissions` section, by choosing `Read-only`
 - Use the token generated in the previous step as the value for `GH_OAUTH_TOKEN` secret.
 
