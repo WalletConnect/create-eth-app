@@ -19,22 +19,9 @@ You will need the following software on your machine:
 
 2. Once the fork is created, head to the forked repo. For example, [this](https://github.com/robin-thomas/create-eth-app) is a fork of the original repo.
 
-3. Go to `Settings` tab of the forked repo. Under `Security` subheader, click on `Secrets and variables`, and click on `Actions`.
+3. Clone the forked repo to your local machine
 
-4. Click on the `New repository secret` button, and add the following secrets:
-
-   - `GH_OAUTH_TOKEN`: Your fine-grained personal access token
-
-5. You can create a token by visiting: https://github.com/settings/personal-access-tokens/new
-
-- Enter the token name as: `create-eth-app`
-- Make sure `Only select repositories` option is selected, and choose your forked repo.
-- Enable the `Secrets` permission under `Repository permissions` section, by choosing `Read-only`
-- Use the token generated in the previous step as the value for `GH_OAUTH_TOKEN` secret.
-
-6. Clone the forked repo to your local machine
-
-7. Then, inside the project's directory, run this to install the Node.js dependencies:
+4. Then, inside the project's directory, run this to install the Node.js dependencies:
 
 ```bash
 $ yarn install --frozen-lockfile
