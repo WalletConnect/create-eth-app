@@ -125,7 +125,7 @@ yarn create eth-app my-eth-app --template compound
 - **Aimed at Experience Architects**: As Kames CG argues in [Ethereum Growth's Problem](https://medium.com/horizin/ethereums-growth-problem-5cab86734917), the Ethereum ecosystem is in
   a much greater need for top-notch product creators, not smart contract developers. Create Eth App does
   not enable a smart contract development environment, expecting you to import your own ABIs or build on top of
-  an established protocol like [Maker](https://makerdao.com), [Compound](https://compound.finance/) or [Sablier](https://sablier.finance)
+  an established protocol like [Maker](https://makerdao.com), [Compound](https://compound.finance/) or [Sablier](https://sablier.com)
 
 - **Not Reinventing The Wheel**: Under the hood, you use Create React App, one of the most popular and battle-tested frontend development
   environments.
