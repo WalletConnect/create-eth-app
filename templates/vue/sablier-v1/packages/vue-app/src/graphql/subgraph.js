@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-// See more example queries on https://thegraph.com/explorer/subgraph/sablierhq/sablier
+// See more example queries on https://thegraph.com/explorer/subgraph/sablier-labs/sablier
 const GET_STREAMS = gql`
   {
     streams(first: 10, orderBy: timestamp, orderDirection: desc) {
