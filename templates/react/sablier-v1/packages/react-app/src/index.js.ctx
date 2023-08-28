@@ -1,6 +1,6 @@
 {
   "subgraph": {
     "comment": "// This is the official Sablier v1 subgraph. You can replace it with your own, if you need to.",
-    "url": "https://api.thegraph.com/subgraphs/name/sablierhq/sablier"
+    "url": "https://api.thegraph.com/subgraphs/name/sablier-labs/sablier"
   }
 }

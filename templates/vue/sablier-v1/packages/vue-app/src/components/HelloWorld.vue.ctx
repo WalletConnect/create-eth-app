@@ -17,7 +17,7 @@
     "items": [
       {
         "label": "Core Docs",
-        "url": "https://docs.sablier.finance/"
+        "url": "https://docs.sablier.com/"
       },
       {
         "label": "Community Chat",
@@ -25,7 +25,7 @@
       },
       {
         "label": "Twitter",
-        "url": "https://twitter.com/sablierhq/"
+        "url": "https://twitter.com/sablier-labs/"
       }
     ],
     "name": "Sablier v1"
