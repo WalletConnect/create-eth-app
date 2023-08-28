@@ -8,10 +8,6 @@ on:
     branches:
       - "develop"
       - "staging"
-  pull_request:
-    branches:
-      - "develop"
-      - "staging"
 
 jobs:
   integration:
