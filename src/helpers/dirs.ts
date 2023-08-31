@@ -60,3 +60,12 @@ export function isSafeToCreateAppIn(directoryPath: string, appName: string): boo
 
   return true;
 }
+
+export async function isDirectoryWriteable(directory: string): Promise<boolean> {
+  try {
+    await fs.promises.access(directory, (fs.constants || fs).W_OK);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
