@@ -4,7 +4,7 @@ import Handlebars from "handlebars";
 import path from "path";
 
 import { FrameworkKey, TemplateKey } from "./helpers/constants";
-import { isDirectoryEmpty } from "./helpers/directories";
+import { isDirectoryEmpty, isDirectoryWriteable } from "./helpers/directories";
 import { throwFrameworkNotFoundError, throwTemplateNotFoundError } from "./helpers/errors";
 import { downloadAndExtractFrameworkHandlebars, hasFramework, hasFrameworkHandlebars } from "./helpers/frameworks";
 import { tryGitInit } from "./helpers/git";
@@ -53,6 +53,11 @@ export async function createEthApp({
 
   await fsExtra.ensureDir(root);
   if (!isDirectoryEmpty(root, appName)) {
+    process.exit(1);
+  }
+
+  if (!(await isDirectoryWriteable(root))) {
+    console.error("Your application path is not writable. Please check your directory permissions and try again.");
     process.exit(1);
   }
 
