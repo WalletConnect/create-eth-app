@@ -3,7 +3,7 @@ import fsExtra from "fs-extra";
 import path from "path";
 import tempy from "tempy";
 
-import { isDirectoryEmpty } from "../../src/helpers/directories";
+import { isDirectoryEmpty, isDirectoryWriteable } from "../../src/helpers/directories";
 
 // This has to be in sync with the valid files defined "helpers/directories".
 const filesDirsTable: string[][] = [
@@ -102,6 +102,26 @@ describe("directories", function () {
           expect(result).toBe(false);
         });
       });
+    });
+  });
+
+  describe("when the directory is not writable", function () {
+    beforeEach(async function () {
+      await fsExtra.chmod(testDirPath, 0o444);
+    });
+
+    test("returns false", async function () {
+      await expect(isDirectoryWriteable(testDirPath)).resolves.toBe(false);
+    });
+  });
+
+  describe("when the directory is writable", function () {
+    beforeEach(async function () {
+      await fsExtra.chmod(testDirPath, 0o777);
+    });
+
+    test("returns true", async function () {
+      await expect(isDirectoryWriteable(testDirPath)).resolves.toBe(true);
     });
   });
 
