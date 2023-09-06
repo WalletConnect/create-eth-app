@@ -2,10 +2,10 @@ import fsExtra from "fs-extra";
 import got from "got";
 import promisePipe from "promisepipe";
 import tar from "tar";
-import urlExists from "url-exist";
 
 import { codeloadBaseUrl, githubApiBaseUrl } from "./constants";
 import { getRefs, getRepository } from "./env";
+import { urlExists } from "./url";
 
 export async function downloadAndExtractFrameworkHandlebars(root: string, framework: string): Promise<void> {
   await fsExtra.ensureDir(root);
