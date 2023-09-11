@@ -4,7 +4,6 @@ import Handlebars from "handlebars";
 import path from "path";
 import promisePipe from "promisepipe";
 import tar from "tar";
-import urlExists from "url-exist";
 
 import {
   FrameworkKey,
@@ -15,6 +14,7 @@ import {
   githubApiBaseUrl,
 } from "./constants";
 import { getRefs, getRepository } from "./env";
+import { urlExists } from "./url";
 
 export async function downloadAndExtractTemplateContext(
   root: string,
