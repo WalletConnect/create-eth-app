@@ -1038,7 +1038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:16.3":
+"@commitlint/cli@npm:^16.3":
   version: 16.3.0
   resolution: "@commitlint/cli@npm:16.3.0"
   dependencies:
@@ -1057,7 +1057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:16.2.4":
+"@commitlint/config-conventional@npm:^16.2.4":
   version: 16.2.4
   resolution: "@commitlint/config-conventional@npm:16.2.4"
   dependencies:
@@ -1066,7 +1066,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-lerna-scopes@npm:16.2.4":
+"@commitlint/config-lerna-scopes@npm:^16.2.4":
   version: 16.2.4
   resolution: "@commitlint/config-lerna-scopes@npm:16.2.4"
   dependencies:
@@ -4669,9 +4669,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "create-eth-app@workspace:."
   dependencies:
-    "@commitlint/cli": 16.3
-    "@commitlint/config-conventional": 16.2.4
-    "@commitlint/config-lerna-scopes": 16.2.4
+    "@commitlint/cli": ^16.3
+    "@commitlint/config-conventional": ^16.2.4
+    "@commitlint/config-lerna-scopes": ^16.2.4
     "@jest/globals": ^27.5.1
     "@octokit/request": ^5.6.3
     "@trivago/prettier-plugin-sort-imports": ^3.2.0
