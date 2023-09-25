@@ -8,36 +8,28 @@ on:
     branches:
       - "develop"
       - "staging"
-  pull_request:
-    branches:
-      - "develop"
-      - "staging"
 
 jobs:
-  ci:
-    runs-on: "ubuntu-18.04"
+  integration:
+    runs-on: "ubuntu-latest"
     steps:
       - name: "Check out the repo"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v3"
 
-      - name: "Install Node.js 12.x"
-        uses: "actions/setup-node@v1"
+      - name: "Install Node.js"
+        uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
-
-      - uses: "actions/cache@v2"
-        with:
-          key: ${{ runner.os }}-modules-${{ hashFiles('./yarn.lock') }}
-          path: "./node_modules"
+          cache: "yarn"
+          node-version: "16"
 
       - name: "Install dependencies"
         run: "yarn install --immutable"
 
-      - name: "Lint TypeScript code"
-        run: "yarn run lint"
+      - name: "Lint code"
+        run: "yarn lint"
 
       - name: "Run unit tests"
-        run: "yarn run test:unit"
+        run: "yarn test:unit"
 
       - name: "Run integration tests"
-        run: "yarn run test:integration"
+        run: "yarn test:integration"
