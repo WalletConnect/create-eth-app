@@ -1,7 +1,7 @@
 export const codeloadBaseUrl: string = "https://codeload.github.com";
 
 export const Frameworks = ["react", "vue"] as const;
-export type FrameworkKey = typeof Frameworks[number];
+export type FrameworkKey = (typeof Frameworks)[number];
 
 export const githubApiBaseUrl: string = "https://api.github.com/repos";
 
@@ -89,4 +89,4 @@ export const Templates = [
   "synthetix",
   "uniswap-v2",
 ] as const;
-export type TemplateKey = typeof Templates[number];
+export type TemplateKey = (typeof Templates)[number];
