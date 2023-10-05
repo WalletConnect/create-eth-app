@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from "jest";
+
+const config: Config = {
   collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/src/**/*.d.ts"],
   coveragePathIgnorePatterns: ["node_modules"],
   coverageReporters: ["lcov", "html"],
@@ -9,3 +11,5 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/test/**/*.test.ts"],
 };
+
+export default config;
